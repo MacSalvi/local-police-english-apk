@@ -9,7 +9,7 @@
 
 Puedes descargar el ejecutable instalable para Android directamente desde el siguiente enlace:
 
-📦 **[Descargar Local Police English v1.0 (.APK)](https://github.com/MacSalvi/local-police-english/releases/download/v1.0.0/app-debug.apk)**
+📦 **[Descargar Local Police English v1.0 (.APK)](https://github.com/MacSalvi/local-police-english-apk/releases/download/v1.0.0/app-debug.apk)**
 
 > *Nota: Al instalarlo por primera vez en el terminal, permite la opción "Instalar aplicaciones desconocidas" en tu navegador o explorador de archivos.*
 
