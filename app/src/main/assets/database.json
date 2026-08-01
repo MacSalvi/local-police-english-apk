@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "title": "Módulo I: Seguridad Vial y Tráfico",
+    "lessons": [
+      {
+        "id": 101,
+        "title": "Control de Alcoholemia",
+        "vocabulary": [
+          { "es": "Alcoholímetro", "en": "Breathalyser" },
+          { "es": "Boquilla", "en": "Mouthpiece" },
+          { "es": "Tasa permitida", "en": "Legal limit" },
+          { "es": "Sanción", "en": "Fine / Penalty" }
+        ],
+        "phrases": [
+          { "es": "Por favor, apague el motor del vehículo.", "en": "Please turn off the engine." },
+          { "es": "Esta es una prueba de alcoholemia obligatoria.", "en": "This is a mandatory breathalyser test." },
+          { "es": "Sople de forma constante a través de la boquilla.", "en": "Blow steadily through the mouthpiece, please." },
+          { "es": "No pare de soplar hasta que yo se lo indique.", "en": "Keep blowing until I tell you to stop." }
+        ],
+        "tips": [
+          "Mantén una postura lateral de seguridad respecto a la ventanilla del conductor mientras sostienes el alcoholímetro.",
+          "En el Reino Unido, negarse a soplar es un delito grave. Puedes advertirle diciendo: 'Failure to provide a specimen is a criminal offence under Spanish law'."
+        ]
+      },
+      {
+        "id": 102,
+        "title": "Infracción de Tráfico (No Residente)",
+        "vocabulary": [
+          { "es": "Depósito de garantía", "en": "On-the-spot deposit" },
+          { "es": "Grúa", "en": "Tow truck" },
+          { "es": "Descuento", "en": "Discount" }
+        ],
+        "phrases": [
+          { "es": "Le voy a denunciar por no respetar la señal de stop.", "en": "I am issuing a fine for failing to stop at the sign." },
+          { "es": "Al no ser residente en España, debe abonar la multa en el acto.", "en": "Since you are non-resident, you must pay the fine on the spot." },
+          { "es": "Puede pagar con tarjeta de crédito ahora mismo.", "en": "You can pay by credit card right now." }
+        ],
+        "tips": [
+          "Si el infractor no abona el depósito en el acto, la ley española faculta la inmovilización y retirada del vehículo: 'We will have to impound your vehicle if the deposit is not paid'."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Módulo II: Ordenanza de Convivencia",
+    "lessons": [
+      {
+        "id": 201,
+        "title": "Contaminación Acústica (Villas/Locales)",
+        "vocabulary": [
+          { "es": "Sonómetro", "en": "Decibel meter" },
+          { "es": "Queja de vecinos", "en": "Noise complaint" },
+          { "es": "Desalojo", "en": "Eviction / Clearing" }
+        ],
+        "phrases": [
+          { "es": "Hemos recibido quejas por exceso de ruido.", "en": "We have received complaints regarding excessive noise." },
+          { "es": "Tienen que apagar la música y moderar el tono.", "en": "You must turn off the music and keep the noise down." },
+          { "es": "Si continúan con el ruido, procederemos a sancionar al titular.", "en": "If the noise continues, we will fine the property holder." }
+        ],
+        "tips": [
+          "En intervenciones en villas de alquiler turístico, dirígete siempre al responsable del grupo o al titular del contrato para la identificación."
+        ]
+      }
+    ]
+  }
+]
