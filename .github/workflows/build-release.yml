@@ -25,6 +25,10 @@ jobs:
         with:
           cache-disabled: true
 
+      - name: Generar debug.keystore
+        run: |
+          keytool -genkey -v -keystore debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "C=ES, O=Android, CN=Android Debug"
+
       - name: Compilar APK Debug
         run: |
           gradle assembleDebug \
