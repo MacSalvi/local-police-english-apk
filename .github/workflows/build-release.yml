@@ -24,7 +24,7 @@ jobs:
         uses: gradle/actions/setup-gradle@v3
 
       - name: Compilar APK Debug
-        run: gradle assembleDebug
+        run: gradle assembleDebug -Dkotlin.compiler.execution.strategy="in-process" --no-daemon
 
       - name: Publicar Release
         uses: softprops/action-gh-release@v1
