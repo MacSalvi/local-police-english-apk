@@ -1,7 +1,6 @@
 package com.example.ui
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 import com.example.data.DatabaseManager
 import com.example.data.model.Lesson
 import com.example.data.model.Module
@@ -11,11 +10,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-class MainViewModel(application: Application) : AndroidViewModel(application) {
+class MainViewModel : ViewModel() {
 
-    private val context = application.applicationContext
-
-    private val _modules = MutableStateFlow<List<Module>>(emptyList())
+    private val _modules = MutableStateFlow<List<Module>>(DatabaseManager.allModules)
     val modules: StateFlow<List<Module>> = _modules.asStateFlow()
 
     private val _searchQuery = MutableStateFlow("")
@@ -32,14 +29,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     private val _managerMode = MutableStateFlow(false)
     val managerMode: StateFlow<Boolean> = _managerMode.asStateFlow()
-
-    init {
-        loadData()
-    }
-
-    fun loadData() {
-        _modules.value = DatabaseManager.loadDatabase(context)
-    }
 
     fun setSearchQuery(query: String) {
         _searchQuery.value = query
@@ -65,12 +54,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         _managerMode.value = active
     }
 
-    // --- Database Management (Gestor / Admin Panel Actions) ---
-
-    fun saveAndRefresh(updatedList: List<Module>) {
-        _modules.value = updatedList
-        DatabaseManager.saveDatabase(context, updatedList)
-    }
+    // --- Edición en memoria (Gestor local) ---
 
     fun addLessonToModule(
         moduleId: Int,
@@ -94,7 +78,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             
             val updatedLessons = module.lessons.toMutableList().apply { add(newLesson) }
             currentList[index] = module.copy(lessons = updatedLessons)
-            saveAndRefresh(currentList)
+            _modules.value = currentList
         }
     }
 
@@ -106,11 +90,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             val updatedLessons = module.lessons.filter { it.lessonId != lessonId }
             currentList[index] = module.copy(lessons = updatedLessons)
             
-            // Clear selection if deleted
             if (_selectedLesson.value?.lessonId == lessonId) {
                 _selectedLesson.value = null
             }
-            saveAndRefresh(currentList)
+            _modules.value = currentList
         }
     }
 
@@ -144,41 +127,13 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             if (_selectedLesson.value?.lessonId == lessonId) {
                 _selectedLesson.value = updatedLessonObj
             }
-            saveAndRefresh(currentList)
+            _modules.value = currentList
         }
     }
 
-    fun importJson(jsonString: String): Boolean {
-        return try {
-            val parsed = DatabaseManager.parseJson(jsonString)
-            if (parsed.isNotEmpty()) {
-                _modules.value = parsed
-                DatabaseManager.saveDatabase(context, parsed)
-                true
-            } else {
-                false
-            }
-        } catch (e: Exception) {
-            false
-        }
-    }
-
-    fun exportJson(): String {
-        return DatabaseManager.serializeModules(_modules.value)
-    }
-
-    fun resetToDefaults(): Boolean {
-        return try {
-            val file = DatabaseManager.getDatabaseFile(context)
-            if (file.exists()) {
-                file.delete()
-            }
-            loadData()
-            _selectedLesson.value = null
-            _expandedModuleId.value = null
-            true
-        } catch (e: Exception) {
-            false
-        }
+    fun resetToDefaults() {
+        _modules.value = DatabaseManager.allModules
+        _selectedLesson.value = null
+        _expandedModuleId.value = null
     }
 }

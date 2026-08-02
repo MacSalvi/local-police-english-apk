@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Marbella Police English</string>
+    <string name="tab_vocabulary">Vocabulario</string>
+    <string name="tab_phrases">Frases</string>
+    <string name="tab_tips">Consejos</string>
+    <string name="btn_listen">Escuchar</string>
 </resources>

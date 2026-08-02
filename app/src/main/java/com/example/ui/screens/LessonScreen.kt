@@ -20,11 +20,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.R
 import com.example.data.model.Lesson
 import com.example.data.model.PhraseItem
 import com.example.ui.theme.*
@@ -39,7 +41,11 @@ fun LessonScreen(
 ) {
     var selectedTabIndex by remember { mutableStateOf(0) }
     var isFlashcardMode by remember { mutableStateOf(false) }
-    val tabs = listOf("🗒️ Vocabulary", "💬 Phrases", "📖 Tips")
+    val tabs = listOf(
+        stringResource(R.string.tab_vocabulary),
+        stringResource(R.string.tab_phrases),
+        stringResource(R.string.tab_tips)
+    )
 
     Scaffold(
         topBar = {
@@ -69,7 +75,7 @@ fun LessonScreen(
                     ) {
                         Icon(
                             imageVector = Icons.Default.ArrowBack,
-                            contentDescription = "Volver",
+                            contentDescription = stringResource(R.string.back),
                             tint = NeonTeal
                         )
                     }
@@ -100,7 +106,6 @@ fun LessonScreen(
                 .padding(paddingValues)
                 .background(Slate950)
         ) {
-            // Immersive UI sliding neon TabRow
             TabRow(
                 selectedTabIndex = selectedTabIndex,
                 containerColor = Color(0xFF0F172A),
@@ -385,7 +390,6 @@ fun PhraseCard(
 
             Spacer(modifier = Modifier.height(14.dp))
 
-            // English bold on top
             Text(
                 text = phrase.en.uppercase(),
                 color = NeonTeal,
@@ -395,7 +399,6 @@ fun PhraseCard(
                 modifier = Modifier.testTag("phrase_text_en_${index}")
             )
 
-            // Fonética (si existe)
             if (phrase.phonetic.isNotEmpty()) {
                 Spacer(modifier = Modifier.height(2.dp))
                 Text(
@@ -410,7 +413,6 @@ fun PhraseCard(
 
             Spacer(modifier = Modifier.height(6.dp))
 
-            // Spanish muted below (Oculto en modo Flashcards hasta hacer tap)
             val spanishText = if (isFlashcardMode && !isRevealed) "•••••••••••• (Toca para revelar)" else phrase.es
             Text(
                 text = spanishText,
@@ -450,7 +452,7 @@ fun PhraseCard(
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
-                        text = if (isPlaying) "PLAYING (en-GB)" else "LISTEN (en-GB)",
+                        text = if (isPlaying) stringResource(R.string.playing_audio) else stringResource(R.string.listen_audio),
                         fontSize = 12.sp,
                         fontWeight = FontWeight.Bold,
                         letterSpacing = 0.5.sp
