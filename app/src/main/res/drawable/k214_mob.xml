@@ -1,0 +1,41 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="128dp"
+    android:height="128dp"
+    android:viewportWidth="128"
+    android:viewportHeight="128">
+    
+    <!-- Background Shield Glow -->
+    <path
+        android:fillColor="#0D1E38"
+        android:pathData="M64,8 C90,8 108,18 112,48 C112,84 84,112 64,120 C44,112 16,84 16,48 C20,18 38,8 64,8 Z" />
+
+    <!-- Outer Shield Border -->
+    <path
+        android:strokeColor="#00FF66"
+        android:strokeWidth="3"
+        android:fillColor="#00000000"
+        android:pathData="M64,12 C88,12 104,21 108,48 C108,80 82,106 64,114 C46,106 20,80 20,48 C24,21 40,12 64,12 Z" />
+
+    <!-- Gold Police Badge Inner Shield -->
+    <path
+        android:fillColor="#1E293B"
+        android:strokeColor="#38BDF8"
+        android:strokeWidth="2"
+        android:pathData="M64,22 C82,22 96,29 98,50 C98,75 78,96 64,103 C50,96 30,75 30,50 C32,29 46,22 64,22 Z" />
+
+    <!-- 8-Pointed Star Emblem (Police Star) -->
+    <path
+        android:fillColor="#00FF66"
+        android:pathData="M64,36 L68,48 L80,44 L74,54 L84,62 L72,64 L74,76 L64,68 L54,76 L56,64 L44,62 L54,54 L48,44 L60,48 Z" />
+
+    <!-- Central Badge Core Circle -->
+    <path
+        android:fillColor="#0F172A"
+        android:pathData="M64,52 A10,10 0 1,0 64,72 A10,10 0 1,0 64,52 Z" />
+
+    <!-- Text / Symbol inside core -->
+    <path
+        android:fillColor="#38BDF8"
+        android:pathData="M64,57 L67,67 L61,67 Z M64,59 L62,65 L66,65 Z" />
+
+</vector>

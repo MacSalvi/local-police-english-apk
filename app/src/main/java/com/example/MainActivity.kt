@@ -6,10 +6,11 @@ import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.ui.MainViewModel
 import com.example.ui.TTSManager
+import com.example.ui.screens.AppInfoScreen
 import com.example.ui.screens.LessonScreen
-import com.example.ui.screens.ManagerScreen
 import com.example.ui.screens.SyllabusScreen
 import com.example.ui.theme.MyApplicationTheme
 
@@ -19,9 +20,13 @@ class MainActivity : ComponentActivity() {
     private lateinit var ttsManager: TTSManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        try {
+            installSplashScreen()
+        } catch (e: Exception) {
+            // Ignore splash screen errors if theme initialization encounters issues in container
+        }
         super.onCreate(savedInstanceState)
 
-        // Initialize British English TTS at 0.85 rate
         ttsManager = TTSManager(this)
 
         setContent {
@@ -31,7 +36,7 @@ class MainActivity : ComponentActivity() {
                 val selectedLesson by viewModel.selectedLesson.collectAsState()
                 val expandedModuleId by viewModel.expandedModuleId.collectAsState()
                 val currentlyPlayingPhrase by viewModel.currentlyPlayingPhrase.collectAsState()
-                val managerMode by viewModel.managerMode.collectAsState()
+                val infoMode by viewModel.infoMode.collectAsState()
 
                 when {
                     selectedLesson != null -> {
@@ -51,36 +56,17 @@ class MainActivity : ComponentActivity() {
                                     viewModel.setCurrentlyPlaying(text)
                                     ttsManager.speak(
                                         text = text,
-                                        onStart = { /* active flag set */ },
+                                        onStart = {},
                                         onDone = { viewModel.setCurrentlyPlaying(null) }
                                     )
                                 }
                             }
                         )
                     }
-                    managerMode -> {
-                        ManagerScreen(
-                            modules = modules,
+                    infoMode -> {
+                        AppInfoScreen(
                             onBackClick = {
-                                viewModel.setManagerMode(false)
-                            },
-                            onAddLesson = { moduleId, title, vocabulary, phrases, tips ->
-                                viewModel.addLessonToModule(moduleId, title, vocabulary, phrases, tips)
-                            },
-                            onUpdateLesson = { moduleId, lessonId, title, vocabulary, phrases, tips ->
-                                viewModel.updateLesson(moduleId, lessonId, title, vocabulary, phrases, tips)
-                            },
-                            onDeleteLesson = { moduleId, lessonId ->
-                                viewModel.deleteLesson(moduleId, lessonId)
-                            },
-                            onImportJson = { json ->
-                                viewModel.importJson(json)
-                            },
-                            onExportJson = {
-                                viewModel.exportJson()
-                            },
-                            onResetToDefaults = {
-                                viewModel.resetToDefaults()
+                                viewModel.setInfoMode(false)
                             }
                         )
                     }
@@ -112,8 +98,8 @@ class MainActivity : ComponentActivity() {
                                     )
                                 }
                             },
-                            onEnterManagerMode = {
-                                viewModel.setManagerMode(true)
+                            onEnterInfoMode = {
+                                viewModel.setInfoMode(true)
                             }
                         )
                     }

@@ -13,21 +13,36 @@ val module19 = Module(
             lessonId = 1901,
             lessonTitle = "Corrientes y zona de baño",
             vocabulary = listOf(
-                VocabularyItem(
-                    es = "Corriente",
-                    en = "CURRENT",
-                    phonetic = "kárrent"
-                ),
-                VocabularyItem(
-                    es = "Oleaje",
-                    en = "SWELL",
-                    phonetic = "suél"
-                ),
-                VocabularyItem(
-                    es = "Zona de baño",
-                    en = "SWIMMING AREA",
-                    phonetic = "suíming éria"
-                )
+                VocabularyItem(es = "Corriente", en = "CURRENT", phonetic = "kárrent"),
+                VocabularyItem(es = "Oleaje", en = "SWELL", phonetic = "suél"),
+                VocabularyItem(es = "Zona de baño", en = "SWIMMING AREA", phonetic = "suíming éria"),
+                VocabularyItem(es = "Haber (existencial - hay)", en = "THERE", phonetic = "der"),
+                VocabularyItem(es = "Es / Está", en = "IS", phonetic = "is"),
+                VocabularyItem(es = "Un / Una", en = "A", phonetic = "a"),
+                VocabularyItem(es = "Fuerte", en = "STRONG", phonetic = "strong"),
+                VocabularyItem(es = "Aquí", en = "HERE", phonetic = "jía"),
+                VocabularyItem(es = "Hacer (auxiliar negativo)", en = "DO NOT", phonetic = "du not"),
+                VocabularyItem(es = "Nadar", en = "SWIM", phonetic = "suím"),
+                VocabularyItem(es = "Fuera / Afuera de", en = "OUTSIDE", phonetic = "áutsaid"),
+                VocabularyItem(es = "El / La", en = "THE", phonetic = "de"),
+                VocabularyItem(es = "Marcado / Señalizado", en = "MARKED", phonetic = "markt"),
+                VocabularyItem(es = "Área / Zona", en = "AREA", phonetic = "éria"),
+                VocabularyItem(es = "Mar", en = "SEA", phonetic = "si"),
+                VocabularyItem(es = "Agitado / Fuerte", en = "ROUGH", phonetic = "raf"),
+                VocabularyItem(es = "Hoy", en = "TODAY", phonetic = "tudéi"),
+                VocabularyItem(es = "Natación / Nadar", en = "SWIMMING", phonetic = "suíming"),
+                VocabularyItem(es = "No", en = "NOT", phonetic = "not"),
+                VocabularyItem(es = "Seguro", en = "SAFE", phonetic = "séif"),
+                VocabularyItem(es = "Correcto / Justo", en = "RIGHT", phonetic = "ráit"),
+                VocabularyItem(es = "Ahora", en = "NOW", phonetic = "nau"),
+                VocabularyItem(es = "Permanecer / Quedarse", en = "STAY", phonetic = "stéi"),
+                VocabularyItem(es = "Cerca", en = "CLOSE", phonetic = "clóus"),
+                VocabularyItem(es = "A (dirección)", en = "TO", phonetic = "tu"),
+                VocabularyItem(es = "Orilla", en = "SHORE", phonetic = "shor"),
+                VocabularyItem(es = "Socorrista", en = "LIFEGUARD", phonetic = "láifgard"),
+                VocabularyItem(es = "Futuro (auxiliar)", en = "WILL", phonetic = "güil"),
+                VocabularyItem(es = "Asistir", en = "ASSIST", phonetic = "asíst"),
+                VocabularyItem(es = "Tú / Usted", en = "YOU", phonetic = "yu")
             ),
             phrases = listOf(
                 PhraseItem(
@@ -66,21 +81,36 @@ val module19 = Module(
             lessonId = 1902,
             lessonTitle = "Persona desaparecida en el agua y ahogamiento",
             vocabulary = listOf(
-                VocabularyItem(
-                    es = "Ahogamiento",
-                    en = "DROWNING",
-                    phonetic = "dráuning"
-                ),
-                VocabularyItem(
-                    es = "Desaparecido",
-                    en = "MISSING",
-                    phonetic = "mísing"
-                ),
-                VocabularyItem(
-                    es = "Socorrista",
-                    en = "LIFEGUARD",
-                    phonetic = "láifgard"
-                )
+                VocabularyItem(es = "Ahogamiento", en = "DROWNING", phonetic = "dráuning"),
+                VocabularyItem(es = "Desaparecido", en = "MISSING", phonetic = "mísing"),
+                VocabularyItem(es = "Socorrista", en = "LIFEGUARD", phonetic = "láifgard"),
+                VocabularyItem(es = "Es / Está", en = "IS", phonetic = "is"),
+                VocabularyItem(es = "Alguien", en = "SOMEONE", phonetic = "sámuan"),
+                VocabularyItem(es = "En", en = "IN", phonetic = "in"),
+                VocabularyItem(es = "El / La", en = "THE", phonetic = "de"),
+                VocabularyItem(es = "Agua", en = "WATER", phonetic = "güóter"),
+                VocabularyItem(es = "Cuándo", en = "WHEN", phonetic = "güen"),
+                VocabularyItem(es = "Pasado (auxiliar)", en = "DID", phonetic = "did"),
+                VocabularyItem(es = "Tú / Usted", en = "YOU", phonetic = "yu"),
+                VocabularyItem(es = "Último / Pasado", en = "LAST", phonetic = "last"),
+                VocabularyItem(es = "Ver", en = "SEE", phonetic = "si"),
+                VocabularyItem(es = "Ellos / Las / Los", en = "THEM", phonetic = "dem"),
+                VocabularyItem(es = "Llamar", en = "CALL", phonetic = "col"),
+                VocabularyItem(es = "Inmediatamente", en = "IMMEDIATELY", phonetic = "imídietli"),
+                VocabularyItem(es = "Nosotros", en = "WE", phonetic = "güi"),
+                VocabularyItem(es = "Ser / Estar (plural)", en = "ARE", phonetic = "ar"),
+                VocabularyItem(es = "Buscando", en = "SEARCHING", phonetic = "sörching"),
+                VocabularyItem(es = "El / La (ante vocal)", en = "THE", phonetic = "di"),
+                VocabularyItem(es = "Área / Zona", en = "AREA", phonetic = "éria"),
+                VocabularyItem(es = "Permanecer / Quedarse", en = "STAY", phonetic = "stéi"),
+                VocabularyItem(es = "Aquí", en = "HERE", phonetic = "jía"),
+                VocabularyItem(es = "En caso de", en = "IN CASE", phonetic = "in kéis"),
+                VocabularyItem(es = "Ellos", en = "THEY", phonetic = "déi"),
+                VocabularyItem(es = "Regresar / Volver", en = "RETURN", phonetic = "ritörn"),
+                VocabularyItem(es = "Pasado singular (ser/estar)", en = "WAS", phonetic = "guas"),
+                VocabularyItem(es = "Llevando / Vistiendo", en = "WEARING", phonetic = "güéring"),
+                VocabularyItem(es = "Algo / Cualquier cosa", en = "ANYTHING", phonetic = "énizing"),
+                VocabularyItem(es = "Distintivo", en = "DISTINCTIVE", phonetic = "distínktiv")
             ),
             phrases = listOf(
                 PhraseItem(
@@ -119,21 +149,38 @@ val module19 = Module(
             lessonId = 1903,
             lessonTitle = "Bandera roja y evacuación de la playa",
             vocabulary = listOf(
-                VocabularyItem(
-                    es = "Bandera roja",
-                    en = "RED FLAG",
-                    phonetic = "red flag"
-                ),
-                VocabularyItem(
-                    es = "Medusa",
-                    en = "JELLYFISH",
-                    phonetic = "yélifish"
-                ),
-                VocabularyItem(
-                    es = "Evacuar",
-                    en = "EVACUATE",
-                    phonetic = "ivákiueit"
-                )
+                VocabularyItem(es = "Bandera roja", en = "RED FLAG", phonetic = "red flag"),
+                VocabularyItem(es = "Medusa", en = "JELLYFISH", phonetic = "yélifish"),
+                VocabularyItem(es = "Evacuar", en = "EVACUATE", phonetic = "ivákiueit"),
+                VocabularyItem(es = "El / La", en = "THE", phonetic = "de"),
+                VocabularyItem(es = "Rojo", en = "RED", phonetic = "red"),
+                VocabularyItem(es = "Bandera", en = "FLAG", phonetic = "flag"),
+                VocabularyItem(es = "Es / Está", en = "IS", phonetic = "is"),
+                VocabularyItem(es = "Arriba", en = "UP", phonetic = "ap"),
+                VocabularyItem(es = "Natación / Nadar", en = "SWIMMING", phonetic = "suíming"),
+                VocabularyItem(es = "Prohibido", en = "PROHIBITED", phonetic = "prójibited"),
+                VocabularyItem(es = "Haber (auxiliar)", en = "HAVE", phonetic = "jav"),
+                VocabularyItem(es = "Tú / Usted", en = "YOU", phonetic = "yu"),
+                VocabularyItem(es = "Sido (participio)", en = "BEEN", phonetic = "bin"),
+                VocabularyItem(es = "Picado", en = "STUNG", phonetic = "stang"),
+                VocabularyItem(es = "Por", en = "BY", phonetic = "bai"),
+                VocabularyItem(es = "Un / Una", en = "A", phonetic = "a"),
+                VocabularyItem(es = "Nosotros", en = "WE", phonetic = "güi"),
+                VocabularyItem(es = "Necesitar", en = "NEED", phonetic = "nid"),
+                VocabularyItem(es = "A (infinitivo)", en = "TO", phonetic = "tu"),
+                VocabularyItem(es = "Playa", en = "BEACH", phonetic = "bich"),
+                VocabularyItem(es = "Por favor", en = "PLEASE", phonetic = "plís"),
+                VocabularyItem(es = "Dejar / Salir", en = "LEAVE", phonetic = "liv"),
+                VocabularyItem(es = "Agua", en = "WATER", phonetic = "güóter"),
+                VocabularyItem(es = "Ahora", en = "NOW", phonetic = "nau"),
+                VocabularyItem(es = "Emergencia", en = "EMERGENCY", phonetic = "imöryensi"),
+                VocabularyItem(es = "Servicios", en = "SERVICES", phonetic = "sörvises"),
+                VocabularyItem(es = "Ser / Estar (plural)", en = "ARE", phonetic = "ar"),
+                VocabularyItem(es = "Coordinando", en = "COORDINATING", phonetic = "kóordineiting"),
+                VocabularyItem(es = "Permanecer / Quedarse", en = "STAY", phonetic = "stéi"),
+                VocabularyItem(es = "Fuera / Lejos", en = "AWAY", phonetic = "aguéi"),
+                VocabularyItem(es = "De / Desde", en = "FROM", phonetic = "from"),
+                VocabularyItem(es = "Línea de costa / Orilla", en = "SHORELINE", phonetic = "shorláin")
             ),
             phrases = listOf(
                 PhraseItem(

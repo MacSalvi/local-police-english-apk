@@ -32,6 +32,61 @@ val module2 = Module(
                     es = "Permiso de residencia",
                     en = "RESIDENCE PERMIT",
                     phonetic = "résidens permít"
+                ),
+                VocabularyItem(
+                    es = "Mostrar / Enseñar",
+                    en = "SHOW",
+                    phonetic = "shou"
+                ),
+                VocabularyItem(
+                    es = "Me / A mí",
+                    en = "ME",
+                    phonetic = "mi"
+                ),
+                VocabularyItem(
+                    es = "Tu / Su (de usted)",
+                    en = "YOUR",
+                    phonetic = "yor"
+                ),
+                VocabularyItem(
+                    es = "Por favor",
+                    en = "PLEASE",
+                    phonetic = "plís"
+                ),
+                VocabularyItem(
+                    es = "Hacer (auxiliar)",
+                    en = "DO",
+                    phonetic = "du"
+                ),
+                VocabularyItem(
+                    es = "Tú / Usted",
+                    en = "YOU",
+                    phonetic = "yu"
+                ),
+                VocabularyItem(
+                    es = "Tener",
+                    en = "HAVE",
+                    phonetic = "jav"
+                ),
+                VocabularyItem(
+                    es = "Algún / Cualquier",
+                    en = "ANY",
+                    phonetic = "éni"
+                ),
+                VocabularyItem(
+                    es = "Identificación",
+                    en = "IDENTIFICATION",
+                    phonetic = "ayadantifiquéishon"
+                ),
+                VocabularyItem(
+                    es = "Con",
+                    en = "WITH",
+                    phonetic = "güiz"
+                ),
+                VocabularyItem(
+                    es = "Un / Una",
+                    en = "A",
+                    phonetic = "a"
                 )
             ),
             phrases = listOf(
@@ -95,6 +150,71 @@ val module2 = Module(
                     es = "Nacionalidad",
                     en = "NATIONALITY",
                     phonetic = "nashonáliti"
+                ),
+                VocabularyItem(
+                    es = "Qué / Cuál",
+                    en = "WHAT",
+                    phonetic = "guat"
+                ),
+                VocabularyItem(
+                    es = "Es / Está",
+                    en = "IS",
+                    phonetic = "is"
+                ),
+                VocabularyItem(
+                    es = "Tu / Su (de usted)",
+                    en = "YOUR",
+                    phonetic = "yor"
+                ),
+                VocabularyItem(
+                    es = "Completo / Lleno",
+                    en = "FULL",
+                    phonetic = "ful"
+                ),
+                VocabularyItem(
+                    es = "Fecha",
+                    en = "DATE",
+                    phonetic = "déit"
+                ),
+                VocabularyItem(
+                    es = "De (posesión/origen)",
+                    en = "OF",
+                    phonetic = "ov"
+                ),
+                VocabularyItem(
+                    es = "Nacimiento",
+                    en = "BIRTH",
+                    phonetic = "berz"
+                ),
+                VocabularyItem(
+                    es = "Teléfono",
+                    en = "PHONE",
+                    phonetic = "fóun"
+                ),
+                VocabularyItem(
+                    es = "Número",
+                    en = "NUMBER",
+                    phonetic = "námber"
+                ),
+                VocabularyItem(
+                    es = "Dónde",
+                    en = "WHERE",
+                    phonetic = "güer"
+                ),
+                VocabularyItem(
+                    es = "Ser / Estar (plural)",
+                    en = "ARE",
+                    phonetic = "ar"
+                ),
+                VocabularyItem(
+                    es = "Tú / Usted",
+                    en = "YOU",
+                    phonetic = "yu"
+                ),
+                VocabularyItem(
+                    es = "De / Desde (origen)",
+                    en = "FROM",
+                    phonetic = "from"
                 )
             ),
             phrases = listOf(
@@ -153,6 +273,86 @@ val module2 = Module(
                     es = "Intérprete",
                     en = "INTERPRETER",
                     phonetic = "intérpriter"
+                ),
+                VocabularyItem(
+                    es = "Yo",
+                    en = "I",
+                    phonetic = "ai"
+                ),
+                VocabularyItem(
+                    es = "Necesidad / Necesitar",
+                    en = "NEED",
+                    phonetic = "nid"
+                ),
+                VocabularyItem(
+                    es = "A (partícula de infinitivo)",
+                    en = "TO",
+                    phonetic = "tu"
+                ),
+                VocabularyItem(
+                    es = "Tu / Su (de usted)",
+                    en = "YOUR",
+                    phonetic = "yor"
+                ),
+                VocabularyItem(
+                    es = "Detalles / Datos",
+                    en = "DETAILS",
+                    phonetic = "ditéils"
+                ),
+                VocabularyItem(
+                    es = "Uno / Un",
+                    en = "ONE",
+                    phonetic = "güan"
+                ),
+                VocabularyItem(
+                    es = "Momento",
+                    en = "MOMENT",
+                    phonetic = "móument"
+                ),
+                VocabularyItem(
+                    es = "Por favor",
+                    en = "PLEASE",
+                    phonetic = "plís"
+                ),
+                VocabularyItem(
+                    es = "Documento",
+                    en = "DOCUMENT",
+                    phonetic = "dókiument"
+                ),
+                VocabularyItem(
+                    es = "Tener / Haber (auxiliar)",
+                    en = "HAS",
+                    phonetic = "has"
+                ),
+                VocabularyItem(
+                    es = "Hacer (auxiliar)",
+                    en = "DO",
+                    phonetic = "du"
+                ),
+                VocabularyItem(
+                    es = "Tú / Usted",
+                    en = "YOU",
+                    phonetic = "yu"
+                ),
+                VocabularyItem(
+                    es = "Tener",
+                    en = "HAVE",
+                    phonetic = "jav"
+                ),
+                VocabularyItem(
+                    es = "Un / Una (ante vocal)",
+                    en = "AN",
+                    phonetic = "an"
+                ),
+                VocabularyItem(
+                    es = "Hablar",
+                    en = "SPEAK",
+                    phonetic = "spik"
+                ),
+                VocabularyItem(
+                    es = "Inglés",
+                    en = "ENGLISH",
+                    phonetic = "ínglish"
                 )
             ),
             phrases = listOf(

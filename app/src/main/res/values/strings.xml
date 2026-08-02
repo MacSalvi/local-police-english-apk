@@ -4,4 +4,7 @@
     <string name="tab_phrases">Frases</string>
     <string name="tab_tips">Consejos</string>
     <string name="btn_listen">Escuchar</string>
+    <string name="back">Volver</string>
+    <string name="playing_audio">Reproduciendo...</string>
+    <string name="listen_audio">Escuchar (UK)</string>
 </resources>

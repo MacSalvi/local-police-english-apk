@@ -1,11 +1,13 @@
 package com.example.ui.screens
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.*
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -21,7 +23,10 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -35,6 +40,81 @@ import com.example.data.model.Lesson
 import com.example.data.model.Module
 import com.example.data.model.PhraseItem
 import com.example.ui.theme.*
+import kotlin.math.sin
+import kotlin.random.Random
+
+data class SyllabusSection(
+    val title: String,
+    val moduleIds: List<Int>
+)
+
+val operationalSections = listOf(
+    SyllabusSection("COMUNICACIÓN Y PROCEDIMIENTO", listOf(1, 2, 3)),
+    SyllabusSection("TRÁFICO Y VEHÍCULOS", listOf(4, 5, 6, 7, 8, 9, 28, 29)),
+    SyllabusSection("SEGURIDAD CIUDADANA", listOf(10, 11, 12, 13, 16, 26)),
+    SyllabusSection("VÍCTIMAS Y DELINCUENCIA", listOf(14, 15, 27)),
+    SyllabusSection("EMERGENCIAS", listOf(17, 18, 19, 20)),
+    SyllabusSection("TURISMO, EXTRANJERÍA Y CONVIVENCIA", listOf(21, 22, 25, 30)),
+    SyllabusSection("COORDINACIÓN Y VOCABULARIO", listOf(23, 24))
+)
+
+data class Star(
+    val xFraction: Float,
+    val yFraction: Float,
+    val radius: Float,
+    val phase: Float,
+    val speed: Float
+)
+
+@Composable
+fun StarryBackground(
+    modifier: Modifier = Modifier,
+    starCount: Int = 75,
+    content: @Composable () -> Unit
+) {
+    val stars = remember {
+        val random = Random(42)
+        List(starCount) {
+            Star(
+                xFraction = random.nextFloat(),
+                yFraction = random.nextFloat(),
+                radius = random.nextFloat() * 1.8f + 0.8f,
+                phase = random.nextFloat() * 6.28f,
+                speed = random.nextFloat() * 0.012f + 0.003f
+            )
+        }
+    }
+
+    val infiniteTransition = rememberInfiniteTransition(label = "star_animation")
+    val animProgress by infiniteTransition.animateFloat(
+        initialValue = 0f,
+        targetValue = 100f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(durationMillis = 35000, easing = LinearEasing),
+            repeatMode = RepeatMode.Restart
+        ),
+        label = "star_progress"
+    )
+
+    Box(modifier = modifier) {
+        Canvas(modifier = Modifier.fillMaxSize()) {
+            val width = size.width
+            val height = size.height
+
+            stars.forEach { star ->
+                val currentY = ((star.yFraction - (animProgress * star.speed)) % 1f).let { if (it < 0f) it + 1f else it }
+                val alpha = (sin(animProgress * 1.2f + star.phase) + 1f) / 2f * 0.65f + 0.15f
+                
+                drawCircle(
+                    color = Color.White.copy(alpha = alpha),
+                    radius = star.radius,
+                    center = Offset(star.xFraction * width, currentY * height)
+                )
+            }
+        }
+        content()
+    }
+}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -47,23 +127,21 @@ fun SyllabusScreen(
     onModuleToggle: (Int) -> Unit,
     onLessonClick: (Lesson) -> Unit,
     onSpeakClick: (String) -> Unit,
-    onEnterManagerMode: () -> Unit
+    onEnterInfoMode: () -> Unit = {}
 ) {
     var showEmergencySheet by remember { mutableStateOf(false) }
-
-    // Verde Fósforo clásico de pantalla de tubo CRT / terminal 90s
     val crtGreen = Color(0xFF00FF66)
+
+    val expandedSections = remember { mutableStateMapOf<String, Boolean>().apply {
+        operationalSections.forEach { put(it.title, false) }
+    }}
 
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
-                    Column(
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
+                    Column(modifier = Modifier.fillMaxWidth()) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
                             Text(
                                 text = "Local Police English",
                                 style = MaterialTheme.typography.titleMedium.copy(
@@ -90,18 +168,11 @@ fun SyllabusScreen(
                                 )
                             }
                         }
-
                         Spacer(modifier = Modifier.height(2.dp))
-
                         Text(
                             text = buildAnnotatedString {
                                 append("Inglés Operativo • ")
-                                withStyle(
-                                    style = SpanStyle(
-                                        color = crtGreen,
-                                        fontWeight = FontWeight.Bold
-                                    )
-                                ) {
+                                withStyle(style = SpanStyle(color = crtGreen, fontWeight = FontWeight.Bold)) {
                                     append("CP214 SCR · PL Marbella")
                                 }
                             },
@@ -112,7 +183,22 @@ fun SyllabusScreen(
                     }
                 },
                 actions = {
-                    // Botón de Comandos de Emergencia Rápida
+                    IconButton(
+                        onClick = onEnterInfoMode,
+                        modifier = Modifier
+                            .testTag("info_button")
+                            .clip(CircleShape)
+                            .background(NeonTeal.copy(alpha = 0.15f))
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Info,
+                            contentDescription = "Información y Créditos",
+                            tint = NeonTeal
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.width(8.dp))
+
                     IconButton(
                         onClick = { showEmergencySheet = true },
                         modifier = Modifier
@@ -126,23 +212,6 @@ fun SyllabusScreen(
                             tint = Color(0xFFEF4444)
                         )
                     }
-
-                    Spacer(modifier = Modifier.width(4.dp))
-
-                    // Botón de Panel de Control
-                    IconButton(
-                        onClick = onEnterManagerMode,
-                        modifier = Modifier
-                            .testTag("admin_panel_button")
-                            .clip(CircleShape)
-                            .background(Slate800)
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.AdminPanelSettings,
-                            contentDescription = "Panel de Control",
-                            tint = NeonTeal
-                        )
-                    }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = Slate950,
@@ -152,147 +221,238 @@ fun SyllabusScreen(
         },
         containerColor = Slate950
     ) { paddingValues ->
-        Column(
+        StarryBackground(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
                 .background(Slate950)
-                .padding(horizontal = 16.dp)
         ) {
-            // Persistent Search Bar
-            OutlinedTextField(
-                value = searchQuery,
-                onValueChange = onSearchQueryChange,
+            Column(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 12.dp)
-                    .testTag("search_bar"),
-                placeholder = { Text("Buscar vocabulario o frase táctica...", color = Slate400) },
-                leadingIcon = {
-                    Icon(
-                        imageVector = Icons.Default.Search,
-                        contentDescription = "Buscar",
-                        tint = Slate400
-                    )
-                },
-                trailingIcon = {
-                    if (searchQuery.isNotEmpty()) {
-                        IconButton(onClick = { onSearchQueryChange("") }) {
-                            Icon(
-                                imageVector = Icons.Default.Clear,
-                                contentDescription = "Limpiar",
-                                tint = NeonTeal
-                            )
+                    .fillMaxSize()
+                    .padding(horizontal = 16.dp)
+            ) {
+                OutlinedTextField(
+                    value = searchQuery,
+                    onValueChange = onSearchQueryChange,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 6.dp)
+                        .height(48.dp)
+                        .testTag("search_bar"),
+                    placeholder = { 
+                        Text(
+                            text = "Buscar módulo, lección, vocabulario o frase...", 
+                            color = Slate400,
+                            fontSize = 12.sp,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis
+                        ) 
+                    },
+                    leadingIcon = {
+                        Icon(
+                            imageVector = Icons.Default.Search,
+                            contentDescription = "Buscar",
+                            tint = Slate400,
+                            modifier = Modifier.size(18.dp)
+                        )
+                    },
+                    trailingIcon = {
+                        if (searchQuery.isNotEmpty()) {
+                            IconButton(
+                                onClick = { onSearchQueryChange("") },
+                                modifier = Modifier.size(24.dp)
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.Clear,
+                                    contentDescription = "Limpiar",
+                                    tint = NeonTeal,
+                                    modifier = Modifier.size(16.dp)
+                                )
+                            }
                         }
-                    }
-                },
-                singleLine = true,
-                shape = RoundedCornerShape(24.dp),
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedTextColor = Color.White,
-                    unfocusedTextColor = Color.White,
-                    focusedContainerColor = Slate900,
-                    unfocusedContainerColor = Slate900,
-                    focusedBorderColor = NeonTeal,
-                    unfocusedBorderColor = Slate800,
-                    cursorColor = NeonTeal
-                )
-            )
-
-            if (searchQuery.isNotEmpty()) {
-                // Search Results Mode across both Vocabulary and Phrases
-                val results = getFilteredPhrases(modules, searchQuery)
-                Text(
-                    text = "Resultados de búsqueda (${results.size})",
-                    color = NeonTeal,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 14.sp,
-                    modifier = Modifier.padding(bottom = 8.dp)
+                    },
+                    singleLine = true,
+                    textStyle = MaterialTheme.typography.bodyMedium.copy(fontSize = 13.sp, color = Color.White),
+                    shape = RoundedCornerShape(24.dp),
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedTextColor = Color.White,
+                        unfocusedTextColor = Color.White,
+                        focusedContainerColor = Slate900,
+                        unfocusedContainerColor = Slate900,
+                        focusedBorderColor = NeonTeal,
+                        unfocusedBorderColor = Slate800,
+                        cursorColor = NeonTeal
+                    )
                 )
 
-                if (results.isEmpty()) {
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .weight(1f),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                            Icon(
-                                imageVector = Icons.Default.SearchOff,
-                                contentDescription = null,
-                                tint = Slate400,
-                                modifier = Modifier.size(64.dp)
-                            )
-                            Spacer(modifier = Modifier.height(16.dp))
-                            Text(
-                                text = "No se encontraron resultados para su búsqueda.",
-                                color = Slate400,
-                                textAlign = TextAlign.Center
-                            )
+                if (searchQuery.isNotEmpty()) {
+                    val results = getFilteredPhrases(modules, searchQuery)
+                    Text(
+                        text = "Resultados de búsqueda (${results.size})",
+                        color = NeonTeal,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 14.sp,
+                        modifier = Modifier.padding(bottom = 8.dp)
+                    )
+
+                    if (results.isEmpty()) {
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .weight(1f),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                                Icon(
+                                    imageVector = Icons.Default.SearchOff,
+                                    contentDescription = null,
+                                    tint = Slate400,
+                                    modifier = Modifier.size(64.dp)
+                                )
+                                Spacer(modifier = Modifier.height(16.dp))
+                                Text(
+                                    text = "No se encontraron resultados para su búsqueda.",
+                                    color = Slate400,
+                                    textAlign = TextAlign.Center
+                                )
+                            }
+                        }
+                    } else {
+                        LazyColumn(
+                            verticalArrangement = Arrangement.spacedBy(12.dp),
+                            modifier = Modifier.weight(1f)
+                        ) {
+                            items(results) { item ->
+                                SearchResultCard(
+                                    result = item,
+                                    currentlyPlayingText = currentlyPlayingText,
+                                    onSpeakClick = onSpeakClick
+                                )
+                            }
                         }
                     }
                 } else {
-                    LazyColumn(
-                        verticalArrangement = Arrangement.spacedBy(12.dp),
-                        modifier = Modifier.weight(1f)
-                    ) {
-                        items(results) { item ->
-                            SearchResultCard(
-                                result = item,
-                                currentlyPlayingText = currentlyPlayingText,
-                                onSpeakClick = onSpeakClick
-                            )
-                        }
-                    }
-                }
-            } else {
-                // Syllabus Learning Path
-                LazyColumn(
-                    verticalArrangement = Arrangement.spacedBy(16.dp),
-                    contentPadding = PaddingValues(bottom = 24.dp),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .weight(1f)
-                ) {
-                    items(modules) { module ->
-                        ModuleHeaderCard(
-                            module = module,
-                            isExpanded = expandedModuleId == module.moduleId,
-                            onToggle = { onModuleToggle(module.moduleId) }
-                        )
+                    val moduleMap = modules.associateBy { it.moduleId }
 
-                        AnimatedVisibility(
-                            visible = expandedModuleId == module.moduleId,
-                            enter = fadeIn() + expandVertically(),
-                            exit = fadeOut() + shrinkVertically()
-                        ) {
-                            Column(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(start = 16.dp, top = 8.dp, bottom = 8.dp)
-                                    .border(
-                                        width = 1.dp,
-                                        color = Slate800,
-                                        shape = RoundedCornerShape(16.dp)
-                                    )
-                                    .background(Slate900.copy(alpha = 0.5f), RoundedCornerShape(16.dp))
-                                    .padding(12.dp)
-                            ) {
-                                if (module.lessons.isEmpty()) {
-                                    Text(
-                                        text = "No hay lecciones en este módulo.",
-                                        color = Slate400,
-                                        style = MaterialTheme.typography.bodyMedium,
-                                        modifier = Modifier.padding(8.dp)
-                                    )
-                                } else {
-                                    module.lessons.forEachIndexed { index, lesson ->
-                                        LessonPathItem(
-                                            lesson = lesson,
-                                            isLast = index == module.lessons.size - 1,
-                                            onClick = { onLessonClick(lesson) }
+                    LazyColumn(
+                        verticalArrangement = Arrangement.spacedBy(16.dp),
+                        contentPadding = PaddingValues(bottom = 24.dp),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .weight(1f)
+                    ) {
+                        operationalSections.forEach { section ->
+                            val isSectionExpanded = expandedSections[section.title] ?: false
+                            val sectionModules = section.moduleIds.mapNotNull { moduleMap[it] }
+
+                            item(key = "section_${section.title}") {
+                                val rotationAngle by animateFloatAsState(
+                                    targetValue = if (isSectionExpanded) 180f else 0f,
+                                    label = "section_chevron"
+                                )
+
+                                Surface(
+                                    color = Slate900,
+                                    shape = RoundedCornerShape(12.dp),
+                                    border = BorderStroke(1.2.dp, if (isSectionExpanded) NeonTeal.copy(alpha = 0.5f) else Slate800),
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .clickable {
+                                            expandedSections[section.title] = !isSectionExpanded
+                                        }
+                                ) {
+                                    Row(
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .padding(horizontal = 14.dp, vertical = 12.dp),
+                                        verticalAlignment = Alignment.CenterVertically,
+                                        horizontalArrangement = Arrangement.SpaceBetween
+                                    ) {
+                                        Column(modifier = Modifier.weight(1f)) {
+                                            Text(
+                                                text = section.title,
+                                                color = NeonTeal,
+                                                fontWeight = FontWeight.Bold,
+                                                fontSize = 13.sp,
+                                                letterSpacing = 1.sp
+                                            )
+                                            Spacer(modifier = Modifier.height(2.dp))
+                                            Text(
+                                                text = "${sectionModules.size} módulos operativos",
+                                                color = Slate400,
+                                                fontSize = 11.sp
+                                            )
+                                        }
+                                        Icon(
+                                            imageVector = Icons.Default.KeyboardArrowDown,
+                                            contentDescription = null,
+                                            modifier = Modifier.rotate(rotationAngle),
+                                            tint = NeonTeal
                                         )
+                                    }
+                                }
+                            }
+
+                            item(key = "content_${section.title}") {
+                                AnimatedVisibility(
+                                    visible = isSectionExpanded,
+                                    enter = fadeIn() + expandVertically(),
+                                    exit = fadeOut() + shrinkVertically()
+                                ) {
+                                    Column(
+                                        verticalArrangement = Arrangement.spacedBy(12.dp),
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .padding(start = 8.dp, top = 4.dp, bottom = 4.dp)
+                                    ) {
+                                        sectionModules.forEach { module ->
+                                            val isModuleExpanded = expandedModuleId == module.moduleId
+
+                                            Column(modifier = Modifier.fillMaxWidth()) {
+                                                ModuleHeaderCard(
+                                                    module = module,
+                                                    isExpanded = isModuleExpanded,
+                                                    onToggle = { onModuleToggle(module.moduleId) }
+                                                )
+
+                                                AnimatedVisibility(
+                                                    visible = isModuleExpanded,
+                                                    enter = fadeIn() + expandVertically(),
+                                                    exit = fadeOut() + shrinkVertically()
+                                                ) {
+                                                    Column(
+                                                        modifier = Modifier
+                                                            .fillMaxWidth()
+                                                            .padding(start = 16.dp, top = 8.dp, bottom = 8.dp)
+                                                            .border(
+                                                                width = 1.dp,
+                                                                color = Slate800,
+                                                                shape = RoundedCornerShape(16.dp)
+                                                            )
+                                                            .background(Slate900.copy(alpha = 0.5f), RoundedCornerShape(16.dp))
+                                                            .padding(12.dp)
+                                                    ) {
+                                                        if (module.lessons.isEmpty()) {
+                                                            Text(
+                                                                text = "No hay lecciones en este módulo.",
+                                                                color = Slate400,
+                                                                style = MaterialTheme.typography.bodyMedium,
+                                                                modifier = Modifier.padding(8.dp)
+                                                            )
+                                                        } else {
+                                                            module.lessons.forEachIndexed { index, lesson ->
+                                                                LessonPathItem(
+                                                                    lesson = lesson,
+                                                                    isLast = index == module.lessons.size - 1,
+                                                                    onClick = { onLessonClick(lesson) }
+                                                                )
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -303,7 +463,6 @@ fun SyllabusScreen(
         }
     }
 
-    // Modal Flotante de Emergencia
     if (showEmergencySheet) {
         EmergencyBottomSheet(
             currentlyPlayingText = currentlyPlayingText,
@@ -311,6 +470,51 @@ fun SyllabusScreen(
             onSpeakClick = onSpeakClick
         )
     }
+}
+
+data class FilteredPhraseResult(
+    val phrase: PhraseItem,
+    val lessonTitle: String,
+    val moduleName: String,
+    val isVocabulary: Boolean
+)
+
+private fun getFilteredPhrases(modules: List<Module>, query: String): List<FilteredPhraseResult> {
+    val results = mutableListOf<FilteredPhraseResult>()
+    val q = query.lowercase().trim()
+    for (module in modules) {
+        val matchesModule = module.moduleName.lowercase().contains(q)
+        
+        for (lesson in module.lessons) {
+            val matchesLesson = lesson.lessonTitle.lowercase().contains(q)
+
+            for (vocab in lesson.vocabulary) {
+                if (matchesModule || matchesLesson || vocab.es.lowercase().contains(q) || vocab.en.lowercase().contains(q)) {
+                    results.add(
+                        FilteredPhraseResult(
+                            phrase = PhraseItem(es = vocab.es, en = vocab.en, phonetic = vocab.phonetic),
+                            lessonTitle = lesson.lessonTitle,
+                            moduleName = module.moduleName,
+                            isVocabulary = true
+                        )
+                    )
+                }
+            }
+            for (phrase in lesson.phrases) {
+                if (matchesModule || matchesLesson || phrase.es.lowercase().contains(q) || phrase.en.lowercase().contains(q)) {
+                    results.add(
+                        FilteredPhraseResult(
+                            phrase = phrase,
+                            lessonTitle = lesson.lessonTitle,
+                            moduleName = module.moduleName,
+                            isVocabulary = false
+                        )
+                    )
+                }
+            }
+        }
+    }
+    return results.distinct()
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -321,12 +525,12 @@ fun EmergencyBottomSheet(
     onSpeakClick: (String) -> Unit
 ) {
     val emergencyCommands = listOf(
-        PhraseItem("Muestre sus manos, por favor.", "PLEASE SHOW ME YOUR HANDS.", "[plis shóu mi yur jands]"),
-        PhraseItem("Quédese donde está, por favor.", "PLEASE STAY WHERE YOU ARE.", "[plis stei wer iú ar]"),
-        PhraseItem("Apague el motor, por favor.", "PLEASE TURN OFF THE ENGINE.", "[plis tern of di én-djin]"),
-        PhraseItem("Salga del vehículo, por favor.", "PLEASE STEP OUT OF THE VEHICLE.", "[plis step aut ov de ví-i-kel]"),
-        PhraseItem("Mantenga la calma, por favor.", "PLEASE STAY CALM.", "[plis stei kam]"),
-        PhraseItem("Mantenga una distancia de seguridad.", "PLEASE KEEP A SAFE DISTANCE.", "[plis kip e seif dís-tans]")
+        PhraseItem("Muestre sus manos, por favor.", "PLEASE SHOW ME YOUR HANDS.", "plis show mi yur jands"),
+        PhraseItem("Quédese donde está, por favor.", "PLEASE STAY WHERE YOU ARE.", "plis stei wer iu ar"),
+        PhraseItem("Apague el motor, por favor.", "PLEASE TURN OFF THE ENGINE.", "plis tern of di en-djin"),
+        PhraseItem("Salga del vehículo, por favor.", "PLEASE STEP OUT OF THE VEHICLE.", "plis step aut ov de vi-i-kel"),
+        PhraseItem("Mantenga la calma, por favor.", "PLEASE STAY CALM.", "plis stei kam"),
+        PhraseItem("Mantenga una distancia de seguridad.", "PLEASE KEEP A SAFE DISTANCE.", "plis kip e seif dis-tans")
     )
 
     ModalBottomSheet(
@@ -427,48 +631,16 @@ fun EmergencyBottomSheet(
     }
 }
 
-// Data class representation for aggregated search results
-data class FilteredPhraseResult(
-    val phrase: PhraseItem,
-    val lessonTitle: String,
-    val moduleName: String,
-    val isVocabulary: Boolean
-)
-
-private fun getFilteredPhrases(modules: List<Module>, query: String): List<FilteredPhraseResult> {
-    val results = mutableListOf<FilteredPhraseResult>()
-    val q = query.lowercase().trim()
-    for (module in modules) {
-        for (lesson in module.lessons) {
-            // Search Vocabulary items
-            for (vocab in lesson.vocabulary) {
-                if (vocab.es.lowercase().contains(q) || vocab.en.lowercase().contains(q)) {
-                    results.add(
-                        FilteredPhraseResult(
-                            phrase = PhraseItem(es = vocab.es, en = vocab.en, phonetic = vocab.phonetic),
-                            lessonTitle = lesson.lessonTitle,
-                            moduleName = module.moduleName,
-                            isVocabulary = true
-                        )
-                    )
-                }
-            }
-            // Search Phrases items
-            for (phrase in lesson.phrases) {
-                if (phrase.es.lowercase().contains(q) || phrase.en.lowercase().contains(q)) {
-                    results.add(
-                        FilteredPhraseResult(
-                            phrase = phrase,
-                            lessonTitle = lesson.lessonTitle,
-                            moduleName = module.moduleName,
-                            isVocabulary = false
-                        )
-                    )
-                }
-            }
-        }
+private fun getSectionVisuals(moduleId: Int): Pair<ImageVector, Color> {
+    return when (moduleId) {
+        in listOf(1, 2, 3) -> Icons.Default.SupportAgent to CustomGreen
+        in listOf(4, 5, 6, 7, 8, 9, 28, 29) -> Icons.Default.DirectionsCar to RadiantBlue
+        in listOf(10, 11, 12, 13, 16, 26) -> Icons.Default.Shield to NeonTeal
+        in listOf(14, 15, 27) -> Icons.Default.GppGood to Color(0xFFC084FC)
+        in listOf(17, 18, 19, 20) -> Icons.Default.Warning to NeonOrange
+        in listOf(21, 22, 25, 30) -> Icons.Default.Public to Color(0xFFFACC15)
+        else -> Icons.Default.MenuBook to Slate400
     }
-    return results
 }
 
 @Composable
@@ -477,21 +649,7 @@ fun ModuleHeaderCard(
     isExpanded: Boolean,
     onToggle: () -> Unit
 ) {
-    val icon = when (module.moduleId) {
-        1 -> Icons.Default.SupportAgent
-        2 -> Icons.Default.DirectionsCar
-        3 -> Icons.Default.Shield
-        4 -> Icons.Default.Warning
-        else -> Icons.Default.MenuBook
-    }
-
-    val accentColor = when (module.moduleId) {
-        1 -> CustomGreen
-        2 -> RadiantBlue
-        3 -> NeonTeal
-        4 -> NeonOrange
-        else -> Slate400
-    }
+    val (icon, accentColor) = getSectionVisuals(module.moduleId)
 
     Card(
         modifier = Modifier
@@ -569,7 +727,6 @@ fun LessonPathItem(
             .testTag("lesson_item_${lesson.lessonId}"),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        // Timeline dot
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.width(24.dp)
@@ -598,7 +755,7 @@ fun LessonPathItem(
                 fontSize = 15.sp
             )
             Text(
-                text = "${lesson.vocabulary.size} Vocab • ${lesson.phrases.size} Frases • ${lesson.tips.size} Consejos",
+                text = "${lesson.vocabulary.size} Vocab • ${lesson.phrases.size} Frases",
                 color = Slate400,
                 fontSize = 12.sp
             )
@@ -621,8 +778,7 @@ fun SearchResultCard(
     val isPlaying = currentlyPlayingText == result.phrase.en
 
     Card(
-        modifier = Modifier
-            .fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(containerColor = Slate900),
         border = BorderStroke(
@@ -633,7 +789,6 @@ fun SearchResultCard(
         Column(
             modifier = Modifier.padding(16.dp)
         ) {
-            // Location Badge row
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -655,7 +810,7 @@ fun SearchResultCard(
                     }
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
-                        text = result.lessonTitle.uppercase(),
+                        text = "${result.moduleName.uppercase()} • ${result.lessonTitle.uppercase()}",
                         color = Slate400,
                         fontSize = 11.sp,
                         fontWeight = FontWeight.Bold,
@@ -681,7 +836,6 @@ fun SearchResultCard(
 
             Spacer(modifier = Modifier.height(10.dp))
 
-            // English Phrase first
             Text(
                 text = result.phrase.en.uppercase(),
                 color = NeonTeal,
@@ -690,7 +844,6 @@ fun SearchResultCard(
                 lineHeight = 24.sp
             )
 
-            // Fonética en resultados de búsqueda (si existe)
             if (result.phrase.phonetic.isNotEmpty()) {
                 Spacer(modifier = Modifier.height(2.dp))
                 Text(
@@ -703,7 +856,6 @@ fun SearchResultCard(
 
             Spacer(modifier = Modifier.height(6.dp))
 
-            // Spanish Phrase second
             Text(
                 text = result.phrase.es,
                 color = Slate400,

@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.MyApplication" parent="android:Theme.DeviceDefault.NoActionBar" />
+    <!-- Tema principal de la aplicación -->
+    <style name="Theme.MyApplication" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <!-- Tema para la pantalla de carga (Splash Screen) -->
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <!-- Color de fondo de la terminal -->
+        <item name="windowSplashScreenBackground">#020617</item>
+
+        <!-- Tu imagen optimizada como icono de arranque -->
+        <item name="windowSplashScreenAnimatedIcon">@drawable/k214_mob</item>
+
+        <!-- Tema al que transita la app al finalizar la carga -->
+        <item name="postSplashScreenTheme">@style/Theme.MyApplication</item>
+    </style>
+
 </resources>

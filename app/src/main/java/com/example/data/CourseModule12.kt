@@ -13,21 +13,28 @@ val module12 = Module(
             lessonId = 1201,
             lessonTitle = "Cannabis y hachís",
             vocabulary = listOf(
-                VocabularyItem(
-                    es = "Cannabis",
-                    en = "CANNABIS",
-                    phonetic = "kánabis"
-                ),
-                VocabularyItem(
-                    es = "Hachís",
-                    en = "HASHISH",
-                    phonetic = "jáshish"
-                ),
-                VocabularyItem(
-                    es = "Olor",
-                    en = "SMELL",
-                    phonetic = "smel"
-                )
+                VocabularyItem(es = "Cannabis", en = "CANNABIS", phonetic = "kánabis"),
+                VocabularyItem(es = "Hachís", en = "HASHISH", phonetic = "jáshish"),
+                VocabularyItem(es = "Olor", en = "SMELL", phonetic = "smel"),
+                VocabularyItem(es = "Yo", en = "I", phonetic = "ai"),
+                VocabularyItem(es = "Poder", en = "CAN", phonetic = "can"),
+                VocabularyItem(es = "Ser / Estar (plural)", en = "ARE", phonetic = "ar"),
+                VocabularyItem(es = "Tú / Usted", en = "YOU", phonetic = "yu"),
+                VocabularyItem(es = "Llevando / Transportando", en = "CARRYING", phonetic = "kárring"),
+                VocabularyItem(es = "Algún / Cualquier", en = "ANY", phonetic = "éni"),
+                VocabularyItem(es = "Es / Está", en = "IS", phonetic = "is"),
+                VocabularyItem(es = "Este / Esta", en = "THIS", phonetic = "dis"),
+                VocabularyItem(es = "Sustancia", en = "SUBSTANCE", phonetic = "sábstans"),
+                VocabularyItem(es = "Futuro (auxiliar)", en = "WILL", phonetic = "güil"),
+                VocabularyItem(es = "Ser / Estar (auxiliar pasiva)", en = "BE", phonetic = "bi"),
+                VocabularyItem(es = "Analizado / Probado", en = "TESTED", phonetic = "téstid"),
+                VocabularyItem(es = "Dónde", en = "WHERE", phonetic = "güer"),
+                VocabularyItem(es = "Pasado (auxiliar)", en = "DID", phonetic = "did"),
+                VocabularyItem(es = "Conseguir / Obtener", en = "GET", phonetic = "guet"),
+                VocabularyItem(es = "Tenencia / Posesión", en = "POSSESSION", phonetic = "posésion"),
+                VocabularyItem(es = "De", en = "OF", phonetic = "ov"),
+                VocabularyItem(es = "Un / Una (ante vocal)", en = "AN", phonetic = "an"),
+                VocabularyItem(es = "Infracción / Delito", en = "OFFENCE", phonetic = "ofens")
             ),
             phrases = listOf(
                 PhraseItem(
@@ -66,21 +73,27 @@ val module12 = Module(
             lessonId = 1202,
             lessonTitle = "Cocaína y heroína",
             vocabulary = listOf(
-                VocabularyItem(
-                    es = "Cocaína",
-                    en = "COCAINE",
-                    phonetic = "kóukein"
-                ),
-                VocabularyItem(
-                    es = "Heroína",
-                    en = "HEROIN",
-                    phonetic = "jérouin"
-                ),
-                VocabularyItem(
-                    es = "Polvo",
-                    en = "POWDER",
-                    phonetic = "páuder"
-                )
+                VocabularyItem(es = "Cocaína", en = "COCAINE", phonetic = "kóukein"),
+                VocabularyItem(es = "Heroína", en = "HEROIN", phonetic = "jérouin"),
+                VocabularyItem(es = "Polvo", en = "POWDER", phonetic = "páuder"),
+                VocabularyItem(es = "Es / Está", en = "IS", phonetic = "is"),
+                VocabularyItem(es = "Este / Esta", en = "THIS", phonetic = "dis"),
+                VocabularyItem(es = "Blanco", en = "WHITE", phonetic = "guáit"),
+                VocabularyItem(es = "Futuro (auxiliar)", en = "WILL", phonetic = "güil"),
+                VocabularyItem(es = "Ser / Estar (auxiliar pasiva)", en = "BE", phonetic = "bi"),
+                VocabularyItem(es = "Analizado / Probado", en = "TESTED", phonetic = "téstid"),
+                VocabularyItem(es = "Ser / Estar (plural)", en = "ARE", phonetic = "ar"),
+                VocabularyItem(es = "Tú / Usted", en = "YOU", phonetic = "yu"),
+                VocabularyItem(es = "Llevando / Transportando", en = "CARRYING", phonetic = "kárring"),
+                VocabularyItem(es = "Algún / Cualquier", en = "ANY", phonetic = "éni"),
+                VocabularyItem(es = "Un / Una", en = "A", phonetic = "a"),
+                VocabularyItem(es = "Controlado", en = "CONTROLLED", phonetic = "kontróuld"),
+                VocabularyItem(es = "Sustancia", en = "SUBSTANCE", phonetic = "sábstans"),
+                VocabularyItem(es = "Cuánto / Cuántos", en = "HOW MUCH", phonetic = "jau mach"),
+                VocabularyItem(es = "De", en = "OF", phonetic = "ov"),
+                VocabularyItem(es = "Hacer (auxiliar interrogativo)", en = "DO", phonetic = "du"),
+                VocabularyItem(es = "Tener", en = "HAVE", phonetic = "jav"),
+                VocabularyItem(es = "Incautado / Confiscado", en = "CONFISCATED", phonetic = "kónfiskeited")
             ),
             phrases = listOf(
                 PhraseItem(
@@ -119,21 +132,27 @@ val module12 = Module(
             lessonId = 1203,
             lessonTitle = "Éxtasis, anfetaminas y pastillas",
             vocabulary = listOf(
-                VocabularyItem(
-                    es = "Éxtasis",
-                    en = "ECSTASY",
-                    phonetic = "ékstasi"
-                ),
-                VocabularyItem(
-                    es = "Pastilla",
-                    en = "PILL",
-                    phonetic = "pil"
-                ),
-                VocabularyItem(
-                    es = "Anfetamina",
-                    en = "AMPHETAMINE",
-                    phonetic = "amfétamin"
-                )
+                VocabularyItem(es = "Éxtasis", en = "ECSTASY", phonetic = "ékstasi"),
+                VocabularyItem(es = "Pastilla", en = "PILL", phonetic = "pil"),
+                VocabularyItem(es = "Anfetamina", en = "AMPHETAMINE", phonetic = "amfétamin"),
+                VocabularyItem(es = "Ser / Estar (plural)", en = "ARE", phonetic = "ar"),
+                VocabularyItem(es = "Estos / Estas", en = "THESE", phonetic = "dis"),
+                VocabularyItem(es = "Pastillas", en = "PILLS", phonetic = "pils"),
+                VocabularyItem(es = "Cuántos / Cuántas", en = "HOW MANY", phonetic = "jau méni"),
+                VocabularyItem(es = "Haber (existencial - hay)", en = "THERE", phonetic = "der"),
+                VocabularyItem(es = "Es / Está", en = "IS", phonetic = "is"),
+                VocabularyItem(es = "Este / Esta", en = "THIS", phonetic = "dis"),
+                VocabularyItem(es = "Dónde", en = "WHERE", phonetic = "güer"),
+                VocabularyItem(es = "Pasado (auxiliar)", en = "DID", phonetic = "did"),
+                VocabularyItem(es = "Tú / Usted", en = "YOU", phonetic = "yu"),
+                VocabularyItem(es = "Comprar", en = "BUY", phonetic = "bái"),
+                VocabularyItem(es = "Para", en = "FOR", phonetic = "for"),
+                VocabularyItem(es = "Personal", en = "PERSONAL", phonetic = "pörsonal"),
+                VocabularyItem(es = "Uso", en = "USE", phonetic = "iús"),
+                VocabularyItem(es = "Futuro (auxiliar)", en = "WILL", phonetic = "güil"),
+                VocabularyItem(es = "Ser / Estar (auxiliar pasiva)", en = "BE", phonetic = "bi"),
+                VocabularyItem(es = "Enviado", en = "SENT", phonetic = "sent"),
+                VocabularyItem(es = "Análisis", en = "ANALYSIS", phonetic = "análisis")
             ),
             phrases = listOf(
                 PhraseItem(
@@ -172,21 +191,31 @@ val module12 = Module(
             lessonId = 1204,
             lessonTitle = "Dosis, envoltorios y parafernalia",
             vocabulary = listOf(
-                VocabularyItem(
-                    es = "Dosis",
-                    en = "DOSE",
-                    phonetic = "dóus"
-                ),
-                VocabularyItem(
-                    es = "Envoltorio",
-                    en = "WRAP",
-                    phonetic = "rap"
-                ),
-                VocabularyItem(
-                    es = "Parafernalia",
-                    en = "PARAPHERNALIA",
-                    phonetic = "parafernália"
-                )
+                VocabularyItem(es = "Dosis", en = "DOSE", phonetic = "dóus"),
+                VocabularyItem(es = "Envoltorio", en = "WRAP", phonetic = "rap"),
+                VocabularyItem(es = "Parafernalia", en = "PARAPHERNALIA", phonetic = "parafernália"),
+                VocabularyItem(es = "Cuántos / Cuántas", en = "HOW MANY", phonetic = "jau méni"),
+                VocabularyItem(es = "Dosis (plural)", en = "DOSES", phonetic = "dóuses"),
+                VocabularyItem(es = "Ser / Estar (plural)", en = "ARE", phonetic = "ar"),
+                VocabularyItem(es = "Haber (existencial - hay)", en = "THERE", phonetic = "der"),
+                VocabularyItem(es = "Es / Está", en = "IS", phonetic = "is"),
+                VocabularyItem(es = "Este / Esta", en = "THIS", phonetic = "dis"),
+                VocabularyItem(es = "Tuyo / Suya", en = "YOURS", phonetic = "yors"),
+                VocabularyItem(es = "Parece", en = "LOOKS LIKE", phonetic = "luks láik"),
+                VocabularyItem(es = "Droga", en = "DRUG", phonetic = "drag"),
+                VocabularyItem(es = "Hacer (auxiliar interrogativo)", en = "DO", phonetic = "du"),
+                VocabularyItem(es = "Tú / Usted", en = "YOU", phonetic = "yu"),
+                VocabularyItem(es = "Tener", en = "HAVE", phonetic = "jav"),
+                VocabularyItem(es = "Algún / Cualquier", en = "ANY", phonetic = "éni"),
+                VocabularyItem(es = "Básculas", en = "SCALES", phonetic = "skéils"),
+                VocabularyItem(es = "Equipamiento / Material", en = "EQUIPMENT", phonetic = "ikuípment"),
+                VocabularyItem(es = "Futuro (auxiliar)", en = "WILL", phonetic = "güil"),
+                VocabularyItem(es = "Ser / Estar (auxiliar pasiva)", en = "BE", phonetic = "bi"),
+                VocabularyItem(es = "Incautado / Confiscado", en = "SEIZED", phonetic = "sízd"),
+                VocabularyItem(es = "Quién", en = "WHO", phonetic = "ju"),
+                VocabularyItem(es = "Hacer (auxiliar presente)", en = "DOES", phonetic = "das"),
+                VocabularyItem(es = "Pertenecer", en = "BELONG", phonetic = "bilóng"),
+                VocabularyItem(es = "A (infinitivo)", en = "TO", phonetic = "tu")
             ),
             phrases = listOf(
                 PhraseItem(
@@ -225,21 +254,29 @@ val module12 = Module(
             lessonId = 1205,
             lessonTitle = "Consumo, tenencia y venta",
             vocabulary = listOf(
-                VocabularyItem(
-                    es = "Consumo",
-                    en = "USE",
-                    phonetic = "iús"
-                ),
-                VocabularyItem(
-                    es = "Tenencia",
-                    en = "POSSESSION",
-                    phonetic = "posésion"
-                ),
-                VocabularyItem(
-                    es = "Venta",
-                    en = "DEALING",
-                    phonetic = "díling"
-                )
+                VocabularyItem(es = "Consumo / Uso", en = "USE", phonetic = "iús"),
+                VocabularyItem(es = "Tenencia", en = "POSSESSION", phonetic = "posésion"),
+                VocabularyItem(es = "Venta / Tráfico", en = "DEALING", phonetic = "díling"),
+                VocabularyItem(es = "Ser / Estar (plural)", en = "ARE", phonetic = "ar"),
+                VocabularyItem(es = "Tú / Usted", en = "YOU", phonetic = "yu"),
+                VocabularyItem(es = "Usando / Consumiendo", en = "USING", phonetic = "iúsing"),
+                VocabularyItem(es = "Drogas", en = "DRUGS", phonetic = "dragz"),
+                VocabularyItem(es = "Ahora mismo", en = "RIGHT NOW", phonetic = "ráit nau"),
+                VocabularyItem(es = "De", en = "OF", phonetic = "ov"),
+                VocabularyItem(es = "Es / Está", en = "IS", phonetic = "is"),
+                VocabularyItem(es = "Un / Una (ante vocal)", en = "AN", phonetic = "an"),
+                VocabularyItem(es = "Infracción / Delito", en = "OFFENCE", phonetic = "ofens"),
+                VocabularyItem(es = "Vendiendo", en = "SELLING", phonetic = "séling"),
+                VocabularyItem(es = "Estos / Estas", en = "THESE", phonetic = "dis"),
+                VocabularyItem(es = "Un / Una", en = "A", phonetic = "a"),
+                VocabularyItem(es = "Grave / Serio", en = "SERIOUS", phonetic = "sírios"),
+                VocabularyItem(es = "Delito / Crimen", en = "CRIME", phonetic = "cráim"),
+                VocabularyItem(es = "Cuánto tiempo", en = "HOW LONG", phonetic = "jau long"),
+                VocabularyItem(es = "Haber (auxiliar)", en = "HAVE", phonetic = "jav"),
+                VocabularyItem(es = "Sido / Estado (participio)", en = "BEEN", phonetic = "bin"),
+                VocabularyItem(es = "Bajo", en = "UNDER", phonetic = "ánder"),
+                VocabularyItem(es = "Detenido", en = "ARREST", phonetic = "arést"),
+                VocabularyItem(es = "Para / Por", en = "FOR", phonetic = "for")
             ),
             phrases = listOf(
                 PhraseItem(
@@ -278,21 +315,33 @@ val module12 = Module(
             lessonId = 1206,
             lessonTitle = "Síntomas de intoxicación",
             vocabulary = listOf(
-                VocabularyItem(
-                    es = "Síntoma",
-                    en = "SYMPTOM",
-                    phonetic = "símptom"
-                ),
-                VocabularyItem(
-                    es = "Pupila",
-                    en = "PUPIL",
-                    phonetic = "piúpil"
-                ),
-                VocabularyItem(
-                    es = "Confuso",
-                    en = "CONFUSED",
-                    phonetic = "konfiúsd"
-                )
+                VocabularyItem(es = "Síntoma", en = "SYMPTOM", phonetic = "símptom"),
+                VocabularyItem(es = "Pupila", en = "PUPIL", phonetic = "piúpil"),
+                VocabularyItem(es = "Confuso", en = "CONFUSED", phonetic = "konfiúsd"),
+                VocabularyItem(es = "Ser / Estar (plural)", en = "ARE", phonetic = "ar"),
+                VocabularyItem(es = "Tú / Usted", en = "YOU", phonetic = "yu"),
+                VocabularyItem(es = "Sintiéndose", en = "FEELING", phonetic = "fíling"),
+                VocabularyItem(es = "Mal / Indispuesto", en = "UNWELL", phonetic = "anwél"),
+                VocabularyItem(es = "Tu / Su", en = "YOUR", phonetic = "yor"),
+                VocabularyItem(es = "Pupilas", en = "PUPILS", phonetic = "piúpils"),
+                VocabularyItem(es = "Dilatadas", en = "DILATED", phonetic = "dailéited"),
+                VocabularyItem(es = "Parecer", en = "SEEM", phonetic = "sim"),
+                VocabularyItem(es = "Bajo", en = "UNDER", phonetic = "ánder"),
+                VocabularyItem(es = "El / La", en = "THE", phonetic = "di"),
+                VocabularyItem(es = "Efectos / Influencia", en = "INFLUENCE", phonetic = "ínfluens"),
+                VocabularyItem(es = "De", en = "OF", phonetic = "ov"),
+                VocabularyItem(es = "Drogas", en = "DRUGS", phonetic = "dragz"),
+                VocabularyItem(es = "Poder", en = "CAN", phonetic = "can"),
+                VocabularyItem(es = "Caminar", en = "WALK", phonetic = "güok"),
+                VocabularyItem(es = "En", en = "IN", phonetic = "in"),
+                VocabularyItem(es = "Un / Una", en = "A", phonetic = "a"),
+                VocabularyItem(es = "Recto", en = "STRAIGHT", phonetic = "stréit"),
+                VocabularyItem(es = "Línea", en = "LINE", phonetic = "láin"),
+                VocabularyItem(es = "Yo", en = "I", phonetic = "ai"),
+                VocabularyItem(es = "Necesitar", en = "NEED", phonetic = "nid"),
+                VocabularyItem(es = "A (infinitivo)", en = "TO", phonetic = "tu"),
+                VocabularyItem(es = "Comprobar", en = "CHECK", phonetic = "chek"),
+                VocabularyItem(es = "Condición / Estado", en = "CONDITION", phonetic = "kondíshon")
             ),
             phrases = listOf(
                 PhraseItem(
@@ -331,21 +380,29 @@ val module12 = Module(
             lessonId = 1207,
             lessonTitle = "Sobredosis e intervención",
             vocabulary = listOf(
-                VocabularyItem(
-                    es = "Sobredosis",
-                    en = "OVERDOSE",
-                    phonetic = "óuverdóus"
-                ),
-                VocabularyItem(
-                    es = "Inconsciente",
-                    en = "UNCONSCIOUS",
-                    phonetic = "ankónshos"
-                ),
-                VocabularyItem(
-                    es = "Emergencia",
-                    en = "EMERGENCY",
-                    phonetic = "imöryensi"
-                )
+                VocabularyItem(es = "Sobredosis", en = "OVERDOSE", phonetic = "óuverdóus"),
+                VocabularyItem(es = "Inconsciente", en = "UNCONSCIOUS", phonetic = "ankónshos"),
+                VocabularyItem(es = "Emergencia", en = "EMERGENCY", phonetic = "imöryensi"),
+                VocabularyItem(es = "Este / Esta", en = "THIS", phonetic = "dis"),
+                VocabularyItem(es = "Es / Está", en = "IS", phonetic = "is"),
+                VocabularyItem(es = "Un / Una", en = "A", phonetic = "a"),
+                VocabularyItem(es = "Médico", en = "MEDICAL", phonetic = "médikal"),
+                VocabularyItem(es = "Llamar", en = "CALL", phonetic = "col"),
+                VocabularyItem(es = "Un / Una (ante vocal)", en = "AN", phonetic = "an"),
+                VocabularyItem(es = "Ambulancia", en = "AMBULANCE", phonetic = "ámbiulans"),
+                VocabularyItem(es = "Ahora", en = "NOW", phonetic = "nau"),
+                VocabularyItem(es = "Él / Ella", en = "HE / SHE", phonetic = "ji/shi"),
+                VocabularyItem(es = "Qué", en = "WHAT", phonetic = "guat"),
+                VocabularyItem(es = "Pasado (auxiliar)", en = "DID", phonetic = "did"),
+                VocabularyItem(es = "Ellos", en = "THEY", phonetic = "déi"),
+                VocabularyItem(es = "Tomar / Tomaron", en = "TAKE", phonetic = "téik"),
+                VocabularyItem(es = "Cuánto", en = "HOW MUCH", phonetic = "jau mach"),
+                VocabularyItem(es = "Permanecer / Quedarse", en = "STAY", phonetic = "stéi"),
+                VocabularyItem(es = "Con", en = "WITH", phonetic = "güiz"),
+                VocabularyItem(es = "Ellos / Las / Los", en = "THEM", phonetic = "dem"),
+                VocabularyItem(es = "Hasta que", en = "UNTIL", phonetic = "antíl"),
+                VocabularyItem(es = "Ayuda", en = "HELP", phonetic = "jelp"),
+                VocabularyItem(es = "Llega", en = "ARRIVES", phonetic = "aráivs")
             ),
             phrases = listOf(
                 PhraseItem(

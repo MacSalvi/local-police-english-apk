@@ -13,26 +13,35 @@ val module27 = Module(
             lessonId = 2701,
             lessonTitle = "Detección de documentos falsificados o manipulados",
             vocabulary = listOf(
-                VocabularyItem(
-                    es = "Falsificado",
-                    en = "FORGED",
-                    phonetic = "forllid"
-                ),
-                VocabularyItem(
-                    es = "Manipulado",
-                    en = "TAMPERED",
-                    phonetic = "témpörd"
-                ),
-                VocabularyItem(
-                    es = "Documento auténtico",
-                    en = "GENUINE DOCUMENT",
-                    phonetic = "yéniuin dókiument"
-                ),
-                VocabularyItem(
-                    es = "Sospechoso (adj.)",
-                    en = "SUSPICIOUS",
-                    phonetic = "saspíshos"
-                )
+                VocabularyItem(es = "Falsificado", en = "FORGED", phonetic = "forllid"),
+                VocabularyItem(es = "Manipulado", en = "TAMPERED", phonetic = "témpörd"),
+                VocabularyItem(es = "Documento auténtico", en = "GENUINE DOCUMENT", phonetic = "yéniuin dókiument"),
+                VocabularyItem(es = "Sospechoso (adj.)", en = "SUSPICIOUS", phonetic = "saspíshos"),
+                VocabularyItem(es = "Este / Esta", en = "THIS", phonetic = "dis"),
+                VocabularyItem(es = "Documento", en = "DOCUMENT", phonetic = "dókiument"),
+                VocabularyItem(es = "Parece", en = "LOOKS", phonetic = "luks"),
+                VocabularyItem(es = "Apunta / Parece", en = "APPEARS", phonetic = "apírs"),
+                VocabularyItem(es = "A (infinitivo)", en = "TO", phonetic = "tu"),
+                VocabularyItem(es = "Ser / Estar", en = "BE", phonetic = "bi"),
+                VocabularyItem(es = "El / La", en = "THE", phonetic = "de"),
+                VocabularyItem(es = "Fotografía / Foto", en = "PHOTO", phonetic = "fóutou"),
+                VocabularyItem(es = "Hacer (auxiliar tercera persona)", en = "DOES", phonetic = "das"),
+                VocabularyItem(es = "No", en = "NOT", phonetic = "not"),
+                VocabularyItem(es = "Coincidir", en = "MATCH", phonetic = "match"),
+                VocabularyItem(es = "Tu / Su", en = "YOUR", phonetic = "yor"),
+                VocabularyItem(es = "Cara / Rostro", en = "FACE", phonetic = "féis"),
+                VocabularyItem(es = "Haber (auxiliar)", en = "HAS", phonetic = "jas"),
+                VocabularyItem(es = "Sido / Estado", en = "BEEN", phonetic = "bin"),
+                VocabularyItem(es = "Con", en = "WITH", phonetic = "güiz"),
+                VocabularyItem(es = "Seguridad", en = "SECURITY", phonetic = "sekiúriti"),
+                VocabularyItem(es = "Características / Elementos", en = "FEATURES", phonetic = "fíchers"),
+                VocabularyItem(es = "Ser / Estar (plural)", en = "ARE", phonetic = "ar"),
+                VocabularyItem(es = "Desaparecido / Faltante", en = "MISSING", phonetic = "mísing"),
+                VocabularyItem(es = "Yo", en = "I", phonetic = "ai"),
+                VocabularyItem(es = "Necesitar", en = "NEED", phonetic = "nid"),
+                VocabularyItem(es = "Verificar", en = "VERIFY", phonetic = "vérifai"),
+                VocabularyItem(es = "Es / Está", en = "IS", phonetic = "is"),
+                VocabularyItem(es = "Un / Una", en = "A", phonetic = "a")
             ),
             phrases = listOf(
                 PhraseItem(
@@ -76,26 +85,35 @@ val module27 = Module(
             lessonId = 2702,
             lessonTitle = "Discrepancias de identidad y verificación de datos filiatorios",
             vocabulary = listOf(
-                VocabularyItem(
-                    es = "Discrepancia",
-                    en = "DISCREPANCY",
-                    phonetic = "diskrépansi"
-                ),
-                VocabularyItem(
-                    es = "Filiación",
-                    en = "PERSONAL DETAILS",
-                    phonetic = "pörsonal ditéils"
-                ),
-                VocabularyItem(
-                    es = "Coincidir",
-                    en = "MATCH",
-                    phonetic = "match"
-                ),
-                VocabularyItem(
-                    es = "Confirmar",
-                    en = "CONFIRM",
-                    phonetic = "konfírm"
-                )
+                VocabularyItem(es = "Discrepancia", en = "DISCREPANCY", phonetic = "diskrépansi"),
+                VocabularyItem(es = "Filiación", en = "PERSONAL DETAILS", phonetic = "pörsonal ditéils"),
+                VocabularyItem(es = "Coincidir", en = "MATCH", phonetic = "match"),
+                VocabularyItem(es = "Confirmar", en = "CONFIRM", phonetic = "konfírm"),
+                VocabularyItem(es = "Tu / Su", en = "YOUR", phonetic = "yor"),
+                VocabularyItem(es = "Nombre", en = "NAME", phonetic = "néim"),
+                VocabularyItem(es = "Hacer (auxiliar tercera persona)", en = "DOES", phonetic = "das"),
+                VocabularyItem(es = "No", en = "NOT", phonetic = "not"),
+                VocabularyItem(es = "Este / Esta", en = "THIS", phonetic = "dis"),
+                VocabularyItem(es = "Documento", en = "DOCUMENT", phonetic = "dókiument"),
+                VocabularyItem(es = "Haber (existencial - hay)", en = "THERE", phonetic = "der"),
+                VocabularyItem(es = "Es / Está", en = "IS", phonetic = "is"),
+                VocabularyItem(es = "Un / Una", en = "A", phonetic = "a"),
+                VocabularyItem(es = "En", en = "IN", phonetic = "in"),
+                VocabularyItem(es = "Detalles / Datos", en = "DETAILS", phonetic = "ditéils"),
+                VocabularyItem(es = "Poder", en = "CAN", phonetic = "can"),
+                VocabularyItem(es = "Tú / Usted", en = "YOU", phonetic = "yu"),
+                VocabularyItem(es = "Fecha", en = "DATE", phonetic = "déit"),
+                VocabularyItem(es = "De", en = "OF", phonetic = "ov"),
+                VocabularyItem(es = "Nacimiento", en = "BIRTH", phonetic = "berz"),
+                VocabularyItem(es = "Otra vez / De nuevo", en = "AGAIN", phonetic = "aguén"),
+                VocabularyItem(es = "Firma", en = "SIGNATURE", phonetic = "sígnacher"),
+                VocabularyItem(es = "Por qué", en = "WHY", phonetic = "güai"),
+                VocabularyItem(es = "Hacer (auxiliar interrogativo)", en = "DO", phonetic = "du"),
+                VocabularyItem(es = "Yo", en = "I", phonetic = "ai"),
+                VocabularyItem(es = "Necesitar", en = "NEED", phonetic = "nid"),
+                VocabularyItem(es = "A (infinitivo)", en = "TO", phonetic = "tu"),
+                VocabularyItem(es = "Identidad", en = "IDENTITY", phonetic = "aidéntiti"),
+                VocabularyItem(es = "Realmente", en = "REALLY", phonetic = "ríali")
             ),
             phrases = listOf(
                 PhraseItem(
@@ -139,26 +157,42 @@ val module27 = Module(
             lessonId = 2703,
             lessonTitle = "Requerimiento de segunda identificación",
             vocabulary = listOf(
-                VocabularyItem(
-                    es = "Segunda identificación",
-                    en = "SECONDARY IDENTIFICATION",
-                    phonetic = "sékonderi aidentifikéishon"
-                ),
-                VocabularyItem(
-                    es = "Tarjeta de crédito",
-                    en = "CREDIT CARD",
-                    phonetic = "crédit card"
-                ),
-                VocabularyItem(
-                    es = "Adicional",
-                    en = "ADDITIONAL",
-                    phonetic = "adíshonal"
-                ),
-                VocabularyItem(
-                    es = "Verificación cruzada",
-                    en = "CROSS-CHECK",
-                    phonetic = "cros-chek"
-                )
+                VocabularyItem(es = "Segunda identificación", en = "SECONDARY IDENTIFICATION", phonetic = "sékonderi aidentifikéishon"),
+                VocabularyItem(es = "Tarjeta de crédito", en = "CREDIT CARD", phonetic = "crédit card"),
+                VocabularyItem(es = "Adicional", en = "ADDITIONAL", phonetic = "adíshonal"),
+                VocabularyItem(es = "Verificación cruzada", en = "CROSS-CHECK", phonetic = "cros-chek"),
+                VocabularyItem(es = "Hacer (auxiliar interrogativo)", en = "DO", phonetic = "du"),
+                VocabularyItem(es = "Tú / Usted", en = "YOU", phonetic = "yu"),
+                VocabularyItem(es = "Tener", en = "HAVE", phonetic = "jav"),
+                VocabularyItem(es = "Algún / Cualquier", en = "ANY", phonetic = "éni"),
+                VocabularyItem(es = "Otro", en = "OTHER", phonetic = "óder"),
+                VocabularyItem(es = "Forma", en = "FORM", phonetic = "form"),
+                VocabularyItem(es = "De", en = "OF", phonetic = "ov"),
+                VocabularyItem(es = "Identificación", en = "ID", phonetic = "aidí"),
+                VocabularyItem(es = "Mostrar", en = "SHOW", phonetic = "shou"),
+                VocabularyItem(es = "Me", en = "ME", phonetic = "mi"),
+                VocabularyItem(es = "Un / Una", en = "A", phonetic = "a"),
+                VocabularyItem(es = "Segundo", en = "SECOND", phonetic = "sékond"),
+                VocabularyItem(es = "Documento", en = "DOCUMENT", phonetic = "dókiument"),
+                VocabularyItem(es = "Por favor", en = "PLEASE", phonetic = "plis"),
+                VocabularyItem(es = "Crédito", en = "CREDIT", phonetic = "crédit"),
+                VocabularyItem(es = "Tarjeta", en = "CARD", phonetic = "card"),
+                VocabularyItem(es = "Con", en = "WITH", phonetic = "güiz"),
+                VocabularyItem(es = "Tu / Su", en = "YOUR", phonetic = "yor"),
+                VocabularyItem(es = "Nombre", en = "NAME", phonetic = "néim"),
+                VocabularyItem(es = "Yo", en = "I", phonetic = "ai"),
+                VocabularyItem(es = "Necesitar", en = "NEED", phonetic = "nid"),
+                VocabularyItem(es = "A (infinitivo)", en = "TO", phonetic = "tu"),
+                VocabularyItem(es = "Información", en = "INFORMATION", phonetic = "informéishon"),
+                VocabularyItem(es = "Documentación", en = "DOCUMENTATION", phonetic = "dokiumentéishon"),
+                VocabularyItem(es = "Este / Esta", en = "THIS", phonetic = "dis"),
+                VocabularyItem(es = "Futuro (auxiliar)", en = "WILL", phonetic = "güil"),
+                VocabularyItem(es = "Ayudar", en = "HELP", phonetic = "jelp"),
+                VocabularyItem(es = "Confirmar", en = "CONFIRM", phonetic = "konfírm"),
+                VocabularyItem(es = "Identidad", en = "IDENTITY", phonetic = "aidéntiti"),
+                VocabularyItem(es = "Sin", en = "WITHOUT", phonetic = "güizáut"),
+                VocabularyItem(es = "No poder", en = "CANNOT", phonetic = "kánot"),
+                VocabularyItem(es = "Verificar", en = "VERIFY", phonetic = "vérifai")
             ),
             phrases = listOf(
                 PhraseItem(

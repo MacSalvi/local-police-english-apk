@@ -13,31 +13,42 @@ val module25 = Module(
             lessonId = 2501,
             lessonTitle = "Estancia turística, visados y cómputo de días",
             vocabulary = listOf(
-                VocabularyItem(
-                    es = "Visado",
-                    en = "VISA",
-                    phonetic = "vísa"
-                ),
-                VocabularyItem(
-                    es = "Estancia",
-                    en = "STAY",
-                    phonetic = "stéi"
-                ),
-                VocabularyItem(
-                    es = "Sello de entrada",
-                    en = "ENTRY STAMP",
-                    phonetic = "éntri stamp"
-                ),
-                VocabularyItem(
-                    es = "Límite de estancia",
-                    en = "STAY LIMIT",
-                    phonetic = "stéi límit"
-                ),
-                VocabularyItem(
-                    es = "Turista",
-                    en = "TOURIST",
-                    phonetic = "túrist"
-                )
+                VocabularyItem(es = "Visado", en = "VISA", phonetic = "vísa"),
+                VocabularyItem(es = "Estancia", en = "STAY", phonetic = "stéi"),
+                VocabularyItem(es = "Sello de entrada", en = "ENTRY STAMP", phonetic = "éntri stamp"),
+                VocabularyItem(es = "Límite de estancia", en = "STAY LIMIT", phonetic = "stéi límit"),
+                VocabularyItem(es = "Turista", en = "TOURIST", phonetic = "túrist"),
+                VocabularyItem(es = "Cuánto / Cómo", en = "HOW", phonetic = "jau"),
+                VocabularyItem(es = "Largo / Tiempo", en = "LONG", phonetic = "long"),
+                VocabularyItem(es = "Ser / Estar (plural)", en = "ARE", phonetic = "ar"),
+                VocabularyItem(es = "Tú / Usted", en = "YOU", phonetic = "yu"),
+                VocabularyItem(es = "Estancia / Permaneciendo", en = "STAYING", phonetic = "stéiing"),
+                VocabularyItem(es = "En", en = "IN", phonetic = "in"),
+                VocabularyItem(es = "España", en = "SPAIN", phonetic = "spéin"),
+                VocabularyItem(es = "Cuándo", en = "WHEN", phonetic = "güen"),
+                VocabularyItem(es = "Pasado (auxiliar)", en = "DID", phonetic = "did"),
+                VocabularyItem(es = "Entrar", en = "ENTER", phonetic = "énter"),
+                VocabularyItem(es = "El / La", en = "THE", phonetic = "de"),
+                VocabularyItem(es = "País", en = "COUNTRY", phonetic = "kántri"),
+                VocabularyItem(es = "Mostrar", en = "SHOW", phonetic = "shou"),
+                VocabularyItem(es = "Me", en = "ME", phonetic = "mi"),
+                VocabularyItem(es = "Tu / Su", en = "YOUR", phonetic = "yor"),
+                VocabularyItem(es = "Por favor", en = "PLEASE", phonetic = "plis"),
+                VocabularyItem(es = "Poder", en = "CAN", phonetic = "can"),
+                VocabularyItem(es = "Arriba / Hasta", en = "UP", phonetic = "ap"),
+                VocabularyItem(es = "A (dirección)", en = "TO", phonetic = "tu"),
+                VocabularyItem(es = "Noventa", en = "NINETY", phonetic = "náinti"),
+                VocabularyItem(es = "Días", en = "DAYS", phonetic = "déis"),
+                VocabularyItem(es = "Haber (auxiliar)", en = "HAVE", phonetic = "jav"),
+                VocabularyItem(es = "Excedido", en = "EXCEEDED", phonetic = "eksídid"),
+                VocabularyItem(es = "Permitido", en = "PERMITTED", phonetic = "pörmited"),
+                VocabularyItem(es = "Billete", en = "TICKET", phonetic = "tíket"),
+                VocabularyItem(es = "Vuelta", en = "RETURN", phonetic = "ritörn"),
+                VocabularyItem(es = "Es / Está", en = "IS", phonetic = "is"),
+                VocabularyItem(es = "Este / Esta", en = "THIS", phonetic = "dis"),
+                VocabularyItem(es = "Visita", en = "VISIT", phonetic = "vísit"),
+                VocabularyItem(es = "O", en = "OR", phonetic = "or"),
+                VocabularyItem(es = "Negocios", en = "BUSINESS", phonetic = "bísnes")
             ),
             phrases = listOf(
                 PhraseItem(
@@ -81,26 +92,32 @@ val module25 = Module(
             lessonId = 2502,
             lessonTitle = "Permisos de conducir internacionales y homologaciones",
             vocabulary = listOf(
-                VocabularyItem(
-                    es = "Permiso internacional",
-                    en = "INTERNATIONAL DRIVING PERMIT",
-                    phonetic = "internáshonal dráiving pörmit"
-                ),
-                VocabularyItem(
-                    es = "Canje",
-                    en = "EXCHANGE",
-                    phonetic = "ekschéinch"
-                ),
-                VocabularyItem(
-                    es = "Válido",
-                    en = "VALID",
-                    phonetic = "válid"
-                ),
-                VocabularyItem(
-                    es = "País de origen",
-                    en = "COUNTRY OF ORIGIN",
-                    phonetic = "kántri ov óriyin"
-                )
+                VocabularyItem(es = "Permiso internacional", en = "INTERNATIONAL DRIVING PERMIT", phonetic = "internáshonal dráiving pörmit"),
+                VocabularyItem(es = "Canje", en = "EXCHANGE", phonetic = "ekschéinch"),
+                VocabularyItem(es = "Válido", en = "VALID", phonetic = "válid"),
+                VocabularyItem(es = "País de origen", en = "COUNTRY OF ORIGIN", phonetic = "kántri ov óriyin"),
+                VocabularyItem(es = "Es / Está", en = "IS", phonetic = "is"),
+                VocabularyItem(es = "Este / Esta", en = "THIS", phonetic = "dis"),
+                VocabularyItem(es = "Un / Una (ante vocal)", en = "AN", phonetic = "an"),
+                VocabularyItem(es = "Internacional", en = "INTERNATIONAL", phonetic = "internáshonal"),
+                VocabularyItem(es = "Conducir", en = "DRIVING", phonetic = "dráiving"),
+                VocabularyItem(es = "Permiso", en = "PERMIT", phonetic = "pörmit"),
+                VocabularyItem(es = "Tu / Su", en = "YOUR", phonetic = "yor"),
+                VocabularyItem(es = "Solo", en = "ONLY", phonetic = "óunli"),
+                VocabularyItem(es = "Para / Por", en = "FOR", phonetic = "for"),
+                VocabularyItem(es = "Seis", en = "SIX", phonetic = "six"),
+                VocabularyItem(es = "Meses", en = "MONTHS", phonetic = "manzs"),
+                VocabularyItem(es = "Aquí", en = "HERE", phonetic = "jía"),
+                VocabularyItem(es = "Debe / Tener que", en = "MUST", phonetic = "mast"),
+                VocabularyItem(es = "Canjear", en = "EXCHANGE", phonetic = "ekschéinch"),
+                VocabularyItem(es = "Licencia", en = "LICENCE", phonetic = "láisens"),
+                VocabularyItem(es = "En", en = "IN", phonetic = "in"),
+                VocabularyItem(es = "España", en = "SPAIN", phonetic = "spéin"),
+                VocabularyItem(es = "Cuál / Qué", en = "WHICH", phonetic = "güich"),
+                VocabularyItem(es = "País", en = "COUNTRY", phonetic = "kántri"),
+                VocabularyItem(es = "Expedido", en = "ISSUED", phonetic = "íshud"),
+                VocabularyItem(es = "No", en = "NOT", phonetic = "not"),
+                VocabularyItem(es = "Reconocido", en = "RECOGNISED", phonetic = "rékognaisd")
             ),
             phrases = listOf(
                 PhraseItem(
@@ -139,26 +156,35 @@ val module25 = Module(
             lessonId = 2503,
             lessonTitle = "Residencia legal, TIE y pasaportes",
             vocabulary = listOf(
-                VocabularyItem(
-                    es = "TIE (Tarjeta de Identidad de Extranjero)",
-                    en = "FOREIGNER ID CARD",
-                    phonetic = "fóreiner aidí card"
-                ),
-                VocabularyItem(
-                    es = "Residencia legal",
-                    en = "LEGAL RESIDENCE",
-                    phonetic = "lígal résidens"
-                ),
-                VocabularyItem(
-                    es = "Empadronamiento",
-                    en = "CENSUS REGISTRATION",
-                    phonetic = "sénsas reyistréishon"
-                ),
-                VocabularyItem(
-                    es = "Extranjero",
-                    en = "FOREIGN NATIONAL",
-                    phonetic = "fórein náshonal"
-                )
+                VocabularyItem(es = "TIE (Tarjeta de Identidad de Extranjero)", en = "FOREIGNER ID CARD", phonetic = "fóreiner aidí card"),
+                VocabularyItem(es = "Residencia legal", en = "LEGAL RESIDENCE", phonetic = "lígal résidens"),
+                VocabularyItem(es = "Empadronamiento", en = "CENSUS REGISTRATION", phonetic = "sénsas reyistréishon"),
+                VocabularyItem(es = "Extranjero", en = "FOREIGN NATIONAL", phonetic = "fórein náshonal"),
+                VocabularyItem(es = "Hacer (auxiliar interrogativo)", en = "DO", phonetic = "du"),
+                VocabularyItem(es = "Tú / Usted", en = "YOU", phonetic = "yu"),
+                VocabularyItem(es = "Tener", en = "HAVE", phonetic = "jav"),
+                VocabularyItem(es = "Legal", en = "LEGAL", phonetic = "lígal"),
+                VocabularyItem(es = "Residencia", en = "RESIDENCE", phonetic = "résidens"),
+                VocabularyItem(es = "En", en = "IN", phonetic = "in"),
+                VocabularyItem(es = "España", en = "SPAIN", phonetic = "spéin"),
+                VocabularyItem(es = "Mostrar", en = "SHOW", phonetic = "shou"),
+                VocabularyItem(es = "Me", en = "ME", phonetic = "mi"),
+                VocabularyItem(es = "Tu / Su", en = "YOUR", phonetic = "yor"),
+                VocabularyItem(es = "TIE CARD", en = "TIE CARD", phonetic = "ti-ai-í card"),
+                VocabularyItem(es = "Por favor", en = "PLEASE", phonetic = "plis"),
+                VocabularyItem(es = "Es / Está", en = "IS", phonetic = "is"),
+                VocabularyItem(es = "Actual", en = "CURRENT", phonetic = "kárrent"),
+                VocabularyItem(es = "Ser / Estar (plural)", en = "ARE", phonetic = "ar"),
+                VocabularyItem(es = "Registrado", en = "REGISTERED", phonetic = "réyistörd"),
+                VocabularyItem(es = "En / A", en = "AT", phonetic = "at"),
+                VocabularyItem(es = "Dirección", en = "ADDRESS", phonetic = "ádres"),
+                VocabularyItem(es = "Pasaporte", en = "PASSPORT", phonetic = "pásport"),
+                VocabularyItem(es = "Y", en = "AND", phonetic = "and"),
+                VocabularyItem(es = "Debe", en = "MUST", phonetic = "mast"),
+                VocabularyItem(es = "Coincidir", en = "MATCH", phonetic = "match"),
+                VocabularyItem(es = "Renovar", en = "RENEW", phonetic = "riniú"),
+                VocabularyItem(es = "Este / Esta", en = "THIS", phonetic = "dis"),
+                VocabularyItem(es = "Documento", en = "DOCUMENT", phonetic = "dókiument")
             ),
             phrases = listOf(
                 PhraseItem(

@@ -11,7 +11,7 @@ val module1 = Module(
     lessons = listOf(
         Lesson(
             lessonId = 101,
-            lessonTitle = "Primer contacto",
+            lessonTitle = "Primer contacto y presentación",
             vocabulary = listOf(
                 VocabularyItem(
                     es = "Policía Local",
@@ -27,6 +27,81 @@ val module1 = Module(
                     es = "Atención",
                     en = "ATTENTION",
                     phonetic = "aténshon"
+                ),
+                VocabularyItem(
+                    es = "Señor",
+                    en = "SIR",
+                    phonetic = "ser"
+                ),
+                VocabularyItem(
+                    es = "Señora",
+                    en = "MADAM",
+                    phonetic = "mádam"
+                ),
+                VocabularyItem(
+                    es = "Identificación",
+                    en = "IDENTIFICATION",
+                    phonetic = "ayadantifiquéishon"
+                ),
+                VocabularyItem(
+                    es = "Bueno / Buen",
+                    en = "GOOD",
+                    phonetic = "gud"
+                ),
+                VocabularyItem(
+                    es = "Mañana",
+                    en = "MORNING",
+                    phonetic = "mórning"
+                ),
+                VocabularyItem(
+                    es = "Tarde",
+                    en = "AFTERNOON",
+                    phonetic = "afternún"
+                ),
+                VocabularyItem(
+                    es = "Disculpar",
+                    en = "EXCUSE",
+                    phonetic = "exkiús"
+                ),
+                VocabularyItem(
+                    es = "Poder (capacidad)",
+                    en = "CAN",
+                    phonetic = "can"
+                ),
+                VocabularyItem(
+                    es = "Tener",
+                    en = "HAVE",
+                    phonetic = "jav"
+                ),
+                VocabularyItem(
+                    es = "Por favor",
+                    en = "PLEASE",
+                    phonetic = "plís"
+                ),
+                VocabularyItem(
+                    es = "Este / Esta",
+                    en = "THIS",
+                    phonetic = "dis"
+                ),
+                VocabularyItem(
+                    es = "Oficial",
+                    en = "OFFICIAL",
+                    phonetic = "ofíshal"
+                ),
+                VocabularyItem(
+                    es = "Pedir / Rogar",
+                    en = "ASK",
+                    phonetic = "ask"
+                ),
+                VocabularyItem(
+                    es = "Escuchar",
+                    en = "LISTEN",
+                    phonetic = "lísen"
+                ),
+                VocabularyItem(
+                    es = "Instrucción",
+                    en = "INSTRUCTION",
+                    phonetic = "inströkshon"
                 )
             ),
             phrases = listOf(
@@ -59,12 +134,22 @@ val module1 = Module(
                     es = "¿Puede prestarme atención, por favor?",
                     en = "CAN I HAVE YOUR ATTENTION, PLEASE?",
                     phonetic = "can ai jav yor aténshon, plis"
+                ),
+                PhraseItem(
+                    es = "Esta es mi identificación oficial como agente.",
+                    en = "THIS IS MY OFFICIAL OFFICER IDENTIFICATION.",
+                    phonetic = "dis is mai ofíshal ófisa ayadantifiquéishon"
+                ),
+                PhraseItem(
+                    es = "Le ruego que escuche mis indicaciones.",
+                    en = "I ASK YOU TO LISTEN TO MY INSTRUCTIONS.",
+                    phonetic = "ai ask yu tu lísen tu mai inströkshons"
                 )
             )
         ),
         Lesson(
             lessonId = 102,
-            lessonTitle = "Control de la situación",
+            lessonTitle = "Control de la situación y calma",
             vocabulary = listOf(
                 VocabularyItem(
                     es = "Calma",
@@ -80,6 +165,61 @@ val module1 = Module(
                     es = "Entender",
                     en = "UNDERSTAND",
                     phonetic = "anderstán"
+                ),
+                VocabularyItem(
+                    es = "Momento",
+                    en = "MOMENT",
+                    phonetic = "móument"
+                ),
+                VocabularyItem(
+                    es = "Claro",
+                    en = "CLEAR",
+                    phonetic = "clíar"
+                ),
+                VocabularyItem(
+                    es = "Preocupación / Preocuparse",
+                    en = "WORRY",
+                    phonetic = "güóri"
+                ),
+                VocabularyItem(
+                    es = "Mantener / Permanecer",
+                    en = "STAY",
+                    phonetic = "stéi"
+                ),
+                VocabularyItem(
+                    es = "Necesidad / Necesitar",
+                    en = "NEED",
+                    phonetic = "nid"
+                ),
+                VocabularyItem(
+                    es = "Aquí",
+                    en = "HERE",
+                    phonetic = "jía"
+                ),
+                VocabularyItem(
+                    es = "Muy",
+                    en = "VERY",
+                    phonetic = "véri"
+                ),
+                VocabularyItem(
+                    es = "Importante",
+                    en = "IMPORTANT",
+                    phonetic = "ímportant"
+                ),
+                VocabularyItem(
+                    es = "Tiempo / Vez",
+                    en = "TIME",
+                    phonetic = "táim"
+                ),
+                VocabularyItem(
+                    es = "Derecho / Justo",
+                    en = "RIGHT",
+                    phonetic = "ráit"
+                ),
+                VocabularyItem(
+                    es = "Lugar / Sitio",
+                    en = "PLACE",
+                    phonetic = "pléis"
                 )
             ),
             phrases = listOf(
@@ -112,6 +252,16 @@ val module1 = Module(
                     es = "¿Queda claro?",
                     en = "IS THAT CLEAR?",
                     phonetic = "is dat clíar"
+                ),
+                PhraseItem(
+                    es = "Es muy importante que mantenga la calma en todo momento.",
+                    en = "IT IS VERY IMPORTANT THAT YOU STAY CALM AT ALL TIMES.",
+                    phonetic = "it is véri ímportant dat yu stéi carm at ol táims"
+                ),
+                PhraseItem(
+                    es = "Espere en este mismo sitio, por favor.",
+                    en = "PLEASE WAIT RIGHT IN THIS PLACE.",
+                    phonetic = "plís güéit ráit in dis pléis"
                 )
             )
         ),
@@ -128,6 +278,56 @@ val module1 = Module(
                     es = "Instrucción",
                     en = "INSTRUCTION",
                     phonetic = "inströkshon"
+                ),
+                VocabularyItem(
+                    es = "Venir",
+                    en = "COME",
+                    phonetic = "cam"
+                ),
+                VocabularyItem(
+                    es = "Estar de pie / Colocarse",
+                    en = "STAND",
+                    phonetic = "stand"
+                ),
+                VocabularyItem(
+                    es = "Gracias",
+                    en = "THANK YOU",
+                    phonetic = "zenk yu"
+                ),
+                VocabularyItem(
+                    es = "Día",
+                    en = "DAY",
+                    phonetic = "déi"
+                ),
+                VocabularyItem(
+                    es = "Seguir",
+                    en = "FOLLOW",
+                    phonetic = "fólou"
+                ),
+                VocabularyItem(
+                    es = "Con",
+                    en = "WITH",
+                    phonetic = "güiz"
+                ),
+                VocabularyItem(
+                    es = "Necesario",
+                    en = "NECESSARY",
+                    phonetic = "nésesari"
+                ),
+                VocabularyItem(
+                    es = "Terminar / Finalizar",
+                    en = "FINISH",
+                    phonetic = "fínish"
+                ),
+                VocabularyItem(
+                    es = "Acción",
+                    en = "ACTION",
+                    phonetic = "ácshon"
+                ),
+                VocabularyItem(
+                    es = "Mucho",
+                    en = "MUCH",
+                    phonetic = "macer"
                 )
             ),
             phrases = listOf(
@@ -160,6 +360,16 @@ val module1 = Module(
                     es = "Que tenga un buen día.",
                     en = "HAVE A GOOD DAY.",
                     phonetic = "jav a gud déi"
+                ),
+                PhraseItem(
+                    es = "Su colaboración es necesaria para finalizar.",
+                    en = "YOUR COOPERATION IS NECESSARY TO FINISH.",
+                    phonetic = "yor kouoperéishon is nésesari tu fínish"
+                ),
+                PhraseItem(
+                    es = "La actuación ha terminado. Muchas gracias.",
+                    en = "THE ACTION HAS FINISHED. THANK YOU VERY MUCH.",
+                    phonetic = "da ácshon has fínisht. zenk yu véri macer"
                 )
             )
         )

@@ -13,26 +13,31 @@ val module6 = Module(
             lessonId = 601,
             lessonTitle = "Velocidad, semáforos, señales y móvil",
             vocabulary = listOf(
-                VocabularyItem(
-                    es = "Velocidad",
-                    en = "SPEED",
-                    phonetic = "spid"
-                ),
-                VocabularyItem(
-                    es = "Semáforo",
-                    en = "TRAFFIC LIGHT",
-                    phonetic = "tráfik láit"
-                ),
-                VocabularyItem(
-                    es = "Señal",
-                    en = "SIGN",
-                    phonetic = "sáin"
-                ),
-                VocabularyItem(
-                    es = "Móvil",
-                    en = "PHONE",
-                    phonetic = "fóun"
-                )
+                VocabularyItem(es = "Velocidad", en = "SPEED", phonetic = "spid"),
+                VocabularyItem(es = "Semáforo", en = "TRAFFIC LIGHT", phonetic = "tráfic láit"),
+                VocabularyItem(es = "Señal", en = "SIGN", phonetic = "sáin"),
+                VocabularyItem(es = "Móvil / Teléfono", en = "PHONE", phonetic = "fóun"),
+                VocabularyItem(es = "Tú / Usted", en = "YOU", phonetic = "yu"),
+                VocabularyItem(es = "Pasado plural / Ustedes", en = "WERE", phonetic = "wör"),
+                VocabularyItem(es = "Con exceso de velocidad", en = "SPEEDING", phonetic = "spíding"),
+                VocabularyItem(es = "Este / Esta", en = "THIS", phonetic = "dis"),
+                VocabularyItem(es = "Es / Está", en = "IS", phonetic = "is"),
+                VocabularyItem(es = "Un / Una", en = "A", phonetic = "a"),
+                VocabularyItem(es = "Cámara", en = "CAMERA", phonetic = "kámera"),
+                VocabularyItem(es = "Zona / Área", en = "ZONE", phonetic = "zóun"),
+                VocabularyItem(es = "Ir (pasado)", en = "WENT", phonetic = "güent"),
+                VocabularyItem(es = "A través de / Por", en = "THROUGH", phonetic = "zru"),
+                VocabularyItem(es = "Rojo", en = "RED", phonetic = "red"),
+                VocabularyItem(es = "Luz / Semáforo", en = "LIGHT", phonetic = "láit"),
+                VocabularyItem(es = "Pasado singular", en = "WAS", phonetic = "was"),
+                VocabularyItem(es = "Ignorado", en = "IGNORED", phonetic = "ignórd"),
+                VocabularyItem(es = "Tráfico", en = "TRAFFIC", phonetic = "tráfic"),
+                VocabularyItem(es = "Sin entrada / Prohibido", en = "NO-ENTRY", phonetic = "nóu-éntri"),
+                VocabularyItem(es = "Usando", en = "USING", phonetic = "iúsing"),
+                VocabularyItem(es = "Tu / Su", en = "YOUR", phonetic = "yor"),
+                VocabularyItem(es = "Mientras", en = "WHILE", phonetic = "guáil"),
+                VocabularyItem(es = "Conduciendo", en = "DRIVING", phonetic = "dráiving"),
+                VocabularyItem(es = "Ilegal", en = "ILLEGAL", phonetic = "ilígal")
             ),
             phrases = listOf(
                 PhraseItem(
@@ -81,26 +86,27 @@ val module6 = Module(
             lessonId = 602,
             lessonTitle = "Cinturón, casco y conducción peligrosa",
             vocabulary = listOf(
-                VocabularyItem(
-                    es = "Cinturón",
-                    en = "SEATBELT",
-                    phonetic = "sítbelt"
-                ),
-                VocabularyItem(
-                    es = "Casco",
-                    en = "HELMET",
-                    phonetic = "jélmet"
-                ),
-                VocabularyItem(
-                    es = "Peligroso",
-                    en = "DANGEROUS",
-                    phonetic = "déinllerous"
-                ),
-                VocabularyItem(
-                    es = "Temerario",
-                    en = "RECKLESS",
-                    phonetic = "rékles"
-                )
+                VocabularyItem(es = "Cinturón de seguridad", en = "SEATBELT", phonetic = "sítbelt"),
+                VocabularyItem(es = "Casco", en = "HELMET", phonetic = "jélmet"),
+                VocabularyItem(es = "Peligroso", en = "DANGEROUS", phonetic = "déinllerous"),
+                VocabularyItem(es = "Temerario", en = "RECKLESS", phonetic = "rékles"),
+                VocabularyItem(es = "Eres / Estás (Tú estás)", en = "YOU'RE", phonetic = "yur"),
+                VocabularyItem(es = "No", en = "NOT", phonetic = "not"),
+                VocabularyItem(es = "Llevar puesto", en = "WEARING", phonetic = "güéring"),
+                VocabularyItem(es = "Tu / Su", en = "YOUR", phonetic = "yor"),
+                VocabularyItem(es = "Por favor", en = "PLEASE", phonetic = "plís"),
+                VocabularyItem(es = "Abrochar", en = "FASTEN", phonetic = "fásen"),
+                VocabularyItem(es = "Ahora", en = "NOW", phonetic = "nau"),
+                VocabularyItem(es = "Debe / Tener que", en = "MUST", phonetic = "mast"),
+                VocabularyItem(es = "Llevar / Vestir", en = "WEAR", phonetic = "güer"),
+                VocabularyItem(es = "Un / Una", en = "A", phonetic = "a"),
+                VocabularyItem(es = "Es / Está", en = "IS", phonetic = "is"),
+                VocabularyItem(es = "Correctamente / Bien", en = "PROPERLY", phonetic = "próperli"),
+                VocabularyItem(es = "Abrochado", en = "FASTENED", phonetic = "fásend"),
+                VocabularyItem(es = "Eso / Ese", en = "THAT", phonetic = "dat"),
+                VocabularyItem(es = "Pasado (ser/estar)", en = "WAS", phonetic = "was"),
+                VocabularyItem(es = "Conducción", en = "DRIVING", phonetic = "dráiving"),
+                VocabularyItem(es = "Temerariamente", en = "RECKLESSLY", phonetic = "réklesli")
             ),
             phrases = listOf(
                 PhraseItem(
@@ -139,26 +145,33 @@ val module6 = Module(
             lessonId = 603,
             lessonTitle = "Sentido contrario, distancia y permiso caducado",
             vocabulary = listOf(
-                VocabularyItem(
-                    es = "Sentido único",
-                    en = "ONE-WAY",
-                    phonetic = "güán-güéi"
-                ),
-                VocabularyItem(
-                    es = "Distancia",
-                    en = "DISTANCE",
-                    phonetic = "dístans"
-                ),
-                VocabularyItem(
-                    es = "Por delante",
-                    en = "AHEAD",
-                    phonetic = "ajéd"
-                ),
-                VocabularyItem(
-                    es = "Caducado",
-                    en = "EXPIRED",
-                    phonetic = "ikspáiad"
-                )
+                VocabularyItem(es = "Sentido único", en = "ONE-WAY", phonetic = "güán-güéi"),
+                VocabularyItem(es = "Distancia", en = "DISTANCE", phonetic = "dístans"),
+                VocabularyItem(es = "Por delante / Adelantado", en = "AHEAD", phonetic = "ajéd"),
+                VocabularyItem(es = "Caducado", en = "EXPIRED", phonetic = "ikspáiad"),
+                VocabularyItem(es = "Eres / Estás", en = "YOU'RE", phonetic = "yur"),
+                VocabularyItem(es = "Conduciendo", en = "DRIVING", phonetic = "dráiving"),
+                VocabularyItem(es = "El / La", en = "THE", phonetic = "da"),
+                VocabularyItem(es = "Equivocado / Malo", en = "WRONG", phonetic = "rong"),
+                VocabularyItem(es = "Dirección / Camino", en = "WAY", phonetic = "güéi"),
+                VocabularyItem(es = "Este / Esta", en = "THIS", phonetic = "dis"),
+                VocabularyItem(es = "Es / Está", en = "IS", phonetic = "is"),
+                VocabularyItem(es = "Un / Una", en = "A", phonetic = "a"),
+                VocabularyItem(es = "Calle", en = "STREET", phonetic = "strit"),
+                VocabularyItem(es = "Pasado plural", en = "WERE", phonetic = "wör"),
+                VocabularyItem(es = "Demasiado", en = "TOO", phonetic = "tu"),
+                VocabularyItem(es = "Cerca", en = "CLOSE", phonetic = "clóus"),
+                VocabularyItem(es = "A / Hacia", en = "TO", phonetic = "tu"),
+                VocabularyItem(es = "Vehículo", en = "VEHICLE", phonetic = "víikol"),
+                VocabularyItem(es = "Mantener", en = "KEEP", phonetic = "kip"),
+                VocabularyItem(es = "Seguro / A salvo", en = "SAFE", phonetic = "séif"),
+                VocabularyItem(es = "Tu / Su", en = "YOUR", phonetic = "yor"),
+                VocabularyItem(es = "Licencia / Permiso", en = "LICENCE", phonetic = "láisens"),
+                VocabularyItem(es = "Tiene / Haber (auxiliar)", en = "HAS", phonetic = "jas"),
+                VocabularyItem(es = "No poder", en = "CANNOT", phonetic = "kánot"),
+                VocabularyItem(es = "Conducir", en = "DRIVE", phonetic = "dráiv"),
+                VocabularyItem(es = "Con", en = "WITH", phonetic = "güiz"),
+                VocabularyItem(es = "Un / Una (ante vocal)", en = "AN", phonetic = "an")
             ),
             phrases = listOf(
                 PhraseItem(
@@ -197,21 +210,30 @@ val module6 = Module(
             lessonId = 604,
             lessonTitle = "Seguro, denuncia y notificación",
             vocabulary = listOf(
-                VocabularyItem(
-                    es = "Multa",
-                    en = "FINE",
-                    phonetic = "fáin"
-                ),
-                VocabularyItem(
-                    es = "Obligatorio",
-                    en = "COMPULSORY",
-                    phonetic = "kompálsori"
-                ),
-                VocabularyItem(
-                    es = "Notificación",
-                    en = "NOTIFICATION",
-                    phonetic = "noutifikéishon"
-                )
+                VocabularyItem(es = "Multa", en = "FINE", phonetic = "fáin"),
+                VocabularyItem(es = "Obligatorio", en = "COMPULSORY", phonetic = "kompálsori"),
+                VocabularyItem(es = "Notificación", en = "NOTIFICATION", phonetic = "noutifikéishon"),
+                VocabularyItem(es = "Tú / Usted", en = "YOU", phonetic = "yu"),
+                VocabularyItem(es = "Debe / Tener que", en = "MUST", phonetic = "mast"),
+                VocabularyItem(es = "Tener", en = "HAVE", phonetic = "jav"),
+                VocabularyItem(es = "Seguro", en = "INSURANCE", phonetic = "inshúrans"),
+                VocabularyItem(es = "Tu / Su", en = "YOUR", phonetic = "yor"),
+                VocabularyItem(es = "Vehículo", en = "VEHICLE", phonetic = "víikol"),
+                VocabularyItem(es = "Es / Está", en = "IS", phonetic = "is"),
+                VocabularyItem(es = "No", en = "NOT", phonetic = "not"),
+                VocabularyItem(es = "Asegurado", en = "INSURED", phonetic = "inshúrd"),
+                VocabularyItem(es = "Yo soy / Estoy (I'm)", en = "I'M", phonetic = "aim"),
+                VocabularyItem(es = "Emitiendo / Imponiendo", en = "ISSUING", phonetic = "íshuing"),
+                VocabularyItem(es = "Un / Una", en = "A", phonetic = "a"),
+                VocabularyItem(es = "Este / Esta", en = "THIS", phonetic = "dis"),
+                VocabularyItem(es = "El / La", en = "THE", phonetic = "da"),
+                VocabularyItem(es = "Razón / Motivo", en = "REASON", phonetic = "ríson"),
+                VocabularyItem(es = "Para / Por", en = "FOR", phonetic = "for"),
+                VocabularyItem(es = "Poder", en = "CAN", phonetic = "can"),
+                VocabularyItem(es = "Pagar", en = "PAY", phonetic = "péi"),
+                VocabularyItem(es = "Online / En línea", en = "ONLINE", phonetic = "ónláin"),
+                VocabularyItem(es = "Futuro (auxiliar)", en = "WILL", phonetic = "güil"),
+                VocabularyItem(es = "Recibir", en = "RECEIVE", phonetic = "risív")
             ),
             phrases = listOf(
                 PhraseItem(
