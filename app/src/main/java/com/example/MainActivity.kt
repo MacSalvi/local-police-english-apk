@@ -20,11 +20,7 @@ class MainActivity : ComponentActivity() {
     private lateinit var ttsManager: TTSManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        try {
-            installSplashScreen()
-        } catch (e: Exception) {
-            // Ignore splash screen errors if theme initialization encounters issues in container
-        }
+        installSplashScreen()
         super.onCreate(savedInstanceState)
 
         ttsManager = TTSManager(this)
