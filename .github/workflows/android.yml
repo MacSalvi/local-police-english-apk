@@ -48,10 +48,11 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           artifacts: "app/build/outputs/apk/debug/app-debug.apk"
-          tag: "v1.0.0"
-          name: "Inglés Operativo Policial v1.0.0 (APK)"
+          tag: ${{ github.ref_type == 'tag' && github.ref_name || 'v1.0.0' }}
+          name: "Inglés Operativo Policial ${{ github.ref_type == 'tag' && github.ref_name || 'v1.0.0' }} (APK)"
           body: "APK de la aplicación compilada para Android."
           allowUpdates: true
           recreateRelease: false
           token: ${{ secrets.GITHUB_TOKEN }}
+
 
