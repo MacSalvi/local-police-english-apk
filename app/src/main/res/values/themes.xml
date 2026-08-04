@@ -6,11 +6,11 @@
 
     <!-- Tema para la pantalla de carga (Splash Screen) -->
     <style name="Theme.App.Starting" parent="Theme.SplashScreen">
-        <!-- Color de fondo de la terminal -->
-        <item name="windowSplashScreenBackground">#000000</item>
+        <!-- Color de fondo táctico -->
+        <item name="windowSplashScreenBackground">#0F172A</item>
 
-        <!-- Tu imagen optimizada como icono de arranque -->
-        <item name="windowSplashScreenAnimatedIcon">@drawable/k214_mob</item>
+        <!-- Imagen del escudo táctico de carga -->
+        <item name="windowSplashScreenAnimatedIcon">@drawable/img_splash_logo_1785855616063</item>
 
         <!-- Tema al que transita la app al finalizar la carga -->
         <item name="postSplashScreenTheme">@style/Theme.MyApplication</item>
