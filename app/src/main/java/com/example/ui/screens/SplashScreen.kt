@@ -98,11 +98,11 @@ fun SplashScreen() {
 
             // Subtitle / Subheading
             Text(
-                text = "MARBELLA LOCAL POLICE",
+                text = "Programmed by S.Caracuel.R\nCP214 - PL MARBELLA",
                 style = MaterialTheme.typography.labelLarge.copy(
                     fontWeight = FontWeight.Bold,
                     color = Color(0xFF38BDF8),
-                    letterSpacing = 2.sp,
+                    letterSpacing = 1.5.sp,
                     textAlign = TextAlign.Center
                 )
             )
