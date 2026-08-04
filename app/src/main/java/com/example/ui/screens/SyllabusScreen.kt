@@ -143,7 +143,7 @@ fun SyllabusScreen(
                     Column(modifier = Modifier.fillMaxWidth()) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Text(
-                                text = "Local Police English",
+                                text = "Inglés Operativo Policial",
                                 style = MaterialTheme.typography.titleMedium.copy(
                                     fontWeight = FontWeight.Bold,
                                     color = Color.White,

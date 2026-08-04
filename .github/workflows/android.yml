@@ -49,7 +49,7 @@ jobs:
         with:
           artifacts: "app/build/outputs/apk/debug/app-debug.apk"
           tag: "v1.0.0"
-          name: "Marbella Police English Coach v1.0.0 (APK)"
+          name: "Inglés Operativo Policial v1.0.0 (APK)"
           body: "APK de la aplicación compilada para Android."
           allowUpdates: true
           recreateRelease: false

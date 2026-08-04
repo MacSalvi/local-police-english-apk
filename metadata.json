@@ -1,6 +1,6 @@
 {
-  "name": "Marbella Police English",
-  "description": "Tactical translation and quick-lookup tool for Marbella Local Police officers to communicate with British citizens.",
+  "name": "Inglés Operativo Policial",
+  "description": "Herramienta de referencia y entrenamiento de inglés táctico policial para la Policía Local.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

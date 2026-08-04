@@ -22,6 +22,6 @@ dependencyResolutionManagement {
   }
 }
 
-rootProject.name = "Marbella Police English"
+rootProject.name = "Inglés Operativo Policial"
 
 include(":app")
