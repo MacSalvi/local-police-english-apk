@@ -7,7 +7,7 @@
     <!-- Tema para la pantalla de carga (Splash Screen) -->
     <style name="Theme.App.Starting" parent="Theme.SplashScreen">
         <!-- Color de fondo de la terminal -->
-        <item name="windowSplashScreenBackground">#020617</item>
+        <item name="windowSplashScreenBackground">#000000</item>
 
         <!-- Tu imagen optimizada como icono de arranque -->
         <item name="windowSplashScreenAnimatedIcon">@drawable/k214_mob</item>

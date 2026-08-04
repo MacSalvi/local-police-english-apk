@@ -1,41 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="128dp"
     android:height="128dp"
     android:viewportWidth="128"
     android:viewportHeight="128">
-    
-    <!-- Background Shield Glow -->
-    <path
-        android:fillColor="#0D1E38"
-        android:pathData="M64,8 C90,8 108,18 112,48 C112,84 84,112 64,120 C44,112 16,84 16,48 C20,18 38,8 64,8 Z" />
 
-    <!-- Outer Shield Border -->
+    <!-- Black Background layer for standalone drawable usage -->
     <path
-        android:strokeColor="#00FF66"
-        android:strokeWidth="3"
-        android:fillColor="#00000000"
-        android:pathData="M64,12 C88,12 104,21 108,48 C108,80 82,106 64,114 C46,106 20,80 20,48 C24,21 40,12 64,12 Z" />
+        android:fillColor="#000000"
+        android:pathData="M0,0h128v128h-128z" />
 
-    <!-- Gold Police Badge Inner Shield -->
+    <!-- Main Slab/Serif Letter K (Matrix LED Green) -->
+    <!-- Left Vertical Stem with Top and Bottom Serifs -->
     <path
-        android:fillColor="#1E293B"
-        android:strokeColor="#38BDF8"
-        android:strokeWidth="2"
-        android:pathData="M64,22 C82,22 96,29 98,50 C98,75 78,96 64,103 C50,96 30,75 30,50 C32,29 46,22 64,22 Z" />
+        android:fillColor="#00FF33"
+        android:pathData="M14,12 H54 V20 H42 V108 H54 V116 H14 V108 H26 V20 H14 Z" />
 
-    <!-- 8-Pointed Star Emblem (Police Star) -->
+    <!-- Upper Diagonal Arm -->
     <path
-        android:fillColor="#00FF66"
-        android:pathData="M64,36 L68,48 L80,44 L74,54 L84,62 L72,64 L74,76 L64,68 L54,76 L56,64 L44,62 L54,54 L48,44 L60,48 Z" />
+        android:fillColor="#00FF33"
+        android:pathData="M40,60 L92,12 H114 V20 L64,68 Z" />
 
-    <!-- Central Badge Core Circle -->
+    <!-- Lower Diagonal Leg -->
     <path
-        android:fillColor="#0F172A"
-        android:pathData="M64,52 A10,10 0 1,0 64,72 A10,10 0 1,0 64,52 Z" />
+        android:fillColor="#00FF33"
+        android:pathData="M52,56 L110,116 H88 L38,64 Z" />
 
-    <!-- Text / Symbol inside core -->
+    <!-- Small '214' elements near lower left stem -->
+    <!-- '2' -->
     <path
-        android:fillColor="#38BDF8"
-        android:pathData="M64,57 L67,67 L61,67 Z M64,59 L62,65 L66,65 Z" />
+        android:fillColor="#00FF33"
+        android:pathData="M42,94 H50 V97 H45 V99 H50 V105 H42 V102 H47 V101 H42 Z" />
+
+    <!-- '1' -->
+    <path
+        android:fillColor="#00FF33"
+        android:pathData="M53,94 H57 V105 H53 Z" />
+
+    <!-- '4' -->
+    <path
+        android:fillColor="#00FF33"
+        android:pathData="M60,94 H63 V99 H67 V94 H70 V105 H67 V101 H60 Z" />
 
 </vector>
+
