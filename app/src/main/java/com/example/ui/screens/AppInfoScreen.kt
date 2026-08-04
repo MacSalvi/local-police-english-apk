@@ -146,8 +146,8 @@ fun AppInfoScreen(
 
             // Sección: Autoría y Créditos
             InfoCard(title = "Autoría y Créditos") {
-                InfoRow(label = "Desarrollador / Autor", value = "Policía Local de Marbella")
-                InfoRow(label = "Identificación Profesional", value = "CP214 S.C.R.")
+                InfoRow(label = "Desarrollador / Autor", value = "S.Caracuel.R")
+                InfoRow(label = "Identificación Profesional", value = "CP214 - PL MARBELLA")
                 InfoRow(label = "Contacto", value = "macsalvi@gmail.com")
             }
         }

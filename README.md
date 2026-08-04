@@ -1,7 +1,7 @@
 # 🚔 Inglés Operativo - Policía Local
 
 ## 👤 Créditos y Autoría
-* **Desarrollo:** Policía Local de Marbella — CP214 S.C.R.
+* **Desarrollo:** S.Caracuel — CP214
 * **Contacto:** macsalvi@gmail.com ✉️
 
 ---
