@@ -1,0 +1,5 @@
+# Ensure line endings and binary handling for Gradle wrapper
+gradlew text eol=lf
+*.bat text eol=crlf
+*.jar binary
+*.jks binary
