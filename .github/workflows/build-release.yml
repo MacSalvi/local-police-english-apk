@@ -31,10 +31,9 @@ jobs:
       - name: Build release APK
         run: gradle assembleRelease
 
-      - name: Upload APK to Release
-        uses: softprops/action-gh-release@v1
-        with:
-          files: '**/*.apk'
-          fail_on_unmatched_files: true
+      - name: Upload APK via GitHub CLI
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          APK_PATH=$(find . -type f -name "*.apk" | head -n 1)
+          gh release upload "${{ github.event.release.tag_name }}" "$APK_PATH"
