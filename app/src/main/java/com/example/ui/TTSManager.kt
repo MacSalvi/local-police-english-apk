@@ -2,6 +2,10 @@ package com.example.ui
 
 import android.content.Context
 import android.media.AudioAttributes
+import android.media.AudioFocusRequest
+import android.media.AudioManager
+import android.os.Build
+import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.speech.tts.TextToSpeech
@@ -14,6 +18,7 @@ class TTSManager(private val context: Context) {
     private var tts: TextToSpeech? = null
     private var isInitialized = false
     private val mainHandler = Handler(Looper.getMainLooper())
+    private val audioManager = context.getSystemService(Context.AUDIO_SERVICE) as? AudioManager
 
     private data class PendingSpeech(
         val text: String,
@@ -29,34 +34,36 @@ class TTSManager(private val context: Context) {
     private fun initTTS() {
         tts = TextToSpeech(context.applicationContext) { status ->
             if (status == TextToSpeech.SUCCESS) {
-                // Configure audio attributes for media/speech streaming
-                val audioAttributes = AudioAttributes.Builder()
-                    .setUsage(AudioAttributes.USAGE_MEDIA)
-                    .setContentType(AudioAttributes.CONTENT_TYPE_SPEECH)
-                    .build()
-                tts?.setAudioAttributes(audioAttributes)
+                try {
+                    // Set audio attributes for media/speech streaming
+                    val audioAttributes = AudioAttributes.Builder()
+                        .setUsage(AudioAttributes.USAGE_MEDIA)
+                        .setContentType(AudioAttributes.CONTENT_TYPE_SPEECH)
+                        .build()
+                    tts?.setAudioAttributes(audioAttributes)
+                } catch (e: Exception) {
+                    Log.e("TTSManager", "Error setting audio attributes", e)
+                }
 
                 // Try UK English first, with sequential fallback options
-                val resultUK = tts?.setLanguage(Locale.UK)
-                if (resultUK == TextToSpeech.LANG_MISSING_DATA || resultUK == TextToSpeech.LANG_NOT_SUPPORTED) {
+                var langResult = tts?.setLanguage(Locale.UK)
+                if (langResult == TextToSpeech.LANG_MISSING_DATA || langResult == TextToSpeech.LANG_NOT_SUPPORTED) {
                     Log.w("TTSManager", "UK English not available, trying US English.")
-                    val resultUS = tts?.setLanguage(Locale.US)
-                    if (resultUS == TextToSpeech.LANG_MISSING_DATA || resultUS == TextToSpeech.LANG_NOT_SUPPORTED) {
+                    langResult = tts?.setLanguage(Locale.US)
+                    if (langResult == TextToSpeech.LANG_MISSING_DATA || langResult == TextToSpeech.LANG_NOT_SUPPORTED) {
                         Log.w("TTSManager", "US English not available, trying general English.")
-                        val resultEN = tts?.setLanguage(Locale.ENGLISH)
-                        if (resultEN == TextToSpeech.LANG_MISSING_DATA || resultEN == TextToSpeech.LANG_NOT_SUPPORTED) {
-                            Log.w("TTSManager", "General English not available, using system default.")
+                        langResult = tts?.setLanguage(Locale.ENGLISH)
+                        if (langResult == TextToSpeech.LANG_MISSING_DATA || langResult == TextToSpeech.LANG_NOT_SUPPORTED) {
+                            Log.w("TTSManager", "General English not available, using default.")
                             tts?.setLanguage(Locale.getDefault())
                         }
                     }
                 }
 
-                // Set speed rate
                 tts?.setSpeechRate(0.85f)
                 isInitialized = true
                 Log.d("TTSManager", "TextToSpeech initialized successfully.")
 
-                // Execute any queued speech request received while initializing
                 pendingSpeech?.let { pending ->
                     pendingSpeech = null
                     speak(pending.text, pending.onStart, pending.onDone)
@@ -66,7 +73,7 @@ class TTSManager(private val context: Context) {
                 mainHandler.post {
                     Toast.makeText(
                         context,
-                        "No se pudo iniciar el motor de síntesis de voz.",
+                        "⚠️ Motor TTS no disponible en este dispositivo.",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -79,6 +86,36 @@ class TTSManager(private val context: Context) {
             Log.w("TTSManager", "TTS not fully initialized yet. Queueing speech request.")
             pendingSpeech = PendingSpeech(text, onStart, onDone)
             return
+        }
+
+        // Check audio volume & request focus
+        audioManager?.let { am ->
+            val currentVol = am.getStreamVolume(AudioManager.STREAM_MUSIC)
+            val maxVol = am.getStreamMaxVolume(AudioManager.STREAM_MUSIC)
+            if (currentVol == 0) {
+                // Try raising volume slightly if muted
+                try {
+                    am.setStreamVolume(AudioManager.STREAM_MUSIC, maxVol / 2, 0)
+                } catch (e: Exception) {
+                    Log.w("TTSManager", "Could not adjust stream volume", e)
+                }
+            }
+
+            // Request Audio Focus
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                val focusRequest = AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK)
+                    .setAudioAttributes(
+                        AudioAttributes.Builder()
+                            .setUsage(AudioAttributes.USAGE_MEDIA)
+                            .setContentType(AudioAttributes.CONTENT_TYPE_SPEECH)
+                            .build()
+                    )
+                    .build()
+                am.requestAudioFocus(focusRequest)
+            } else {
+                @Suppress("DEPRECATION")
+                am.requestAudioFocus(null, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK)
+            }
         }
 
         tts?.setOnUtteranceProgressListener(object : UtteranceProgressListener() {
@@ -102,7 +139,15 @@ class TTSManager(private val context: Context) {
         })
 
         val utteranceId = "MarbellaPoliceSpeech_${System.currentTimeMillis()}"
-        val result = tts?.speak(text, TextToSpeech.QUEUE_FLUSH, null, utteranceId)
+        val params = Bundle().apply {
+            putInt(TextToSpeech.Engine.KEY_PARAM_STREAM, AudioManager.STREAM_MUSIC)
+        }
+
+        mainHandler.post {
+            Toast.makeText(context, "🔊 $text", Toast.LENGTH_SHORT).show()
+        }
+
+        val result = tts?.speak(text, TextToSpeech.QUEUE_FLUSH, params, utteranceId)
         if (result == TextToSpeech.ERROR) {
             Log.e("TTSManager", "Error executing speak()")
             mainHandler.post { onDone() }
@@ -124,3 +169,4 @@ class TTSManager(private val context: Context) {
         isInitialized = false
     }
 }
+
