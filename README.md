@@ -2,6 +2,10 @@
 
 Aplicación nativa para Android desarrollada con **Jetpack Compose** y **Kotlin**, concebida como una herramienta de referencia y consulta especializada en terminología policial en inglés británico (`en-GB`).
 
+## 👨‍💻 Autor / Creador
+* **Desarrollador**: Policía Local de Marbella (CP214 S.C.R.)
+* **Contacto**: macsalvi@gmail.com
+
 ## 🚀 Características Principales
 
 * **Estructura Académica**: 30 módulos organizados en 7 áreas temáticas especializadas.
