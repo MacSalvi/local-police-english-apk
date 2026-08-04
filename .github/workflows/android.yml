@@ -1,11 +1,18 @@
-name: Android Build APK
+name: Android Build & Release APK
 
 on:
   push:
     branches: [ "main", "master" ]
+    tags:
+      - 'v*'
   pull_request:
     branches: [ "main", "master" ]
   workflow_dispatch:
+  release:
+    types: [published, created]
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -35,3 +42,16 @@ jobs:
         with:
           name: app-debug.apk
           path: app/build/outputs/apk/debug/app-debug.apk
+
+      - name: Publish APK to GitHub Release
+        if: github.event_name != 'pull_request'
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "app/build/outputs/apk/debug/app-debug.apk"
+          tag: "v1.0.0"
+          name: "Marbella Police English Coach v1.0.0 (APK)"
+          body: "APK de la aplicación compilada para Android."
+          allowUpdates: true
+          recreateRelease: false
+          token: ${{ secrets.GITHUB_TOKEN }}
+
