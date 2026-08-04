@@ -14,7 +14,7 @@ android {
   compileSdk { version = release(36) { minorApiLevel = 1 } }
 
   defaultConfig {
-    applicationId = "com.aistudio.marbellapolice.fzqrmp"
+    applicationId = "com.aistudio.inglesoperativopolicial.marbella"
     minSdk = 24
     targetSdk = 36
     versionCode = 1
