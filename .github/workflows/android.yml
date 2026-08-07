@@ -54,7 +54,7 @@ jobs:
         with:
           artifacts: "app/build/outputs/apk/debug/app-debug.apk"
           tag: ${{ github.ref_type == 'tag' && github.ref_name || format('v1.0.{0}', github.run_number) }}
-          name: "Inglés Operativo Policial ${{ github.ref_type == 'tag' && github.ref_name || format('v1.0.{0}', github.run_number) }} (APK)"
+          name: "Inglés Operativo Policial ${{ github.ref_type == 'tag' && github.ref_name || format('v1.0.{0}', github.run_number) }}"
           body: "APK de la aplicación compilada para Android (Compilación #${{ github.run_number }})."
           allowUpdates: true
           recreateRelease: false
