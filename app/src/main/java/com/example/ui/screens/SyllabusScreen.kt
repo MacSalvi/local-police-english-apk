@@ -53,12 +53,12 @@ data class SyllabusSection(
 )
 
 val operationalSections = listOf(
-    SyllabusSection("BLOQUE I · ATENCIÓN CIUDADANA E IDENTIFICACIÓN", listOf(1, 2, 3, 4, 5, 6), Color(0xFF34D399)),
-    SyllabusSection("BLOQUE II · TRÁFICO Y TRANSPORTE", listOf(7, 8, 9, 10, 11, 12), Color(0xFF38BDF8)),
-    SyllabusSection("BLOQUE III · SEGURIDAD CIUDADANA", listOf(13, 14, 15, 16, 17, 18), Color(0xFF2DD4BF)),
-    SyllabusSection("BLOQUE IV · DELITOS Y ACTUACIONES POLICIALES", listOf(19, 20, 21, 22, 23, 24, 25, 26, 27, 28), Color(0xFFC084FC)),
-    SyllabusSection("BLOQUE V · EMERGENCIAS Y SERVICIOS ESPECIALES", listOf(29), Color(0xFFFB923C)),
-    SyllabusSection("BLOQUE VI · VOCABULARIO OPERATIVO", listOf(30), Color(0xFFFACC15))
+    SyllabusSection("BLOQUE I · Atención Ciudadana e Identificación", listOf(1, 2, 3, 4, 5, 6), Color(0xFF34D399)),
+    SyllabusSection("BLOQUE II · Tráfico y Transporte", listOf(7, 8, 9, 10, 11, 12), Color(0xFF38BDF8)),
+    SyllabusSection("BLOQUE III · Seguridad Ciudadana", listOf(13, 14, 15, 16, 17, 18), Color(0xFF2DD4BF)),
+    SyllabusSection("BLOQUE IV · Delitos y Actuaciones Policiales", listOf(19, 20, 21, 22, 23, 24, 25, 26, 27, 28), Color(0xFFC084FC)),
+    SyllabusSection("BLOQUE V · Emergencias y Servicios Especiales", listOf(29), Color(0xFFFB923C)),
+    SyllabusSection("BLOQUE VI · Vocabulario Operativo", listOf(30), Color(0xFFFACC15))
 )
 
 data class Star(
@@ -136,7 +136,7 @@ fun SyllabusScreen(
     val crtGreen = Color(0xFF00FF66)
 
     val listState = androidx.compose.foundation.lazy.rememberLazyListState()
-    var expandedSectionTitle by remember { mutableStateOf<String?>(null) }
+    var expandedSectionTitle by remember { mutableStateOf<String?>(operationalSections.firstOrNull()?.title) }
 
     val moduleMap = remember(modules) { modules.associateBy { it.moduleId } }
 
@@ -781,14 +781,9 @@ fun ModuleHeaderCard(
                         fontWeight = FontWeight.Bold,
                         fontSize = 16.sp
                     )
-                    val lessonCountText = "${module.lessons.size} Lección${if (module.lessons.size != 1) "es" else ""}"
-                    val subtitleText = if (module.lessons.firstOrNull()?.lessonTitle?.isNotBlank() == true) {
-                        "${module.lessons.first().lessonTitle} • $lessonCountText"
-                    } else {
-                        "$lessonCountText de entrenamiento"
-                    }
+                    val lessonCountText = "${module.lessons.size} Lección${if (module.lessons.size != 1) "es" else ""} de entrenamiento"
                     Text(
-                        text = subtitleText,
+                        text = lessonCountText,
                         color = Slate400,
                         fontSize = 12.sp,
                         fontWeight = FontWeight.Medium
