@@ -1,72 +1,72 @@
-package com.policia.inglesoperativo.data.modules
+package com.example.data
 
-import com.policia.inglesoperativo.domain.model.Module
-import com.policia.inglesoperativo.domain.model.Lesson
-import com.policia.inglesoperativo.domain.model.VocabularyItem
-import com.policia.inglesoperativo.domain.model.PhraseItem
+import com.example.data.model.Module
+import com.example.data.model.Lesson
+import com.example.data.model.VocabularyItem
+import com.example.data.model.PhraseItem
 
 object Module24 {
     val module = Module(
         id = 24,
-        title = "Módulo 24",
-        description = "Viviendas turísticas y molestias por ruido.",
+        title = "Mï¿½dulo 24",
+        description = "Viviendas turï¿½sticas y molestias por ruido.",
         lessons = listOf(
             Lesson(
                 id = 1,
-                title = "Viviendas turísticas y molestias por ruido",
+                title = "Viviendas turï¿½sticas y molestias por ruido",
                 vocabulary = listOf(
-                    VocabularyItem(term = "HOLIDAY APARTMENT", phonetic = "hólidei apátment", translation = "Apartamento turístico"),
-                    VocabularyItem(term = "TOURIST ACCOMMODATION", phonetic = "túrist akómodeishon", translation = "Alojamiento turístico"),
-                    VocabularyItem(term = "BOOKING", phonetic = "búkin", translation = "Reserva"),
-                    VocabularyItem(term = "GUEST", phonetic = "guest", translation = "Huésped"),
-                    VocabularyItem(term = "HOST", phonetic = "jóust", translation = "Anfitrión"),
-                    VocabularyItem(term = "PROPERTY OWNER", phonetic = "próperti óuna", translation = "Propietario"),
-                    VocabularyItem(term = "PERSON IN CHARGE", phonetic = "pérson in charch", translation = "Responsable"),
+                    VocabularyItem(term = "HOLIDAY APARTMENT", phonetic = "hï¿½lidei apï¿½tment", translation = "Apartamento turï¿½stico"),
+                    VocabularyItem(term = "TOURIST ACCOMMODATION", phonetic = "tï¿½rist akï¿½modeishon", translation = "Alojamiento turï¿½stico"),
+                    VocabularyItem(term = "BOOKING", phonetic = "bï¿½kin", translation = "Reserva"),
+                    VocabularyItem(term = "GUEST", phonetic = "guest", translation = "Huï¿½sped"),
+                    VocabularyItem(term = "HOST", phonetic = "jï¿½ust", translation = "Anfitriï¿½n"),
+                    VocabularyItem(term = "PROPERTY OWNER", phonetic = "prï¿½perti ï¿½una", translation = "Propietario"),
+                    VocabularyItem(term = "PERSON IN CHARGE", phonetic = "pï¿½rson in charch", translation = "Responsable"),
                     VocabularyItem(term = "NOISE", phonetic = "noiz", translation = "Ruido"),
-                    VocabularyItem(term = "LOUD MUSIC", phonetic = "laud miúsik", translation = "Música alta"),
-                    VocabularyItem(term = "PARTY", phonetic = "párti", translation = "Fiesta"),
-                    VocabularyItem(term = "LOUDSPEAKER", phonetic = "láudspika", translation = "Altavoz"),
-                    VocabularyItem(term = "NEIGHBOUR", phonetic = "néiba", translation = "Vecino"),
-                    VocabularyItem(term = "NOISE COMPLAINT", phonetic = "noiz kompléint", translation = "Queja por ruido"),
-                    VocabularyItem(term = "DISTURBANCE", phonetic = "distérbans", translation = "Molestias"),
-                    VocabularyItem(term = "PUBLIC PEACE", phonetic = "páblik pis", translation = "Tranquilidad pública"),
-                    VocabularyItem(term = "MUNICIPAL BY-LAWS", phonetic = "miunísipol báilos", translation = "Ordenanzas municipales"),
-                    VocabularyItem(term = "IDENTIFICATION", phonetic = "aidéntifikeishon", translation = "Documento de identidad"),
-                    VocabularyItem(term = "PASSPORT", phonetic = "pásport", translation = "Pasaporte"),
-                    VocabularyItem(term = "IDENTITY CARD", phonetic = "aidéntiti kad", translation = "Documento de identidad"),
-                    VocabularyItem(term = "OFFICIAL REPORT", phonetic = "ofíshal ripót", translation = "Acta / denuncia administrativa"),
-                    VocabularyItem(term = "WARNING", phonetic = "uórnin", translation = "Advertencia"),
-                    VocabularyItem(term = "INFRINGEMENT", phonetic = "infrínchment", translation = "Infracción"),
-                    VocabularyItem(term = "COMPLIANCE", phonetic = "kompláians", translation = "Cumplimiento")
+                    VocabularyItem(term = "LOUD MUSIC", phonetic = "laud miï¿½sik", translation = "Mï¿½sica alta"),
+                    VocabularyItem(term = "PARTY", phonetic = "pï¿½rti", translation = "Fiesta"),
+                    VocabularyItem(term = "LOUDSPEAKER", phonetic = "lï¿½udspika", translation = "Altavoz"),
+                    VocabularyItem(term = "NEIGHBOUR", phonetic = "nï¿½iba", translation = "Vecino"),
+                    VocabularyItem(term = "NOISE COMPLAINT", phonetic = "noiz komplï¿½int", translation = "Queja por ruido"),
+                    VocabularyItem(term = "DISTURBANCE", phonetic = "distï¿½rbans", translation = "Molestias"),
+                    VocabularyItem(term = "PUBLIC PEACE", phonetic = "pï¿½blik pis", translation = "Tranquilidad pï¿½blica"),
+                    VocabularyItem(term = "MUNICIPAL BY-LAWS", phonetic = "miunï¿½sipol bï¿½ilos", translation = "Ordenanzas municipales"),
+                    VocabularyItem(term = "IDENTIFICATION", phonetic = "aidï¿½ntifikeishon", translation = "Documento de identidad"),
+                    VocabularyItem(term = "PASSPORT", phonetic = "pï¿½sport", translation = "Pasaporte"),
+                    VocabularyItem(term = "IDENTITY CARD", phonetic = "aidï¿½ntiti kad", translation = "Documento de identidad"),
+                    VocabularyItem(term = "OFFICIAL REPORT", phonetic = "ofï¿½shal ripï¿½t", translation = "Acta / denuncia administrativa"),
+                    VocabularyItem(term = "WARNING", phonetic = "uï¿½rnin", translation = "Advertencia"),
+                    VocabularyItem(term = "INFRINGEMENT", phonetic = "infrï¿½nchment", translation = "Infracciï¿½n"),
+                    VocabularyItem(term = "COMPLIANCE", phonetic = "komplï¿½ians", translation = "Cumplimiento")
                 ),
                 phrases = listOf(
-                    PhraseItem(english = "LOCAL POLICE. PLEASE OPEN THE DOOR.", phonetic = "lóukal polís plís óupen de dor", spanish = "Policía Local. Abra la puerta, por favor."),
-                    PhraseItem(english = "WE NEED TO SPEAK TO THE PERSON WHO RENTED THIS PROPERTY.", phonetic = "güi nid tu spik tu de pérson ju réntid dis próperti", spanish = "Necesitamos hablar con la persona que ha alquilado esta vivienda."),
-                    PhraseItem(english = "WHO RENTED THIS APARTMENT?", phonetic = "ju réntid dis apátment", spanish = "¿Quién ha alquilado este apartamento?"),
-                    PhraseItem(english = "ARE YOU THE PERSON WHO MADE THE BOOKING?", phonetic = "ar yu de pérson ju meid de búkin", spanish = "¿Es usted la persona que hizo la reserva?"),
-                    PhraseItem(english = "WE HAVE RECEIVED A NOISE COMPLAINT.", phonetic = "güi jav risívd a noiz kompléint", spanish = "Hemos recibido una queja por ruido."),
-                    PhraseItem(english = "YOUR MUSIC IS DISTURBING THE NEIGHBOURS.", phonetic = "yor miúsik is distérbin de néibas", spanish = "Su música está molestando a los vecinos."),
-                    PhraseItem(english = "THE NEIGHBOURS CANNOT REST.", phonetic = "de néibas cánot rest", spanish = "Los vecinos no pueden descansar."),
-                    PhraseItem(english = "PLEASE TURN THE MUSIC OFF.", phonetic = "plís tern de miúsik of", spanish = "Apague la música, por favor."),
-                    PhraseItem(english = "PLEASE LOWER THE VOLUME IMMEDIATELY.", phonetic = "plís lóua de vólium imídiatli", spanish = "Baje el volumen inmediatamente."),
+                    PhraseItem(english = "LOCAL POLICE. PLEASE OPEN THE DOOR.", phonetic = "lï¿½ukal polï¿½s plï¿½s ï¿½upen de dor", spanish = "Policï¿½a Local. Abra la puerta, por favor."),
+                    PhraseItem(english = "WE NEED TO SPEAK TO THE PERSON WHO RENTED THIS PROPERTY.", phonetic = "gï¿½i nid tu spik tu de pï¿½rson ju rï¿½ntid dis prï¿½perti", spanish = "Necesitamos hablar con la persona que ha alquilado esta vivienda."),
+                    PhraseItem(english = "WHO RENTED THIS APARTMENT?", phonetic = "ju rï¿½ntid dis apï¿½tment", spanish = "ï¿½Quiï¿½n ha alquilado este apartamento?"),
+                    PhraseItem(english = "ARE YOU THE PERSON WHO MADE THE BOOKING?", phonetic = "ar yu de pï¿½rson ju meid de bï¿½kin", spanish = "ï¿½Es usted la persona que hizo la reserva?"),
+                    PhraseItem(english = "WE HAVE RECEIVED A NOISE COMPLAINT.", phonetic = "gï¿½i jav risï¿½vd a noiz komplï¿½int", spanish = "Hemos recibido una queja por ruido."),
+                    PhraseItem(english = "YOUR MUSIC IS DISTURBING THE NEIGHBOURS.", phonetic = "yor miï¿½sik is distï¿½rbin de nï¿½ibas", spanish = "Su mï¿½sica estï¿½ molestando a los vecinos."),
+                    PhraseItem(english = "THE NEIGHBOURS CANNOT REST.", phonetic = "de nï¿½ibas cï¿½not rest", spanish = "Los vecinos no pueden descansar."),
+                    PhraseItem(english = "PLEASE TURN THE MUSIC OFF.", phonetic = "plï¿½s tern de miï¿½sik of", spanish = "Apague la mï¿½sica, por favor."),
+                    PhraseItem(english = "PLEASE LOWER THE VOLUME IMMEDIATELY.", phonetic = "plï¿½s lï¿½ua de vï¿½lium imï¿½diatli", spanish = "Baje el volumen inmediatamente."),
                     PhraseItem(english = "ASK YOUR GUESTS TO KEEP THE NOISE DOWN.", phonetic = "ask yor guests tu kip de noiz daun", spanish = "Pida a sus invitados que bajen el ruido."),
-                    PhraseItem(english = "PLEASE KEEP YOUR VOICES DOWN.", phonetic = "plís kip yor vóicis daun", spanish = "Bajen la voz, por favor."),
-                    PhraseItem(english = "PLEASE GO INSIDE THE APARTMENT.", phonetic = "plís góu insáid di apátment", spanish = "Entren en el apartamento, por favor."),
-                    PhraseItem(english = "DO NOT MAKE ANY MORE NOISE.", phonetic = "du not meik éni mor noiz", spanish = "No hagan más ruido."),
-                    PhraseItem(english = "YOU ARE BREACHING THE MUNICIPAL BY-LAWS.", phonetic = "yu ar bríchin de miunísipol báilos", spanish = "Está incumpliendo las ordenanzas municipales."),
-                    PhraseItem(english = "I NEED TO SEE YOUR IDENTIFICATION.", phonetic = "ai nid tu si yor aidéntifikeishon", spanish = "Necesito ver su documentación."),
-                    PhraseItem(english = "PLEASE SHOW ME YOUR PASSPORT OR IDENTITY CARD.", phonetic = "plís shóu mi yor pásport or aidéntiti kad", spanish = "Muéstreme su pasaporte o documento de identidad."),
-                    PhraseItem(english = "I AM RECORDING YOUR PERSONAL DETAILS.", phonetic = "ai am rikórdin yor pérsonal díteils", spanish = "Voy a tomar sus datos personales."),
-                    PhraseItem(english = "YOUR DETAILS WILL BE INCLUDED IN THE OFFICIAL REPORT.", phonetic = "yor díteils güil bi inklúdid in di ofíshal ripót", spanish = "Sus datos se incluirán en el acta."),
-                    PhraseItem(english = "THIS IS AN OFFICIAL WARNING.", phonetic = "dis is an ofíshal uórnin", spanish = "Esta es una advertencia oficial."),
-                    PhraseItem(english = "THIS IS THE ONLY WARNING YOU WILL RECEIVE.", phonetic = "dis is di ónli uórnin yu güil risív", spanish = "Esta es la única advertencia que va a recibir."),
-                    PhraseItem(english = "IF WE HAVE TO RETURN, AN OFFICIAL REPORT WILL BE FILED.", phonetic = "if güi jav tu ritérn an ofíshal ripót güil bi fáild", spanish = "Si tenemos que volver, se levantará un acta."),
-                    PhraseItem(english = "IF WE ARE CALLED HERE AGAIN, FURTHER ACTION WILL BE TAKEN.", phonetic = "if güi ar kold jía aguén férda ákshon güil bi téiken", spanish = "Si vuelven a requerir nuestra presencia, se adoptarán nuevas medidas."),
-                    PhraseItem(english = "YOU MUST FOLLOW OUR INSTRUCTIONS.", phonetic = "yu mast fólou aur instrákshons", spanish = "Debe seguir nuestras instrucciones."),
-                    PhraseItem(english = "FAILING TO OBEY A LAWFUL POLICE ORDER MAY CONSTITUTE AN OFFENCE.", phonetic = "féilin tu obéi a lóful polís órder méi kónstitiut an oféns", spanish = "No obedecer una orden legítima de la policía puede constituir una infracción o un delito, según las circunstancias."),
-                    PhraseItem(english = "DO YOU UNDERSTAND?", phonetic = "du yu ánderstánd", spanish = "¿Lo ha entendido?"),
-                    PhraseItem(english = "PLEASE MAKE SURE THIS DOES NOT HAPPEN AGAIN.", phonetic = "plís meik shua dis das not jápen aguén", spanish = "Procure que esto no vuelva a ocurrir."),
-                    PhraseItem(english = "THANK YOU FOR YOUR COOPERATION.", phonetic = "zénk yu for yor kouópareishon", spanish = "Gracias por su colaboración.")
+                    PhraseItem(english = "PLEASE KEEP YOUR VOICES DOWN.", phonetic = "plï¿½s kip yor vï¿½icis daun", spanish = "Bajen la voz, por favor."),
+                    PhraseItem(english = "PLEASE GO INSIDE THE APARTMENT.", phonetic = "plï¿½s gï¿½u insï¿½id di apï¿½tment", spanish = "Entren en el apartamento, por favor."),
+                    PhraseItem(english = "DO NOT MAKE ANY MORE NOISE.", phonetic = "du not meik ï¿½ni mor noiz", spanish = "No hagan mï¿½s ruido."),
+                    PhraseItem(english = "YOU ARE BREACHING THE MUNICIPAL BY-LAWS.", phonetic = "yu ar brï¿½chin de miunï¿½sipol bï¿½ilos", spanish = "Estï¿½ incumpliendo las ordenanzas municipales."),
+                    PhraseItem(english = "I NEED TO SEE YOUR IDENTIFICATION.", phonetic = "ai nid tu si yor aidï¿½ntifikeishon", spanish = "Necesito ver su documentaciï¿½n."),
+                    PhraseItem(english = "PLEASE SHOW ME YOUR PASSPORT OR IDENTITY CARD.", phonetic = "plï¿½s shï¿½u mi yor pï¿½sport or aidï¿½ntiti kad", spanish = "Muï¿½streme su pasaporte o documento de identidad."),
+                    PhraseItem(english = "I AM RECORDING YOUR PERSONAL DETAILS.", phonetic = "ai am rikï¿½rdin yor pï¿½rsonal dï¿½teils", spanish = "Voy a tomar sus datos personales."),
+                    PhraseItem(english = "YOUR DETAILS WILL BE INCLUDED IN THE OFFICIAL REPORT.", phonetic = "yor dï¿½teils gï¿½il bi inklï¿½did in di ofï¿½shal ripï¿½t", spanish = "Sus datos se incluirï¿½n en el acta."),
+                    PhraseItem(english = "THIS IS AN OFFICIAL WARNING.", phonetic = "dis is an ofï¿½shal uï¿½rnin", spanish = "Esta es una advertencia oficial."),
+                    PhraseItem(english = "THIS IS THE ONLY WARNING YOU WILL RECEIVE.", phonetic = "dis is di ï¿½nli uï¿½rnin yu gï¿½il risï¿½v", spanish = "Esta es la ï¿½nica advertencia que va a recibir."),
+                    PhraseItem(english = "IF WE HAVE TO RETURN, AN OFFICIAL REPORT WILL BE FILED.", phonetic = "if gï¿½i jav tu ritï¿½rn an ofï¿½shal ripï¿½t gï¿½il bi fï¿½ild", spanish = "Si tenemos que volver, se levantarï¿½ un acta."),
+                    PhraseItem(english = "IF WE ARE CALLED HERE AGAIN, FURTHER ACTION WILL BE TAKEN.", phonetic = "if gï¿½i ar kold jï¿½a aguï¿½n fï¿½rda ï¿½kshon gï¿½il bi tï¿½iken", spanish = "Si vuelven a requerir nuestra presencia, se adoptarï¿½n nuevas medidas."),
+                    PhraseItem(english = "YOU MUST FOLLOW OUR INSTRUCTIONS.", phonetic = "yu mast fï¿½lou aur instrï¿½kshons", spanish = "Debe seguir nuestras instrucciones."),
+                    PhraseItem(english = "FAILING TO OBEY A LAWFUL POLICE ORDER MAY CONSTITUTE AN OFFENCE.", phonetic = "fï¿½ilin tu obï¿½i a lï¿½ful polï¿½s ï¿½rder mï¿½i kï¿½nstitiut an ofï¿½ns", spanish = "No obedecer una orden legï¿½tima de la policï¿½a puede constituir una infracciï¿½n o un delito, segï¿½n las circunstancias."),
+                    PhraseItem(english = "DO YOU UNDERSTAND?", phonetic = "du yu ï¿½nderstï¿½nd", spanish = "ï¿½Lo ha entendido?"),
+                    PhraseItem(english = "PLEASE MAKE SURE THIS DOES NOT HAPPEN AGAIN.", phonetic = "plï¿½s meik shua dis das not jï¿½pen aguï¿½n", spanish = "Procure que esto no vuelva a ocurrir."),
+                    PhraseItem(english = "THANK YOU FOR YOUR COOPERATION.", phonetic = "zï¿½nk yu for yor kouï¿½pareishon", spanish = "Gracias por su colaboraciï¿½n.")
                 )
             )
         )

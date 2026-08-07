@@ -1,9 +1,9 @@
-package com.policia.inglesoperativo.data.modules
+package com.example.data
 
-import com.policia.inglesoperativo.domain.model.Module
-import com.policia.inglesoperativo.domain.model.Lesson
-import com.policia.inglesoperativo.domain.model.VocabularyItem
-import com.policia.inglesoperativo.domain.model.PhraseItem
+import com.example.data.model.Module
+import com.example.data.model.Lesson
+import com.example.data.model.VocabularyItem
+import com.example.data.model.PhraseItem
 
 object Module29 {
     val module = Module(
@@ -91,7 +91,7 @@ object Module29 {
                     PhraseItem(english = "KEEP AWAY FROM DAMAGED BUILDINGS.", phonetic = "kip aguéi from dámichd bíldins", spanish = "Manténgase alejado de los edificios dañados."),
                     PhraseItem(english = "THERE IS A RISK OF COLLAPSE.", phonetic = "dea is a risk ov koláps", spanish = "Existe riesgo de derrumbe."),
                     PhraseItem(english = "DO NOT APPROACH THE FIRE.", phonetic = "du not apróuch de fáia", spanish = "No se acerque al incendio."),
-                    PhraseItem(english = "KEEP AWAY FROM THE SMOKE.", phonetic = "kip aguéi from de smóuk", spanis = "Manténgase alejado del humo."),
+                    PhraseItem(english = "KEEP AWAY FROM THE SMOKE.", phonetic = "kip aguéi from de smóuk", spanish = "Manténgase alejado del humo."),
                     PhraseItem(english = "DO NOT BREATHE THE SMOKE.", phonetic = "du not bríiz de smóuk", spanish = "No respire el humo."),
                     PhraseItem(english = "LEAVE THE BUILDING IMMEDIATELY.", phonetic = "liv de bíldin imídietli", spanish = "Salga inmediatamente del edificio."),
                     PhraseItem(english = "THE BUILDING IS NOT SAFE.", phonetic = "de bíldin is not séif", spanish = "El edificio no es seguro."),

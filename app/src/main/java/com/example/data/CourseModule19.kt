@@ -1,9 +1,9 @@
-package com.policia.inglesoperativo.data.modules
+package com.example.data
 
-import com.policia.inglesoperativo.domain.model.Module
-import com.policia.inglesoperativo.domain.model.Lesson
-import com.policia.inglesoperativo.domain.model.VocabularyItem
-import com.policia.inglesoperativo.domain.model.PhraseItem
+import com.example.data.model.Module
+import com.example.data.model.Lesson
+import com.example.data.model.VocabularyItem
+import com.example.data.model.PhraseItem
 
 object Module19 {
     val module = Module(
