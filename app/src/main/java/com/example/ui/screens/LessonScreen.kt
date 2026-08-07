@@ -31,6 +31,7 @@ import androidx.compose.ui.unit.sp
 import com.example.R
 import com.example.data.model.Lesson
 import com.example.data.model.PhraseItem
+import com.example.ui.components.TacticalBackground
 import com.example.ui.theme.*
 import kotlinx.coroutines.launch
 
@@ -97,19 +98,21 @@ fun LessonScreen(
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Slate950,
+                    containerColor = Slate950.copy(alpha = 0.80f),
                     titleContentColor = Color.White
                 )
             )
         },
-        containerColor = Slate950
+        containerColor = Color.Transparent
     ) { paddingValues ->
-        Column(
+        TacticalBackground(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
-                .background(Slate950)
         ) {
+            Column(
+                modifier = Modifier.fillMaxSize()
+            ) {
             TabRow(
                 selectedTabIndex = pagerState.currentPage,
                 containerColor = Color(0xFF0F172A),
@@ -168,6 +171,7 @@ fun LessonScreen(
             }
         }
     }
+}
 }
 
 @Composable

@@ -9,8 +9,8 @@
         <!-- Color de fondo táctico -->
         <item name="windowSplashScreenBackground">#0F172A</item>
 
-        <!-- Imagen del escudo táctico de carga -->
-        <item name="windowSplashScreenAnimatedIcon">@drawable/img_splash_logo_1785855616063</item>
+        <!-- Sin icono recortado durante la precarga del sistema -->
+        <item name="windowSplashScreenAnimatedIcon">@android:color/transparent</item>
 
         <!-- Tema al que transita la app al finalizar la carga -->
         <item name="postSplashScreenTheme">@style/Theme.MyApplication</item>

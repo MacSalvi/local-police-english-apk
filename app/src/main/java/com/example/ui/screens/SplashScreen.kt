@@ -8,9 +8,11 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -26,12 +28,14 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.R
+import com.example.ui.components.TacticalBackground
 
 @Composable
 fun SplashScreen() {
@@ -49,24 +53,29 @@ fun SplashScreen() {
         )
     }
 
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background),
-        contentAlignment = Alignment.Center
+    TacticalBackground(
+        modifier = Modifier.fillMaxSize()
     ) {
+        BoxWithConstraints(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+        val outerLogoSize = (maxWidth * 0.38f).coerceIn(100.dp, 160.dp)
+        val innerLogoSize = outerLogoSize - 10.dp
+
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
             modifier = Modifier
-                .padding(32.dp)
+                .fillMaxWidth()
+                .padding(horizontal = 24.dp)
                 .alpha(alphaAnim.value)
                 .scale(scaleAnim.value)
         ) {
             // App Badge Logo
             Box(
                 modifier = Modifier
-                    .size(140.dp)
+                    .size(outerLogoSize)
                     .clip(CircleShape)
                     .border(2.dp, Color(0xFF38BDF8), CircleShape)
                     .background(Color(0xFF0F172A)),
@@ -75,8 +84,9 @@ fun SplashScreen() {
                 Image(
                     painter = painterResource(id = R.drawable.img_app_icon_1785855600158),
                     contentDescription = "Logo Inglés Operativo Policial",
+                    contentScale = ContentScale.Crop,
                     modifier = Modifier
-                        .size(130.dp)
+                        .size(innerLogoSize)
                         .clip(CircleShape)
                 )
             }
@@ -121,4 +131,5 @@ fun SplashScreen() {
             )
         }
     }
+}
 }

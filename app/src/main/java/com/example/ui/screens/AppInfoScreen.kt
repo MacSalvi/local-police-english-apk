@@ -32,6 +32,7 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
@@ -40,7 +41,10 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import com.example.ui.components.TacticalBackground
+import com.example.ui.theme.Slate950
 import com.example.R
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -68,16 +72,20 @@ fun AppInfoScreen(
                             contentDescription = "Volver"
                         )
                     }
-                }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = Slate950.copy(alpha = 0.80f),
+                    titleContentColor = Color.White
+                )
             )
         },
+        containerColor = Color.Transparent,
         modifier = modifier
     ) { paddingValues ->
-        Surface(
+        TacticalBackground(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(paddingValues),
-            color = MaterialTheme.colorScheme.background
+                .padding(paddingValues)
         ) {
             Column(
                 modifier = Modifier
@@ -87,20 +95,29 @@ fun AppInfoScreen(
                 verticalArrangement = Arrangement.spacedBy(16.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Box(
-                    modifier = Modifier
-                        .size(110.dp)
-                        .clip(CircleShape)
-                        .background(Color(0xFF0F172A)),
+                BoxWithConstraints(
+                    modifier = Modifier.fillMaxWidth(),
                     contentAlignment = Alignment.Center
                 ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.img_app_icon_1785855600158),
-                        contentDescription = "Escudo Marbella Police Local English",
+                    val outerLogoSize = (maxWidth * 0.30f).coerceIn(90.dp, 130.dp)
+                    val innerLogoSize = outerLogoSize - 10.dp
+
+                    Box(
                         modifier = Modifier
-                            .size(100.dp)
+                            .size(outerLogoSize)
                             .clip(CircleShape)
-                    )
+                            .background(Color(0xFF0F172A)),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Image(
+                            painter = painterResource(id = R.drawable.img_app_icon_1785855600158),
+                            contentDescription = "Escudo Marbella Police Local English",
+                            contentScale = ContentScale.Crop,
+                            modifier = Modifier
+                                .size(innerLogoSize)
+                                .clip(CircleShape)
+                        )
+                    }
                 }
 
                 Spacer(modifier = Modifier.height(4.dp))

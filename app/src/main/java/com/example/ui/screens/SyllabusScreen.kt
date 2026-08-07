@@ -25,10 +25,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -37,11 +39,13 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.Image
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import com.example.R
 import com.example.data.model.Lesson
 import com.example.data.model.Module
 import com.example.data.model.PhraseItem
+import com.example.ui.components.TacticalBackground
 import com.example.ui.theme.*
 import kotlin.math.sin
 import kotlin.random.Random
@@ -49,24 +53,17 @@ import kotlin.random.Random
 data class SyllabusSection(
     val title: String,
     val moduleIds: List<Int>,
-    val color: Color
+    val color: Color,
+    val gradientColors: List<Color>
 )
 
 val operationalSections = listOf(
-    SyllabusSection("BLOQUE I · Atención Ciudadana e Identificación", listOf(1, 2, 3, 4, 5, 6), Color(0xFF34D399)),
-    SyllabusSection("BLOQUE II · Tráfico y Transporte", listOf(7, 8, 9, 10, 11, 12), Color(0xFF38BDF8)),
-    SyllabusSection("BLOQUE III · Seguridad Ciudadana", listOf(13, 14, 15, 16, 17, 18), Color(0xFF2DD4BF)),
-    SyllabusSection("BLOQUE IV · Delitos y Actuaciones Policiales", listOf(19, 20, 21, 22, 23, 24, 25, 26, 27, 28), Color(0xFFC084FC)),
-    SyllabusSection("BLOQUE V · Emergencias y Servicios Especiales", listOf(29), Color(0xFFFB923C)),
-    SyllabusSection("BLOQUE VI · Vocabulario Operativo", listOf(30), Color(0xFFFACC15))
-)
-
-data class Star(
-    val xFraction: Float,
-    val yFraction: Float,
-    val radius: Float,
-    val phase: Float,
-    val speed: Float
+    SyllabusSection("BLOQUE I · Atención Ciudadana e Identificación", listOf(1, 2, 3, 4, 5, 6), Color(0xFF818CF8), listOf(Color(0xFF818CF8), Color(0xFFA5B4FC))),
+    SyllabusSection("BLOQUE II · Tráfico y Transporte", listOf(7, 8, 9, 10, 11, 12), Color(0xFF38BDF8), listOf(Color(0xFF38BDF8), Color(0xFF7DD3FC))),
+    SyllabusSection("BLOQUE III · Seguridad Ciudadana", listOf(13, 14, 15, 16, 17, 18), Color(0xFF2DD4BF), listOf(Color(0xFF2DD4BF), Color(0xFF5EEAD4))),
+    SyllabusSection("BLOQUE IV · Delitos y Actuaciones Policiales", listOf(19, 20, 21, 22, 23, 24, 25, 26, 27, 28), Color(0xFFC084FC), listOf(Color(0xFFC084FC), Color(0xFFE9D5FF))),
+    SyllabusSection("BLOQUE V · Emergencias y Servicios Especiales", listOf(29), Color(0xFFFB923C), listOf(Color(0xFFFB923C), Color(0xFFFDBA74))),
+    SyllabusSection("BLOQUE VI · Vocabulario Operativo", listOf(30), Color(0xFFFACC15), listOf(Color(0xFFFACC15), Color(0xFFFEF08A)))
 )
 
 @Composable
@@ -75,48 +72,10 @@ fun StarryBackground(
     starCount: Int = 75,
     content: @Composable () -> Unit
 ) {
-    val stars = remember {
-        val random = Random(42)
-        List(starCount) {
-            Star(
-                xFraction = random.nextFloat(),
-                yFraction = random.nextFloat(),
-                radius = random.nextFloat() * 1.8f + 0.8f,
-                phase = random.nextFloat() * 6.28f,
-                speed = random.nextFloat() * 0.012f + 0.003f
-            )
-        }
-    }
-
-    val infiniteTransition = rememberInfiniteTransition(label = "star_animation")
-    val animProgress by infiniteTransition.animateFloat(
-        initialValue = 0f,
-        targetValue = 100f,
-        animationSpec = infiniteRepeatable(
-            animation = tween(durationMillis = 35000, easing = LinearEasing),
-            repeatMode = RepeatMode.Restart
-        ),
-        label = "star_progress"
+    TacticalBackground(
+        modifier = modifier,
+        content = content
     )
-
-    Box(modifier = modifier) {
-        Canvas(modifier = Modifier.fillMaxSize()) {
-            val width = size.width
-            val height = size.height
-
-            stars.forEach { star ->
-                val currentY = ((star.yFraction - (animProgress * star.speed)) % 1f).let { if (it < 0f) it + 1f else it }
-                val alpha = (sin(animProgress * 1.2f + star.phase) + 1f) / 2f * 0.65f + 0.15f
-                
-                drawCircle(
-                    color = Color.White.copy(alpha = alpha),
-                    radius = star.radius,
-                    center = Offset(star.xFraction * width, currentY * height)
-                )
-            }
-        }
-        content()
-    }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -136,7 +95,7 @@ fun SyllabusScreen(
     val crtGreen = Color(0xFF00FF66)
 
     val listState = androidx.compose.foundation.lazy.rememberLazyListState()
-    var expandedSectionTitle by remember { mutableStateOf<String?>(operationalSections.firstOrNull()?.title) }
+    var expandedSectionTitle by remember { mutableStateOf<String?>(null) }
 
     val moduleMap = remember(modules) { modules.associateBy { it.moduleId } }
 
@@ -264,18 +223,17 @@ fun SyllabusScreen(
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Slate950,
+                    containerColor = Slate950.copy(alpha = 0.80f),
                     titleContentColor = Color.White
                 )
             )
         },
-        containerColor = Slate950
+        containerColor = Color.Transparent
     ) { paddingValues ->
-        StarryBackground(
+        TacticalBackground(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
-                .background(Slate950)
         ) {
             Column(
                 modifier = Modifier
@@ -401,12 +359,18 @@ fun SyllabusScreen(
                                     label = "section_chevron"
                                 )
 
+                                val gradientBrush = remember(section.gradientColors) {
+                                    Brush.horizontalGradient(section.gradientColors)
+                                }
+
                                 Surface(
                                     color = Slate900,
-                                    shape = RoundedCornerShape(12.dp),
+                                    shape = RoundedCornerShape(14.dp),
                                     border = BorderStroke(
-                                        width = if (isSectionExpanded) 1.5.dp else 1.2.dp,
-                                        color = if (isSectionExpanded) section.color else Slate800
+                                        width = if (isSectionExpanded) 1.6.dp else 1.2.dp,
+                                        brush = if (isSectionExpanded) gradientBrush else Brush.horizontalGradient(
+                                            section.gradientColors.map { it.copy(alpha = 0.55f) }
+                                        )
                                     ),
                                     modifier = Modifier
                                         .fillMaxWidth()
@@ -414,46 +378,54 @@ fun SyllabusScreen(
                                             val willExpand = !isSectionExpanded
                                             if (willExpand) {
                                                 expandedSectionTitle = section.title
-                                                // Clear expanded module if it belongs to another section
-                                                if (expandedModuleId != null) {
-                                                    val currentModule = moduleMap[expandedModuleId]
-                                                    if (currentModule == null || !section.moduleIds.contains(expandedModuleId)) {
-                                                        onModuleToggle(expandedModuleId)
-                                                    }
-                                                }
                                             } else {
                                                 expandedSectionTitle = null
                                             }
                                         }
                                 ) {
-                                    Row(
+                                    Box(
                                         modifier = Modifier
                                             .fillMaxWidth()
-                                            .padding(horizontal = 14.dp, vertical = 12.dp),
-                                        verticalAlignment = Alignment.CenterVertically,
-                                        horizontalArrangement = Arrangement.SpaceBetween
-                                    ) {
-                                        Column(modifier = Modifier.weight(1f)) {
-                                            Text(
-                                                text = section.title,
-                                                color = section.color,
-                                                fontWeight = FontWeight.Bold,
-                                                fontSize = 13.sp,
-                                                letterSpacing = 1.sp
+                                            .background(
+                                                Brush.horizontalGradient(
+                                                    listOf(
+                                                        section.gradientColors[0].copy(alpha = 0.12f),
+                                                        section.gradientColors[1].copy(alpha = 0.03f)
+                                                    )
+                                                )
                                             )
-                                            Spacer(modifier = Modifier.height(2.dp))
-                                            Text(
-                                                text = "${sectionModules.size} módulos operativos",
-                                                color = Slate400,
-                                                fontSize = 11.sp
+                                            .padding(horizontal = 16.dp, vertical = 14.dp)
+                                    ) {
+                                        Row(
+                                            modifier = Modifier.fillMaxWidth(),
+                                            verticalAlignment = Alignment.CenterVertically,
+                                            horizontalArrangement = Arrangement.SpaceBetween
+                                        ) {
+                                            Column(modifier = Modifier.weight(1f)) {
+                                                Text(
+                                                    text = section.title,
+                                                    style = TextStyle(
+                                                        brush = gradientBrush,
+                                                        fontWeight = FontWeight.Bold,
+                                                        fontSize = 13.5.sp,
+                                                        letterSpacing = 0.6.sp
+                                                    )
+                                                )
+                                                Spacer(modifier = Modifier.height(3.dp))
+                                                Text(
+                                                    text = "${sectionModules.size} módulos operativos",
+                                                    color = Slate400,
+                                                    fontSize = 11.sp,
+                                                    fontWeight = FontWeight.Medium
+                                                )
+                                            }
+                                            Icon(
+                                                imageVector = Icons.Default.KeyboardArrowDown,
+                                                contentDescription = null,
+                                                modifier = Modifier.rotate(rotationAngle),
+                                                tint = section.gradientColors[0]
                                             )
                                         }
-                                        Icon(
-                                            imageVector = Icons.Default.KeyboardArrowDown,
-                                            contentDescription = null,
-                                            modifier = Modifier.rotate(rotationAngle),
-                                            tint = section.color
-                                        )
                                     }
                                 }
                             }
@@ -463,71 +435,38 @@ fun SyllabusScreen(
                                     items = sectionModules,
                                     key = { module -> "module_${module.moduleId}" }
                                 ) { module ->
-                                    val isModuleExpanded = (expandedModuleId == module.moduleId)
-                                    val (_, moduleAccentColor) = getSectionVisuals(module.moduleId)
-
-                                    Column(
+                                    Box(
                                         modifier = Modifier
                                             .fillMaxWidth()
-                                            .padding(start = 8.dp, top = 2.dp, bottom = 2.dp)
+                                            .padding(start = 6.dp, top = 3.dp, bottom = 3.dp)
                                     ) {
                                         ModuleHeaderCard(
                                             module = module,
-                                            isExpanded = isModuleExpanded,
-                                            onToggle = { onModuleToggle(module.moduleId) }
-                                        )
-
-                                        AnimatedVisibility(
-                                            visible = isModuleExpanded,
-                                            enter = fadeIn() + expandVertically(),
-                                            exit = fadeOut() + shrinkVertically()
-                                        ) {
-                                            Column(
-                                                modifier = Modifier
-                                                    .fillMaxWidth()
-                                                    .padding(start = 16.dp, top = 8.dp, bottom = 8.dp)
-                                                    .border(
-                                                        width = 1.dp,
-                                                        color = moduleAccentColor.copy(alpha = 0.4f),
-                                                        shape = RoundedCornerShape(16.dp)
-                                                    )
-                                                    .background(Slate900.copy(alpha = 0.5f), RoundedCornerShape(16.dp))
-                                                    .padding(12.dp)
-                                            ) {
-                                                if (module.lessons.isEmpty()) {
-                                                    Text(
-                                                        text = "No hay lecciones en este módulo.",
-                                                        color = Slate400,
-                                                        style = MaterialTheme.typography.bodyMedium,
-                                                        modifier = Modifier.padding(8.dp)
-                                                    )
-                                                } else {
-                                                    module.lessons.forEachIndexed { index, lesson ->
-                                                        LessonPathItem(
-                                                            lesson = lesson,
-                                                            isLast = index == module.lessons.size - 1,
-                                                            accentColor = moduleAccentColor,
-                                                            onClick = { onLessonClick(lesson) }
-                                                        )
-                                                    }
+                                            accentColor = section.color,
+                                            onClick = {
+                                                module.lessons.firstOrNull()?.let { lesson ->
+                                                    onLessonClick(lesson)
                                                 }
                                             }
-                                        }
+                                        )
                                     }
                                 }
                             }
                         }
 
                         item(key = "app_shield_footer") {
-                            Box(
+                            BoxWithConstraints(
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .padding(vertical = 20.dp),
+                                    .padding(vertical = 24.dp),
                                 contentAlignment = Alignment.Center
                             ) {
+                                val outerShieldSize = (maxWidth * 0.35f).coerceIn(95.dp, 150.dp)
+                                val innerShieldSize = outerShieldSize - 10.dp
+
                                 Box(
                                     modifier = Modifier
-                                        .size(130.dp)
+                                        .size(outerShieldSize)
                                         .clip(CircleShape)
                                         .background(Slate900)
                                         .border(2.dp, Color(0xFFFACC15).copy(alpha = 0.5f), CircleShape),
@@ -536,8 +475,9 @@ fun SyllabusScreen(
                                     Image(
                                         painter = painterResource(id = R.drawable.img_app_icon_1785855600158),
                                         contentDescription = "Escudo Marbella Police Local English",
+                                        contentScale = ContentScale.Crop,
                                         modifier = Modifier
-                                            .size(120.dp)
+                                            .size(innerShieldSize)
                                             .clip(CircleShape)
                                     )
                                 }
@@ -719,7 +659,7 @@ fun EmergencyBottomSheet(
 
 private fun getSectionVisuals(moduleId: Int): Pair<ImageVector, Color> {
     return when (moduleId) {
-        in 1..6 -> Icons.Default.SupportAgent to Color(0xFF34D399)
+        in 1..6 -> Icons.Default.SupportAgent to Color(0xFF818CF8)
         in 7..12 -> Icons.Default.DirectionsCar to Color(0xFF38BDF8)
         in 13..18 -> Icons.Default.Shield to Color(0xFF2DD4BF)
         in 19..28 -> Icons.Default.GppGood to Color(0xFFC084FC)
@@ -732,70 +672,95 @@ private fun getSectionVisuals(moduleId: Int): Pair<ImageVector, Color> {
 @Composable
 fun ModuleHeaderCard(
     module: Module,
-    isExpanded: Boolean,
-    onToggle: () -> Unit
+    accentColor: Color = NeonTeal,
+    onClick: () -> Unit
 ) {
-    val (icon, accentColor) = getSectionVisuals(module.moduleId)
+    val (icon, sectionAccent) = getSectionVisuals(module.moduleId)
+    val colorToUse = if (accentColor != NeonTeal) accentColor else sectionAccent
+    val totalVocab = module.lessons.sumOf { it.vocabulary.size }
+    val totalPhrases = module.lessons.sumOf { it.phrases.size }
+
+    // Brightest near-white shade tinted with parent block color (92% White + 8% Block Color)
+    val tintedTitleColor = remember(colorToUse) {
+        Color(
+            red = Color.White.red * 0.92f + colorToUse.red * 0.08f,
+            green = Color.White.green * 0.92f + colorToUse.green * 0.08f,
+            blue = Color.White.blue * 0.92f + colorToUse.blue * 0.08f,
+            alpha = 1f
+        )
+    }
 
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { onToggle() }
+            .clickable { onClick() }
             .testTag("module_card_${module.moduleId}"),
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(
             containerColor = Slate900
         ),
-        border = BorderStroke(1.2.dp, if (isExpanded) accentColor else Slate800)
+        border = BorderStroke(1.2.dp, colorToUse.copy(alpha = 0.28f))
     ) {
-        Row(
+        Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
+                .background(
+                    Brush.horizontalGradient(
+                        listOf(
+                            colorToUse.copy(alpha = 0.08f),
+                            Color.Transparent
+                        )
+                    )
+                )
+                .padding(14.dp)
         ) {
             Row(
+                modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.weight(1f)
+                horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                Box(
-                    modifier = Modifier
-                        .size(48.dp)
-                        .clip(RoundedCornerShape(12.dp))
-                        .background(accentColor.copy(alpha = 0.15f)),
-                    contentAlignment = Alignment.Center
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.weight(1f)
                 ) {
-                    Icon(
-                        imageVector = icon,
-                        contentDescription = null,
-                        tint = accentColor,
-                        modifier = Modifier.size(26.dp)
-                    )
+                    Box(
+                        modifier = Modifier
+                            .size(44.dp)
+                            .clip(RoundedCornerShape(12.dp))
+                            .background(colorToUse.copy(alpha = 0.15f)),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Icon(
+                            imageVector = icon,
+                            contentDescription = null,
+                            tint = colorToUse,
+                            modifier = Modifier.size(24.dp)
+                        )
+                    }
+                    Spacer(modifier = Modifier.width(14.dp))
+                    Column {
+                        Text(
+                            text = module.moduleName,
+                            color = tintedTitleColor,
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 15.sp
+                        )
+                        Spacer(modifier = Modifier.height(2.dp))
+                        Text(
+                            text = "$totalVocab Vocab • $totalPhrases Frases",
+                            color = Slate200,
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.Medium
+                        )
+                    }
                 }
-                Spacer(modifier = Modifier.width(16.dp))
-                Column {
-                    Text(
-                        text = module.moduleName,
-                        color = Color.White,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 16.sp
-                    )
-                    val lessonCountText = "${module.lessons.size} Lección${if (module.lessons.size != 1) "es" else ""} de entrenamiento"
-                    Text(
-                        text = lessonCountText,
-                        color = Slate400,
-                        fontSize = 12.sp,
-                        fontWeight = FontWeight.Medium
-                    )
-                }
+                Icon(
+                    imageVector = Icons.Default.PlayArrow,
+                    contentDescription = "Entrar al módulo",
+                    tint = colorToUse,
+                    modifier = Modifier.size(20.dp)
+                )
             }
-            Icon(
-                imageVector = if (isExpanded) Icons.Default.ExpandLess else Icons.Default.ExpandMore,
-                contentDescription = if (isExpanded) "Colapsar" else "Expandir",
-                tint = Slate400,
-                modifier = Modifier.size(24.dp)
-            )
         }
     }
 }

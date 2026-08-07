@@ -33,6 +33,7 @@ import com.example.data.model.Lesson
 import com.example.data.model.Module
 import com.example.data.model.PhraseItem
 import com.example.data.model.VocabularyItem
+import com.example.ui.components.TacticalBackground
 import com.example.ui.theme.*
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -98,19 +99,21 @@ fun ManagerScreen(
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Slate950,
+                    containerColor = Slate950.copy(alpha = 0.80f),
                     titleContentColor = Color.White
                 )
             )
         },
-        containerColor = Slate950
+        containerColor = Color.Transparent
     ) { paddingValues ->
-        Column(
+        TacticalBackground(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
-                .background(Slate950)
         ) {
+            Column(
+                modifier = Modifier.fillMaxSize()
+            ) {
             // Tabs
             TabRow(
                 selectedTabIndex = selectedTab,
@@ -851,4 +854,5 @@ fun ManagerScreen(
             }
         }
     }
+}
 }
