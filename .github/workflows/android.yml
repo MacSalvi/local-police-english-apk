@@ -34,13 +34,18 @@ jobs:
         with:
           gradle-version: 9.3.1
 
+      - name: Update version code and name
+        run: |
+          sed -i 's/versionCode = 1/versionCode = ${{ github.run_number }}/g' app/build.gradle.kts
+          sed -i 's/versionName = "1.0"/versionName = "1.0.${{ github.run_number }}"/g' app/build.gradle.kts
+
       - name: Build Debug APK
         run: gradle assembleDebug --stacktrace
 
       - name: Upload Debug APK Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: app-debug.apk
+          name: app-debug-v1.0.${{ github.run_number }}
           path: app/build/outputs/apk/debug/app-debug.apk
 
       - name: Publish APK to GitHub Release
@@ -48,9 +53,9 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           artifacts: "app/build/outputs/apk/debug/app-debug.apk"
-          tag: ${{ github.ref_type == 'tag' && github.ref_name || 'v1.0.0' }}
-          name: "Inglés Operativo Policial ${{ github.ref_type == 'tag' && github.ref_name || 'v1.0.0' }} (APK)"
-          body: "APK de la aplicación compilada para Android."
+          tag: ${{ github.ref_type == 'tag' && github.ref_name || format('v1.0.{0}', github.run_number) }}
+          name: "Inglés Operativo Policial ${{ github.ref_type == 'tag' && github.ref_name || format('v1.0.{0}', github.run_number) }} (APK)"
+          body: "APK de la aplicación compilada para Android (Compilación #${{ github.run_number }})."
           allowUpdates: true
           recreateRelease: false
           token: ${{ secrets.GITHUB_TOKEN }}
