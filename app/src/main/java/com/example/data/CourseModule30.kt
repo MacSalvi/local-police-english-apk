@@ -9,7 +9,7 @@ object Module30 {
     val module = Module(
         id = 30,
         title = "Módulo 30",
-        description = "Vocabulario operativo especializado.",
+        description = "Vocabulario operativo especializado",
         lessons = listOf(
             Lesson(
                 id = 1,

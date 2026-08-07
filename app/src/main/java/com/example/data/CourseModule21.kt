@@ -9,7 +9,7 @@ object Module21 {
     val module = Module(
         id = 21,
         title = "Módulo 21",
-        description = "Atención policial al turista y asistencia social.",
+        description = "Personas sin hogar, asistencia social y personas ebrias, drogadas o con alteración del comportamiento",
         lessons = listOf(
             Lesson(
                 id = 1,

@@ -9,7 +9,7 @@ object Module22 {
     val module = Module(
         id = 22,
         title = "Módulo 22",
-        description = "Trámites administrativos y orientación al ciudadano.",
+        description = "Trámites administrativos, documentación y atención al ciudadano",
         lessons = listOf(
             Lesson(
                 id = 1,

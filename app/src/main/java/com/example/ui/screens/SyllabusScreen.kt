@@ -36,6 +36,9 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.foundation.Image
+import androidx.compose.ui.res.painterResource
+import com.example.R
 import com.example.data.model.Lesson
 import com.example.data.model.Module
 import com.example.data.model.PhraseItem
@@ -50,11 +53,12 @@ data class SyllabusSection(
 )
 
 val operationalSections = listOf(
-    SyllabusSection("ATENCIÓN CIUDADANA E IDENTIFICACIÓN", listOf(1, 2, 3, 25, 21, 24), Color(0xFF34D399)),
-    SyllabusSection("TRÁFICO Y TRANSPORTE", listOf(4, 5, 6, 7, 8, 9), Color(0xFF38BDF8)),
-    SyllabusSection("SEGURIDAD CIUDADANA", listOf(10, 11, 12, 13, 22, 23), Color(0xFF2DD4BF)),
-    SyllabusSection("DELITOS Y ACTUACIONES POLICIALES", listOf(14, 15, 27, 28, 20, 16), Color(0xFFC084FC)),
-    SyllabusSection("EMERGENCIAS Y SERVICIOS ESPECIALES", listOf(17, 18, 29, 19, 30, 26), Color(0xFFFB923C))
+    SyllabusSection("BLOQUE I · ATENCIÓN CIUDADANA E IDENTIFICACIÓN", listOf(1, 2, 3, 4, 5, 6), Color(0xFF34D399)),
+    SyllabusSection("BLOQUE II · TRÁFICO Y TRANSPORTE", listOf(7, 8, 9, 10, 11, 12), Color(0xFF38BDF8)),
+    SyllabusSection("BLOQUE III · SEGURIDAD CIUDADANA", listOf(13, 14, 15, 16, 17, 18), Color(0xFF2DD4BF)),
+    SyllabusSection("BLOQUE IV · DELITOS Y ACTUACIONES POLICIALES", listOf(19, 20, 21, 22, 23, 24, 25, 26, 27, 28), Color(0xFFC084FC)),
+    SyllabusSection("BLOQUE V · EMERGENCIAS Y SERVICIOS ESPECIALES", listOf(29), Color(0xFFFB923C)),
+    SyllabusSection("BLOQUE VI · VOCABULARIO OPERATIVO", listOf(30), Color(0xFFFACC15))
 )
 
 data class Star(
@@ -513,6 +517,32 @@ fun SyllabusScreen(
                                 }
                             }
                         }
+
+                        item(key = "app_shield_footer") {
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(vertical = 20.dp),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Box(
+                                    modifier = Modifier
+                                        .size(130.dp)
+                                        .clip(CircleShape)
+                                        .background(Slate900)
+                                        .border(2.dp, Color(0xFFFACC15).copy(alpha = 0.5f), CircleShape),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Image(
+                                        painter = painterResource(id = R.drawable.img_app_icon_1785855600158),
+                                        contentDescription = "Escudo Marbella Police Local English",
+                                        modifier = Modifier
+                                            .size(120.dp)
+                                            .clip(CircleShape)
+                                    )
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -689,11 +719,12 @@ fun EmergencyBottomSheet(
 
 private fun getSectionVisuals(moduleId: Int): Pair<ImageVector, Color> {
     return when (moduleId) {
-        in listOf(1, 2, 3, 25, 21, 24) -> Icons.Default.SupportAgent to Color(0xFF34D399)
-        in listOf(4, 5, 6, 7, 8, 9) -> Icons.Default.DirectionsCar to Color(0xFF38BDF8)
-        in listOf(10, 11, 12, 13, 22, 23) -> Icons.Default.Shield to Color(0xFF2DD4BF)
-        in listOf(14, 15, 27, 28, 20, 16) -> Icons.Default.GppGood to Color(0xFFC084FC)
-        in listOf(17, 18, 29, 19, 30, 26) -> Icons.Default.Warning to Color(0xFFFB923C)
+        in 1..6 -> Icons.Default.SupportAgent to Color(0xFF34D399)
+        in 7..12 -> Icons.Default.DirectionsCar to Color(0xFF38BDF8)
+        in 13..18 -> Icons.Default.Shield to Color(0xFF2DD4BF)
+        in 19..28 -> Icons.Default.GppGood to Color(0xFFC084FC)
+        29 -> Icons.Default.Warning to Color(0xFFFB923C)
+        30 -> Icons.Default.MenuBook to Color(0xFFFACC15)
         else -> Icons.Default.MenuBook to Slate400
     }
 }
@@ -750,8 +781,14 @@ fun ModuleHeaderCard(
                         fontWeight = FontWeight.Bold,
                         fontSize = 16.sp
                     )
+                    val lessonCountText = "${module.lessons.size} Lección${if (module.lessons.size != 1) "es" else ""}"
+                    val subtitleText = if (module.lessons.firstOrNull()?.lessonTitle?.isNotBlank() == true) {
+                        "${module.lessons.first().lessonTitle} • $lessonCountText"
+                    } else {
+                        "$lessonCountText de entrenamiento"
+                    }
                     Text(
-                        text = "${module.lessons.size} Lecciones de entrenamiento",
+                        text = subtitleText,
                         color = Slate400,
                         fontSize = 12.sp,
                         fontWeight = FontWeight.Medium

@@ -3,6 +3,7 @@ package com.example.data.model
 data class Module(
     val moduleId: Int = 0,
     val moduleName: String = "",
+    val description: String = "",
     val lessons: List<Lesson> = emptyList()
 ) {
     val id: Int get() = moduleId
@@ -14,7 +15,18 @@ data class Module(
             title: String,
             description: String = "",
             lessons: List<Lesson>
-        ): Module = Module(moduleId = id, moduleName = title, lessons = lessons)
+        ): Module {
+            val name = if (description.isNotBlank()) {
+                val cleanDesc = description.removeSuffix(".")
+                if (title.contains("·") || title.contains(":")) title else "$title · $cleanDesc"
+            } else title
+            return Module(
+                moduleId = id,
+                moduleName = name,
+                description = description,
+                lessons = lessons
+            )
+        }
     }
 }
 
