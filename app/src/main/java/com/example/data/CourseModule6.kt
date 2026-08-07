@@ -1,272 +1,100 @@
-package com.example.data
+package com.policia.inglesoperativo.data.modules
 
-import com.example.data.model.Lesson
-import com.example.data.model.Module
-import com.example.data.model.PhraseItem
-import com.example.data.model.VocabularyItem
+import com.policia.inglesoperativo.domain.model.Module
+import com.policia.inglesoperativo.domain.model.Lesson
+import com.policia.inglesoperativo.domain.model.VocabularyItem
+import com.policia.inglesoperativo.domain.model.PhraseItem
 
-val module6 = Module(
-    moduleId = 6,
-    moduleName = "Módulo 6: Infracciones de tráfico",
-    lessons = listOf(
-        Lesson(
-            lessonId = 601,
-            lessonTitle = "Velocidad, semáforos, señales y móvil",
-            vocabulary = listOf(
-                VocabularyItem(es = "Velocidad", en = "SPEED", phonetic = "spid"),
-                VocabularyItem(es = "Semáforo", en = "TRAFFIC LIGHT", phonetic = "tráfic láit"),
-                VocabularyItem(es = "Señal", en = "SIGN", phonetic = "sáin"),
-                VocabularyItem(es = "Móvil / Teléfono", en = "PHONE", phonetic = "fóun"),
-                VocabularyItem(es = "Tú / Usted", en = "YOU", phonetic = "yu"),
-                VocabularyItem(es = "Pasado plural / Ustedes", en = "WERE", phonetic = "wör"),
-                VocabularyItem(es = "Con exceso de velocidad", en = "SPEEDING", phonetic = "spíding"),
-                VocabularyItem(es = "Este / Esta", en = "THIS", phonetic = "dis"),
-                VocabularyItem(es = "Es / Está", en = "IS", phonetic = "is"),
-                VocabularyItem(es = "Un / Una", en = "A", phonetic = "a"),
-                VocabularyItem(es = "Cámara", en = "CAMERA", phonetic = "kámera"),
-                VocabularyItem(es = "Zona / Área", en = "ZONE", phonetic = "zóun"),
-                VocabularyItem(es = "Ir (pasado)", en = "WENT", phonetic = "güent"),
-                VocabularyItem(es = "A través de / Por", en = "THROUGH", phonetic = "zru"),
-                VocabularyItem(es = "Rojo", en = "RED", phonetic = "red"),
-                VocabularyItem(es = "Luz / Semáforo", en = "LIGHT", phonetic = "láit"),
-                VocabularyItem(es = "Pasado singular", en = "WAS", phonetic = "was"),
-                VocabularyItem(es = "Ignorado", en = "IGNORED", phonetic = "ignórd"),
-                VocabularyItem(es = "Tráfico", en = "TRAFFIC", phonetic = "tráfic"),
-                VocabularyItem(es = "Sin entrada / Prohibido", en = "NO-ENTRY", phonetic = "nóu-éntri"),
-                VocabularyItem(es = "Usando", en = "USING", phonetic = "iúsing"),
-                VocabularyItem(es = "Tu / Su", en = "YOUR", phonetic = "yor"),
-                VocabularyItem(es = "Mientras", en = "WHILE", phonetic = "guáil"),
-                VocabularyItem(es = "Conduciendo", en = "DRIVING", phonetic = "dráiving"),
-                VocabularyItem(es = "Ilegal", en = "ILLEGAL", phonetic = "ilígal")
-            ),
-            phrases = listOf(
-                PhraseItem(
-                    es = "Iba usted a exceso de velocidad.",
-                    en = "YOU WERE SPEEDING.",
-                    phonetic = "yu wör spíding"
+object Module6 {
+    val module = Module(
+        id = 6,
+        title = "Módulo 6",
+        description = "Infracciones de tráfico.",
+        lessons = listOf(
+            Lesson(
+                id = 1,
+                title = "Infracciones de tráfico",
+                vocabulary = listOf(
+                    VocabularyItem(term = "TRAFFIC OFFENCE", phonetic = "tráfik ofens", translation = "Infracción de tráfico"),
+                    VocabularyItem(term = "SPEED LIMIT", phonetic = "spid límit", translation = "Límite de velocidad"),
+                    VocabularyItem(term = "SPEEDING", phonetic = "spídin", translation = "Exceso de velocidad"),
+                    VocabularyItem(term = "RED LIGHT", phonetic = "red lait", translation = "Semáforo en rojo"),
+                    VocabularyItem(term = "TRAFFIC LIGHTS", phonetic = "tráfik laits", translation = "Semáforos"),
+                    VocabularyItem(term = "STOP SIGN", phonetic = "stop sain", translation = "Señal de STOP"),
+                    VocabularyItem(term = "ROAD SIGN", phonetic = "roud sain", translation = "Señal de tráfico"),
+                    VocabularyItem(term = "ONE-WAY STREET", phonetic = "uan güei strít", translation = "Calle de sentido único"),
+                    VocabularyItem(term = "PEDESTRIAN CROSSING", phonetic = "pedéstrian crósin", translation = "Paso de peatones"),
+                    VocabularyItem(term = "PAVEMENT", phonetic = "péivment", translation = "Acera"),
+                    VocabularyItem(term = "JUNCTION", phonetic = "yánkshon", translation = "Cruce"),
+                    VocabularyItem(term = "ROUNDABOUT", phonetic = "ráundabaut", translation = "Glorieta"),
+                    VocabularyItem(term = "LANE", phonetic = "léin", translation = "Carril"),
+                    VocabularyItem(term = "BUS LANE", phonetic = "bas léin", translation = "Carril bus"),
+                    VocabularyItem(term = "CYCLE LANE", phonetic = "sáikol léin", translation = "Carril bici"),
+                    VocabularyItem(term = "PARKING SPACE", phonetic = "párkin spéis", translation = "Plaza de aparcamiento"),
+                    VocabularyItem(term = "DOUBLE PARKING", phonetic = "dábol párkin", translation = "Estacionamiento en doble fila"),
+                    VocabularyItem(term = "DOUBLE YELLOW LINES", phonetic = "dábol yélou láins", translation = "Línea amarilla continua"),
+                    VocabularyItem(term = "NO PARKING", phonetic = "nóu párkin", translation = "Prohibido estacionar"),
+                    VocabularyItem(term = "NO ENTRY", phonetic = "nóu éntri", translation = "Dirección prohibida"),
+                    VocabularyItem(term = "BUS STOP", phonetic = "bas stop", translation = "Parada de autobús"),
+                    VocabularyItem(term = "TAXI RANK", phonetic = "táksi rank", translation = "Parada de taxis"),
+                    VocabularyItem(term = "LOADING BAY", phonetic = "lóudin bei", translation = "Zona de carga y descarga"),
+                    VocabularyItem(term = "DISABLED PARKING SPACE", phonetic = "diséibeld párkin spéis", translation = "Plaza reservada para personas con movilidad reducida"),
+                    VocabularyItem(term = "DRIVEWAY", phonetic = "dráivguei", translation = "Vado"),
+                    VocabularyItem(term = "KEEP CLEAR", phonetic = "kip klía", translation = "Marca vial \"No bloquear\""),
+                    VocabularyItem(term = "EMERGENCY EXIT", phonetic = "imérllensi éksit", translation = "Salida de emergencia"),
+                    VocabularyItem(term = "OBSTRUCTION", phonetic = "obstrákshon", translation = "Obstaculización"),
+                    VocabularyItem(term = "TRAFFIC FLOW", phonetic = "tráfik flóu", translation = "Circulación del tráfico"),
+                    VocabularyItem(term = "FINE", phonetic = "fáin", translation = "Multa"),
+                    VocabularyItem(term = "PENALTY", phonetic = "pénalti", translation = "Sanción"),
+                    VocabularyItem(term = "TOW TRUCK", phonetic = "tóu trak", translation = "Grúa municipal"),
+                    VocabularyItem(term = "ROAD", phonetic = "roud", translation = "Vía"),
+                    VocabularyItem(term = "FOOTPATH", phonetic = "futpaz", translation = "Zona peatonal")
                 ),
-                PhraseItem(
-                    es = "Esta es una zona con radar.",
-                    en = "THIS IS A SPEED CAMERA ZONE.",
-                    phonetic = "dis is a spid kámera zóun"
-                ),
-                PhraseItem(
-                    es = "Se saltó un semáforo en rojo.",
-                    en = "YOU WENT THROUGH A RED LIGHT.",
-                    phonetic = "yu güent zru a red láit"
-                ),
-                PhraseItem(
-                    es = "El semáforo estaba en rojo.",
-                    en = "THE LIGHT WAS RED.",
-                    phonetic = "de láit guas red"
-                ),
-                PhraseItem(
-                    es = "Ha ignorado una señal de tráfico.",
-                    en = "YOU IGNORED A TRAFFIC SIGN.",
-                    phonetic = "yu ignórd a tráfik sáin"
-                ),
-                PhraseItem(
-                    es = "Esta es una señal de dirección prohibida.",
-                    en = "THIS IS A NO-ENTRY SIGN.",
-                    phonetic = "dis is a nóu-éntri sáin"
-                ),
-                PhraseItem(
-                    es = "¿Estaba usando el móvil mientras conducía?",
-                    en = "WERE YOU USING YOUR PHONE WHILE DRIVING?",
-                    phonetic = "wör yu iúsing yor fóun guáil dráiving"
-                ),
-                PhraseItem(
-                    es = "Usar el móvil al conducir es ilegal.",
-                    en = "USING YOUR PHONE WHILE DRIVING IS ILLEGAL.",
-                    phonetic = "iúsing yor fóun guáil dráiving is ilígal"
-                )
-            )
-        ),
-        Lesson(
-            lessonId = 602,
-            lessonTitle = "Cinturón, casco y conducción peligrosa",
-            vocabulary = listOf(
-                VocabularyItem(es = "Cinturón de seguridad", en = "SEATBELT", phonetic = "sítbelt"),
-                VocabularyItem(es = "Casco", en = "HELMET", phonetic = "jélmet"),
-                VocabularyItem(es = "Peligroso", en = "DANGEROUS", phonetic = "déinllerous"),
-                VocabularyItem(es = "Temerario", en = "RECKLESS", phonetic = "rékles"),
-                VocabularyItem(es = "Eres / Estás (Tú estás)", en = "YOU'RE", phonetic = "yur"),
-                VocabularyItem(es = "No", en = "NOT", phonetic = "not"),
-                VocabularyItem(es = "Llevar puesto", en = "WEARING", phonetic = "güéring"),
-                VocabularyItem(es = "Tu / Su", en = "YOUR", phonetic = "yor"),
-                VocabularyItem(es = "Por favor", en = "PLEASE", phonetic = "plís"),
-                VocabularyItem(es = "Abrochar", en = "FASTEN", phonetic = "fásen"),
-                VocabularyItem(es = "Ahora", en = "NOW", phonetic = "nau"),
-                VocabularyItem(es = "Debe / Tener que", en = "MUST", phonetic = "mast"),
-                VocabularyItem(es = "Llevar / Vestir", en = "WEAR", phonetic = "güer"),
-                VocabularyItem(es = "Un / Una", en = "A", phonetic = "a"),
-                VocabularyItem(es = "Es / Está", en = "IS", phonetic = "is"),
-                VocabularyItem(es = "Correctamente / Bien", en = "PROPERLY", phonetic = "próperli"),
-                VocabularyItem(es = "Abrochado", en = "FASTENED", phonetic = "fásend"),
-                VocabularyItem(es = "Eso / Ese", en = "THAT", phonetic = "dat"),
-                VocabularyItem(es = "Pasado (ser/estar)", en = "WAS", phonetic = "was"),
-                VocabularyItem(es = "Conducción", en = "DRIVING", phonetic = "dráiving"),
-                VocabularyItem(es = "Temerariamente", en = "RECKLESSLY", phonetic = "réklesli")
-            ),
-            phrases = listOf(
-                PhraseItem(
-                    es = "No lleva puesto el cinturón.",
-                    en = "YOU'RE NOT WEARING YOUR SEATBELT.",
-                    phonetic = "yur not güéring yor sítbelt"
-                ),
-                PhraseItem(
-                    es = "Abróchese el cinturón ahora.",
-                    en = "PLEASE FASTEN YOUR SEATBELT NOW.",
-                    phonetic = "plís fásen yor sítbelt nau"
-                ),
-                PhraseItem(
-                    es = "Debe llevar casco.",
-                    en = "YOU MUST WEAR A HELMET.",
-                    phonetic = "yu mast güer a jélmet"
-                ),
-                PhraseItem(
-                    es = "Su casco no está bien abrochado.",
-                    en = "YOUR HELMET IS NOT PROPERLY FASTENED.",
-                    phonetic = "yor jélmet is not próperli fásend"
-                ),
-                PhraseItem(
-                    es = "Eso ha sido conducción peligrosa.",
-                    en = "THAT WAS DANGEROUS DRIVING.",
-                    phonetic = "dat guas déinllerous dráiving"
-                ),
-                PhraseItem(
-                    es = "Está conduciendo de forma temeraria.",
-                    en = "YOU'RE DRIVING RECKLESSLY.",
-                    phonetic = "yur dráiving réklesli"
-                )
-            )
-        ),
-        Lesson(
-            lessonId = 603,
-            lessonTitle = "Sentido contrario, distancia y permiso caducado",
-            vocabulary = listOf(
-                VocabularyItem(es = "Sentido único", en = "ONE-WAY", phonetic = "güán-güéi"),
-                VocabularyItem(es = "Distancia", en = "DISTANCE", phonetic = "dístans"),
-                VocabularyItem(es = "Por delante / Adelantado", en = "AHEAD", phonetic = "ajéd"),
-                VocabularyItem(es = "Caducado", en = "EXPIRED", phonetic = "ikspáiad"),
-                VocabularyItem(es = "Eres / Estás", en = "YOU'RE", phonetic = "yur"),
-                VocabularyItem(es = "Conduciendo", en = "DRIVING", phonetic = "dráiving"),
-                VocabularyItem(es = "El / La", en = "THE", phonetic = "da"),
-                VocabularyItem(es = "Equivocado / Malo", en = "WRONG", phonetic = "rong"),
-                VocabularyItem(es = "Dirección / Camino", en = "WAY", phonetic = "güéi"),
-                VocabularyItem(es = "Este / Esta", en = "THIS", phonetic = "dis"),
-                VocabularyItem(es = "Es / Está", en = "IS", phonetic = "is"),
-                VocabularyItem(es = "Un / Una", en = "A", phonetic = "a"),
-                VocabularyItem(es = "Calle", en = "STREET", phonetic = "strit"),
-                VocabularyItem(es = "Pasado plural", en = "WERE", phonetic = "wör"),
-                VocabularyItem(es = "Demasiado", en = "TOO", phonetic = "tu"),
-                VocabularyItem(es = "Cerca", en = "CLOSE", phonetic = "clóus"),
-                VocabularyItem(es = "A / Hacia", en = "TO", phonetic = "tu"),
-                VocabularyItem(es = "Vehículo", en = "VEHICLE", phonetic = "víikol"),
-                VocabularyItem(es = "Mantener", en = "KEEP", phonetic = "kip"),
-                VocabularyItem(es = "Seguro / A salvo", en = "SAFE", phonetic = "séif"),
-                VocabularyItem(es = "Tu / Su", en = "YOUR", phonetic = "yor"),
-                VocabularyItem(es = "Licencia / Permiso", en = "LICENCE", phonetic = "láisens"),
-                VocabularyItem(es = "Tiene / Haber (auxiliar)", en = "HAS", phonetic = "jas"),
-                VocabularyItem(es = "No poder", en = "CANNOT", phonetic = "kánot"),
-                VocabularyItem(es = "Conducir", en = "DRIVE", phonetic = "dráiv"),
-                VocabularyItem(es = "Con", en = "WITH", phonetic = "güiz"),
-                VocabularyItem(es = "Un / Una (ante vocal)", en = "AN", phonetic = "an")
-            ),
-            phrases = listOf(
-                PhraseItem(
-                    es = "Circula en sentido contrario.",
-                    en = "YOU'RE DRIVING THE WRONG WAY.",
-                    phonetic = "yur dráiving de rong güéi"
-                ),
-                PhraseItem(
-                    es = "Esta es una calle de sentido único.",
-                    en = "THIS IS A ONE-WAY STREET.",
-                    phonetic = "dis is a güán-güéi strit"
-                ),
-                PhraseItem(
-                    es = "Iba demasiado cerca del vehículo de delante.",
-                    en = "YOU WERE TOO CLOSE TO THE VEHICLE AHEAD.",
-                    phonetic = "yu wör tu clóus tu de víikol ajéd"
-                ),
-                PhraseItem(
-                    es = "Mantenga la distancia de seguridad.",
-                    en = "KEEP A SAFE DISTANCE.",
-                    phonetic = "kip a séif dístans"
-                ),
-                PhraseItem(
-                    es = "Su permiso ha caducado.",
-                    en = "YOUR DRIVING LICENCE HAS EXPIRED.",
-                    phonetic = "yor dráiving láisens jas ikspáiad"
-                ),
-                PhraseItem(
-                    es = "No puede conducir con el permiso caducado.",
-                    en = "YOU CANNOT DRIVE WITH AN EXPIRED LICENCE.",
-                    phonetic = "yu kánot dráiv güiz an ikspáiad láisens"
-                )
-            )
-        ),
-        Lesson(
-            lessonId = 604,
-            lessonTitle = "Seguro, denuncia y notificación",
-            vocabulary = listOf(
-                VocabularyItem(es = "Multa", en = "FINE", phonetic = "fáin"),
-                VocabularyItem(es = "Obligatorio", en = "COMPULSORY", phonetic = "kompálsori"),
-                VocabularyItem(es = "Notificación", en = "NOTIFICATION", phonetic = "noutifikéishon"),
-                VocabularyItem(es = "Tú / Usted", en = "YOU", phonetic = "yu"),
-                VocabularyItem(es = "Debe / Tener que", en = "MUST", phonetic = "mast"),
-                VocabularyItem(es = "Tener", en = "HAVE", phonetic = "jav"),
-                VocabularyItem(es = "Seguro", en = "INSURANCE", phonetic = "inshúrans"),
-                VocabularyItem(es = "Tu / Su", en = "YOUR", phonetic = "yor"),
-                VocabularyItem(es = "Vehículo", en = "VEHICLE", phonetic = "víikol"),
-                VocabularyItem(es = "Es / Está", en = "IS", phonetic = "is"),
-                VocabularyItem(es = "No", en = "NOT", phonetic = "not"),
-                VocabularyItem(es = "Asegurado", en = "INSURED", phonetic = "inshúrd"),
-                VocabularyItem(es = "Yo soy / Estoy (I'm)", en = "I'M", phonetic = "aim"),
-                VocabularyItem(es = "Emitiendo / Imponiendo", en = "ISSUING", phonetic = "íshuing"),
-                VocabularyItem(es = "Un / Una", en = "A", phonetic = "a"),
-                VocabularyItem(es = "Este / Esta", en = "THIS", phonetic = "dis"),
-                VocabularyItem(es = "El / La", en = "THE", phonetic = "da"),
-                VocabularyItem(es = "Razón / Motivo", en = "REASON", phonetic = "ríson"),
-                VocabularyItem(es = "Para / Por", en = "FOR", phonetic = "for"),
-                VocabularyItem(es = "Poder", en = "CAN", phonetic = "can"),
-                VocabularyItem(es = "Pagar", en = "PAY", phonetic = "péi"),
-                VocabularyItem(es = "Online / En línea", en = "ONLINE", phonetic = "ónláin"),
-                VocabularyItem(es = "Futuro (auxiliar)", en = "WILL", phonetic = "güil"),
-                VocabularyItem(es = "Recibir", en = "RECEIVE", phonetic = "risív")
-            ),
-            phrases = listOf(
-                PhraseItem(
-                    es = "Debe tener el seguro obligatorio.",
-                    en = "YOU MUST HAVE COMPULSORY INSURANCE.",
-                    phonetic = "yu mast jav kompálsori inshúrans"
-                ),
-                PhraseItem(
-                    es = "Su vehículo no está asegurado.",
-                    en = "YOUR VEHICLE IS NOT INSURED.",
-                    phonetic = "yor víikol is not inshúrd"
-                ),
-                PhraseItem(
-                    es = "Le voy a poner una multa.",
-                    en = "I'M ISSUING YOU A FINE.",
-                    phonetic = "aim íshuing yu a fáin"
-                ),
-                PhraseItem(
-                    es = "Este es el motivo de la denuncia.",
-                    en = "THIS IS THE REASON FOR THE FINE.",
-                    phonetic = "dis is de ríson for de fáin"
-                ),
-                PhraseItem(
-                    es = "Puede pagar la multa online.",
-                    en = "YOU CAN PAY THE FINE ONLINE.",
-                    phonetic = "yu can péi de fáin ónláin"
-                ),
-                PhraseItem(
-                    es = "Recibirá una notificación.",
-                    en = "YOU WILL RECEIVE A NOTIFICATION.",
-                    phonetic = "yu güil risív a noutifikéishon"
+                phrases = listOf(
+                    PhraseItem(english = "I HAVE STOPPED YOU BECAUSE OF A TRAFFIC OFFENCE.", phonetic = "ai jav stopt yu bicós ov a tráfik ofens", spanish = "Le he detenido por una infracción de tráfico."),
+                    PhraseItem(english = "YOU HAVE COMMITTED A TRAFFIC OFFENCE.", phonetic = "yu jav comítid a tráfik ofens", spanish = "Ha cometido una infracción de tráfico."),
+                    PhraseItem(english = "YOU WERE DRIVING TOO FAST.", phonetic = "yu güer dráivin tu fast", spanish = "Circulaba a demasiada velocidad."),
+                    PhraseItem(english = "YOU EXCEEDED THE SPEED LIMIT.", phonetic = "yu iksídid de spid límit", spanish = "Ha superado el límite de velocidad."),
+                    PhraseItem(english = "YOU WENT THROUGH A RED LIGHT.", phonetic = "yu guent zru a red lait", spanish = "Ha pasado un semáforo en rojo."),
+                    PhraseItem(english = "YOU FAILED TO STOP AT THE STOP SIGN.", phonetic = "yu feild tu stop at de stop sain", spanish = "No se detuvo en la señal de STOP."),
+                    PhraseItem(english = "YOU WERE USING A MOBILE PHONE WHILE DRIVING.", phonetic = "yu güer yúsin a móubail fóun guáil dráivin", spanish = "Estaba utilizando el teléfono móvil mientras conducía."),
+                    PhraseItem(english = "YOU WERE NOT WEARING YOUR SEAT BELT.", phonetic = "yu güer not güérin yor sít belt", spanish = "No llevaba puesto el cinturón de seguridad."),
+                    PhraseItem(english = "YOU CANNOT PARK HERE.", phonetic = "yu cánot park jía", spanish = "No puede estacionar aquí."),
+                    PhraseItem(english = "YOU PARKED IN A PROHIBITED AREA.", phonetic = "yu parkt in a proíbited éria", spanish = "Ha estacionado en una zona prohibida."),
+                    PhraseItem(english = "YOU ARE PARKED ON THE PAVEMENT.", phonetic = "yu ar parkt on de péivment", spanish = "Ha estacionado sobre la acera."),
+                    PhraseItem(english = "YOU ARE DOUBLE PARKED.", phonetic = "yu ar dábol parkt", spanish = "Está estacionado en doble fila."),
+                    PhraseItem(english = "YOU ARE PARKED ON A PEDESTRIAN CROSSING.", phonetic = "yu ar parkt on a pedéstrian crósin", spanish = "Ha estacionado sobre un paso de peatones."),
+                    PhraseItem(english = "YOU ARE PARKED ON DOUBLE YELLOW LINES.", phonetic = "yu ar parkt on dábol yélou láins", spanish = "Ha estacionado sobre línea amarilla."),
+                    PhraseItem(english = "YOU ARE PARKED TOO CLOSE TO THE JUNCTION.", phonetic = "yu ar parkt tu clóus tu de yánkshon", spanish = "Ha estacionado demasiado cerca del cruce."),
+                    PhraseItem(english = "YOU ARE PARKED AT A BUS STOP.", phonetic = "yu ar parkt at a bas stop", spanish = "Ha estacionado en una parada de autobús."),
+                    PhraseItem(english = "YOU ARE PARKED IN A TAXI RANK.", phonetic = "yu ar parkt in a táksi rank", spanish = "Ha estacionado en una parada de taxis."),
+                    PhraseItem(english = "YOU ARE PARKED IN A LOADING BAY.", phonetic = "yu ar parkt in a lóudin bei", spanish = "Ha estacionado en una zona de carga y descarga."),
+                    PhraseItem(english = "YOU ARE PARKED IN A DISABLED PARKING SPACE.", phonetic = "yu ar parkt in a diséibeld párkin spéis", spanish = "Ha estacionado en una plaza reservada para personas con movilidad reducida."),
+                    PhraseItem(english = "YOU ARE BLOCKING THE ROAD.", phonetic = "yu ar blókin de roud", spanish = "Está obstaculizando la circulación."),
+                    PhraseItem(english = "YOU ARE BLOCKING THE PAVEMENT.", phonetic = "yu ar blókin de péivment", spanish = "Está obstaculizando la acera."),
+                    PhraseItem(english = "YOU ARE BLOCKING A DRIVEWAY.", phonetic = "yu ar blókin a dráivguei", spanish = "Está bloqueando un vado."),
+                    PhraseItem(english = "YOU ARE OBSTRUCTING TRAFFIC.", phonetic = "yu ar obstráktin tráfik", spanish = "Está obstaculizando la circulación."),
+                    PhraseItem(english = "YOU ARE OBSTRUCTING PEDESTRIANS.", phonetic = "yu ar obstráktin pedéstrians", spanish = "Está obstaculizando el paso de peatones."),
+                    PhraseItem(english = "YOUR VEHICLE IS CAUSING AN OBSTRUCTION.", phonetic = "yor víikol is cósin an obstrákshon", spanish = "Su vehículo está causando una obstrucción."),
+                    PhraseItem(english = "YOU ARE CAUSING A DANGER TO OTHER ROAD USERS.", phonetic = "yu ar cósin a déinya tu áda roud yúsers", spanish = "Está poniendo en peligro a otros usuarios de la vía."),
+                    PhraseItem(english = "THIS PARKING SPACE IS RESERVED.", phonetic = "dis párkin spéis is rizérvd", spanish = "Esta plaza está reservada."),
+                    PhraseItem(english = "THIS IS NOT A PARKING SPACE.", phonetic = "dis is not a párkin spéis", spanish = "Esto no es una plaza de aparcamiento."),
+                    PhraseItem(english = "YOU MUST NOT PARK IN THIS AREA.", phonetic = "yu mast not park in dis éria", spanish = "No puede estacionar en esta zona."),
+                    PhraseItem(english = "PLEASE MOVE YOUR VEHICLE.", phonetic = "plís muv yor víikol", spanish = "Retire su vehículo, por favor."),
+                    PhraseItem(english = "PLEASE MOVE YOUR VEHICLE IMMEDIATELY.", phonetic = "plís muv yor víikol imídietli", spanish = "Retire el vehículo inmediatamente."),
+                    PhraseItem(english = "THIS VEHICLE MUST BE REMOVED.", phonetic = "dis víikol mast bi rimúvd", spanish = "Este vehículo debe ser retirado."),
+                    PhraseItem(english = "YOUR VEHICLE WILL BE TOWED AWAY.", phonetic = "yor víikol wil bi tóud aguéi", spanish = "Su vehículo será retirado por la grúa."),
+                    PhraseItem(english = "PLEASE PARK IN A DESIGNATED PARKING SPACE.", phonetic = "plís park in a dézigneitid párkin spéis", spanish = "Estacione en una plaza habilitada."),
+                    PhraseItem(english = "PLEASE FOLLOW THE TRAFFIC SIGNS.", phonetic = "plís fólou de tráfik sains", spanish = "Respete la señalización de tráfico."),
+                    PhraseItem(english = "PLEASE DRIVE CAREFULLY.", phonetic = "plís dráiv kéafuli", spanish = "Conduzca con precaución."),
+                    PhraseItem(english = "PLEASE RESPECT THE SPEED LIMIT.", phonetic = "plís rispékt de spid límit", spanish = "Respete el límite de velocidad."),
+                    PhraseItem(english = "YOU WILL RECEIVE A FINE.", phonetic = "yu wil risív a fáin", spanish = "Va a recibir una multa."),
+                    PhraseItem(english = "THIS IS A TRAFFIC PENALTY.", phonetic = "dis is a tráfik pénalti", spanish = "Esta es una sanción de tráfico."),
+                    PhraseItem(english = "PLEASE READ THE NOTICE CAREFULLY.", phonetic = "plís rid de nóutis kéafuli", spanish = "Lea atentamente la notificación."),
+                    PhraseItem(english = "IF YOU HAVE ANY QUESTIONS, I WILL EXPLAIN THE PROCEDURE.", phonetic = "if yu jav éni kuéstchons ai wil ikspléin de prosídya", spanish = "Si tiene alguna duda, le explicaré el procedimiento."),
+                    PhraseItem(english = "THANK YOU FOR YOUR COOPERATION.", phonetic = "zénk yu for yor kouópareishon", spanish = "Gracias por su colaboración.")
                 )
             )
         )
     )
-)
+}

@@ -73,7 +73,7 @@ fun SplashScreen() {
                 contentAlignment = Alignment.Center
             ) {
                 Image(
-                    painter = painterResource(id = R.drawable.img_splash_logo_1785855616063),
+                    painter = painterResource(id = R.drawable.img_app_icon_1785855600158),
                     contentDescription = "Logo Inglés Operativo Policial",
                     modifier = Modifier
                         .size(130.dp)
@@ -103,6 +103,19 @@ fun SplashScreen() {
                     fontWeight = FontWeight.Bold,
                     color = Color(0xFF38BDF8),
                     letterSpacing = 1.5.sp,
+                    textAlign = TextAlign.Center
+                )
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            // Loading Indicator Text
+            Text(
+                text = "LOADING...",
+                style = MaterialTheme.typography.labelMedium.copy(
+                    fontWeight = FontWeight.Bold,
+                    color = Color(0xFF38BDF8).copy(alpha = 0.8f),
+                    letterSpacing = 3.sp,
                     textAlign = TextAlign.Center
                 )
             )

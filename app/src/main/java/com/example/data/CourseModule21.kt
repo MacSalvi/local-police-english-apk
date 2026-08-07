@@ -1,285 +1,93 @@
-package com.example.data
+package com.policia.inglesoperativo.data.modules
 
-import com.example.data.model.Lesson
-import com.example.data.model.Module
-import com.example.data.model.PhraseItem
-import com.example.data.model.VocabularyItem
+import com.policia.inglesoperativo.domain.model.Module
+import com.policia.inglesoperativo.domain.model.Lesson
+import com.policia.inglesoperativo.domain.model.VocabularyItem
+import com.policia.inglesoperativo.domain.model.PhraseItem
 
-val module21 = Module(
-    moduleId = 21,
-    moduleName = "Módulo 21: Turismo y atención ciudadana en Marbella",
-    lessons = listOf(
-        Lesson(
-            lessonId = 2101,
-            lessonTitle = "Hoteles, urbanizaciones y puerto",
-            vocabulary = listOf(
-                VocabularyItem(es = "Hotel", en = "HOTEL", phonetic = "joutél"),
-                VocabularyItem(es = "Urbanización", en = "RESIDENTIAL COMPLEX", phonetic = "residénshal kómpleks"),
-                VocabularyItem(es = "Puerto", en = "MARINA", phonetic = "marína"),
-                VocabularyItem(es = "Cuál / Qué", en = "WHICH", phonetic = "güich"),
-                VocabularyItem(es = "Ser / Estar (plural)", en = "ARE", phonetic = "ar"),
-                VocabularyItem(es = "Tú / Usted", en = "YOU", phonetic = "yu"),
-                VocabularyItem(es = "Alojándose / Quedándose", en = "STAYING", phonetic = "stéiing"),
-                VocabularyItem(es = "En", en = "AT", phonetic = "at"),
-                VocabularyItem(es = "El / La", en = "THE", phonetic = "de"),
-                VocabularyItem(es = "Es / Está", en = "IS", phonetic = "is"),
-                VocabularyItem(es = "Ese / Aquel", en = "THAT", phonetic = "dat"),
-                VocabularyItem(es = "Camino / Dirección", en = "WAY", phonetic = "güéi"),
-                VocabularyItem(es = "Buscando", en = "LOOKING", phonetic = "lúking"),
-                VocabularyItem(es = "Para / Por", en = "FOR", phonetic = "for"),
-                VocabularyItem(es = "Tu / Su", en = "YOUR", phonetic = "yor"),
-                VocabularyItem(es = "Urbanización", en = "URBANISATION", phonetic = "örbanaizéishon"),
-                VocabularyItem(es = "Poder", en = "CAN", phonetic = "can"),
-                VocabularyItem(es = "Yo", en = "I", phonetic = "ai"),
-                VocabularyItem(es = "Ayudar", en = "HELP", phonetic = "jelp"),
-                VocabularyItem(es = "Encontrar", en = "FIND", phonetic = "fáind"),
-                VocabularyItem(es = "Algo", en = "SOMETHING", phonetic = "sámzing"),
-                VocabularyItem(es = "Es (It is)", en = "IT'S", phonetic = "its"),
-                VocabularyItem(es = "Un / Una", en = "A", phonetic = "a"),
-                VocabularyItem(es = "Diez", en = "TEN", phonetic = "ten"),
-                VocabularyItem(es = "Minuto", en = "MINUTE", phonetic = "mínit"),
-                VocabularyItem(es = "Andar / Caminar", en = "WALK", phonetic = "güok"),
-                VocabularyItem(es = "De / Desde", en = "FROM", phonetic = "from"),
-                VocabularyItem(es = "Aquí", en = "HERE", phonetic = "jía"),
-                VocabularyItem(es = "Seguir", en = "FOLLOW", phonetic = "fólou"),
-                VocabularyItem(es = "Este / Esta", en = "THIS", phonetic = "dis"),
-                VocabularyItem(es = "Calle", en = "STREET", phonetic = "strit"),
-                VocabularyItem(es = "Recto", en = "STRAIGHT", phonetic = "stréit"),
-                VocabularyItem(es = "Adelante", en = "AHEAD", phonetic = "ajéd")
-            ),
-            phrases = listOf(
-                PhraseItem(
-                    es = "¿En qué hotel se aloja?",
-                    en = "WHICH HOTEL ARE YOU STAYING AT?",
-                    phonetic = "güich joutél ar yu stéiing at"
+object Module21 {
+    val module = Module(
+        id = 21,
+        title = "Módulo 21",
+        description = "Atención policial al turista y asistencia social.",
+        lessons = listOf(
+            Lesson(
+                id = 1,
+                title = "Atención policial al turista y asistencia social",
+                vocabulary = listOf(
+                    VocabularyItem(term = "TOURIST", phonetic = "túrist", translation = "Turista"),
+                    VocabularyItem(term = "VISITOR", phonetic = "vízita", translation = "Visitante"),
+                    VocabularyItem(term = "HOTEL", phonetic = "joutél", translation = "Hotel"),
+                    VocabularyItem(term = "HOLIDAY APARTMENT", phonetic = "hólidei apátment", translation = "Apartamento turístico"),
+                    VocabularyItem(term = "PASSPORT", phonetic = "pásport", translation = "Pasaporte"),
+                    VocabularyItem(term = "IDENTIFICATION", phonetic = "aidéntifikeishon", translation = "Documento de identidad"),
+                    VocabularyItem(term = "POLICE STATION", phonetic = "polís stéishon", translation = "Comisaría"),
+                    VocabularyItem(term = "LOCAL POLICE", phonetic = "lóukal polís", translation = "Policía Local"),
+                    VocabularyItem(term = "NATIONAL POLICE", phonetic = "náshonal polís", translation = "Policía Nacional"),
+                    VocabularyItem(term = "REPORT", phonetic = "ripót", translation = "Denuncia"),
+                    VocabularyItem(term = "COMPLAINT", phonetic = "kompléint", translation = "Reclamación"),
+                    VocabularyItem(term = "THEFT", phonetic = "zeft", translation = "Hurto"),
+                    VocabularyItem(term = "ROBBERY", phonetic = "róberi", translation = "Robo"),
+                    VocabularyItem(term = "LOST PROPERTY", phonetic = "lost próperti", translation = "Objetos perdidos"),
+                    VocabularyItem(term = "STOLEN PROPERTY", phonetic = "stóulen próperti", translation = "Objetos robados"),
+                    VocabularyItem(term = "VEHICLE", phonetic = "víikol", translation = "Vehículo"),
+                    VocabularyItem(term = "ROAD ACCIDENT", phonetic = "roud áksident", translation = "Accidente de tráfico"),
+                    VocabularyItem(term = "EMERGENCY", phonetic = "imérllensi", translation = "Emergencia"),
+                    VocabularyItem(term = "EMBASSY", phonetic = "émbasi", translation = "Embajada"),
+                    VocabularyItem(term = "CONSULATE", phonetic = "kónsiulet", translation = "Consulado"),
+                    VocabularyItem(term = "INTERPRETER", phonetic = "intérpreta", translation = "Intérprete"),
+                    VocabularyItem(term = "ADDRESS", phonetic = "adrés", translation = "Dirección"),
+                    VocabularyItem(term = "LOCATION", phonetic = "loukéishon", translation = "Ubicación"),
+                    VocabularyItem(term = "MAP", phonetic = "map", translation = "Mapa"),
+                    VocabularyItem(term = "HOMELESS PERSON", phonetic = "jóumles pérson", translation = "Persona sin hogar"),
+                    VocabularyItem(term = "SHELTER", phonetic = "shélta", translation = "Albergue"),
+                    VocabularyItem(term = "SOCIAL SERVICES", phonetic = "sóushal sérvisis", translation = "Servicios Sociales"),
+                    VocabularyItem(term = "SOCIAL WORKER", phonetic = "sóushal guórka", translation = "Trabajador social"),
+                    VocabularyItem(term = "EMERGENCY ACCOMMODATION", phonetic = "imérllensi akómodeishon", translation = "Alojamiento de emergencia"),
+                    VocabularyItem(term = "FOOD", phonetic = "fud", translation = "Comida"),
+                    VocabularyItem(term = "WATER", phonetic = "uóta", translation = "Agua"),
+                    VocabularyItem(term = "BLANKET", phonetic = "blánkit", translation = "Manta")
                 ),
-                PhraseItem(
-                    es = "El puerto está por ahí.",
-                    en = "THE MARINA IS THAT WAY.",
-                    phonetic = "de marína is dat güéi"
-                ),
-                PhraseItem(
-                    es = "¿Busca su urbanización?",
-                    en = "ARE YOU LOOKING FOR YOUR URBANISATION?",
-                    phonetic = "ar yu lúking for yor örbanaizéishon"
-                ),
-                PhraseItem(
-                    es = "¿Puedo ayudarle a encontrar algo?",
-                    en = "CAN I HELP YOU FIND SOMETHING?",
-                    phonetic = "can ai jelp yu fáind sámzing"
-                ),
-                PhraseItem(
-                    es = "Está a diez minutos andando desde aquí.",
-                    en = "IT'S A TEN MINUTE WALK FROM HERE.",
-                    phonetic = "its a ten mínit güok from jía"
-                ),
-                PhraseItem(
-                    es = "Siga esta calle todo recto.",
-                    en = "FOLLOW THIS STREET STRAIGHT AHEAD.",
-                    phonetic = "fólou dis strit stréit ajéd"
-                )
-            )
-        ),
-        Lesson(
-            lessonId = 2102,
-            lessonTitle = "Paseo marítimo, casco antiguo y salud",
-            vocabulary = listOf(
-                VocabularyItem(es = "Paseo marítimo", en = "PROMENADE", phonetic = "promenéid"),
-                VocabularyItem(es = "Casco antiguo", en = "OLD TOWN", phonetic = "old táun"),
-                VocabularyItem(es = "Farmacia", en = "PHARMACY", phonetic = "fármasi"),
-                VocabularyItem(es = "El / La", en = "THE", phonetic = "de"),
-                VocabularyItem(es = "A lo largo de", en = "ALONG", phonetic = "alóng"),
-                VocabularyItem(es = "Playa", en = "BEACH", phonetic = "bich"),
-                VocabularyItem(es = "Es / Está", en = "IS", phonetic = "is"),
-                VocabularyItem(es = "Muy", en = "VERY", phonetic = "véri"),
-                VocabularyItem(es = "Cerca", en = "CLOSE", phonetic = "clóus"),
-                VocabularyItem(es = "Haber (existencial - hay)", en = "THERE", phonetic = "der"),
-                VocabularyItem(es = "Un / Una", en = "A", phonetic = "a"),
-                VocabularyItem(es = "Cerca / Próximo", en = "NEARBY", phonetic = "nírbai"),
-                VocabularyItem(es = "Más cercano", en = "NEAREST", phonetic = "níarest"),
-                VocabularyItem(es = "Hospital", en = "HOSPITAL", phonetic = "jóspital"),
-                VocabularyItem(es = "Cinco", en = "FIVE", phonetic = "fáiv"),
-                VocabularyItem(es = "Minutos", en = "MINUTES", phonetic = "mínits"),
-                VocabularyItem(es = "Lejos / Fuera", en = "AWAY", phonetic = "aguéi"),
-                VocabularyItem(es = "Hacer (auxiliar interrogativo)", en = "DO", phonetic = "du"),
-                VocabularyItem(es = "Tú / Usted", en = "YOU", phonetic = "yu"),
-                VocabularyItem(es = "Necesitar", en = "NEED", phonetic = "nid"),
-                VocabularyItem(es = "Taxi", en = "TAXI", phonetic = "táxi"),
-                VocabularyItem(es = "Autobús", en = "BUS", phonetic = "bas"),
-                VocabularyItem(es = "Parada", en = "STOP", phonetic = "stap"),
-                VocabularyItem(es = "Allá / Encima", en = "OVER", phonetic = "óuver")
-            ),
-            phrases = listOf(
-                PhraseItem(
-                    es = "El paseo marítimo está junto a la playa.",
-                    en = "THE PROMENADE IS ALONG THE BEACH.",
-                    phonetic = "de promenéid is alóng de bich"
-                ),
-                PhraseItem(
-                    es = "El casco antiguo está muy cerca.",
-                    en = "THE OLD TOWN IS VERY CLOSE.",
-                    phonetic = "di old táun is véri clóus"
-                ),
-                PhraseItem(
-                    es = "¿Hay una farmacia cerca?",
-                    en = "IS THERE A PHARMACY NEARBY?",
-                    phonetic = "is der a fármasi nírbai"
-                ),
-                PhraseItem(
-                    es = "El hospital más cercano está a cinco minutos.",
-                    en = "THE NEAREST HOSPITAL IS FIVE MINUTES AWAY.",
-                    phonetic = "de níarest jóspital is fáiv mínits aguéi"
-                ),
-                PhraseItem(
-                    es = "¿Necesita un taxi?",
-                    en = "DO YOU NEED A TAXI?",
-                    phonetic = "du yu nid a táxi"
-                ),
-                PhraseItem(
-                    es = "La parada de autobús está allí.",
-                    en = "THE BUS STOP IS OVER THERE.",
-                    phonetic = "de bas stap is óuver der"
-                )
-            )
-        ),
-        Lesson(
-            lessonId = 2103,
-            lessonTitle = "Aeropuerto, consulados y objetos perdidos",
-            vocabulary = listOf(
-                VocabularyItem(es = "Aeropuerto", en = "AIRPORT", phonetic = "érport"),
-                VocabularyItem(es = "Consulado", en = "CONSULATE", phonetic = "kónsiulet"),
-                VocabularyItem(es = "Objeto perdido", en = "LOST ITEM", phonetic = "lost áitem"),
-                VocabularyItem(es = "El / La", en = "THE", phonetic = "de"),
-                VocabularyItem(es = "Es / Está", en = "IS", phonetic = "is"),
-                VocabularyItem(es = "Alrededor de / Unos", en = "ABOUT", phonetic = "abáut"),
-                VocabularyItem(es = "Cuarenta", en = "FORTY", phonetic = "fórti"),
-                VocabularyItem(es = "Minutos", en = "MINUTES", phonetic = "mínits"),
-                VocabularyItem(es = "Lejos / Fuera", en = "AWAY", phonetic = "aguéi"),
-                VocabularyItem(es = "Hacer (auxiliar interrogativo)", en = "DO", phonetic = "du"),
-                VocabularyItem(es = "Tú / Usted", en = "YOU", phonetic = "yu"),
-                VocabularyItem(es = "Necesitar", en = "NEED", phonetic = "nid"),
-                VocabularyItem(es = "Tu / Su", en = "YOUR", phonetic = "yor"),
-                VocabularyItem(es = "Consulado (posesivo)", en = "CONSULATE'S", phonetic = "kónsiulets"),
-                VocabularyItem(es = "Contacto", en = "CONTACT", phonetic = "kóntakt"),
-                VocabularyItem(es = "Detalles / Datos", en = "DETAILS", phonetic = "ditéils"),
-                VocabularyItem(es = "Haber (auxiliar)", en = "HAVE", phonetic = "jav"),
-                VocabularyItem(es = "Perdido", en = "LOST", phonetic = "lost"),
-                VocabularyItem(es = "Algo", en = "SOMETHING", phonetic = "sámzing"),
-                VocabularyItem(es = "Qué", en = "WHAT", phonetic = "guat"),
-                VocabularyItem(es = "Pasado (auxiliar)", en = "DID", phonetic = "did"),
-                VocabularyItem(es = "Perder", en = "LOSE", phonetic = "lus"),
-                VocabularyItem(es = "Comprobar / Consultar", en = "CHECK", phonetic = "chek"),
-                VocabularyItem(es = "Propiedad", en = "PROPERTY", phonetic = "próperti"),
-                VocabularyItem(es = "Oficina", en = "OFFICE", phonetic = "ófis"),
-                VocabularyItem(es = "Yo", en = "I", phonetic = "ai"),
-                VocabularyItem(es = "Poder", en = "CAN", phonetic = "can"),
-                VocabularyItem(es = "Dar", en = "GIVE", phonetic = "guiv"),
-                VocabularyItem(es = "General", en = "GENERAL", phonetic = "yéneral"),
-                VocabularyItem(es = "Información", en = "INFORMATION", phonetic = "informéishon")
-            ),
-            phrases = listOf(
-                PhraseItem(
-                    es = "El aeropuerto está a unos cuarenta minutos.",
-                    en = "THE AIRPORT IS ABOUT FORTY MINUTES AWAY.",
-                    phonetic = "di érport is abáut fórti mínits aguéi"
-                ),
-                PhraseItem(
-                    es = "¿Necesita los datos de contacto de su consulado?",
-                    en = "DO YOU NEED YOUR CONSULATE'S CONTACT DETAILS?",
-                    phonetic = "du yu nid yor kónsiulets kóntakt ditéils"
-                ),
-                PhraseItem(
-                    es = "¿Ha perdido algo?",
-                    en = "HAVE YOU LOST SOMETHING?",
-                    phonetic = "jav yu lost sámzing"
-                ),
-                PhraseItem(
-                    es = "¿Qué ha perdido?",
-                    en = "WHAT DID YOU LOSE?",
-                    phonetic = "guat did yu lus"
-                ),
-                PhraseItem(
-                    es = "Consulte la oficina de objetos perdidos.",
-                    en = "CHECK THE LOST PROPERTY OFFICE.",
-                    phonetic = "chek de lost próperti ófis"
-                ),
-                PhraseItem(
-                    es = "Puedo darle información general.",
-                    en = "I CAN GIVE YOU GENERAL INFORMATION.",
-                    phonetic = "ai can guiv yu yéneral informéishon"
-                )
-            )
-        ),
-        Lesson(
-            lessonId = 2104,
-            lessonTitle = "Información general",
-            vocabulary = listOf(
-                VocabularyItem(es = "Información", en = "INFORMATION", phonetic = "informéishon"),
-                VocabularyItem(es = "Dirección", en = "ADDRESS", phonetic = "ádres"),
-                VocabularyItem(es = "Mapa", en = "MAP", phonetic = "map"),
-                VocabularyItem(es = "Cómo", en = "HOW", phonetic = "jau"),
-                VocabularyItem(es = "Poder", en = "CAN", phonetic = "can"),
-                VocabularyItem(es = "Yo", en = "I", phonetic = "ai"),
-                VocabularyItem(es = "Ayudar", en = "HELP", phonetic = "jelp"),
-                VocabularyItem(es = "Tú / Usted", en = "YOU", phonetic = "yu"),
-                VocabularyItem(es = "Qué", en = "WHAT", phonetic = "guat"),
-                VocabularyItem(es = "Ser / Estar (plural)", en = "ARE", phonetic = "ar"),
-                VocabularyItem(es = "Buscando", en = "LOOKING", phonetic = "lúking"),
-                VocabularyItem(es = "Para", en = "FOR", phonetic = "for"),
-                VocabularyItem(es = "Aquí está (Here's)", en = "HERE'S", phonetic = "jias"),
-                VocabularyItem(es = "Un / Una", en = "A", phonetic = "a"),
-                VocabularyItem(es = "De", en = "OF", phonetic = "ov"),
-                VocabularyItem(es = "El / La", en = "THE", phonetic = "de"),
-                VocabularyItem(es = "Área / Zona", en = "AREA", phonetic = "éria"),
-                VocabularyItem(es = "Es (It is)", en = "IT'S", phonetic = "its"),
-                VocabularyItem(es = "No", en = "NOT", phonetic = "not"),
-                VocabularyItem(es = "Lejos", en = "FAR", phonetic = "far"),
-                VocabularyItem(es = "De / Desde", en = "FROM", phonetic = "from"),
-                VocabularyItem(es = "Aquí", en = "HERE", phonetic = "jía"),
-                VocabularyItem(es = "Disfrutar", en = "ENJOY", phonetic = "enllói"),
-                VocabularyItem(es = "Tu / Su", en = "YOUR", phonetic = "yor"),
-                VocabularyItem(es = "Estancia", en = "STAY", phonetic = "stéi"),
-                VocabularyItem(es = "En", en = "IN", phonetic = "in"),
-                VocabularyItem(es = "Marbella", en = "MARBELLA", phonetic = "marbéya"),
-                VocabularyItem(es = "Dejar / Permitir", en = "LET", phonetic = "let"),
-                VocabularyItem(es = "Me", en = "ME", phonetic = "mi"),
-                VocabularyItem(es = "Saber / Conocer", en = "KNOW", phonetic = "nóu"),
-                VocabularyItem(es = "Si", en = "IF", phonetic = "if"),
-                VocabularyItem(es = "Cualquier cosa / Algo", en = "ANYTHING", phonetic = "énizing"),
-                VocabularyItem(es = "Otro / Más", en = "ELSE", phonetic = "els")
-            ),
-            phrases = listOf(
-                PhraseItem(
-                    es = "¿Cómo puedo ayudarle?",
-                    en = "HOW CAN I HELP YOU?",
-                    phonetic = "jau can ai jelp yu"
-                ),
-                PhraseItem(
-                    es = "¿Qué está buscando?",
-                    en = "WHAT ARE YOU LOOKING FOR?",
-                    phonetic = "guat ar yu lúking for"
-                ),
-                PhraseItem(
-                    es = "Aquí tiene un mapa de la zona.",
-                    en = "HERE'S A MAP OF THE AREA.",
-                    phonetic = "jias a map ov di éria"
-                ),
-                PhraseItem(
-                    es = "No está lejos de aquí.",
-                    en = "IT'S NOT FAR FROM HERE.",
-                    phonetic = "its not far from jía"
-                ),
-                PhraseItem(
-                    es = "Disfrute su estancia en Marbella.",
-                    en = "ENJOY YOUR STAY IN MARBELLA.",
-                    phonetic = "enllói yor stéi in marbéya"
-                ),
-                PhraseItem(
-                    es = "Avíseme si necesita algo más.",
-                    en = "LET ME KNOW IF YOU NEED ANYTHING ELSE.",
-                    phonetic = "let mi nóu if yu nid énizing els"
+                phrases = listOf(
+                    PhraseItem(english = "HOW CAN I HELP YOU?", phonetic = "jáu can ai jelp yu", spanish = "¿En qué puedo ayudarle?"),
+                    PhraseItem(english = "PLEASE TELL ME WHAT HAPPENED.", phonetic = "plís tel mi guot jápend", spanish = "Cuénteme qué ha ocurrido."),
+                    PhraseItem(english = "WHAT DO YOU NEED?", phonetic = "guot du yu nid", spanish = "¿Qué necesita?"),
+                    PhraseItem(english = "ARE YOU A TOURIST?", phonetic = "ar yu a túrist", spanish = "¿Es usted turista?"),
+                    PhraseItem(english = "CAN I SEE YOUR PASSPORT, PLEASE?", phonetic = "can ai si yor pásport plís", spanish = "¿Puedo ver su pasaporte, por favor?"),
+                    PhraseItem(english = "WHERE ARE YOU STAYING?", phonetic = "güea ar yu stéiin", spanish = "¿Dónde se aloja?"),
+                    PhraseItem(english = "WHAT IS THE NAME OF YOUR HOTEL?", phonetic = "guot is de neim ov yor joutél", spanish = "¿Cómo se llama su hotel?"),
+                    PhraseItem(english = "ARE YOU LOST?", phonetic = "ar yu lost", spanish = "¿Se ha perdido?"),
+                    PhraseItem(english = "I WILL SHOW YOU THE WAY.", phonetic = "ai wil shóu yu de güei", spanish = "Le indicaré el camino."),
+                    PhraseItem(english = "YOU NEED TO GO TO THE NATIONAL POLICE STATION.", phonetic = "yu nid tu góu tu de náshonal polís stéishon", spanish = "Debe acudir a la Policía Nacional."),
+                    PhraseItem(english = "YOU CAN REPORT THE THEFT THERE.", phonetic = "yu can ripót de zeft dea", spanish = "Allí puede denunciar el hurto."),
+                    PhraseItem(english = "YOU CAN REPORT THE ROBBERY THERE.", phonetic = "yu can ripót de róberi dea", spanish = "Allí puede denunciar el robo."),
+                    PhraseItem(english = "YOU CAN REPORT YOUR STOLEN PASSPORT THERE.", phonetic = "yu can ripót yor stóulen pásport dea", spanish = "Allí puede denunciar el robo de su pasaporte."),
+                    PhraseItem(english = "YOU CAN REPORT YOUR STOLEN VEHICLE THERE.", phonetic = "yu can ripót yor stóulen víikol dea", spanish = "Allí puede denunciar el robo de su vehículo."),
+                    PhraseItem(english = "IF YOU HAVE LOST YOUR PASSPORT, PLEASE CONTACT YOUR EMBASSY.", phonetic = "if yu jav lost yor pásport plís cóntakt yor émbasi", spanish = "Si ha perdido su pasaporte, contacte con su embajada."),
+                    PhraseItem(english = "DO YOU NEED AN INTERPRETER?", phonetic = "du yu nid an intérpreta", spanish = "¿Necesita un intérprete?"),
+                    PhraseItem(english = "WE WILL HELP YOU AS MUCH AS WE CAN.", phonetic = "güi wil jelp yu as mach as güi can", spanish = "Le ayudaremos en todo lo que podamos."),
+                    PhraseItem(english = "THIS IS A MATTER FOR THE LOCAL POLICE.", phonetic = "dis is a máta for de lóukal polís", spanish = "Este asunto corresponde a la Policía Local."),
+                    PhraseItem(english = "THIS IS A MATTER FOR THE NATIONAL POLICE.", phonetic = "dis is a máta for de náshonal polís", spanish = "Este asunto corresponde a la Policía Nacional."),
+                    PhraseItem(english = "IF YOU NEED AN EMERGENCY SERVICE, CALL 112.", phonetic = "if yu nid an imérllensi sérvis kol uan uan tu", spanish = "Si necesita un servicio de emergencia, llame al 112."),
+                    PhraseItem(english = "IF YOU NEED MEDICAL ASSISTANCE, GO TO THE HOSPITAL.", phonetic = "if yu nid médikol asistans góu tu de hóspital", spanish = "Si necesita asistencia médica, vaya al hospital."),
+                    PhraseItem(english = "PLEASE KEEP THIS REFERENCE NUMBER.", phonetic = "plís kip dis réferens nómba", spanish = "Conserve este número de referencia."),
+                    PhraseItem(english = "PLEASE FOLLOW MY DIRECTIONS.", phonetic = "plís fólou mai dairékshons", spanish = "Siga mis indicaciones."),
+                    PhraseItem(english = "DO YOU HAVE SOMEWHERE TO STAY TONIGHT?", phonetic = "du yu jav sámgüea tu stéi tunáit", spanish = "¿Tiene algún lugar donde dormir esta noche?"),
+                    PhraseItem(english = "DO YOU NEED A PLACE TO SLEEP?", phonetic = "du yu nid a pleis tu slip", spanish = "¿Necesita un lugar para dormir?"),
+                    PhraseItem(english = "DO YOU HAVE ANY MONEY?", phonetic = "du yu jav éni máni", spanish = "¿Tiene dinero?"),
+                    PhraseItem(english = "DO YOU HAVE ANY FAMILY OR FRIENDS HERE?", phonetic = "du yu jav éni fámili or frends jía", spanish = "¿Tiene familiares o amigos aquí?"),
+                    PhraseItem(english = "DO YOU NEED FOOD OR WATER?", phonetic = "du yu nid fud or uóta", spanish = "¿Necesita comida o agua?"),
+                    PhraseItem(english = "DO YOU NEED WARM CLOTHES OR A BLANKET?", phonetic = "du yu nid uorm klóudz or a blánkit", spanish = "¿Necesita ropa de abrigo o una manta?"),
+                    PhraseItem(english = "WE CAN CONTACT SOCIAL SERVICES.", phonetic = "güi can cóntakt sóushal sérvisis", spanish = "Podemos contactar con los Servicios Sociales."),
+                    PhraseItem(english = "A SOCIAL WORKER WILL COME TO HELP YOU.", phonetic = "a sóushal guórka wil cam tu jelp yu", spanish = "Un trabajador social vendrá a atenderle."),
+                    PhraseItem(english = "WE CAN TAKE YOU TO A SHELTER.", phonetic = "güi can teik yu tu a shélta", spanish = "Podemos llevarle a un albergue."),
+                    PhraseItem(english = "THERE IS EMERGENCY ACCOMMODATION AVAILABLE.", phonetic = "dea is imérllensi akómodeishon avéilabol", spanish = "Hay alojamiento de emergencia disponible."),
+                    PhraseItem(english = "PLEASE WAIT HERE.", phonetic = "plís güeit jía", spanish = "Espere aquí, por favor."),
+                    PhraseItem(english = "YOU ARE SAFE HERE.", phonetic = "yu ar séif jía", spanish = "Aquí está seguro."),
+                    PhraseItem(english = "IF YOU NEED FURTHER ASSISTANCE, COME BACK TO US.", phonetic = "if yu nid férda asistans cam bak tu as", spanish = "Si necesita más ayuda, vuelva a acudir a nosotros."),
+                    PhraseItem(english = "THANK YOU FOR YOUR COOPERATION.", phonetic = "zénk yu for yor kouópareishon", spanish = "Gracias por su colaboración.")
                 )
             )
         )
     )
-)
+}

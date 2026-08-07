@@ -1,273 +1,92 @@
-package com.example.data
+package com.policia.inglesoperativo.data.modules
 
-import com.example.data.model.Lesson
-import com.example.data.model.Module
-import com.example.data.model.PhraseItem
-import com.example.data.model.VocabularyItem
+import com.policia.inglesoperativo.domain.model.Module
+import com.policia.inglesoperativo.domain.model.Lesson
+import com.policia.inglesoperativo.domain.model.VocabularyItem
+import com.policia.inglesoperativo.domain.model.PhraseItem
 
-val module22 = Module(
-    moduleId = 22,
-    moduleName = "Módulo 22: Policía administrativa y convivencia",
-    lessons = listOf(
-        Lesson(
-            lessonId = 2201,
-            lessonTitle = "Locales, horarios y terrazas",
-            vocabulary = listOf(
-                VocabularyItem(es = "Local", en = "PREMISES", phonetic = "prémises"),
-                VocabularyItem(es = "Horario", en = "OPENING HOURS", phonetic = "óupening áuers"),
-                VocabularyItem(es = "Terraza", en = "TERRACE", phonetic = "téras"),
-                VocabularyItem(es = "Qué / Cuál", en = "WHAT", phonetic = "guat"),
-                VocabularyItem(es = "Ser / Estar (plural)", en = "ARE", phonetic = "ar"),
-                VocabularyItem(es = "Tu / Su", en = "YOUR", phonetic = "yor"),
-                VocabularyItem(es = "Abriendo / Apertura", en = "OPENING", phonetic = "óupening"),
-                VocabularyItem(es = "Horas", en = "HOURS", phonetic = "auers"),
-                VocabularyItem(es = "Este / Esta", en = "THIS", phonetic = "dis"),
-                VocabularyItem(es = "Excede", en = "EXCEEDS", phonetic = "eksíds"),
-                VocabularyItem(es = "El / La", en = "THE", phonetic = "de"),
-                VocabularyItem(es = "Permitido", en = "PERMITTED", phonetic = "pörmited"),
-                VocabularyItem(es = "Espacio", en = "SPACE", phonetic = "spéis"),
-                VocabularyItem(es = "Hacer (auxiliar interrogativo)", en = "DO", phonetic = "du"),
-                VocabularyItem(es = "Tú / Usted", en = "YOU", phonetic = "yu"),
-                VocabularyItem(es = "Tener", en = "HAVE", phonetic = "jav"),
-                VocabularyItem(es = "Un / Una", en = "A", phonetic = "a"),
-                VocabularyItem(es = "Licencia", en = "LICENCE", phonetic = "láisens"),
-                VocabularyItem(es = "Para", en = "FOR", phonetic = "for"),
-                VocabularyItem(es = "Debe / Tener que", en = "MUST", phonetic = "mast"),
-                VocabularyItem(es = "Cerrar", en = "CLOSE", phonetic = "clóus"),
-                VocabularyItem(es = "En / A", en = "AT", phonetic = "at"),
-                VocabularyItem(es = "El / La (ante vocal)", en = "THE", phonetic = "di"),
-                VocabularyItem(es = "Establecido", en = "ESTABLISHED", phonetic = "establisht"),
-                VocabularyItem(es = "Hora / Tiempo", en = "TIME", phonetic = "táim"),
-                VocabularyItem(es = "Mostrar", en = "SHOW", phonetic = "shou"),
-                VocabularyItem(es = "Me", en = "ME", phonetic = "mi"),
-                VocabularyItem(es = "Permiso", en = "PERMIT", phonetic = "pörmit"),
-                VocabularyItem(es = "Por favor", en = "PLEASE", phonetic = "plis"),
-                VocabularyItem(es = "Área / Zona", en = "AREA", phonetic = "éria"),
-                VocabularyItem(es = "Es / Está", en = "IS", phonetic = "is"),
-                VocabularyItem(es = "No", en = "NOT", phonetic = "not"),
-                VocabularyItem(es = "Autorizado", en = "AUTHORISED", phonetic = "ózoraisd"),
-                VocabularyItem(es = "Mesas", en = "TABLES", phonetic = "téibols")
-            ),
-            phrases = listOf(
-                PhraseItem(
-                    es = "¿Cuál es su horario?",
-                    en = "WHAT ARE YOUR OPENING HOURS?",
-                    phonetic = "guat ar yor óupening áuers"
+object Module22 {
+    val module = Module(
+        id = 22,
+        title = "Módulo 22",
+        description = "Trámites administrativos y orientación al ciudadano.",
+        lessons = listOf(
+            Lesson(
+                id = 1,
+                title = "Trámites administrativos y orientación al ciudadano",
+                vocabulary = listOf(
+                    VocabularyItem(term = "TOWN HALL", phonetic = "taun jol", translation = "Ayuntamiento"),
+                    VocabularyItem(term = "CITIZEN SERVICE OFFICE", phonetic = "sítizen sérvis ófis", translation = "Oficina de Atención al Ciudadano"),
+                    VocabularyItem(term = "MUNICIPAL REGISTER", phonetic = "miunísipol réllista", translation = "Registro General"),
+                    VocabularyItem(term = "APPLICATION", phonetic = "aplicéishon", translation = "Solicitud"),
+                    VocabularyItem(term = "APPLICATION FORM", phonetic = "aplicéishon form", translation = "Impreso de solicitud"),
+                    VocabularyItem(term = "WRITTEN REQUEST", phonetic = "ríten riküést", translation = "Instancia"),
+                    VocabularyItem(term = "ADMINISTRATIVE APPEAL", phonetic = "admínistrativ apíl", translation = "Recurso administrativo"),
+                    VocabularyItem(term = "CERTIFICATE", phonetic = "sertífiket", translation = "Certificado"),
+                    VocabularyItem(term = "DOCUMENT", phonetic = "dókiument", translation = "Documento"),
+                    VocabularyItem(term = "REFERENCE NUMBER", phonetic = "réferens nómba", translation = "Número de referencia"),
+                    VocabularyItem(term = "APPOINTMENT", phonetic = "apóintment", translation = "Cita previa"),
+                    VocabularyItem(term = "ONLINE APPOINTMENT", phonetic = "onláin apóintment", translation = "Cita previa por Internet"),
+                    VocabularyItem(term = "ELECTRONIC OFFICE", phonetic = "ilektrónik ófis", translation = "Sede electrónica"),
+                    VocabularyItem(term = "DIGITAL CERTIFICATE", phonetic = "dillital sertífiket", translation = "Certificado digital"),
+                    VocabularyItem(term = "ELECTRONIC ID", phonetic = "ilektrónik aidí", translation = "DNI electrónico"),
+                    VocabularyItem(term = "WEBSITE", phonetic = "uébsait", translation = "Página web"),
+                    VocabularyItem(term = "ONLINE PROCEDURE", phonetic = "onláin prosíllia", translation = "Trámite por Internet"),
+                    VocabularyItem(term = "LOCAL TAX", phonetic = "lóukal taks", translation = "Impuesto municipal"),
+                    VocabularyItem(term = "MUNICIPAL TAX", phonetic = "miunísipol taks", translation = "Tasa municipal"),
+                    VocabularyItem(term = "PAYMENT OFFICE", phonetic = "péiment ófis", translation = "Oficina de Recaudación"),
+                    VocabularyItem(term = "RECEIPT", phonetic = "risít", translation = "Justificante"),
+                    VocabularyItem(term = "CLAIM FORM", phonetic = "kleim form", translation = "Hoja Oficial de Reclamaciones"),
+                    VocabularyItem(term = "CONSUMER OFFICE", phonetic = "konsiúma ófis", translation = "Oficina de Consumo"),
+                    VocabularyItem(term = "NATIONAL POLICE", phonetic = "náshonal polís", translation = "Policía Nacional"),
+                    VocabularyItem(term = "IMMIGRATION OFFICE", phonetic = "imigreishon ófis", translation = "Oficina de Extranjería"),
+                    VocabularyItem(term = "PASSPORT", phonetic = "pásport", translation = "Pasaporte"),
+                    VocabularyItem(term = "PASSPORT RENEWAL", phonetic = "pásport rinúal", translation = "Renovación del pasaporte"),
+                    VocabularyItem(term = "IDENTITY CARD", phonetic = "aidéntiti kad", translation = "Documento de identidad"),
+                    VocabularyItem(term = "FOREIGNER IDENTITY NUMBER (NIE)", phonetic = "fórina aidéntiti námba", translation = "NIE"),
+                    VocabularyItem(term = "RESIDENCE PERMIT", phonetic = "résidens pérmit", translation = "Permiso de residencia"),
+                    VocabularyItem(term = "RESIDENCE CARD", phonetic = "résidens kad", translation = "Tarjeta de residencia")
                 ),
-                PhraseItem(
-                    es = "Esta terraza excede el espacio permitido.",
-                    en = "THIS TERRACE EXCEEDS THE PERMITTED SPACE.",
-                    phonetic = "dis téras eksíds de pörmited spéis"
-                ),
-                PhraseItem(
-                    es = "¿Tiene licencia para este local?",
-                    en = "DO YOU HAVE A LICENCE FOR THIS PREMISES?",
-                    phonetic = "du yu jav a láisens for dis prémises"
-                ),
-                PhraseItem(
-                    es = "Debe cerrar en el horario establecido.",
-                    en = "YOU MUST CLOSE AT THE ESTABLISHED TIME.",
-                    phonetic = "yu mast clóus at di establisht táim"
-                ),
-                PhraseItem(
-                    es = "Muéstreme su permiso, por favor.",
-                    en = "SHOW ME YOUR PERMIT, PLEASE.",
-                    phonetic = "shou mi yor pörmit, plis"
-                ),
-                PhraseItem(
-                    es = "Esta zona no está autorizada para mesas.",
-                    en = "THIS AREA IS NOT AUTHORISED FOR TABLES.",
-                    phonetic = "dis éria is not ózoraisd for téibols"
-                )
-            )
-        ),
-        Lesson(
-            lessonId = 2202,
-            lessonTitle = "Ruido, venta ambulante y obras",
-            vocabulary = listOf(
-                VocabularyItem(es = "Ruido", en = "NOISE", phonetic = "nóis"),
-                VocabularyItem(es = "Venta ambulante", en = "STREET VENDING", phonetic = "strit vénding"),
-                VocabularyItem(es = "Obra", en = "CONSTRUCTION WORK", phonetic = "konstrákshon wörk"),
-                VocabularyItem(es = "El / La", en = "THE", phonetic = "de"),
-                VocabularyItem(es = "Música", en = "MUSIC", phonetic = "miúsik"),
-                VocabularyItem(es = "Es / Está", en = "IS", phonetic = "is"),
-                VocabularyItem(es = "Demasiado", en = "TOO", phonetic = "tu"),
-                VocabularyItem(es = "Alto / Ruidoso", en = "LOUD", phonetic = "láud"),
-                VocabularyItem(es = "Por favor", en = "PLEASE", phonetic = "plis"),
-                VocabularyItem(es = "Bajar", en = "LOWER", phonetic = "lóuer"),
-                VocabularyItem(es = "Volumen", en = "VOLUME", phonetic = "vólium"),
-                VocabularyItem(es = "Calle", en = "STREET", phonetic = "strit"),
-                VocabularyItem(es = "Venta", en = "VENDING", phonetic = "vénding"),
-                VocabularyItem(es = "No", en = "NOT", phonetic = "not"),
-                VocabularyItem(es = "Permitido", en = "PERMITTED", phonetic = "pörmited"),
-                VocabularyItem(es = "Aquí", en = "HERE", phonetic = "jía"),
-                VocabularyItem(es = "Hacer (auxiliar interrogativo)", en = "DO", phonetic = "du"),
-                VocabularyItem(es = "Tú / Usted", en = "YOU", phonetic = "yu"),
-                VocabularyItem(es = "Tener", en = "HAVE", phonetic = "jav"),
-                VocabularyItem(es = "Un / Una", en = "A", phonetic = "a"),
-                VocabularyItem(es = "Permiso", en = "PERMIT", phonetic = "pörmit"),
-                VocabularyItem(es = "A (infinitivo)", en = "TO", phonetic = "tu"),
-                VocabularyItem(es = "Vender", en = "SELL", phonetic = "sel"),
-                VocabularyItem(es = "Construcción", en = "CONSTRUCTION", phonetic = "konstrákshon"),
-                VocabularyItem(es = "Trabajo / Obra", en = "WORK", phonetic = "wörk"),
-                VocabularyItem(es = "Debe / Tener que", en = "MUST", phonetic = "mast"),
-                VocabularyItem(es = "Parar / Detener", en = "STOP", phonetic = "stap"),
-                VocabularyItem(es = "En / A", en = "AT", phonetic = "at"),
-                VocabularyItem(es = "Este / Esta", en = "THIS", phonetic = "dis"),
-                VocabularyItem(es = "Hora", en = "HOUR", phonetic = "áuer"),
-                VocabularyItem(es = "Fuera de", en = "OUTSIDE", phonetic = "áutsaid"),
-                VocabularyItem(es = "Laboral / De trabajo", en = "WORKING", phonetic = "wörking"),
-                VocabularyItem(es = "Horas", en = "HOURS", phonetic = "auers")
-            ),
-            phrases = listOf(
-                PhraseItem(
-                    es = "La música está demasiado alta.",
-                    en = "THE MUSIC IS TOO LOUD.",
-                    phonetic = "de miúsik is tu láud"
-                ),
-                PhraseItem(
-                    es = "Baje el volumen, por favor.",
-                    en = "PLEASE LOWER THE VOLUME.",
-                    phonetic = "plís lóuer de vólium"
-                ),
-                PhraseItem(
-                    es = "La venta ambulante no está permitida aquí.",
-                    en = "STREET VENDING IS NOT PERMITTED HERE.",
-                    phonetic = "strit vénding is not pörmited jía"
-                ),
-                PhraseItem(
-                    es = "¿Tiene permiso para vender aquí?",
-                    en = "DO YOU HAVE A PERMIT TO SELL HERE?",
-                    phonetic = "du yu jav a pörmit tu sel jía"
-                ),
-                PhraseItem(
-                    es = "Las obras deben detenerse a esta hora.",
-                    en = "CONSTRUCTION WORK MUST STOP AT THIS HOUR.",
-                    phonetic = "konstrákshon wörk mast stap at dis áuer"
-                ),
-                PhraseItem(
-                    es = "Esto está fuera del horario permitido.",
-                    en = "THIS IS OUTSIDE PERMITTED WORKING HOURS.",
-                    phonetic = "dis is áutsaid pörmited wörking áuers"
-                )
-            )
-        ),
-        Lesson(
-            lessonId = 2203,
-            lessonTitle = "Animales, residuos y botellón",
-            vocabulary = listOf(
-                VocabularyItem(es = "Animal", en = "ANIMAL", phonetic = "ánimal"),
-                VocabularyItem(es = "Residuo", en = "WASTE", phonetic = "güéist"),
-                VocabularyItem(es = "Botellón", en = "STREET DRINKING", phonetic = "strit drínking"),
-                VocabularyItem(es = "Tu / Su", en = "YOUR", phonetic = "yor"),
-                VocabularyItem(es = "Perro", en = "DOG", phonetic = "dog"),
-                VocabularyItem(es = "Debe", en = "MUST", phonetic = "mast"),
-                VocabularyItem(es = "Ser / Estar", en = "BE", phonetic = "bi"),
-                VocabularyItem(es = "En", en = "ON", phonetic = "on"),
-                VocabularyItem(es = "Un / Una", en = "A", phonetic = "a"),
-                VocabularyItem(es = "Correa", en = "LEAD", phonetic = "lid"),
-                VocabularyItem(es = "Por favor", en = "PLEASE", phonetic = "plis"),
-                VocabularyItem(es = "Recoger", en = "PICK", phonetic = "pik"),
-                VocabularyItem(es = "Arriba", en = "UP", phonetic = "ap"),
-                VocabularyItem(es = "Después", en = "AFTER", phonetic = "áfter"),
-                VocabularyItem(es = "Hacer (auxiliar negativo)", en = "DO NOT", phonetic = "du not"),
-                VocabularyItem(es = "Dejar", en = "LEAVE", phonetic = "liv"),
-                VocabularyItem(es = "El / La", en = "THE", phonetic = "de"),
-                VocabularyItem(es = "Calle", en = "STREET", phonetic = "strit"),
-                VocabularyItem(es = "Beber", en = "DRINKING", phonetic = "drínking"),
-                VocabularyItem(es = "En", en = "IN", phonetic = "in"),
-                VocabularyItem(es = "Es / Está", en = "IS", phonetic = "is"),
-                VocabularyItem(es = "Prohibido", en = "PROHIBITED", phonetic = "prójibited"),
-                VocabularyItem(es = "Tú / Usted", en = "YOU", phonetic = "yu"),
-                VocabularyItem(es = "Dispersarse", en = "DISPERSE", phonetic = "dispörs"),
-                VocabularyItem(es = "Ahora", en = "NOW", phonetic = "nau"),
-                VocabularyItem(es = "Este / Esto", en = "THIS", phonetic = "dis"),
-                VocabularyItem(es = "Un / Una (ante vocal)", en = "AN", phonetic = "an"),
-                VocabularyItem(es = "Incívico", en = "UNCIVIL", phonetic = "ansívil"),
-                VocabularyItem(es = "Comportamiento", en = "BEHAVIOUR", phonetic = "bijéivior"),
-                VocabularyItem(es = "Infracción", en = "OFFENCE", phonetic = "ofens")
-            ),
-            phrases = listOf(
-                PhraseItem(
-                    es = "Su perro debe llevar correa.",
-                    en = "YOUR DOG MUST BE ON A LEAD.",
-                    phonetic = "yor dog mast bi on a lid"
-                ),
-                PhraseItem(
-                    es = "Recoja los excrementos de su animal, por favor.",
-                    en = "PLEASE PICK UP AFTER YOUR ANIMAL.",
-                    phonetic = "plís pik ap áfter yor ánimal"
-                ),
-                PhraseItem(
-                    es = "No deje residuos en la calle.",
-                    en = "DO NOT LEAVE WASTE ON THE STREET.",
-                    phonetic = "du not liv güéist on de strit"
-                ),
-                PhraseItem(
-                    es = "Beber en la calle está prohibido.",
-                    en = "DRINKING IN THE STREET IS PROHIBITED.",
-                    phonetic = "drínking in de strit is prójibited"
-                ),
-                PhraseItem(
-                    es = "Deben dispersarse ahora.",
-                    en = "YOU MUST DISPERSE NOW.",
-                    phonetic = "yu mast dispörs nau"
-                ),
-                PhraseItem(
-                    es = "Esto constituye una infracción por conducta incívica.",
-                    en = "THIS IS AN UNCIVIL BEHAVIOUR OFFENCE.",
-                    phonetic = "dis is an ansívil bijéivior ofens"
-                )
-            )
-        ),
-        Lesson(
-            lessonId = 2204,
-            lessonTitle = "Cumplimiento de instrucciones",
-            vocabulary = listOf(
-                VocabularyItem(es = "Instrucción", en = "INSTRUCTION", phonetic = "inströkshon"),
-                VocabularyItem(es = "Cumplimiento", en = "COMPLIANCE", phonetic = "kompláians"),
-                VocabularyItem(es = "Advertencia", en = "WARNING", phonetic = "wórning"),
-                VocabularyItem(es = "Tú / Usted", en = "YOU", phonetic = "yu"),
-                VocabularyItem(es = "Debe", en = "MUST", phonetic = "mast"),
-                VocabularyItem(es = "Cumplir", en = "COMPLY", phonetic = "kompláir"),
-                VocabularyItem(es = "Con", en = "WITH", phonetic = "güiz"),
-                VocabularyItem(es = "Este / Esta", en = "THIS", phonetic = "dis"),
-                VocabularyItem(es = "Es / Está", en = "IS", phonetic = "is"),
-                VocabularyItem(es = "Un / Una", en = "A", phonetic = "a"),
-                VocabularyItem(es = "Formal", en = "FORMAL", phonetic = "fórmal"),
-                VocabularyItem(es = "Incumplimiento / Fracaso", en = "FAILURE", phonetic = "féiliur"),
-                VocabularyItem(es = "A (infinitivo)", en = "TO", phonetic = "tu"),
-                VocabularyItem(es = "Futuro (auxiliar)", en = "WILL", phonetic = "güil"),
-                VocabularyItem(es = "Resultar", en = "RESULT", phonetic = "risált"),
-                VocabularyItem(es = "En", en = "IN", phonetic = "in"),
-                VocabularyItem(es = "Multa", en = "FINE", phonetic = "fáin"),
-                VocabularyItem(es = "Gracias", en = "THANK", phonetic = "zenk"),
-                VocabularyItem(es = "Para / Por", en = "FOR", phonetic = "for"),
-                VocabularyItem(es = "Tu / Su", en = "YOUR", phonetic = "yor"),
-                VocabularyItem(es = "Cooperación", en = "COOPERATION", phonetic = "kouoperéishon")
-            ),
-            phrases = listOf(
-                PhraseItem(
-                    es = "Debe cumplir con esta instrucción.",
-                    en = "YOU MUST COMPLY WITH THIS INSTRUCTION.",
-                    phonetic = "yu mast kompláir güiz dis inströkshon"
-                ),
-                PhraseItem(
-                    es = "Esta es una advertencia formal.",
-                    en = "THIS IS A FORMAL WARNING.",
-                    phonetic = "dis is a fórmal wórning"
-                ),
-                PhraseItem(
-                    es = "El incumplimiento conllevará una multa.",
-                    en = "FAILURE TO COMPLY WILL RESULT IN A FINE.",
-                    phonetic = "féiliur tu kompláir güil risált in a fáin"
-                ),
-                PhraseItem(
-                    es = "Gracias por su cooperación.",
-                    en = "THANK YOU FOR YOUR COOPERATION.",
-                    phonetic = "zenk yu for yor kouoperéishon"
+                phrases = listOf(
+                    PhraseItem(english = "HOW CAN I HELP YOU?", phonetic = "jáu can ai jelp yu", spanish = "¿En qué puedo ayudarle?"),
+                    PhraseItem(english = "WHAT DO YOU NEED?", phonetic = "guot du yu nid", spanish = "¿Qué necesita?"),
+                    PhraseItem(english = "PLEASE TELL ME WHAT YOU NEED.", phonetic = "plís tel mi guot yu nid", spanish = "Dígame qué necesita."),
+                    PhraseItem(english = "THIS PROCEDURE IS DONE AT THE TOWN HALL.", phonetic = "dis prosíllia is dan at de taun jol", spanish = "Este trámite se realiza en el Ayuntamiento."),
+                    PhraseItem(english = "YOU NEED TO GO TO THE CITIZEN SERVICE OFFICE.", phonetic = "yu nid tu góu tu de sítizen sérvis ófis", spanish = "Debe acudir a la Oficina de Atención al Ciudadano."),
+                    PhraseItem(english = "YOU CAN SUBMIT A WRITTEN REQUEST THERE.", phonetic = "yu can sabmít a ríten riküést dea", spanish = "Allí puede presentar una instancia."),
+                    PhraseItem(english = "YOU CAN SUBMIT AN ADMINISTRATIVE APPEAL THERE.", phonetic = "yu can sabmít an admínistrativ apíl dea", spanish = "Allí puede presentar un recurso administrativo."),
+                    PhraseItem(english = "YOU CAN REQUEST A CERTIFICATE THERE.", phonetic = "yu can riküést a sertífiket dea", spanish = "Allí puede solicitar un certificado."),
+                    PhraseItem(english = "YOU NEED TO COMPLETE THIS APPLICATION FORM.", phonetic = "yu nid tu komplít dis aplicéishon form", spanish = "Debe rellenar este formulario."),
+                    PhraseItem(english = "YOU NEED TO REGISTER THIS DOCUMENT.", phonetic = "yu nid tu réllista dis dókiument", spanish = "Debe registrar este documento."),
+                    PhraseItem(english = "YOU CAN SUBMIT THIS DOCUMENT ONLINE.", phonetic = "yu can sabmít dis dókiument onláin", spanish = "Puede presentar este documento por Internet."),
+                    PhraseItem(english = "YOU CAN USE THE ELECTRONIC OFFICE.", phonetic = "yu can yus di ilektrónik ófis", spanish = "Puede utilizar la sede electrónica."),
+                    PhraseItem(english = "YOU MAY NEED A DIGITAL CERTIFICATE.", phonetic = "yu méi nid a díllital sertífiket", spanish = "Puede necesitar un certificado digital."),
+                    PhraseItem(english = "YOU MAY NEED YOUR ELECTRONIC ID.", phonetic = "yu méi nid yor ilektrónik aidí", spanish = "Puede necesitar su DNI electrónico."),
+                    PhraseItem(english = "THIS PROCEDURE REQUIRES AN APPOINTMENT.", phonetic = "dis prosíllia riküáias an apóintment", spanish = "Este trámite requiere cita previa."),
+                    PhraseItem(english = "YOU NEED TO MAKE AN ONLINE APPOINTMENT.", phonetic = "yu nid tu meik an onláin apóintment", spanish = "Debe solicitar una cita previa por Internet."),
+                    PhraseItem(english = "YOU CAN COMPLETE THIS PROCEDURE ONLINE.", phonetic = "yu can komplít dis prosíllia onláin", spanish = "Puede realizar este trámite por Internet."),
+                    PhraseItem(english = "THIS IS THE OFFICIAL WEBSITE.", phonetic = "dis is di ofíshal uébsait", spanish = "Esta es la página web oficial."),
+                    PhraseItem(english = "YOU NEED TO GO TO THE PAYMENT OFFICE.", phonetic = "yu nid tu góu tu de péiment ófis", spanish = "Debe acudir a la Oficina de Recaudación."),
+                    PhraseItem(english = "YOU CAN PAY YOUR LOCAL TAXES THERE.", phonetic = "yu can pei yor lóukal táksis dea", spanish = "Allí puede pagar sus impuestos municipales."),
+                    PhraseItem(english = "PLEASE KEEP YOUR RECEIPT.", phonetic = "plís kip yor risít", spanish = "Conserve el justificante."),
+                    PhraseItem(english = "YOU CAN ASK FOR AN OFFICIAL CLAIM FORM.", phonetic = "yu can ask for an ofíshal kleim form", spanish = "Puede solicitar una Hoja Oficial de Reclamaciones."),
+                    PhraseItem(english = "THE ESTABLISHMENT MUST PROVIDE YOU WITH A CLAIM FORM.", phonetic = "di estáblishment mast prováid yu güiz a kleim form", spanish = "El establecimiento debe facilitarle una Hoja Oficial de Reclamaciones."),
+                    PhraseItem(english = "YOU CAN SUBMIT THE CLAIM TO THE CONSUMER OFFICE.", phonetic = "yu can sabmít de kleim tu de konsiúma ófis", spanish = "Puede presentar la reclamación ante la Oficina de Consumo."),
+                    PhraseItem(english = "YOU NEED TO GO TO THE NATIONAL POLICE STATION.", phonetic = "yu nid tu góu tu de náshonal polís stéishon", spanish = "Debe acudir a la Policía Nacional."),
+                    PhraseItem(english = "YOU MUST APPLY FOR YOUR PASSPORT THERE.", phonetic = "yu mast aplái for yor pásport dea", spanish = "Debe solicitar allí su pasaporte."),
+                    PhraseItem(english = "YOU MUST RENEW YOUR PASSPORT THERE.", phonetic = "yu mast riníu yor pásport dea", spanish = "Debe renovar allí su pasaporte."),
+                    PhraseItem(english = "YOU NEED TO GO TO THE IMMIGRATION OFFICE.", phonetic = "yu nid tu góu tu di imigreishon ófis", spanish = "Debe acudir a la Oficina de Extranjería."),
+                    PhraseItem(english = "YOU CAN APPLY FOR A FOREIGNER IDENTITY NUMBER THERE.", phonetic = "yu can aplái for a fórina aidéntiti námba dea", spanish = "Allí puede solicitar un NIE."),
+                    PhraseItem(english = "YOU CAN APPLY FOR A RESIDENCE PERMIT THERE.", phonetic = "yu can aplái for a résidens pérmit dea", spanish = "Allí puede solicitar un permiso de residencia."),
+                    PhraseItem(english = "PLEASE BRING YOUR PASSPORT.", phonetic = "plís bring yor pásport", spanish = "Traiga su pasaporte."),
+                    PhraseItem(english = "PLEASE BRING ALL YOUR DOCUMENTS.", phonetic = "plís bring ol yor dókiuments", spanish = "Traiga toda la documentación."),
+                    PhraseItem(english = "PLEASE BRING A COPY OF YOUR DOCUMENTS.", phonetic = "plís bring a cópi ov yor dókiuments", spanish = "Traiga una copia de la documentación."),
+                    PhraseItem(english = "THIS IS YOUR REFERENCE NUMBER.", phonetic = "dis is yor réferens nómba", spanish = "Este es su número de referencia."),
+                    PhraseItem(english = "IF YOU ARE NOT SURE, THEY WILL HELP YOU THERE.", phonetic = "if yu ar not shua dei wil jelp yu dea", spanish = "Si tiene alguna duda, allí le ayudarán."),
+                    PhraseItem(english = "IF YOU NEED FURTHER INFORMATION, PLEASE CONTACT THE TOWN HALL.", phonetic = "if yu nid férda informéishon plís cóntakt de taun jol", spanish = "Si necesita más información, póngase en contacto con el Ayuntamiento."),
+                    PhraseItem(english = "THANK YOU FOR YOUR COOPERATION.", phonetic = "zénk yu for yor kouópareishon", spanish = "Gracias por su colaboración.")
                 )
             )
         )
     )
-)
+}

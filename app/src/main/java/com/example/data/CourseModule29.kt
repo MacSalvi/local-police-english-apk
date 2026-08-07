@@ -1,229 +1,124 @@
-package com.example.data
+package com.policia.inglesoperativo.data.modules
 
-import com.example.data.model.Lesson
-import com.example.data.model.Module
-import com.example.data.model.PhraseItem
-import com.example.data.model.VocabularyItem
+import com.policia.inglesoperativo.domain.model.Module
+import com.policia.inglesoperativo.domain.model.Lesson
+import com.policia.inglesoperativo.domain.model.VocabularyItem
+import com.policia.inglesoperativo.domain.model.PhraseItem
 
-val module29 = Module(
-    moduleId = 29,
-    moduleName = "Módulo 29: Pago de multas y coste de la grúa",
-    lessons = listOf(
-        Lesson(
-            lessonId = 2901,
-            lessonTitle = "Pronto pago, descuento y plazos",
-            vocabulary = listOf(
-                VocabularyItem(es = "Pronto pago", en = "PROMPT PAYMENT", phonetic = "prompt péiment"),
-                VocabularyItem(es = "Descuento", en = "DISCOUNT", phonetic = "dískaunt"),
-                VocabularyItem(es = "Plazo voluntario", en = "VOLUNTARY PERIOD", phonetic = "vólönteri píriod"),
-                VocabularyItem(es = "Vía ejecutiva", en = "ENFORCEMENT PROCEDURE", phonetic = "enfórsment prosídiur"),
-                VocabularyItem(es = "Tú / Usted", en = "YOU", phonetic = "yu"),
-                VocabularyItem(es = "Tener", en = "HAVE", phonetic = "jav"),
-                VocabularyItem(es = "Un / Una", en = "A", phonetic = "a"),
-                VocabularyItem(es = "Si", en = "IF", phonetic = "if"),
-                VocabularyItem(es = "Pagar", en = "PAY", phonetic = "péi"),
-                VocabularyItem(es = "Dentro de / En", en = "WITHIN", phonetic = "güizín"),
-                VocabularyItem(es = "Veinte", en = "TWENTY", phonetic = "twénti"),
-                VocabularyItem(es = "Días", en = "DAYS", phonetic = "déis"),
-                VocabularyItem(es = "El / La", en = "THE", phonetic = "de"),
-                VocabularyItem(es = "Es / Está", en = "IS", phonetic = "is"),
-                VocabularyItem(es = "Cincuenta", en = "FIFTY", phonetic = "fífti"),
-                VocabularyItem(es = "Por ciento", en = "PERCENT", phonetic = "pörsent"),
-                VocabularyItem(es = "Este / Esta", en = "THIS", phonetic = "dis"),
-                VocabularyItem(es = "Pago", en = "PAYMENT", phonetic = "péiment"),
-                VocabularyItem(es = "Periodo / Plazo", en = "PERIOD", phonetic = "píriod"),
-                VocabularyItem(es = "No (auxiliar negativo)", en = "DON'T", phonetic = "dont"),
-                VocabularyItem(es = "En / A", en = "IN", phonetic = "in"),
-                VocabularyItem(es = "Hora / Tiempo", en = "TIME", phonetic = "táim"),
-                VocabularyItem(es = "Recargo", en = "SURCHARGE", phonetic = "sörchárch"),
-                VocabularyItem(es = "Aplicar / Se aplica", en = "APPLIES", phonetic = "aplais"),
-                VocabularyItem(es = "Después de / Tras", en = "AFTER", phonetic = "áfter"),
-                VocabularyItem(es = "Plazo / Fecha límite", en = "DEADLINE", phonetic = "dédláin"),
-                VocabularyItem(es = "Ello / Lo", en = "IT", phonetic = "it"),
-                VocabularyItem(es = "Ir / Va", en = "GOES", phonetic = "góus"),
-                VocabularyItem(es = "A (dirección)", en = "TO", phonetic = "tu"),
-                VocabularyItem(es = "Ejecución / Vía ejecutiva", en = "ENFORCEMENT", phonetic = "enfórsment"),
-                VocabularyItem(es = "Completo / Total", en = "FULL", phonetic = "ful"),
-                VocabularyItem(es = "Cantidad / Importe", en = "AMOUNT", phonetic = "amáunt"),
-                VocabularyItem(es = "Futuro (auxiliar)", en = "WILL", phonetic = "güil"),
-                VocabularyItem(es = "Entonces", en = "THEN", phonetic = "den"),
-                VocabularyItem(es = "Aplicar", en = "APPLY", phonetic = "aplái")
-            ),
-            phrases = listOf(
-                PhraseItem(
-                    es = "Tiene un descuento si paga en los primeros veinte días.",
-                    en = "YOU HAVE A DISCOUNT IF YOU PAY WITHIN TWENTY DAYS.",
-                    phonetic = "yu jav a dískaunt if yu péi güizín twénti déis"
+object Module29 {
+    val module = Module(
+        id = 29,
+        title = "Módulo 29",
+        description = "Emergencias, alertas meteorológicas y desastres naturales.",
+        lessons = listOf(
+            Lesson(
+                id = 1,
+                title = "Emergencias, alertas meteorológicas y desastres naturales",
+                vocabulary = listOf(
+                    VocabularyItem(term = "EMERGENCY", phonetic = "imérllensi", translation = "Emergencia"),
+                    VocabularyItem(term = "EMERGENCY SERVICES", phonetic = "imérllensi sérvisis", translation = "Servicios de emergencia"),
+                    VocabularyItem(term = "CIVIL PROTECTION", phonetic = "sívol protékshon", translation = "Protección Civil"),
+                    VocabularyItem(term = "FIRE AND RESCUE SERVICE", phonetic = "fáia and riskiú sérvis", translation = "Servicio de Bomberos"),
+                    VocabularyItem(term = "AMBULANCE", phonetic = "ámbiulans", translation = "Ambulancia"),
+                    VocabularyItem(term = "SAFE AREA", phonetic = "séif éria", translation = "Zona segura"),
+                    VocabularyItem(term = "ASSEMBLY POINT", phonetic = "asémbli póint", translation = "Punto de reunión"),
+                    VocabularyItem(term = "EVACUATION", phonetic = "ivákiuéishon", translation = "Evacuación"),
+                    VocabularyItem(term = "EVACUATION ROUTE", phonetic = "ivákiuéishon rút", translation = "Ruta de evacuación"),
+                    VocabularyItem(term = "ROAD CLOSURE", phonetic = "róud klóusha", translation = "Corte de carretera"),
+                    VocabularyItem(term = "ROADBLOCK", phonetic = "róudblok", translation = "Corte policial de carretera"),
+                    VocabularyItem(term = "DIVERSION", phonetic = "daivérshon", translation = "Desvío"),
+                    VocabularyItem(term = "POLICE CORDON", phonetic = "polís kórdon", translation = "Cordón policial"),
+                    VocabularyItem(term = "EXCLUSION ZONE", phonetic = "eksklúshon zóun", translation = "Zona de exclusión"),
+                    VocabularyItem(term = "FLOOD", phonetic = "flad", translation = "Inundación"),
+                    VocabularyItem(term = "FLASH FLOOD", phonetic = "flash flad", translation = "Inundación repentina"),
+                    VocabularyItem(term = "FLOODED ROAD", phonetic = "fládid róud", translation = "Carretera inundada"),
+                    VocabularyItem(term = "HEAVY RAIN", phonetic = "hévi réin", translation = "Lluvia intensa"),
+                    VocabularyItem(term = "TORRENTIAL RAIN", phonetic = "torénshal réin", translation = "Lluvia torrencial"),
+                    VocabularyItem(term = "SEVERE WEATHER WARNING", phonetic = "sivía uéda uórnin", translation = "Aviso meteorológico por fenómeno grave"),
+                    VocabularyItem(term = "RED WEATHER WARNING", phonetic = "red uéda uórnin", translation = "Aviso rojo"),
+                    VocabularyItem(term = "AMBER WEATHER WARNING", phonetic = "ámba uéda uórnin", translation = "Aviso naranja"),
+                    VocabularyItem(term = "YELLOW WEATHER WARNING", phonetic = "yélou uéda uórnin", translation = "Aviso amarillo"),
+                    VocabularyItem(term = "THUNDERSTORM", phonetic = "zándastorm", translation = "Tormenta eléctrica"),
+                    VocabularyItem(term = "LIGHTNING", phonetic = "láitnin", translation = "Rayo"),
+                    VocabularyItem(term = "HAIL", phonetic = "jeil", translation = "Granizo"),
+                    VocabularyItem(term = "STRONG WINDS", phonetic = "stron guindz", translation = "Vientos fuertes"),
+                    VocabularyItem(term = "GALE", phonetic = "gueil", translation = "Vendaval"),
+                    VocabularyItem(term = "HEATWAVE", phonetic = "jíitweiv", translation = "Ola de calor"),
+                    VocabularyItem(term = "WILDFIRE", phonetic = "guáildfaia", translation = "Incendio forestal"),
+                    VocabularyItem(term = "SMOKE", phonetic = "smóuk", translation = "Humo"),
+                    VocabularyItem(term = "TOXIC SMOKE", phonetic = "tóksik smóuk", translation = "Humo tóxico"),
+                    VocabularyItem(term = "FLAMES", phonetic = "fleims", translation = "Llamas"),
+                    VocabularyItem(term = "GAS LEAK", phonetic = "gas lík", translation = "Fuga de gas"),
+                    VocabularyItem(term = "POWER OUTAGE", phonetic = "páua áutich", translation = "Corte de suministro eléctrico"),
+                    VocabularyItem(term = "DOWNED POWER LINE", phonetic = "daund páua lain", translation = "Cable eléctrico caído"),
+                    VocabularyItem(term = "FALLEN TREE", phonetic = "fólan tri", translation = "Árbol caído"),
+                    VocabularyItem(term = "FALLING BRANCH", phonetic = "fólin branch", translation = "Rama con riesgo de caída"),
+                    VocabularyItem(term = "FALLING MASONRY", phonetic = "fólin méisonri", translation = "Caída de cascotes"),
+                    VocabularyItem(term = "LANDSLIDE", phonetic = "lándslaid", translation = "Desprendimiento de tierra"),
+                    VocabularyItem(term = "FALLING ROCKS", phonetic = "fólin roks", translation = "Desprendimiento de rocas"),
+                    VocabularyItem(term = "COLLAPSED BUILDING", phonetic = "kolápst bíldin", translation = "Edificio derrumbado"),
+                    VocabularyItem(term = "UNSTABLE BUILDING", phonetic = "anstéibol bíldin", translation = "Edificio inestable"),
+                    VocabularyItem(term = "DEBRIS", phonetic = "débri", translation = "Escombros"),
+                    VocabularyItem(term = "COASTLINE", phonetic = "kóustlain", translation = "Litoral"),
+                    VocabularyItem(term = "CLIFF", phonetic = "klif", translation = "Acantilado"),
+                    VocabularyItem(term = "RISK", phonetic = "risk", translation = "Riesgo"),
+                    VocabularyItem(term = "DANGER", phonetic = "déinya", translation = "Peligro")
                 ),
-                PhraseItem(
-                    es = "El descuento es del cincuenta por ciento.",
-                    en = "THE DISCOUNT IS FIFTY PERCENT.",
-                    phonetic = "de dískaunt is fífti pörsent"
-                ),
-                PhraseItem(
-                    es = "Este es el plazo voluntario de pago.",
-                    en = "THIS IS THE VOLUNTARY PAYMENT PERIOD.",
-                    phonetic = "dis is de vólönteri péiment píriod"
-                ),
-                PhraseItem(
-                    es = "Si no paga a tiempo, se aplica un recargo.",
-                    en = "IF YOU DON'T PAY IN TIME, A SURCHARGE APPLIES.",
-                    phonetic = "if yu dont péi in táim, a sörchárch aplais"
-                ),
-                PhraseItem(
-                    es = "Pasado este plazo, entra en vía ejecutiva.",
-                    en = "AFTER THIS DEADLINE, IT GOES TO ENFORCEMENT.",
-                    phonetic = "áfter dis dédláin, it góus tu enfórsment"
-                ),
-                PhraseItem(
-                    es = "Entonces se aplicará el importe completo.",
-                    en = "THE FULL AMOUNT WILL THEN APPLY.",
-                    phonetic = "de ful amáunt güil den aplái"
-                )
-            )
-        ),
-        Lesson(
-            lessonId = 2902,
-            lessonTitle = "Medios de pago",
-            vocabulary = listOf(
-                VocabularyItem(es = "Tarjeta", en = "CARD", phonetic = "card"),
-                VocabularyItem(es = "Transferencia bancaria", en = "BANK TRANSFER", phonetic = "bank tránsför"),
-                VocabularyItem(es = "Código QR", en = "QR CODE", phonetic = "kiú-ar kóud"),
-                VocabularyItem(es = "Aplicación", en = "APP", phonetic = "ap"),
-                VocabularyItem(es = "Tú / Usted", en = "YOU", phonetic = "yu"),
-                VocabularyItem(es = "Poder", en = "CAN", phonetic = "can"),
-                VocabularyItem(es = "Pagar", en = "PAY", phonetic = "péi"),
-                VocabularyItem(es = "Por / Mediante", en = "BY", phonetic = "bai"),
-                VocabularyItem(es = "Ahora mismo", en = "RIGHT NOW", phonetic = "ráit nau"),
-                VocabularyItem(es = "Escanear", en = "SCAN", phonetic = "scan"),
-                VocabularyItem(es = "Este / Esta", en = "THIS", phonetic = "dis"),
-                VocabularyItem(es = "Código", en = "CODE", phonetic = "kóud"),
-                VocabularyItem(es = "En línea / Online", en = "ONLINE", phonetic = "ónláin"),
-                VocabularyItem(es = "También", en = "ALSO", phonetic = "ólsou"),
-                VocabularyItem(es = "Banco / Bancaria", en = "BANK", phonetic = "bank"),
-                VocabularyItem(es = "Transferencia", en = "TRANSFER", phonetic = "tránsför"),
-                VocabularyItem(es = "Usar / Utilizar", en = "USE", phonetic = "iús"),
-                VocabularyItem(es = "El / La", en = "THE", phonetic = "de"),
-                VocabularyItem(es = "DGT", en = "DGT", phonetic = "di-yi-ti"),
-                VocabularyItem(es = "A distancia / Remotamente", en = "REMOTELY", phonetic = "rimóutli"),
-                VocabularyItem(es = "Guardar / Conservar", en = "KEEP", phonetic = "kip"),
-                VocabularyItem(es = "Tu / Su", en = "YOUR", phonetic = "yor"),
-                VocabularyItem(es = "Pago", en = "PAYMENT", phonetic = "péiment"),
-                VocabularyItem(es = "Confirmación", en = "CONFIRMATION", phonetic = "konförméishon"),
-                VocabularyItem(es = "Desde", en = "FROM", phonetic = "from"),
-                VocabularyItem(es = "Propio", en = "OWN", phonetic = "óun"),
-                VocabularyItem(es = "País", en = "COUNTRY", phonetic = "kántri")
-            ),
-            phrases = listOf(
-                PhraseItem(
-                    es = "Puede pagar con tarjeta ahora mismo.",
-                    en = "YOU CAN PAY BY CARD RIGHT NOW.",
-                    phonetic = "yu can péi bai card ráit nau"
-                ),
-                PhraseItem(
-                    es = "Escanee este código QR para pagar online.",
-                    en = "SCAN THIS QR CODE TO PAY ONLINE.",
-                    phonetic = "scan dis kiú-ar kóud tu péi ónláin"
-                ),
-                PhraseItem(
-                    es = "También puede pagar por transferencia bancaria.",
-                    en = "YOU CAN ALSO PAY BY BANK TRANSFER.",
-                    phonetic = "yu can ólsou péi bai bank tránsför"
-                ),
-                PhraseItem(
-                    es = "Use la app de la DGT para pagar a distancia.",
-                    en = "USE THE DGT APP TO PAY REMOTELY.",
-                    phonetic = "iús de di-yi-ti ap tu péi rimóutli"
-                ),
-                PhraseItem(
-                    es = "Conserve la confirmación de pago.",
-                    en = "KEEP YOUR PAYMENT CONFIRMATION.",
-                    phonetic = "kip yor péiment konförméishon"
-                ),
-                PhraseItem(
-                    es = "Puede pagar desde su propio país.",
-                    en = "YOU CAN PAY FROM YOUR OWN COUNTRY.",
-                    phonetic = "yu can péi from yor óun kántri"
-                )
-            )
-        ),
-        Lesson(
-            lessonId = 2903,
-            lessonTitle = "Alegaciones/recurso y desglose de costes de grúa",
-            vocabulary = listOf(
-                VocabularyItem(es = "Alegación", en = "APPEAL", phonetic = "apíl"),
-                VocabularyItem(es = "Recurso", en = "CHALLENGE", phonetic = "chálenlch"),
-                VocabularyItem(es = "Coste de grúa", en = "TOWING FEE", phonetic = "tóuing fi"),
-                VocabularyItem(es = "Coste de depósito", en = "STORAGE FEE", phonetic = "stórich fi"),
-                VocabularyItem(es = "Tú / Usted", en = "YOU", phonetic = "yu"),
-                VocabularyItem(es = "Tener", en = "HAVE", phonetic = "jav"),
-                VocabularyItem(es = "El / La", en = "THE", phonetic = "de"),
-                VocabularyItem(es = "Derecho", en = "RIGHT", phonetic = "ráit"),
-                VocabularyItem(es = "A (infinitivo)", en = "TO", phonetic = "tu"),
-                VocabularyItem(es = "Recurrir / Apelar", en = "APPEAL", phonetic = "apíl"),
-                VocabularyItem(es = "Este / Esta", en = "THIS", phonetic = "dis"),
-                VocabularyItem(es = "Multa", en = "FINE", phonetic = "fáin"),
-                VocabularyItem(es = "Poder", en = "CAN", phonetic = "can"),
-                VocabularyItem(es = "Presentar / Enviar", en = "SUBMIT", phonetic = "sabmít"),
-                VocabularyItem(es = "Un / Una (ante vocal)", en = "AN", phonetic = "an"),
-                VocabularyItem(es = "Dentro de", en = "WITHIN", phonetic = "güizín"),
-                VocabularyItem(es = "Veinte", en = "TWENTY", phonetic = "twénti"),
-                VocabularyItem(es = "Días", en = "DAYS", phonetic = "déis"),
-                VocabularyItem(es = "Remolque / De grúa", en = "TOWING", phonetic = "tóuing"),
-                VocabularyItem(es = "Tarifa / Coste", en = "FEE", phonetic = "fi"),
-                VocabularyItem(es = "Es / Está", en = "IS", phonetic = "is"),
-                VocabularyItem(es = "Separado / Independiente", en = "SEPARATE", phonetic = "séparet"),
-                VocabularyItem(es = "De / Desde", en = "FROM", phonetic = "from"),
-                VocabularyItem(es = "Haber (existencial - hay)", en = "THERE", phonetic = "der"),
-                VocabularyItem(es = "También", en = "ALSO", phonetic = "ólsou"),
-                VocabularyItem(es = "Un / Una", en = "A", phonetic = "a"),
-                VocabularyItem(es = "Diario", en = "DAILY", phonetic = "déili"),
-                VocabularyItem(es = "Almacenaje / Depósito", en = "STORAGE", phonetic = "stórich"),
-                VocabularyItem(es = "Estos / Estas", en = "THESE", phonetic = "dis"),
-                VocabularyItem(es = "Tres", en = "THREE", phonetic = "zri"),
-                VocabularyItem(es = "Costes", en = "COSTS", phonetic = "costs"),
-                VocabularyItem(es = "Ser / Estar (plural)", en = "ARE", phonetic = "ar"),
-                VocabularyItem(es = "Cobrados / Cargados", en = "CHARGED", phonetic = "chárllid"),
-                VocabularyItem(es = "Por separado", en = "SEPARATELY", phonetic = "séparetli"),
-                VocabularyItem(es = "Yo", en = "I", phonetic = "ai"),
-                VocabularyItem(es = "Futuro (auxiliar)", en = "WILL", phonetic = "güil"),
-                VocabularyItem(es = "Dar", en = "GIVE", phonetic = "guiv"),
-                VocabularyItem(es = "Desglose", en = "BREAKDOWN", phonetic = "bréikdaun"),
-                VocabularyItem(es = "En", en = "IN", phonetic = "in"),
-                VocabularyItem(es = "Escrito", en = "WRITING", phonetic = "ráiting")
-            ),
-            phrases = listOf(
-                PhraseItem(
-                    es = "Tiene derecho a recurrir esta multa.",
-                    en = "YOU HAVE THE RIGHT TO APPEAL THIS FINE.",
-                    phonetic = "yu jav de ráit tu apíl dis fáin"
-                ),
-                PhraseItem(
-                    es = "Puede presentar alegaciones en veinte días.",
-                    en = "YOU CAN SUBMIT AN APPEAL WITHIN TWENTY DAYS.",
-                    phonetic = "yu can sabmít an apíl güizín twénti déis"
-                ),
-                PhraseItem(
-                    es = "La tasa de grúa es independiente de la multa.",
-                    en = "THE TOWING FEE IS SEPARATE FROM THE FINE.",
-                    phonetic = "de tóuing fi is séparet from de fáin"
-                ),
-                PhraseItem(
-                    es = "También hay una tasa diaria de depósito.",
-                    en = "THERE IS ALSO A DAILY STORAGE FEE.",
-                    phonetic = "der is ólsou a déili stórich fi"
-                ),
-                PhraseItem(
-                    es = "Estos tres costes se cobran por separado.",
-                    en = "THESE THREE COSTS ARE CHARGED SEPARATELY.",
-                    phonetic = "dis zri costs ar chárllid séparetli"
-                ),
-                PhraseItem(
-                    es = "Le entregaré el desglose por escrito.",
-                    en = "I WILL GIVE YOU THE BREAKDOWN IN WRITING.",
-                    phonetic = "ai güil guiv yu de bréikdaun in ráiting"
+                phrases = listOf(
+                    PhraseItem(english = "LOCAL POLICE.", phonetic = "lóukal polís", spanish = "Policía Local."),
+                    PhraseItem(english = "THIS AREA HAS BEEN EVACUATED.", phonetic = "dis éria jas bin ivákiueitid", spanish = "Esta zona ha sido evacuada."),
+                    PhraseItem(english = "YOU MUST LEAVE THIS AREA IMMEDIATELY.", phonetic = "yu mast liv dis éria imídietli", spanish = "Debe abandonar esta zona inmediatamente."),
+                    PhraseItem(english = "MOVE TO THE SAFE AREA.", phonetic = "muv tu de séif éria", spanish = "Diríjase a la zona segura."),
+                    PhraseItem(english = "FOLLOW THE EVACUATION ROUTE.", phonetic = "fólou di ivákiuéishon rút", spanish = "Siga la ruta de evacuación."),
+                    PhraseItem(english = "GO TO THE ASSEMBLY POINT.", phonetic = "góu tu di asémbli póint", spanish = "Diríjase al punto de reunión."),
+                    PhraseItem(english = "DO NOT RETURN UNTIL AUTHORISED.", phonetic = "du not ritérn antíl ózoraizd", spanish = "No regrese hasta que se lo autoricen."),
+                    PhraseItem(english = "THIS ROAD IS CLOSED.", phonetic = "dis róud is klóuzd", spanish = "Esta carretera está cortada."),
+                    PhraseItem(english = "THIS ROAD IS CLOSED UNTIL FURTHER NOTICE.", phonetic = "dis róud is klóuzd antíl férda nóutis", spanish = "Esta carretera permanecerá cerrada hasta nuevo aviso."),
+                    PhraseItem(english = "PLEASE USE THE DIVERSION.", phonetic = "plís yus de daivérshon", spanish = "Utilice el desvío."),
+                    PhraseItem(english = "NO VEHICLES ARE ALLOWED BEYOND THIS POINT.", phonetic = "nóu víikols ar aláud biyónd dis póint", spanish = "No se permite el paso de vehículos a partir de este punto."),
+                    PhraseItem(english = "NO PEDESTRIANS ARE ALLOWED BEYOND THIS POINT.", phonetic = "nóu pedéstrians ar aláud biyónd dis póint", spanish = "No se permite el paso de peatones a partir de este punto."),
+                    PhraseItem(english = "PLEASE STAY BEHIND THE POLICE CORDON.", phonetic = "plís stéi biháind de polís kórdon", spanish = "Permanezca detrás del cordón policial."),
+                    PhraseItem(english = "THIS IS AN EXCLUSION ZONE.", phonetic = "dis is an eksklúshon zóun", spanish = "Esta es una zona de exclusión."),
+                    PhraseItem(english = "DO NOT CROSS THE FLOODED ROAD.", phonetic = "du not kros de fládid róud", spanish = "No cruce la carretera inundada."),
+                    PhraseItem(english = "TURN AROUND. IT IS NOT SAFE TO CONTINUE.", phonetic = "tern aráund. it is not séif tu kontíniu", spanish = "Dé la vuelta. No es seguro continuar."),
+                    PhraseItem(english = "STAY AWAY FROM THE RIVER.", phonetic = "stéi aguéi from de ríva", spanish = "Aléjese del río."),
+                    PhraseItem(english = "STAY AWAY FROM THE COASTLINE.", phonetic = "stéi aguéi from de kóustlain", spanish = "Aléjese del litoral."),
+                    PhraseItem(english = "KEEP AWAY FROM THE CLIFF.", phonetic = "kip aguéi from de klif", spanish = "Manténgase alejado del acantilado."),
+                    PhraseItem(english = "KEEP AWAY FROM FALLEN TREES.", phonetic = "kip aguéi from fólan tríis", spanish = "Manténgase alejado de los árboles caídos."),
+                    PhraseItem(english = "KEEP AWAY FROM FALLING BRANCHES.", phonetic = "kip aguéi from fólin bránchis", spanish = "Manténgase alejado de las ramas con riesgo de caída."),
+                    PhraseItem(english = "WATCH OUT FOR FALLING MASONRY.", phonetic = "uoch aut for fólin méisonri", spanish = "Cuidado con la caída de cascotes."),
+                    PhraseItem(english = "DO NOT TOUCH THE POWER LINES.", phonetic = "du not tach de páua lains", spanish = "No toque los cables eléctricos."),
+                    PhraseItem(english = "KEEP AWAY FROM DAMAGED BUILDINGS.", phonetic = "kip aguéi from dámichd bíldins", spanish = "Manténgase alejado de los edificios dañados."),
+                    PhraseItem(english = "THERE IS A RISK OF COLLAPSE.", phonetic = "dea is a risk ov koláps", spanish = "Existe riesgo de derrumbe."),
+                    PhraseItem(english = "DO NOT APPROACH THE FIRE.", phonetic = "du not apróuch de fáia", spanish = "No se acerque al incendio."),
+                    PhraseItem(english = "KEEP AWAY FROM THE SMOKE.", phonetic = "kip aguéi from de smóuk", spanis = "Manténgase alejado del humo."),
+                    PhraseItem(english = "DO NOT BREATHE THE SMOKE.", phonetic = "du not bríiz de smóuk", spanish = "No respire el humo."),
+                    PhraseItem(english = "LEAVE THE BUILDING IMMEDIATELY.", phonetic = "liv de bíldin imídietli", spanish = "Salga inmediatamente del edificio."),
+                    PhraseItem(english = "THE BUILDING IS NOT SAFE.", phonetic = "de bíldin is not séif", spanish = "El edificio no es seguro."),
+                    PhraseItem(english = "DO NOT ENTER THE BUILDING.", phonetic = "du not énta de bíldin", spanish = "No entre en el edificio."),
+                    PhraseItem(english = "MOVE YOUR VEHICLE TO A SAFE PLACE.", phonetic = "muv yor víikol tu a séif pleis", spanish = "Lleve su vehículo a un lugar seguro."),
+                    PhraseItem(english = "KEEP THE ACCESS ROAD CLEAR FOR EMERGENCY VEHICLES.", phonetic = "kip di ákses róud klía for imérllensi víikols", spanish = "Mantenga libre el acceso para los vehículos de emergencia."),
+                    PhraseItem(english = "CAN ANYONE REMAIN INSIDE?", phonetic = "can éniuan riméin insáid", spanish = "¿Queda alguien dentro?"),
+                    PhraseItem(english = "IS ANYONE TRAPPED?", phonetic = "is éniuan trapt", spanish = "¿Hay alguien atrapado?"),
+                    PhraseItem(english = "IS ANYONE INJURED?", phonetic = "is éniuán ínyurd", spanish = "¿Hay algún herido?"),
+                    PhraseItem(english = "ARE THERE ANY CHILDREN INSIDE?", phonetic = "ar dea éni chíldren insáid", spanish = "¿Hay niños dentro?"),
+                    PhraseItem(english = "ARE THERE ANY ELDERLY PEOPLE INSIDE?", phonetic = "ar dea éni élldali pípol insáid", spanish = "¿Hay personas mayores dentro?"),
+                    PhraseItem(english = "ARE THERE ANY PETS INSIDE?", phonetic = "ar dea éni pets insáid", spanish = "¿Hay animales domésticos dentro?"),
+                    PhraseItem(english = "IS ANYONE UNABLE TO WALK?", phonetic = "is éniuan anéibol tu uok", spanish = "¿Hay alguien que no pueda caminar?"),
+                    PhraseItem(english = "DO YOU NEED MEDICAL ASSISTANCE?", phonetic = "du yu nid médikol asistans", spanish = "¿Necesita asistencia médica?"),
+                    PhraseItem(english = "CAN YOU SMELL GAS?", phonetic = "can yu smel gas", spanish = "¿Huele a gas?"),
+                    PhraseItem(english = "CAN YOU SEE FLAMES?", phonetic = "can yu si fleims", spanish = "¿Ve llamas?"),
+                    PhraseItem(english = "WHEN DID THE FIRE START?", phonetic = "guen did de fáia start", spanish = "¿Cuándo comenzó el incendio?"),
+                    PhraseItem(english = "WHERE DID THE FIRE START?", phonetic = "güea did de fáia start", spanish = "¿Dónde comenzó el incendio?"),
+                    PhraseItem(english = "HAS EVERYONE BEEN EVACUATED?", phonetic = "jaz évriuan bin ivákiueitid", spanish = "¿Ha sido evacuado todo el mundo?"),
+                    PhraseItem(english = "EMERGENCY SERVICES ARE ON THEIR WAY.", phonetic = "imérllensi sérvisis ar on dea güei", spanish = "Los servicios de emergencia están de camino."),
+                    PhraseItem(english = "THE FIRE AND RESCUE SERVICE HAS BEEN NOTIFIED.", phonetic = "de fáia and riskiú sérvis jas bin nóutifaid", spanish = "Se ha avisado a los bomberos."),
+                    PhraseItem(english = "AN AMBULANCE IS ON ITS WAY.", phonetic = "an ámbiulans is on its güei", spanish = "Una ambulancia está de camino."),
+                    PhraseItem(english = "STAY CALM. WE WILL HELP YOU.", phonetic = "stéi kam. güi wil jelp yu", spanish = "Mantenga la calma. Le ayudaremos."),
+                    PhraseItem(english = "FOLLOW MY INSTRUCTIONS.", phonetic = "fólou mai instrákshons", spanish = "Siga mis instrucciones."),
+                    PhraseItem(english = "THANK YOU FOR YOUR COOPERATION.", phonetic = "zénk yu for yor kouópareishon", spanish = "Gracias por su colaboración.")
                 )
             )
         )
     )
-)
+}

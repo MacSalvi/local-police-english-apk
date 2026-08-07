@@ -45,17 +45,16 @@ import kotlin.random.Random
 
 data class SyllabusSection(
     val title: String,
-    val moduleIds: List<Int>
+    val moduleIds: List<Int>,
+    val color: Color
 )
 
 val operationalSections = listOf(
-    SyllabusSection("COMUNICACIÓN Y PROCEDIMIENTO", listOf(1, 2, 3)),
-    SyllabusSection("TRÁFICO Y VEHÍCULOS", listOf(4, 5, 6, 7, 8, 9, 28, 29)),
-    SyllabusSection("SEGURIDAD CIUDADANA", listOf(10, 11, 12, 13, 16, 26)),
-    SyllabusSection("VÍCTIMAS Y DELINCUENCIA", listOf(14, 15, 27)),
-    SyllabusSection("EMERGENCIAS", listOf(17, 18, 19, 20)),
-    SyllabusSection("TURISMO, EXTRANJERÍA Y CONVIVENCIA", listOf(21, 22, 25, 30)),
-    SyllabusSection("COORDINACIÓN Y VOCABULARIO", listOf(23, 24))
+    SyllabusSection("ATENCIÓN CIUDADANA E IDENTIFICACIÓN", listOf(1, 2, 3, 25, 21, 24), Color(0xFF34D399)),
+    SyllabusSection("TRÁFICO Y TRANSPORTE", listOf(4, 5, 6, 7, 8, 9), Color(0xFF38BDF8)),
+    SyllabusSection("SEGURIDAD CIUDADANA", listOf(10, 11, 12, 13, 22, 23), Color(0xFF2DD4BF)),
+    SyllabusSection("DELITOS Y ACTUACIONES POLICIALES", listOf(14, 15, 27, 28, 20, 16), Color(0xFFC084FC)),
+    SyllabusSection("EMERGENCIAS Y SERVICIOS ESPECIALES", listOf(17, 18, 29, 19, 30, 26), Color(0xFFFB923C))
 )
 
 data class Star(
@@ -132,9 +131,56 @@ fun SyllabusScreen(
     var showEmergencySheet by remember { mutableStateOf(false) }
     val crtGreen = Color(0xFF00FF66)
 
-    val expandedSections = remember { mutableStateMapOf<String, Boolean>().apply {
-        operationalSections.forEach { put(it.title, false) }
-    }}
+    val listState = androidx.compose.foundation.lazy.rememberLazyListState()
+    var expandedSectionTitle by remember { mutableStateOf<String?>(null) }
+
+    val moduleMap = remember(modules) { modules.associateBy { it.moduleId } }
+
+    fun findIndexForKey(targetKey: String): Int {
+        var index = 0
+        operationalSections.forEach { section ->
+            val sectionKey = "section_${section.title}"
+            if (sectionKey == targetKey) return index
+            index++
+
+            if (expandedSectionTitle == section.title) {
+                val sectionModules = section.moduleIds.mapNotNull { moduleMap[it] }
+                sectionModules.forEach { module ->
+                    val moduleKey = "module_${module.moduleId}"
+                    if (moduleKey == targetKey) return index
+                    index++
+                }
+            }
+        }
+        return -1
+    }
+
+    LaunchedEffect(expandedSectionTitle) {
+        val sectionTitle = expandedSectionTitle
+        if (sectionTitle != null) {
+            kotlinx.coroutines.delay(100)
+            val idx = findIndexForKey("section_$sectionTitle")
+            if (idx >= 0) {
+                listState.animateScrollToItem(idx)
+            }
+        }
+    }
+
+    LaunchedEffect(expandedModuleId) {
+        val modId = expandedModuleId
+        if (modId != null) {
+            val parentSection = operationalSections.find { it.moduleIds.contains(modId) }
+            if (parentSection != null && expandedSectionTitle != parentSection.title) {
+                expandedSectionTitle = parentSection.title
+                kotlinx.coroutines.delay(100)
+            }
+            kotlinx.coroutines.delay(120)
+            val idx = findIndexForKey("module_$modId")
+            if (idx >= 0) {
+                listState.animateScrollToItem(idx)
+            }
+        }
+    }
 
     Scaffold(
         topBar = {
@@ -333,17 +379,16 @@ fun SyllabusScreen(
                         }
                     }
                 } else {
-                    val moduleMap = modules.associateBy { it.moduleId }
-
                     LazyColumn(
-                        verticalArrangement = Arrangement.spacedBy(16.dp),
-                        contentPadding = PaddingValues(bottom = 24.dp),
+                        state = listState,
+                        verticalArrangement = Arrangement.spacedBy(14.dp),
+                        contentPadding = PaddingValues(bottom = 32.dp),
                         modifier = Modifier
                             .fillMaxWidth()
                             .weight(1f)
                     ) {
                         operationalSections.forEach { section ->
-                            val isSectionExpanded = expandedSections[section.title] ?: false
+                            val isSectionExpanded = (expandedSectionTitle == section.title)
                             val sectionModules = section.moduleIds.mapNotNull { moduleMap[it] }
 
                             item(key = "section_${section.title}") {
@@ -355,11 +400,26 @@ fun SyllabusScreen(
                                 Surface(
                                     color = Slate900,
                                     shape = RoundedCornerShape(12.dp),
-                                    border = BorderStroke(1.2.dp, if (isSectionExpanded) NeonTeal.copy(alpha = 0.5f) else Slate800),
+                                    border = BorderStroke(
+                                        width = if (isSectionExpanded) 1.5.dp else 1.2.dp,
+                                        color = if (isSectionExpanded) section.color else Slate800
+                                    ),
                                     modifier = Modifier
                                         .fillMaxWidth()
                                         .clickable {
-                                            expandedSections[section.title] = !isSectionExpanded
+                                            val willExpand = !isSectionExpanded
+                                            if (willExpand) {
+                                                expandedSectionTitle = section.title
+                                                // Clear expanded module if it belongs to another section
+                                                if (expandedModuleId != null) {
+                                                    val currentModule = moduleMap[expandedModuleId]
+                                                    if (currentModule == null || !section.moduleIds.contains(expandedModuleId)) {
+                                                        onModuleToggle(expandedModuleId)
+                                                    }
+                                                }
+                                            } else {
+                                                expandedSectionTitle = null
+                                            }
                                         }
                                 ) {
                                     Row(
@@ -372,7 +432,7 @@ fun SyllabusScreen(
                                         Column(modifier = Modifier.weight(1f)) {
                                             Text(
                                                 text = section.title,
-                                                color = NeonTeal,
+                                                color = section.color,
                                                 fontWeight = FontWeight.Bold,
                                                 fontSize = 13.sp,
                                                 letterSpacing = 1.sp
@@ -388,67 +448,63 @@ fun SyllabusScreen(
                                             imageVector = Icons.Default.KeyboardArrowDown,
                                             contentDescription = null,
                                             modifier = Modifier.rotate(rotationAngle),
-                                            tint = NeonTeal
+                                            tint = section.color
                                         )
                                     }
                                 }
                             }
 
-                            item(key = "content_${section.title}") {
-                                AnimatedVisibility(
-                                    visible = isSectionExpanded,
-                                    enter = fadeIn() + expandVertically(),
-                                    exit = fadeOut() + shrinkVertically()
-                                ) {
+                            if (isSectionExpanded) {
+                                items(
+                                    items = sectionModules,
+                                    key = { module -> "module_${module.moduleId}" }
+                                ) { module ->
+                                    val isModuleExpanded = (expandedModuleId == module.moduleId)
+                                    val (_, moduleAccentColor) = getSectionVisuals(module.moduleId)
+
                                     Column(
-                                        verticalArrangement = Arrangement.spacedBy(12.dp),
                                         modifier = Modifier
                                             .fillMaxWidth()
-                                            .padding(start = 8.dp, top = 4.dp, bottom = 4.dp)
+                                            .padding(start = 8.dp, top = 2.dp, bottom = 2.dp)
                                     ) {
-                                        sectionModules.forEach { module ->
-                                            val isModuleExpanded = expandedModuleId == module.moduleId
+                                        ModuleHeaderCard(
+                                            module = module,
+                                            isExpanded = isModuleExpanded,
+                                            onToggle = { onModuleToggle(module.moduleId) }
+                                        )
 
-                                            Column(modifier = Modifier.fillMaxWidth()) {
-                                                ModuleHeaderCard(
-                                                    module = module,
-                                                    isExpanded = isModuleExpanded,
-                                                    onToggle = { onModuleToggle(module.moduleId) }
-                                                )
-
-                                                AnimatedVisibility(
-                                                    visible = isModuleExpanded,
-                                                    enter = fadeIn() + expandVertically(),
-                                                    exit = fadeOut() + shrinkVertically()
-                                                ) {
-                                                    Column(
-                                                        modifier = Modifier
-                                                            .fillMaxWidth()
-                                                            .padding(start = 16.dp, top = 8.dp, bottom = 8.dp)
-                                                            .border(
-                                                                width = 1.dp,
-                                                                color = Slate800,
-                                                                shape = RoundedCornerShape(16.dp)
-                                                            )
-                                                            .background(Slate900.copy(alpha = 0.5f), RoundedCornerShape(16.dp))
-                                                            .padding(12.dp)
-                                                    ) {
-                                                        if (module.lessons.isEmpty()) {
-                                                            Text(
-                                                                text = "No hay lecciones en este módulo.",
-                                                                color = Slate400,
-                                                                style = MaterialTheme.typography.bodyMedium,
-                                                                modifier = Modifier.padding(8.dp)
-                                                            )
-                                                        } else {
-                                                            module.lessons.forEachIndexed { index, lesson ->
-                                                                LessonPathItem(
-                                                                    lesson = lesson,
-                                                                    isLast = index == module.lessons.size - 1,
-                                                                    onClick = { onLessonClick(lesson) }
-                                                                )
-                                                            }
-                                                        }
+                                        AnimatedVisibility(
+                                            visible = isModuleExpanded,
+                                            enter = fadeIn() + expandVertically(),
+                                            exit = fadeOut() + shrinkVertically()
+                                        ) {
+                                            Column(
+                                                modifier = Modifier
+                                                    .fillMaxWidth()
+                                                    .padding(start = 16.dp, top = 8.dp, bottom = 8.dp)
+                                                    .border(
+                                                        width = 1.dp,
+                                                        color = moduleAccentColor.copy(alpha = 0.4f),
+                                                        shape = RoundedCornerShape(16.dp)
+                                                    )
+                                                    .background(Slate900.copy(alpha = 0.5f), RoundedCornerShape(16.dp))
+                                                    .padding(12.dp)
+                                            ) {
+                                                if (module.lessons.isEmpty()) {
+                                                    Text(
+                                                        text = "No hay lecciones en este módulo.",
+                                                        color = Slate400,
+                                                        style = MaterialTheme.typography.bodyMedium,
+                                                        modifier = Modifier.padding(8.dp)
+                                                    )
+                                                } else {
+                                                    module.lessons.forEachIndexed { index, lesson ->
+                                                        LessonPathItem(
+                                                            lesson = lesson,
+                                                            isLast = index == module.lessons.size - 1,
+                                                            accentColor = moduleAccentColor,
+                                                            onClick = { onLessonClick(lesson) }
+                                                        )
                                                     }
                                                 }
                                             }
@@ -633,12 +689,11 @@ fun EmergencyBottomSheet(
 
 private fun getSectionVisuals(moduleId: Int): Pair<ImageVector, Color> {
     return when (moduleId) {
-        in listOf(1, 2, 3) -> Icons.Default.SupportAgent to CustomGreen
-        in listOf(4, 5, 6, 7, 8, 9, 28, 29) -> Icons.Default.DirectionsCar to RadiantBlue
-        in listOf(10, 11, 12, 13, 16, 26) -> Icons.Default.Shield to NeonTeal
-        in listOf(14, 15, 27) -> Icons.Default.GppGood to Color(0xFFC084FC)
-        in listOf(17, 18, 19, 20) -> Icons.Default.Warning to NeonOrange
-        in listOf(21, 22, 25, 30) -> Icons.Default.Public to Color(0xFFFACC15)
+        in listOf(1, 2, 3, 25, 21, 24) -> Icons.Default.SupportAgent to Color(0xFF34D399)
+        in listOf(4, 5, 6, 7, 8, 9) -> Icons.Default.DirectionsCar to Color(0xFF38BDF8)
+        in listOf(10, 11, 12, 13, 22, 23) -> Icons.Default.Shield to Color(0xFF2DD4BF)
+        in listOf(14, 15, 27, 28, 20, 16) -> Icons.Default.GppGood to Color(0xFFC084FC)
+        in listOf(17, 18, 29, 19, 30, 26) -> Icons.Default.Warning to Color(0xFFFB923C)
         else -> Icons.Default.MenuBook to Slate400
     }
 }
@@ -717,6 +772,7 @@ fun ModuleHeaderCard(
 fun LessonPathItem(
     lesson: Lesson,
     isLast: Boolean,
+    accentColor: Color = NeonTeal,
     onClick: () -> Unit
 ) {
     Row(
@@ -735,7 +791,7 @@ fun LessonPathItem(
                 modifier = Modifier
                     .size(12.dp)
                     .clip(CircleShape)
-                    .background(NeonTeal)
+                    .background(accentColor)
             )
             if (!isLast) {
                 Box(
@@ -763,7 +819,7 @@ fun LessonPathItem(
         Icon(
             imageVector = Icons.Default.PlayArrow,
             contentDescription = "Entrar a la lección",
-            tint = NeonTeal,
+            tint = accentColor,
             modifier = Modifier.size(18.dp)
         )
     }

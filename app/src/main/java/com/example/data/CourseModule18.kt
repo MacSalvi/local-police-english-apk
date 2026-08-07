@@ -1,196 +1,97 @@
-package com.example.data
+package com.policia.inglesoperativo.data.modules
 
-import com.example.data.model.Lesson
-import com.example.data.model.Module
-import com.example.data.model.PhraseItem
-import com.example.data.model.VocabularyItem
+import com.policia.inglesoperativo.domain.model.Module
+import com.policia.inglesoperativo.domain.model.Lesson
+import com.policia.inglesoperativo.domain.model.VocabularyItem
+import com.policia.inglesoperativo.domain.model.PhraseItem
 
-val module18 = Module(
-    moduleId = 18,
-    moduleName = "Módulo 18: Incendios y evacuaciones",
-    lessons = listOf(
-        Lesson(
-            lessonId = 1801,
-            lessonTitle = "Detección y localización del incendio",
-            vocabulary = listOf(
-                VocabularyItem(es = "Incendio", en = "FIRE", phonetic = "fáiar"),
-                VocabularyItem(es = "Humo", en = "SMOKE", phonetic = "smóuk"),
-                VocabularyItem(es = "Llamas", en = "FLAMES", phonetic = "fléims"),
-                VocabularyItem(es = "Dónde", en = "WHERE", phonetic = "güer"),
-                VocabularyItem(es = "Es / Está", en = "IS", phonetic = "is"),
-                VocabularyItem(es = "El / La", en = "THE", phonetic = "de"),
-                VocabularyItem(es = "Hay (existencial)", en = "THERE", phonetic = "der"),
-                VocabularyItem(es = "Un / Una", en = "A", phonetic = "a"),
-                VocabularyItem(es = "Mucho / Lote", en = "LOT", phonetic = "lot"),
-                VocabularyItem(es = "De", en = "OF", phonetic = "ov"),
-                VocabularyItem(es = "Poder", en = "CAN", phonetic = "can"),
-                VocabularyItem(es = "Tú / Usted", en = "YOU", phonetic = "yu"),
-                VocabularyItem(es = "Ver", en = "SEE", phonetic = "si"),
-                VocabularyItem(es = "Algún / Cualquier", en = "ANY", phonetic = "éni"),
-                VocabularyItem(es = "Llamar", en = "CALL", phonetic = "col"),
-                VocabularyItem(es = "Bomberos", en = "FIRE BRIGADE", phonetic = "fáiar brigéid"),
-                VocabularyItem(es = "Ahora", en = "NOW", phonetic = "nau"),
-                VocabularyItem(es = "Mantener / Permanecer", en = "STAY", phonetic = "stéi"),
-                VocabularyItem(es = "Bajo / Agachado", en = "LOW", phonetic = "lóu"),
-                VocabularyItem(es = "A (infinitivo)", en = "TO", phonetic = "tu"),
-                VocabularyItem(es = "Evitar", en = "AVOID", phonetic = "avóid"),
-                VocabularyItem(es = "Hacer (auxiliar negativo)", en = "DO NOT", phonetic = "du not"),
-                VocabularyItem(es = "Usar", en = "USE", phonetic = "iús"),
-                VocabularyItem(es = "Ascensor", en = "LIFT", phonetic = "lift")
-            ),
-            phrases = listOf(
-                PhraseItem(
-                    es = "¿Dónde está el incendio?",
-                    en = "WHERE IS THE FIRE?",
-                    phonetic = "güer is de fáiar"
+object Module18 {
+    val module = Module(
+        id = 18,
+        title = "Módulo 18",
+        description = "Incendios, evacuaciones y sustancias peligrosas.",
+        lessons = listOf(
+            Lesson(
+                id = 1,
+                title = "Incendios, evacuaciones y sustancias peligrosas",
+                vocabulary = listOf(
+                    VocabularyItem(term = "FIRE", phonetic = "fáaia", translation = "Incendio"),
+                    VocabularyItem(term = "SMOKE", phonetic = "smóuk", translation = "Humo"),
+                    VocabularyItem(term = "FLAMES", phonetic = "fleims", translation = "Llamas"),
+                    VocabularyItem(term = "EXPLOSION", phonetic = "eksplóushon", translation = "Explosión"),
+                    VocabularyItem(term = "FIRE ALARM", phonetic = "fáaia alám", translation = "Alarma de incendios"),
+                    VocabularyItem(term = "FIRE EXIT", phonetic = "fáaia éksit", translation = "Salida de emergencia"),
+                    VocabularyItem(term = "EMERGENCY EXIT", phonetic = "imérllensi éksit", translation = "Salida de emergencia"),
+                    VocabularyItem(term = "EMERGENCY", phonetic = "imérllensi", translation = "Emergencia"),
+                    VocabularyItem(term = "EVACUATION", phonetic = "ivakiuéishon", translation = "Evacuación"),
+                    VocabularyItem(term = "ASSEMBLY POINT", phonetic = "asémbli point", translation = "Punto de encuentro"),
+                    VocabularyItem(term = "SAFE AREA", phonetic = "séif éria", translation = "Zona segura"),
+                    VocabularyItem(term = "DANGER", phonetic = "déinya", translation = "Peligro"),
+                    VocabularyItem(term = "RISK", phonetic = "risk", translation = "Riesgo"),
+                    VocabularyItem(term = "GAS LEAK", phonetic = "gas lík", translation = "Fuga de gas"),
+                    VocabularyItem(term = "CHEMICAL", phonetic = "kémikol", translation = "Sustancia química"),
+                    VocabularyItem(term = "TOXIC SUBSTANCE", phonetic = "tóksik sástans", translation = "Sustancia tóxica"),
+                    VocabularyItem(term = "HAZARDOUS MATERIAL", phonetic = "házadas matíarial", translation = "Material peligroso"),
+                    VocabularyItem(term = "SMOKE INHALATION", phonetic = "smóuk inhaléishon", translation = "Inhalación de humo"),
+                    VocabularyItem(term = "BURN", phonetic = "bern", translation = "Quemadura"),
+                    VocabularyItem(term = "BREATHING", phonetic = "brízin", translation = "Respiración"),
+                    VocabularyItem(term = "COUGH", phonetic = "kof", translation = "Tos"),
+                    VocabularyItem(term = "FIRE BRIGADE", phonetic = "fáaia brigéid", translation = "Bomberos"),
+                    VocabularyItem(term = "RESCUE", phonetic = "réskiu", translation = "Rescate"),
+                    VocabularyItem(term = "TRAPPED PERSON", phonetic = "trapt pérson", translation = "Persona atrapada"),
+                    VocabularyItem(term = "STAIRS", phonetic = "stéas", translation = "Escaleras"),
+                    VocabularyItem(term = "LIFT", phonetic = "lift", translation = "Ascensor"),
+                    VocabularyItem(term = "WINDOW", phonetic = "guíndou", translation = "Ventana"),
+                    VocabularyItem(term = "BALCONY", phonetic = "bálkoni", translation = "Balcón"),
+                    VocabularyItem(term = "DOOR", phonetic = "dóa", translation = "Puerta"),
+                    VocabularyItem(term = "BUILDING", phonetic = "bíldin", translation = "Edificio"),
+                    VocabularyItem(term = "PERIMETER", phonetic = "perímita", translation = "Perímetro")
                 ),
-                PhraseItem(
-                    es = "¿Hay mucho humo?",
-                    en = "IS THERE A LOT OF SMOKE?",
-                    phonetic = "is der a lot ov smóuk"
-                ),
-                PhraseItem(
-                    es = "¿Puede ver llamas?",
-                    en = "CAN YOU SEE ANY FLAMES?",
-                    phonetic = "can yu si éni fléims"
-                ),
-                PhraseItem(
-                    es = "Llame a los bomberos ahora.",
-                    en = "CALL THE FIRE BRIGADE NOW.",
-                    phonetic = "col de fáiar brigéid nau"
-                ),
-                PhraseItem(
-                    es = "Manténgase agachado para evitar el humo.",
-                    en = "STAY LOW TO AVOID THE SMOKE.",
-                    phonetic = "stéi lóu tu avóid de smóuk"
-                ),
-                PhraseItem(
-                    es = "No use el ascensor.",
-                    en = "DO NOT USE THE LIFT.",
-                    phonetic = "du not iús de lift"
-                )
-            )
-        ),
-        Lesson(
-            lessonId = 1802,
-            lessonTitle = "Personas atrapadas y bomberos",
-            vocabulary = listOf(
-                VocabularyItem(es = "Atrapado", en = "TRAPPED", phonetic = "trapt"),
-                VocabularyItem(es = "Bomberos", en = "FIRE BRIGADE", phonetic = "fáiar brigéid"),
-                VocabularyItem(es = "Rescate", en = "RESCUE", phonetic = "réskiu"),
-                VocabularyItem(es = "Es / Está", en = "IS", phonetic = "is"),
-                VocabularyItem(es = "Alguien", en = "ANYONE", phonetic = "éniuan"),
-                VocabularyItem(es = "Dentro", en = "INSIDE", phonetic = "insáid"),
-                VocabularyItem(es = "Cuántos / Cuántas", en = "HOW MUCH / HOW MANY", phonetic = "jau méni"),
-                VocabularyItem(es = "Gente / Personas", en = "PEOPLE", phonetic = "pípol"),
-                VocabularyItem(es = "Ser / Estar (plural)", en = "ARE", phonetic = "ar"),
-                VocabularyItem(es = "En", en = "ON", phonetic = "on"),
-                VocabularyItem(es = "Su (de ello)", en = "ITS", phonetic = "its"),
-                VocabularyItem(es = "Camino", en = "WAY", phonetic = "güéi"),
-                VocabularyItem(es = "Permanecer / Quedarse", en = "STAY", phonetic = "stéi"),
-                VocabularyItem(es = "Dónde", en = "WHERE", phonetic = "güer"),
-                VocabularyItem(es = "Tú / Usted", en = "YOU", phonetic = "yu"),
-                VocabularyItem(es = "Ayuda", en = "HELP", phonetic = "jelp"),
-                VocabularyItem(es = "Viniendo", en = "COMING", phonetic = "cáming"),
-                VocabularyItem(es = "Hacer (auxiliar negativo)", en = "DO NOT", phonetic = "du not"),
-                VocabularyItem(es = "Ir", en = "GO", phonetic = "gou"),
-                VocabularyItem(es = "Atrás / De vuelta", en = "BACK", phonetic = "bak"),
-                VocabularyItem(es = "Nosotros", en = "WE", phonetic = "güi"),
-                VocabularyItem(es = "Futuro (auxiliar)", en = "WILL", phonetic = "güil"),
-                VocabularyItem(es = "Pronto", en = "SOON", phonetic = "sun")
-            ),
-            phrases = listOf(
-                PhraseItem(
-                    es = "¿Hay alguien atrapado dentro?",
-                    en = "IS ANYONE TRAPPED INSIDE?",
-                    phonetic = "is éniuan trapt insáid"
-                ),
-                PhraseItem(
-                    es = "¿Cuántas personas hay dentro?",
-                    en = "HOW MANY PEOPLE ARE INSIDE?",
-                    phonetic = "jau méni pípol ar insáid"
-                ),
-                PhraseItem(
-                    es = "Los bomberos están en camino.",
-                    en = "THE FIRE BRIGADE IS ON ITS WAY.",
-                    phonetic = "de fáiar brigéid is on its güéi"
-                ),
-                PhraseItem(
-                    es = "Quédese donde está, la ayuda llega.",
-                    en = "STAY WHERE YOU ARE, HELP IS COMING.",
-                    phonetic = "stéi güer yu ar, jelp is cáming"
-                ),
-                PhraseItem(
-                    es = "No vuelva a entrar.",
-                    en = "DO NOT GO BACK INSIDE.",
-                    phonetic = "du not gou bak insáid"
-                ),
-                PhraseItem(
-                    es = "Le rescataremos pronto.",
-                    en = "WE WILL RESCUE YOU SOON.",
-                    phonetic = "güi güil réskiu yu sun"
-                )
-            )
-        ),
-        Lesson(
-            lessonId = 1803,
-            lessonTitle = "Evacuación y perímetro de seguridad",
-            vocabulary = listOf(
-                VocabularyItem(es = "Evacuación", en = "EVACUATION", phonetic = "ivakiuéishon"),
-                VocabularyItem(es = "Salida de emergencia", en = "EMERGENCY EXIT", phonetic = "imöryensi égsit"),
-                VocabularyItem(es = "Perímetro", en = "PERIMETER", phonetic = "perímeter"),
-                VocabularyItem(es = "Este / Esta", en = "THIS", phonetic = "dis"),
-                VocabularyItem(es = "Edificio", en = "BUILDING", phonetic = "bílding"),
-                VocabularyItem(es = "Debe / Tener que", en = "MUST", phonetic = "mast"),
-                VocabularyItem(es = "Ser / Estar (auxiliar pasiva)", en = "BE", phonetic = "bi"),
-                VocabularyItem(es = "Evacuado", en = "EVACUATED", phonetic = "ivakiuéited"),
-                VocabularyItem(es = "Usar", en = "USE", phonetic = "iús"),
-                VocabularyItem(es = "El / La", en = "THE", phonetic = "di"),
-                VocabularyItem(es = "Moverse", en = "MOVE", phonetic = "muv"),
-                VocabularyItem(es = "Fuera / Lejos", en = "AWAY", phonetic = "aguéi"),
-                VocabularyItem(es = "De / Desde", en = "FROM", phonetic = "from"),
-                VocabularyItem(es = "Reunirse", en = "GATHER", phonetic = "gáder"),
-                VocabularyItem(es = "En", en = "AT", phonetic = "at"),
-                VocabularyItem(es = "Punto", en = "POINT", phonetic = "póint"),
-                VocabularyItem(es = "Hacer (auxiliar negativo)", en = "DO NOT", phonetic = "du not"),
-                VocabularyItem(es = "Cruzar", en = "CROSS", phonetic = "cros"),
-                VocabularyItem(es = "Es / Está", en = "IS", phonetic = "is"),
-                VocabularyItem(es = "Todo el mundo / Todos", en = "EVERYONE", phonetic = "évriuan"),
-                VocabularyItem(es = "Contabilizado / Localizado", en = "ACCOUNTED", phonetic = "akáunted"),
-                VocabularyItem(es = "Para", en = "FOR", phonetic = "for")
-            ),
-            phrases = listOf(
-                PhraseItem(
-                    es = "Este edificio debe ser evacuado.",
-                    en = "THIS BUILDING MUST BE EVACUATED.",
-                    phonetic = "dis bílding mast bi ivakiuéited"
-                ),
-                PhraseItem(
-                    es = "Use la salida de emergencia.",
-                    en = "USE THE EMERGENCY EXIT.",
-                    phonetic = "iús di imöryensi égsit"
-                ),
-                PhraseItem(
-                    es = "Aléjese del edificio.",
-                    en = "MOVE AWAY FROM THE BUILDING.",
-                    phonetic = "muv aguéi from de bílding"
-                ),
-                PhraseItem(
-                    es = "Reúnase en el punto de encuentro.",
-                    en = "GATHER AT THE MEETING POINT.",
-                    phonetic = "gáder at de míting póint"
-                ),
-                PhraseItem(
-                    es = "No cruce este perímetro.",
-                    en = "DO NOT CROSS THIS PERIMETER.",
-                    phonetic = "du not cros dis perímeter"
-                ),
-                PhraseItem(
-                    es = "¿Están todos localizados?",
-                    en = "IS EVERYONE ACCOUNTED FOR?",
-                    phonetic = "is évriuan akáunted for"
+                phrases = listOf(
+                    PhraseItem(english = "ATTENTION PLEASE.", phonetic = "aténshon plís", spanish = "Atención, por favor."),
+                    PhraseItem(english = "THIS IS THE LOCAL POLICE.", phonetic = "dis is de lóukal polís", spanish = "Habla la Policía Local."),
+                    PhraseItem(english = "EVERYBODY, PLEASE LEAVE THE BUILDING IMMEDIATELY.", phonetic = "évribodi plís liv de bíldin imídietli", spanish = "Todo el mundo abandone el edificio inmediatamente."),
+                    PhraseItem(english = "PLEASE REMAIN CALM.", phonetic = "plís riméin cam", spanish = "Mantengan la calma."),
+                    PhraseItem(english = "DO NOT PANIC.", phonetic = "du not pánik", spanish = "No entren en pánico."),
+                    PhraseItem(english = "DO NOT RUN.", phonetic = "du not ran", spanish = "No corran."),
+                    PhraseItem(english = "WALK CALMLY.", phonetic = "guok cámli", spanish = "Caminen con calma."),
+                    PhraseItem(english = "USE THE STAIRS.", phonetic = "yus de stéas", spanish = "Utilicen las escaleras."),
+                    PhraseItem(english = "DO NOT USE THE LIFT.", phonetic = "du not yus de lift", spanish = "No utilicen el ascensor."),
+                    PhraseItem(english = "FOLLOW THE EMERGENCY EXIT SIGNS.", phonetic = "fólou di imérllensi éksit sains", spanish = "Sigan las señales de salida de emergencia."),
+                    PhraseItem(english = "MOVE AWAY FROM THE BUILDING.", phonetic = "muv aguéi from de bíldin", spanish = "Aléjense del edificio."),
+                    PhraseItem(english = "GO TO THE ASSEMBLY POINT.", phonetic = "góu tu di asémbli point", spanish = "Diríjanse al punto de encuentro."),
+                    PhraseItem(english = "KEEP THE ACCESS CLEAR FOR THE FIRE BRIGADE.", phonetic = "kip di ákses klía for de fáaia brigéid", spanish = "Mantengan libre el acceso para los bomberos."),
+                    PhraseItem(english = "CAN YOU HEAR ME?", phonetic = "can yu jía mi", spanish = "¿Me oye?"),
+                    PhraseItem(english = "STAY WHERE YOU ARE.", phonetic = "stéi güea yu ar", spanish = "Permanezca donde está."),
+                    PhraseItem(english = "DO NOT JUMP.", phonetic = "du not yamp", spanish = "No salte."),
+                    PhraseItem(english = "GO TO A WINDOW OR BALCONY IF YOU CAN.", phonetic = "góu tu a guíndou or bálkoni if yu can", spanish = "Acérquese a una ventana o a un balcón si puede."),
+                    PhraseItem(english = "KEEP THE DOOR CLOSED.", phonetic = "kip de dóa klóuzd", spanish = "Mantenga la puerta cerrada."),
+                    PhraseItem(english = "PUT A WET TOWEL UNDER THE DOOR.", phonetic = "put a guet táuel ánda de dóa", spanish = "Coloque una toalla mojada debajo de la puerta."),
+                    PhraseItem(english = "STAY LOW TO AVOID THE SMOKE.", phonetic = "stéi lóu tu avóid de smóuk", spanish = "Manténgase agachado para evitar el humo."),
+                    PhraseItem(english = "HELP IS ON THE WAY.", phonetic = "jelp is on de güei", spanish = "La ayuda está de camino."),
+                    PhraseItem(english = "THE FIRE BRIGADE IS COMING.", phonetic = "de fáaia brigéid is cámin", spanish = "Los bomberos están llegando."),
+                    PhraseItem(english = "CAN YOU BREATHE?", phonetic = "can yu bríz", spanish = "¿Puede respirar?"),
+                    PhraseItem(english = "ARE YOU HAVING DIFFICULTY BREATHING?", phonetic = "ar yu jávin dífikolti brízin", spanish = "¿Tiene dificultad para respirar?"),
+                    PhraseItem(english = "HAVE YOU INHALED ANY SMOKE?", phonetic = "jav yu injéild éni smóuk", spanish = "¿Ha inhalado humo?"),
+                    PhraseItem(english = "ARE YOU COUGHING?", phonetic = "ar yu kófin", spanish = "¿Está tosiendo?"),
+                    PhraseItem(english = "DO YOUR EYES HURT?", phonetic = "du yor áis jert", spanish = "¿Le escuecen los ojos?"),
+                    PhraseItem(english = "DO YOU HAVE ANY BURNS?", phonetic = "du yu jav éni berns", spanish = "¿Tiene quemaduras?"),
+                    PhraseItem(english = "WHERE ARE YOUR BURNS?", phonetic = "güea ar yor berns", spanish = "¿Dónde tiene las quemaduras?"),
+                    PhraseItem(english = "HAVE YOU BEEN EXPOSED TO ANY CHEMICALS?", phonetic = "jav yu bin ekspóuzd tu éni kémikols", spanish = "¿Ha estado expuesto a alguna sustancia química?"),
+                    PhraseItem(english = "DO YOU KNOW WHAT CAUSED THE FIRE?", phonetic = "du yu nóu guot kozd de fáaia", spanish = "¿Sabe qué provocó el incendio?"),
+                    PhraseItem(english = "DID YOU HEAR AN EXPLOSION?", phonetic = "did yu jía an eksplóushon", spanish = "¿Oyó una explosión?"),
+                    PhraseItem(english = "DO YOU SMELL GAS?", phonetic = "du yu smel gas", spanish = "¿Huele a gas?"),
+                    PhraseItem(english = "IS ANYONE STILL INSIDE?", phonetic = "is éniuan stil insáid", spanish = "¿Queda alguien dentro?"),
+                    PhraseItem(english = "HOW MANY PEOPLE ARE INSIDE?", phonetic = "jáu méni pípol ar insáid", spanish = "¿Cuántas personas hay dentro?"),
+                    PhraseItem(english = "HAS EVERYONE LEFT THE BUILDING?", phonetic = "jaz évriguan left de bíldin", spanish = "¿Ha salido todo el mundo del edificio?"),
+                    PhraseItem(english = "DO NOT GO BACK INSIDE.", phonetic = "du not góu bak insáid", spanish = "No vuelva a entrar."),
+                    PhraseItem(english = "THIS AREA IS NOT SAFE.", phonetic = "dis éria is not séif", spanish = "Esta zona no es segura."),
+                    PhraseItem(english = "PLEASE STAY BEHIND THE POLICE LINE.", phonetic = "plís stéi biháind de polís lain", spanish = "Permanezca detrás del cordón policial."),
+                    PhraseItem(english = "FOLLOW MY INSTRUCTIONS.", phonetic = "fólou mai instrákshons", spanish = "Siga mis instrucciones."),
+                    PhraseItem(english = "WE WILL TAKE CARE OF YOU.", phonetic = "güi wil teik kéa ov yu", spanish = "Nos ocuparemos de usted."),
+                    PhraseItem(english = "THANK YOU FOR YOUR COOPERATION.", phonetic = "zénk yu for yor kouópareishon", spanish = "Gracias por su colaboración.")
                 )
             )
         )
     )
-)
+}

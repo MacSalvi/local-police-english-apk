@@ -95,7 +95,7 @@ fun AppInfoScreen(
                     contentAlignment = Alignment.Center
                 ) {
                     Image(
-                        painter = painterResource(id = R.drawable.img_splash_logo_1785855616063),
+                        painter = painterResource(id = R.drawable.img_app_icon_1785855600158),
                         contentDescription = "Escudo Marbella Police Local English",
                         modifier = Modifier
                             .size(100.dp)

@@ -1,193 +1,80 @@
-package com.example.data
+package com.policia.inglesoperativo.data.modules
 
-import com.example.data.model.Lesson
-import com.example.data.model.Module
-import com.example.data.model.PhraseItem
-import com.example.data.model.VocabularyItem
+import com.policia.inglesoperativo.domain.model.Module
+import com.policia.inglesoperativo.domain.model.Lesson
+import com.policia.inglesoperativo.domain.model.VocabularyItem
+import com.policia.inglesoperativo.domain.model.PhraseItem
 
-val module5 = Module(
-    moduleId = 5,
-    moduleName = "Módulo 5: Vehículos y sus partes",
-    lessons = listOf(
-        Lesson(
-            lessonId = 501,
-            lessonTitle = "Carrocería e interior",
-            vocabulary = listOf(
-                VocabularyItem(es = "Capó", en = "BONNET", phonetic = "bónet"),
-                VocabularyItem(es = "Maletero", en = "BOOT", phonetic = "but"),
-                VocabularyItem(es = "Parachoques", en = "BUMPER", phonetic = "bámper"),
-                VocabularyItem(es = "Parabrisas", en = "WINDSCREEN", phonetic = "güíndscrin"),
-                VocabularyItem(es = "Espejo", en = "MIRROR", phonetic = "míror"),
-                VocabularyItem(es = "Carrocería", en = "BODY", phonetic = "bódi"),
-                VocabularyItem(es = "Manija / Tirador", en = "HANDLE", phonetic = "jándel"),
-                VocabularyItem(es = "Techo", en = "ROOF", phonetic = "ruf"),
-                VocabularyItem(es = "Ventana / Cristal", en = "WINDOW", phonetic = "güíndou"),
-                VocabularyItem(es = "Guantera", en = "GLOVE COMPARTMENT", phonetic = "glav kompártment"),
-                VocabularyItem(es = "Comprobar / Revisar", en = "CHECK", phonetic = "chek"),
-                VocabularyItem(es = "El / La", en = "THE", phonetic = "da"),
-                VocabularyItem(es = "Por favor", en = "PLEASE", phonetic = "plís"),
-                VocabularyItem(es = "Abrir", en = "OPEN", phonetic = "óupen"),
-                VocabularyItem(es = "Haber (existencial - hay)", en = "THERE", phonetic = "der"),
-                VocabularyItem(es = "Es / Está", en = "IS", phonetic = "is"),
-                VocabularyItem(es = "Algo / Cualquier cosa", en = "ANYTHING", phonetic = "énizing"),
-                VocabularyItem(es = "Dentro", en = "INSIDE", phonetic = "insáid"),
-                VocabularyItem(es = "Vehículo", en = "VEHICLE", phonetic = "víikol"),
-                VocabularyItem(es = "Agrietado / Roto", en = "CRACKED", phonetic = "crakt"),
-                VocabularyItem(es = "Número", en = "NUMBER", phonetic = "námber"),
-                VocabularyItem(es = "Placa / Matrícula", en = "PLATE", phonetic = "pléit"),
-                VocabularyItem(es = "Dañado", en = "DAMAGED", phonetic = "dámichd")
-            ),
-            phrases = listOf(
-                PhraseItem(
-                    es = "Compruebe el capó, por favor.",
-                    en = "CHECK THE BONNET, PLEASE.",
-                    phonetic = "chek de bónet, plis"
+object Module5 {
+    val module = Module(
+        id = 5,
+        title = "Módulo 5",
+        description = "Vehículos y sus partes.",
+        lessons = listOf(
+            Lesson(
+                id = 1,
+                title = "Vehículos y sus partes",
+                vocabulary = listOf(
+                    VocabularyItem(term = "VEHICLE", phonetic = "víikol", translation = "Vehículo"),
+                    VocabularyItem(term = "CAR", phonetic = "ka", translation = "Coche"),
+                    VocabularyItem(term = "MOTORCYCLE", phonetic = "móutor sáikol", translation = "Motocicleta"),
+                    VocabularyItem(term = "MOPED", phonetic = "móuped", translation = "Ciclomotor"),
+                    VocabularyItem(term = "VAN", phonetic = "van", translation = "Furgoneta"),
+                    VocabularyItem(term = "LORRY", phonetic = "lóri", translation = "Camión"),
+                    VocabularyItem(term = "BUS", phonetic = "bas", translation = "Autobús"),
+                    VocabularyItem(term = "TAXI", phonetic = "táksi", translation = "Taxi"),
+                    VocabularyItem(term = "BICYCLE", phonetic = "báisikol", translation = "Bicicleta"),
+                    VocabularyItem(term = "ELECTRIC SCOOTER", phonetic = "iléktrik skúta", translation = "Patinete eléctrico"),
+                    VocabularyItem(term = "REGISTRATION PLATE", phonetic = "rechestréishon pleit", translation = "Matrícula"),
+                    VocabularyItem(term = "ENGINE", phonetic = "énchin", translation = "Motor"),
+                    VocabularyItem(term = "STEERING WHEEL", phonetic = "stíarin guíl", translation = "Volante"),
+                    VocabularyItem(term = "BRAKE", phonetic = "breik", translation = "Freno"),
+                    VocabularyItem(term = "HANDBRAKE", phonetic = "jandbreik", translation = "Freno de mano"),
+                    VocabularyItem(term = "GEARBOX", phonetic = "guíaboks", translation = "Caja de cambios"),
+                    VocabularyItem(term = "CLUTCH", phonetic = "clach", translation = "Embrague"),
+                    VocabularyItem(term = "ACCELERATOR", phonetic = "akséleraita", translation = "Acelerador"),
+                    VocabularyItem(term = "HEADLIGHT", phonetic = "jédlait", translation = "Faro delantero"),
+                    VocabularyItem(term = "TAIL LIGHT", phonetic = "téil lait", translation = "Piloto trasero"),
+                    VocabularyItem(term = "INDICATOR", phonetic = "índikeita", translation = "Intermitente"),
+                    VocabularyItem(term = "WINDSCREEN", phonetic = "guíndskrin", translation = "Parabrisas"),
+                    VocabularyItem(term = "WINDOW", phonetic = "guíndou", translation = "Ventanilla"),
+                    VocabularyItem(term = "MIRROR", phonetic = "mírra", translation = "Espejo"),
+                    VocabularyItem(term = "DOOR", phonetic = "do", translation = "Puerta"),
+                    VocabularyItem(term = "BONNET", phonetic = "bónit", translation = "Capó"),
+                    VocabularyItem(term = "BOOT", phonetic = "but", translation = "Maletero"),
+                    VocabularyItem(term = "TYRE", phonetic = "táia", translation = "Neumático"),
+                    VocabularyItem(term = "WHEEL", phonetic = "guíl", translation = "Rueda"),
+                    VocabularyItem(term = "SEAT BELT", phonetic = "sít belt", translation = "Cinturón de seguridad"),
+                    VocabularyItem(term = "CHILD SEAT", phonetic = "cháild sít", translation = "Silla infantil"),
+                    VocabularyItem(term = "IGNITION KEY", phonetic = "igníshon ki", translation = "Llave de contacto"),
+                    VocabularyItem(term = "FUEL", phonetic = "fiúl", translation = "Combustible"),
+                    VocabularyItem(term = "PETROL", phonetic = "pétrol", translation = "Gasolina"),
+                    VocabularyItem(term = "DIESEL", phonetic = "díisel", translation = "Diésel"),
+                    VocabularyItem(term = "BATTERY", phonetic = "bátari", translation = "Batería")
                 ),
-                PhraseItem(
-                    es = "Abra el maletero, por favor.",
-                    en = "OPEN THE BOOT, PLEASE.",
-                    phonetic = "óupen de but, plis"
-                ),
-                PhraseItem(
-                    es = "Compruebe la guantera.",
-                    en = "CHECK THE GLOVE COMPARTMENT.",
-                    phonetic = "chek de glav kompártment"
-                ),
-                PhraseItem(
-                    es = "¿Hay algo dentro del vehículo?",
-                    en = "IS THERE ANYTHING INSIDE THE VEHICLE?",
-                    phonetic = "is der énizing insáid de víikol"
-                ),
-                PhraseItem(
-                    es = "El parabrisas está agrietado.",
-                    en = "THE WINDSCREEN IS CRACKED.",
-                    phonetic = "de güíndscrin is crakt"
-                ),
-                PhraseItem(
-                    es = "La matrícula está dañada.",
-                    en = "THE NUMBER PLATE IS DAMAGED.",
-                    phonetic = "de námber pléit is dámichd"
-                )
-            )
-        ),
-        Lesson(
-            lessonId = 502,
-            lessonTitle = "Mecánica y luces",
-            vocabulary = listOf(
-                VocabularyItem(es = "Motor", en = "ENGINE", phonetic = "én-yin"),
-                VocabularyItem(es = "Neumático", en = "TYRE", phonetic = "táiar"),
-                VocabularyItem(es = "Freno", en = "BRAKE", phonetic = "bréik"),
-                VocabularyItem(es = "Luz", en = "LIGHT", phonetic = "láit"),
-                VocabularyItem(es = "Faro", en = "HEADLIGHT", phonetic = "jédláit"),
-                VocabularyItem(es = "Aceite", en = "OIL", phonetic = "óil"),
-                VocabularyItem(es = "Batería", en = "BATTERY", phonetic = "báteri"),
-                VocabularyItem(es = "Tubo de escape", en = "EXHAUST", phonetic = "eksóst"),
-                VocabularyItem(es = "Humo", en = "SMOKE", phonetic = "smóuk"),
-                VocabularyItem(es = "Presión", en = "PRESSURE", phonetic = "présher"),
-                VocabularyItem(es = "Plano / Pinchado", en = "FLAT", phonetic = "flat"),
-                VocabularyItem(es = "Es / Está", en = "IS", phonetic = "is"),
-                VocabularyItem(es = "El / La", en = "THE", phonetic = "da"),
-                VocabularyItem(es = "Trabajando / Funcionando", en = "WORKING", phonetic = "wörking"),
-                VocabularyItem(es = "Correctamente", en = "PROPERLY", phonetic = "próperli"),
-                VocabularyItem(es = "Haber (existencial - hay)", en = "THERE", phonetic = "der"),
-                VocabularyItem(es = "Viniendo / Saliendo", en = "COMING", phonetic = "cáming"),
-                VocabularyItem(es = "De / Desde", en = "FROM", phonetic = "from"),
-                VocabularyItem(es = "Tu / Su", en = "YOUR", phonetic = "yor"),
-                VocabularyItem(es = "Luces", en = "LIGHTS", phonetic = "láits"),
-                VocabularyItem(es = "No", en = "NOT", phonetic = "not"),
-                VocabularyItem(es = "Este / Esta", en = "THIS", phonetic = "dis"),
-                VocabularyItem(es = "Ser / Estar (plural)", en = "ARE", phonetic = "ar")
-            ),
-            phrases = listOf(
-                PhraseItem(
-                    es = "¿Funciona correctamente el motor?",
-                    en = "IS THE ENGINE WORKING PROPERLY?",
-                    phonetic = "is di én-yin wörking próperli"
-                ),
-                PhraseItem(
-                    es = "Sale humo del motor.",
-                    en = "THERE'S SMOKE COMING FROM THE ENGINE.",
-                    phonetic = "ders smóuk cáming from di én-yin"
-                ),
-                PhraseItem(
-                    es = "Sus luces no funcionan.",
-                    en = "YOUR LIGHTS ARE NOT WORKING.",
-                    phonetic = "yor láits ar not wörking"
-                ),
-                PhraseItem(
-                    es = "Este neumático está pinchado.",
-                    en = "THIS TYRE IS FLAT.",
-                    phonetic = "dis táiar is flat"
-                ),
-                PhraseItem(
-                    es = "Compruebe la presión de los neumáticos.",
-                    en = "CHECK THE TYRE PRESSURE.",
-                    phonetic = "chek de táiar présher"
-                ),
-                PhraseItem(
-                    es = "Los frenos no funcionan.",
-                    en = "THE BRAKES ARE NOT WORKING.",
-                    phonetic = "de bréiks ar not wörking"
-                )
-            )
-        ),
-        Lesson(
-            lessonId = 503,
-            lessonTitle = "Seguridad, daños y tipos de vehículo",
-            vocabulary = listOf(
-                VocabularyItem(es = "Cinturón de seguridad", en = "SEATBELT", phonetic = "sítbelt"),
-                VocabularyItem(es = "Airbag", en = "AIRBAG", phonetic = "érbag"),
-                VocabularyItem(es = "Daño", en = "DAMAGE", phonetic = "dámich"),
-                VocabularyItem(es = "Averiado / Roto", en = "BROKEN DOWN", phonetic = "bróuken daun"),
-                VocabularyItem(es = "Motocicleta", en = "MOTORBIKE", phonetic = "móutorbaik"),
-                VocabularyItem(es = "Furgoneta", en = "VAN", phonetic = "van"),
-                VocabularyItem(es = "Camión", en = "TRUCK", phonetic = "trak"),
-                VocabularyItem(es = "Coche / Automóvil", en = "CAR", phonetic = "car"),
-                VocabularyItem(es = "Comercial", en = "COMMERCIAL", phonetic = "komérshal"),
-                VocabularyItem(es = "Por favor", en = "PLEASE", phonetic = "plís"),
-                VocabularyItem(es = "Abrochar / Asegurar", en = "FASTEN", phonetic = "fásen"),
-                VocabularyItem(es = "Tu / Su", en = "YOUR", phonetic = "yor"),
-                VocabularyItem(es = "Es / Está", en = "IS", phonetic = "is"),
-                VocabularyItem(es = "El / La", en = "THE", phonetic = "da"),
-                VocabularyItem(es = "Trabajando / Funcionando", en = "WORKING", phonetic = "wörking"),
-                VocabularyItem(es = "Tiene / Haber", en = "HAS", phonetic = "jas"),
-                VocabularyItem(es = "Visible", en = "VISIBLE", phonetic = "vísibol"),
-                VocabularyItem(es = "Este / Esta", en = "THIS", phonetic = "dis"),
-                VocabularyItem(es = "Un / Una", en = "A", phonetic = "a"),
-                VocabularyItem(es = "O", en = "OR", phonetic = "or")
-            ),
-            phrases = listOf(
-                PhraseItem(
-                    es = "Abróchese el cinturón, por favor.",
-                    en = "PLEASE FASTEN YOUR SEATBELT.",
-                    phonetic = "plís fásen yor sítbelt"
-                ),
-                PhraseItem(
-                    es = "¿Funciona el airbag?",
-                    en = "IS THE AIRBAG WORKING?",
-                    phonetic = "is di érbag wörking"
-                ),
-                PhraseItem(
-                    es = "El vehículo presenta daños visibles.",
-                    en = "THE VEHICLE HAS VISIBLE DAMAGE.",
-                    phonetic = "de víikol jas vísibol dámich"
-                ),
-                PhraseItem(
-                    es = "¿Está averiado el vehículo?",
-                    en = "IS THE VEHICLE BROKEN DOWN?",
-                    phonetic = "is de víikol bróuken daun"
-                ),
-                PhraseItem(
-                    es = "¿Es esto una moto o un coche?",
-                    en = "IS THIS A MOTORBIKE OR A CAR?",
-                    phonetic = "is dis a móutorbaik or a car"
-                ),
-                PhraseItem(
-                    es = "¿Es este un vehículo comercial?",
-                    en = "IS THIS A COMMERCIAL VEHICLE?",
-                    phonetic = "is dis a komérshal víikol"
+                phrases = listOf(
+                    PhraseItem(english = "IS THIS YOUR VEHICLE?", phonetic = "is dis yor víikol", spanish = "¿Es este su vehículo?"),
+                    PhraseItem(english = "WHO IS THE OWNER OF THIS VEHICLE?", phonetic = "ju is di óuna ov dis víikol", spanish = "¿Quién es el propietario de este vehículo?"),
+                    PhraseItem(english = "PLEASE SWITCH OFF THE ENGINE.", phonetic = "plís suích of di énchin", spanish = "Apague el motor, por favor."),
+                    PhraseItem(english = "PLEASE REMOVE THE KEY FROM THE IGNITION.", phonetic = "plís rimúv de ki from di igníshon", spanish = "Saque la llave del contacto, por favor."),
+                    PhraseItem(english = "PLEASE OPEN THE DRIVER'S WINDOW.", phonetic = "plís óupen de dráiva's guíndou", spanish = "Baje la ventanilla del conductor, por favor."),
+                    PhraseItem(english = "PLEASE OPEN THE DOOR.", phonetic = "plís óupen de do", spanish = "Abra la puerta, por favor."),
+                    PhraseItem(english = "PLEASE OPEN THE BOOT.", phonetic = "plís óupen de but", spanish = "Abra el maletero, por favor."),
+                    PhraseItem(english = "PLEASE OPEN THE BONNET.", phonetic = "plís óupen de bónit", spanish = "Abra el capó, por favor."),
+                    PhraseItem(english = "PLEASE TURN ON THE HEADLIGHTS.", phonetic = "plís tern on de jédlaits", spanish = "Encienda los faros, por favor."),
+                    PhraseItem(english = "PLEASE TURN OFF THE HEADLIGHTS.", phonetic = "plís tern of de jédlaits", spanish = "Apague los faros, por favor."),
+                    PhraseItem(english = "PLEASE TURN ON THE HAZARD LIGHTS.", phonetic = "plís tern on de házard laits", spanish = "Encienda las luces de emergencia, por favor."),
+                    PhraseItem(english = "PLEASE APPLY THE HANDBRAKE.", phonetic = "plís aplái de jandbreik", spanish = "Ponga el freno de mano, por favor."),
+                    PhraseItem(english = "PLEASE FASTEN YOUR SEAT BELT.", phonetic = "plís fásen yor sít belt", spanish = "Abróchese el cinturón de seguridad, por favor."),
+                    PhraseItem(english = "PLEASE STEP OUT OF THE VEHICLE.", phonetic = "plís step aut ov de víikol", spanish = "Salga del vehículo, por favor."),
+                    PhraseItem(english = "PLEASE STAND NEXT TO THE VEHICLE.", phonetic = "plís stand nekst tu de víikol", spanish = "Colóquese junto al vehículo, por favor."),
+                    PhraseItem(english = "PLEASE STAY AWAY FROM THE ROAD.", phonetic = "plís stéi aguéi from de roud", spanish = "Aléjese de la calzada, por favor."),
+                    PhraseItem(english = "DO NOT START THE ENGINE.", phonetic = "du not start di énchin", spanish = "No arranque el motor."),
+                    PhraseItem(english = "DO NOT TOUCH ANYTHING INSIDE THE VEHICLE.", phonetic = "du not tach énizin insáid de víikol", spanish = "No toque nada dentro del vehículo."),
+                    PhraseItem(english = "IS ANYONE ELSE INSIDE THE VEHICLE?", phonetic = "is éniuan els insáid de víikol", spanish = "¿Hay alguien más dentro del vehículo?"),
+                    PhraseItem(english = "THANK YOU FOR YOUR COOPERATION.", phonetic = "zénk yu for yor kouópareishon", spanish = "Gracias por su colaboración.")
                 )
             )
         )
     )
-)
+}

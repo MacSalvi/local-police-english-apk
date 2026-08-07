@@ -1,175 +1,101 @@
-package com.example.data
+package com.policia.inglesoperativo.data.modules
 
-import com.example.data.model.Lesson
-import com.example.data.model.Module
-import com.example.data.model.PhraseItem
-import com.example.data.model.VocabularyItem
+import com.policia.inglesoperativo.domain.model.Module
+import com.policia.inglesoperativo.domain.model.Lesson
+import com.policia.inglesoperativo.domain.model.VocabularyItem
+import com.policia.inglesoperativo.domain.model.PhraseItem
 
-val module17 = Module(
-    moduleId = 17,
-    moduleName = "Módulo 17: Primeros auxilios y anatomía",
-    lessons = listOf(
-        Lesson(
-            lessonId = 1701,
-            lessonTitle = "Partes del cuerpo y dolor",
-            vocabulary = listOf(
-                VocabularyItem(es = "Cabeza", en = "HEAD", phonetic = "jed"),
-                VocabularyItem(es = "Pecho", en = "CHEST", phonetic = "chest"),
-                VocabularyItem(es = "Brazo", en = "ARM", phonetic = "arm"),
-                VocabularyItem(es = "Pierna", en = "LEG", phonetic = "leg"),
-                VocabularyItem(es = "Espalda", en = "BACK", phonetic = "bak"),
-                VocabularyItem(es = "Estómago", en = "STOMACH", phonetic = "stómak"),
-                VocabularyItem(es = "Dolor", en = "PAIN", phonetic = "péin"),
-                VocabularyItem(es = "Cuello", en = "NECK", phonetic = "nek"),
-                VocabularyItem(es = "Dónde", en = "WHERE", phonetic = "güer"),
-                VocabularyItem(es = "Hacer (auxiliar interrogativo)", en = "DOES", phonetic = "das"),
-                VocabularyItem(es = "Lo / El", en = "IT", phonetic = "it"),
-                VocabularyItem(es = "Doler", en = "HURT", phonetic = "hört"),
-                VocabularyItem(es = "Mostrar", en = "SHOW", phonetic = "shou"),
-                VocabularyItem(es = "Me", en = "ME", phonetic = "mi"),
-                VocabularyItem(es = "El / La", en = "THE", phonetic = "de"),
-                VocabularyItem(es = "Es / Está", en = "IS", phonetic = "is")
-            ),
-            phrases = listOf(
-                PhraseItem(
-                    es = "¿Dónde le duele?",
-                    en = "WHERE DOES IT HURT?",
-                    phonetic = "güer das it hört"
+object Module17 {
+    val module = Module(
+        id = 17,
+        title = "Módulo 17",
+        description = "Primera asistencia y emergencias médicas.",
+        lessons = listOf(
+            Lesson(
+                id = 1,
+                title = "Primera asistencia y emergencias médicas",
+                vocabulary = listOf(
+                    VocabularyItem(term = "EMERGENCY", phonetic = "imérllensi", translation = "Emergencia"),
+                    VocabularyItem(term = "AMBULANCE", phonetic = "ámbiulans", translation = "Ambulancia"),
+                    VocabularyItem(term = "PARAMEDIC", phonetic = "paramédik", translation = "Sanitario"),
+                    VocabularyItem(term = "FIRST AID", phonetic = "ferst eid", translation = "Primeros auxilios"),
+                    VocabularyItem(term = "DEFIBRILLATOR", phonetic = "difibriléita", translation = "Desfibrilador"),
+                    VocabularyItem(term = "CPR", phonetic = "si-pi-ar", translation = "Reanimación cardiopulmonar"),
+                    VocabularyItem(term = "HEART ATTACK", phonetic = "jart atak", translation = "Infarto"),
+                    VocabularyItem(term = "CARDIAC ARREST", phonetic = "kárdiak arrést", translation = "Parada cardíaca"),
+                    VocabularyItem(term = "STROKE", phonetic = "stróuk", translation = "Ictus"),
+                    VocabularyItem(term = "SEIZURE", phonetic = "sízha", translation = "Convulsión"),
+                    VocabularyItem(term = "CHOKING", phonetic = "chóukin", translation = "Atragantamiento"),
+                    VocabularyItem(term = "UNCONSCIOUS", phonetic = "ancónshas", translation = "Inconsciente"),
+                    VocabularyItem(term = "CONSCIOUS", phonetic = "kónshas", translation = "Consciente"),
+                    VocabularyItem(term = "BREATHING", phonetic = "brízin", translation = "Respiración"),
+                    VocabularyItem(term = "PULSE", phonetic = "pals", translation = "Pulso"),
+                    VocabularyItem(term = "CHEST PAIN", phonetic = "chest péin", translation = "Dolor en el pecho"),
+                    VocabularyItem(term = "DIFFICULTY BREATHING", phonetic = "dífikolti brízin", translation = "Dificultad para respirar"),
+                    VocabularyItem(term = "BLEEDING", phonetic = "blídin", translation = "Hemorragia"),
+                    VocabularyItem(term = "FRACTURE", phonetic = "frákcha", translation = "Fractura"),
+                    VocabularyItem(term = "BURN", phonetic = "bern", translation = "Quemadura"),
+                    VocabularyItem(term = "HEAD INJURY", phonetic = "jed ínyuri", translation = "Lesión en la cabeza"),
+                    VocabularyItem(term = "NECK INJURY", phonetic = "nek ínyuri", translation = "Lesión cervical"),
+                    VocabularyItem(term = "BACK INJURY", phonetic = "bak ínyuri", translation = "Lesión de espalda"),
+                    VocabularyItem(term = "PAIN", phonetic = "péin", translation = "Dolor"),
+                    VocabularyItem(term = "DIZZY", phonetic = "dízi", translation = "Mareado"),
+                    VocabularyItem(term = "FAINTING", phonetic = "féintin", translation = "Desmayo"),
+                    VocabularyItem(term = "DIABETES", phonetic = "daiabítis", translation = "Diabetes"),
+                    VocabularyItem(term = "LOW BLOOD SUGAR", phonetic = "lóu blad shúga", translation = "Hipoglucemia"),
+                    VocabularyItem(term = "EPILEPSY", phonetic = "épilepsi", translation = "Epilepsia"),
+                    VocabularyItem(term = "ASTHMA", phonetic = "ásma", translation = "Asma"),
+                    VocabularyItem(term = "ALLERGY", phonetic = "áleryi", translation = "Alergia"),
+                    VocabularyItem(term = "ANAPHYLAXIS", phonetic = "anafiláksis", translation = "Anafilaxia"),
+                    VocabularyItem(term = "PREGNANT", phonetic = "prégnant", translation = "Embarazada"),
+                    VocabularyItem(term = "MEDICATION", phonetic = "medikéishon", translation = "Medicación"),
+                    VocabularyItem(term = "INHALER", phonetic = "injéila", translation = "Inhalador"),
+                    VocabularyItem(term = "EPIPEN", phonetic = "épipen", translation = "Autoinyector de adrenalina")
                 ),
-                PhraseItem(
-                    es = "Muéstreme dónde está el dolor.",
-                    en = "SHOW ME WHERE THE PAIN IS.",
-                    phonetic = "shou mi güer de péin is"
-                )
-            )
-        ),
-        Lesson(
-            lessonId = 1702,
-            lessonTitle = "Heridas, sangrado y fracturas",
-            vocabulary = listOf(
-                VocabularyItem(es = "Herida", en = "WOUND", phonetic = "wund"),
-                VocabularyItem(es = "Sangre", en = "BLOOD", phonetic = "blad"),
-                VocabularyItem(es = "Fractura", en = "FRACTURE", phonetic = "frákcher"),
-                VocabularyItem(es = "Hematoma", en = "BRUISE", phonetic = "brus"),
-                VocabularyItem(es = "Quemadura", en = "BURN", phonetic = "börn"),
-                VocabularyItem(es = "Vendaje", en = "BANDAGE", phonetic = "bándich"),
-                VocabularyItem(es = "Hueso", en = "BONE", phonetic = "bóun"),
-                VocabularyItem(es = "Tú / Usted", en = "YOU", phonetic = "yu"),
-                VocabularyItem(es = "Tener", en = "HAVE", phonetic = "jav"),
-                VocabularyItem(es = "Un / Una", en = "A", phonetic = "a"),
-                VocabularyItem(es = "Profundo", en = "DEEP", phonetic = "dip"),
-                VocabularyItem(es = "Ser / Estar (plural)", en = "ARE", phonetic = "ar"),
-                VocabularyItem(es = "Sangrando", en = "BLEEDING", phonetic = "blíding"),
-                VocabularyItem(es = "Yo", en = "I", phonetic = "ai"),
-                VocabularyItem(es = "Pensar / Creer", en = "THINK", phonetic = "zink"),
-                VocabularyItem(es = "Este / Esta", en = "THIS", phonetic = "dis"),
-                VocabularyItem(es = "Es / Está", en = "IS", phonetic = "is"),
-                VocabularyItem(es = "Roto", en = "BROKEN", phonetic = "bróuken"),
-                VocabularyItem(es = "Hacer (auxiliar negativo)", en = "DON'T", phonetic = "dont"),
-                VocabularyItem(es = "Mover", en = "MOVE", phonetic = "muv"),
-                VocabularyItem(es = "Brazo / Pierna", en = "ARM / LEG", phonetic = "arm/leg"),
-                VocabularyItem(es = "Nosotros", en = "WE", phonetic = "güi"),
-                VocabularyItem(es = "Necesitar", en = "NEED", phonetic = "nid"),
-                VocabularyItem(es = "A (infinitivo)", en = "TO", phonetic = "tu"),
-                VocabularyItem(es = "Aplicar", en = "APPLY", phonetic = "aplái"),
-                VocabularyItem(es = "Presión", en = "PRESSURE", phonetic = "présher"),
-                VocabularyItem(es = "Aquí", en = "HERE", phonetic = "jía")
-            ),
-            phrases = listOf(
-                PhraseItem(
-                    es = "Tiene una herida profunda.",
-                    en = "YOU HAVE A DEEP WOUND.",
-                    phonetic = "yu jav a dip wund"
-                ),
-                PhraseItem(
-                    es = "¿Está sangrando?",
-                    en = "ARE YOU BLEEDING?",
-                    phonetic = "ar yu blíding"
-                ),
-                PhraseItem(
-                    es = "Creo que este hueso está roto.",
-                    en = "I THINK THIS BONE IS BROKEN.",
-                    phonetic = "ai zink dis bóun is bróuken"
-                ),
-                PhraseItem(
-                    es = "No mueva este brazo/pierna.",
-                    en = "DON'T MOVE THIS ARM/LEG.",
-                    phonetic = "dont muv dis arm/leg"
-                ),
-                PhraseItem(
-                    es = "Necesitamos aplicar presión aquí.",
-                    en = "WE NEED TO APPLY PRESSURE HERE.",
-                    phonetic = "güi nid tu aplái présher jía"
-                )
-            )
-        ),
-        Lesson(
-            lessonId = 1703,
-            lessonTitle = "Emergencias vitales",
-            vocabulary = listOf(
-                VocabularyItem(es = "Respiración", en = "BREATHING", phonetic = "bríding"),
-                VocabularyItem(es = "Inconsciente", en = "UNCONSCIOUS", phonetic = "ankónshos"),
-                VocabularyItem(es = "Convulsión", en = "SEIZURE", phonetic = "síller"),
-                VocabularyItem(es = "Alergia", en = "ALLERGY", phonetic = "álöryi"),
-                VocabularyItem(es = "Ambulancia", en = "AMBULANCE", phonetic = "ámbiulans"),
-                VocabularyItem(es = "Medicación", en = "MEDICATION", phonetic = "medikéishon"),
-                VocabularyItem(es = "Ser / Estar (plural)", en = "ARE", phonetic = "ar"),
-                VocabularyItem(es = "Tú / Usted", en = "YOU", phonetic = "yu"),
-                VocabularyItem(es = "Teniendo", en = "HAVING", phonetic = "jáving"),
-                VocabularyItem(es = "Dificultad", en = "DIFFICULTY", phonetic = "dífikölti"),
-                VocabularyItem(es = "Es / Está", en = "IS", phonetic = "is"),
-                VocabularyItem(es = "Hay (existencial)", en = "THERE", phonetic = "der"),
-                VocabularyItem(es = "Dolor", en = "PAIN", phonetic = "péin"),
-                VocabularyItem(es = "En", en = "IN", phonetic = "in"),
-                VocabularyItem(es = "Tu / Su", en = "YOUR", phonetic = "yor"),
-                VocabularyItem(es = "Pecho", en = "CHEST", phonetic = "chest"),
-                VocabularyItem(es = "Hacer (auxiliar interrogativo)", en = "DO", phonetic = "du"),
-                VocabularyItem(es = "Tener", en = "HAVE", phonetic = "jav"),
-                VocabularyItem(es = "Algún / Cualquier", en = "ANY", phonetic = "éni"),
-                VocabularyItem(es = "Alergias (plural)", en = "ALLERGIES", phonetic = "álöryis"),
-                VocabularyItem(es = "Permanecer / Quedarse", en = "STAY", phonetic = "stéi"),
-                VocabularyItem(es = "Con", en = "WITH", phonetic = "güiz"),
-                VocabularyItem(es = "Yo", en = "I", phonetic = "ai"),
-                VocabularyItem(es = "Despierto", en = "AWAKE", phonetic = "aguéik"),
-                VocabularyItem(es = "El / La", en = "THE", phonetic = "di"),
-                VocabularyItem(es = "En", en = "ON", phonetic = "on"),
-                VocabularyItem(es = "Su (de ello)", en = "ITS", phonetic = "its"),
-                VocabularyItem(es = "Camino", en = "WAY", phonetic = "güéi"),
-                VocabularyItem(es = "Tomar", en = "TAKE", phonetic = "téik"),
-                VocabularyItem(es = "Habitual / Regular", en = "REGULAR", phonetic = "régiular")
-            ),
-            phrases = listOf(
-                PhraseItem(
-                    es = "¿Tiene dificultad para respirar?",
-                    en = "ARE YOU HAVING DIFFICULTY BREATHING?",
-                    phonetic = "ar yu jáving dífikölti bríding"
-                ),
-                PhraseItem(
-                    es = "¿Siente dolor en el pecho?",
-                    en = "IS THERE PAIN IN YOUR CHEST?",
-                    phonetic = "is der péin in yor chest"
-                ),
-                PhraseItem(
-                    es = "¿Tiene alguna alergia?",
-                    en = "DO YOU HAVE ANY ALLERGIES?",
-                    phonetic = "du yu jav éni álöryis"
-                ),
-                PhraseItem(
-                    es = "Quédese conmigo, no se duerma.",
-                    en = "STAY WITH ME, STAY AWAKE.",
-                    phonetic = "stéi güiz mi, stéi aguéik"
-                ),
-                PhraseItem(
-                    es = "La ambulancia está en camino.",
-                    en = "THE AMBULANCE IS ON ITS WAY.",
-                    phonetic = "di ámbiulans is on its güéi"
-                ),
-                PhraseItem(
-                    es = "¿Toma alguna medicación habitual?",
-                    en = "DO YOU TAKE ANY REGULAR MEDICATION?",
-                    phonetic = "du yu téik éni régiular medikéishon"
+                phrases = listOf(
+                    PhraseItem(english = "CAN YOU HEAR ME?", phonetic = "can yu jía mi", spanish = "¿Me oye?"),
+                    PhraseItem(english = "CAN YOU SPEAK?", phonetic = "can yu spik", spanish = "¿Puede hablar?"),
+                    PhraseItem(english = "OPEN YOUR EYES.", phonetic = "óupen yor áis", spanish = "Abra los ojos."),
+                    PhraseItem(english = "STAY WITH ME.", phonetic = "stéi güiz mi", spanish = "Permanezca conmigo."),
+                    PhraseItem(english = "TRY TO STAY CALM.", phonetic = "trai tu stéi cam", spanish = "Intente mantener la calma."),
+                    PhraseItem(english = "HELP IS ON THE WAY.", phonetic = "jelp is on de güei", spanish = "La ayuda está de camino."),
+                    PhraseItem(english = "AN AMBULANCE IS COMING.", phonetic = "an ámbiulans is cámin", spanish = "Viene una ambulancia."),
+                    PhraseItem(english = "CAN YOU BREATHE?", phonetic = "can yu bríz", spanish = "¿Puede respirar?"),
+                    PhraseItem(english = "ARE YOU HAVING DIFFICULTY BREATHING?", phonetic = "ar yu jávin dífikolti brízin", spanish = "¿Tiene dificultad para respirar?"),
+                    PhraseItem(english = "DO YOU HAVE CHEST PAIN?", phonetic = "du yu jav chest péin", spanish = "¿Le duele el pecho?"),
+                    PhraseItem(english = "DO YOU THINK YOU ARE HAVING A HEART ATTACK?", phonetic = "du yu zink yu ar jávin a jart atak", spanish = "¿Cree que está sufriendo un infarto?"),
+                    PhraseItem(english = "DO YOU HAVE PAIN ANYWHERE ELSE?", phonetic = "du yu jav péin éniüea els", spanish = "¿Le duele alguna otra parte del cuerpo?"),
+                    PhraseItem(english = "WHERE DOES IT HURT?", phonetic = "güea das it jert", spanish = "¿Dónde le duele?"),
+                    PhraseItem(english = "CAN YOU MOVE YOUR ARMS?", phonetic = "can yu muv yor arms", spanish = "¿Puede mover los brazos?"),
+                    PhraseItem(english = "CAN YOU MOVE YOUR LEGS?", phonetic = "can yu muv yor legs", spanish = "¿Puede mover las piernas?"),
+                    PhraseItem(english = "DO YOU FEEL DIZZY?", phonetic = "du yu fil dízi", spanish = "¿Se siente mareado?"),
+                    PhraseItem(english = "HAVE YOU FAINTED?", phonetic = "jav yu féintid", spanish = "¿Se ha desmayado?"),
+                    PhraseItem(english = "DO YOU HAVE DIABETES?", phonetic = "du yu jav daiabítis", spanish = "¿Tiene diabetes?"),
+                    PhraseItem(english = "DO YOU HAVE ASTHMA?", phonetic = "du yu jav ásma", spanish = "¿Tiene asma?"),
+                    PhraseItem(english = "DO YOU HAVE EPILEPSY?", phonetic = "du yu jav épilepsi", spanish = "¿Tiene epilepsia?"),
+                    PhraseItem(english = "DO YOU HAVE ANY ALLERGIES?", phonetic = "du yu jav éni áleryis", spanish = "¿Tiene alguna alergia?"),
+                    PhraseItem(english = "ARE YOU TAKING ANY MEDICATION?", phonetic = "ar yu téikin éni medikéishon", spanish = "¿Toma alguna medicación?"),
+                    PhraseItem(english = "DO YOU HAVE YOUR MEDICATION WITH YOU?", phonetic = "du yu jav yor medikéishon güiz yu", spanish = "¿Lleva su medicación?"),
+                    PhraseItem(english = "DO YOU HAVE AN INHALER?", phonetic = "du yu jav an injéila", spanish = "¿Lleva un inhalador?"),
+                    PhraseItem(english = "DO YOU HAVE AN EPIPEN?", phonetic = "du yu jav an épipen", spanish = "¿Lleva un autoinyector de adrenalina?"),
+                    PhraseItem(english = "ARE YOU PREGNANT?", phonetic = "ar yu prégnant", spanish = "¿Está embarazada?"),
+                    PhraseItem(english = "PLEASE SIT DOWN.", phonetic = "plís sit daun", spanish = "Siéntese, por favor."),
+                    PhraseItem(english = "PLEASE LIE DOWN.", phonetic = "plís lai daun", spanish = "Túmbese, por favor."),
+                    PhraseItem(english = "DO NOT MOVE.", phonetic = "du not muv", spanish = "No se mueva."),
+                    PhraseItem(english = "KEEP STILL.", phonetic = "kip stil", spanish = "Permanezca inmóvil."),
+                    PhraseItem(english = "BREATHE SLOWLY.", phonetic = "bríz slóuli", spanish = "Respire despacio."),
+                    PhraseItem(english = "DO NOT EAT OR DRINK ANYTHING.", phonetic = "du not it or drink énizin", spanish = "No coma ni beba nada."),
+                    PhraseItem(english = "IS ANYONE WITH YOU?", phonetic = "is éniuan güiz yu", spanish = "¿Viene alguien con usted?"),
+                    PhraseItem(english = "CAN YOU TELL ME YOUR NAME?", phonetic = "can yu tel mi yor neim", spanish = "¿Puede decirme su nombre?"),
+                    PhraseItem(english = "DO YOU KNOW WHERE YOU ARE?", phonetic = "du yu nóu güea yu ar", spanish = "¿Sabe dónde está?"),
+                    PhraseItem(english = "WHAT DAY IS IT TODAY?", phonetic = "guot déi is it tudéi", spanish = "¿Qué día es hoy?"),
+                    PhraseItem(english = "THE PARAMEDICS WILL BE HERE SOON.", phonetic = "de paramédiks wil bi jía sun", spanish = "Los sanitarios llegarán enseguida."),
+                    PhraseItem(english = "I AM GOING TO STAY WITH YOU.", phonetic = "ai am góuin tu stéi güiz yu", spanish = "Voy a permanecer con usted."),
+                    PhraseItem(english = "TELL ME IF YOU FEEL WORSE.", phonetic = "tel mi if yu fil wers", spanish = "Dígame si se encuentra peor."),
+                    PhraseItem(english = "YOU ARE DOING WELL.", phonetic = "yu ar dúin güel", spanish = "Lo está haciendo bien."),
+                    PhraseItem(english = "WE ARE HERE TO HELP YOU.", phonetic = "güi ar jía tu jelp yu", spanish = "Estamos aquí para ayudarle.")
                 )
             )
         )
     )
-)
+}
