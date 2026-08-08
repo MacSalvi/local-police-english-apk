@@ -50,56 +50,56 @@ fun TacticalBackground(
         label = "grid_opacity"
     )
 
-    // Stream 1: Top horizontal grid energy line (3.2s cycle)
+    // Stream 1: Top horizontal grid energy line (35% slower speed)
     val stream1Progress by infiniteTransition.animateFloat(
         initialValue = 0f,
         targetValue = 1f,
         animationSpec = infiniteRepeatable(
-            animation = tween(durationMillis = 3200, easing = LinearEasing),
+            animation = tween(durationMillis = 4920, easing = LinearEasing),
             repeatMode = RepeatMode.Restart
         ),
         label = "energy_stream_1"
     )
 
-    // Stream 2: Left vertical grid energy line (4.1s cycle)
+    // Stream 2: Left vertical grid energy line (35% slower speed)
     val stream2Progress by infiniteTransition.animateFloat(
         initialValue = 0f,
         targetValue = 1f,
         animationSpec = infiniteRepeatable(
-            animation = tween(durationMillis = 4100, easing = LinearEasing),
+            animation = tween(durationMillis = 6300, easing = LinearEasing),
             repeatMode = RepeatMode.Restart
         ),
         label = "energy_stream_2"
     )
 
-    // Stream 3: Right vertical grid energy line (4.8s cycle)
+    // Stream 3: Right vertical grid energy line (35% slower speed)
     val stream3Progress by infiniteTransition.animateFloat(
         initialValue = 0f,
         targetValue = 1f,
         animationSpec = infiniteRepeatable(
-            animation = tween(durationMillis = 4800, easing = LinearEasing),
+            animation = tween(durationMillis = 7380, easing = LinearEasing),
             repeatMode = RepeatMode.Restart
         ),
         label = "energy_stream_3"
     )
 
-    // Stream 4: Bottom horizontal grid energy line (5.5s cycle)
+    // Stream 4: Bottom horizontal grid energy line (35% slower speed)
     val stream4Progress by infiniteTransition.animateFloat(
         initialValue = 0f,
         targetValue = 1f,
         animationSpec = infiniteRepeatable(
-            animation = tween(durationMillis = 5500, easing = LinearEasing),
+            animation = tween(durationMillis = 8460, easing = LinearEasing),
             repeatMode = RepeatMode.Restart
         ),
         label = "energy_stream_4"
     )
 
-    // Expanding dispatch radar wave
+    // Expanding dispatch radar wave (35% slower speed)
     val dispatchWave by infiniteTransition.animateFloat(
         initialValue = 0f,
         targetValue = 1f,
         animationSpec = infiniteRepeatable(
-            animation = tween(durationMillis = 6500, easing = LinearEasing),
+            animation = tween(durationMillis = 10000, easing = LinearEasing),
             repeatMode = RepeatMode.Restart
         ),
         label = "dispatch_wave"

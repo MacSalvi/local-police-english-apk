@@ -245,15 +245,16 @@ fun SyllabusScreen(
                     onValueChange = onSearchQueryChange,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(vertical = 6.dp)
-                        .height(48.dp)
+                        .padding(vertical = 8.dp)
+                        .defaultMinSize(minHeight = 52.dp)
                         .testTag("search_bar"),
                     placeholder = { 
                         Text(
-                            text = "Buscar módulo, lección, vocabulario o frase...", 
+                            text = "Buscar módulo, lección, término...", 
                             color = Slate400,
-                            fontSize = 12.sp,
+                            fontSize = 13.sp,
                             maxLines = 1,
+                            softWrap = false,
                             overflow = TextOverflow.Ellipsis
                         ) 
                     },
@@ -262,7 +263,7 @@ fun SyllabusScreen(
                             imageVector = Icons.Default.Search,
                             contentDescription = "Buscar",
                             tint = Slate400,
-                            modifier = Modifier.size(18.dp)
+                            modifier = Modifier.size(20.dp)
                         )
                     },
                     trailingIcon = {
@@ -349,6 +350,65 @@ fun SyllabusScreen(
                             .fillMaxWidth()
                             .weight(1f)
                     ) {
+                        item(key = "main_header_logo_banner") {
+                            Surface(
+                                color = Slate900.copy(alpha = 0.85f),
+                                shape = RoundedCornerShape(16.dp),
+                                border = BorderStroke(1.dp, Brush.horizontalGradient(listOf(NeonTeal.copy(alpha = 0.5f), Color(0xFFFACC15).copy(alpha = 0.5f)))),
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(top = 4.dp, bottom = 4.dp)
+                            ) {
+                                Row(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(horizontal = 14.dp, vertical = 10.dp),
+                                    verticalAlignment = Alignment.CenterVertically
+                                ) {
+                                    Box(
+                                        modifier = Modifier
+                                            .size(54.dp)
+                                            .clip(CircleShape)
+                                            .background(Slate950)
+                                            .border(1.5.dp, Color(0xFFFACC15), CircleShape),
+                                        contentAlignment = Alignment.Center
+                                    ) {
+                                        Image(
+                                            painter = painterResource(id = R.drawable.img_app_icon_1785855600158),
+                                            contentDescription = "Escudo Policía Local Marbella",
+                                            contentScale = ContentScale.Crop,
+                                            modifier = Modifier
+                                                .size(48.dp)
+                                                .clip(CircleShape)
+                                        )
+                                    }
+                                    Spacer(modifier = Modifier.width(12.dp))
+                                    Column(modifier = Modifier.weight(1f)) {
+                                        Text(
+                                            text = "POLICÍA LOCAL DE MARBELLA",
+                                            color = Color(0xFFFACC15),
+                                            fontSize = 11.sp,
+                                            fontWeight = FontWeight.Bold,
+                                            letterSpacing = 0.5.sp
+                                        )
+                                        Spacer(modifier = Modifier.height(1.dp))
+                                        Text(
+                                            text = "Inglés Operativo Policial",
+                                            color = Color.White,
+                                            fontSize = 16.sp,
+                                            fontWeight = FontWeight.ExtraBold
+                                        )
+                                        Spacer(modifier = Modifier.height(1.dp))
+                                        Text(
+                                            text = "6 Bloques Operativos · 30 Módulos",
+                                            color = Slate400,
+                                            fontSize = 11.sp
+                                        )
+                                    }
+                                }
+                            }
+                        }
+
                         operationalSections.forEach { section ->
                             val isSectionExpanded = (expandedSectionTitle == section.title)
                             val sectionModules = section.moduleIds.mapNotNull { moduleMap[it] }
@@ -458,10 +518,10 @@ fun SyllabusScreen(
                             BoxWithConstraints(
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .padding(vertical = 24.dp),
+                                    .padding(top = 12.dp, bottom = 48.dp),
                                 contentAlignment = Alignment.Center
                             ) {
-                                val outerShieldSize = (maxWidth * 0.35f).coerceIn(95.dp, 150.dp)
+                                val outerShieldSize = (maxWidth * 0.30f).coerceIn(80.dp, 120.dp)
                                 val innerShieldSize = outerShieldSize - 10.dp
 
                                 Box(
@@ -747,7 +807,7 @@ fun ModuleHeaderCard(
                         )
                         Spacer(modifier = Modifier.height(2.dp))
                         Text(
-                            text = "$totalVocab Vocab • $totalPhrases Frases",
+                            text = "$totalVocab Vocabulario • $totalPhrases Frases",
                             color = Slate200,
                             fontSize = 12.sp,
                             fontWeight = FontWeight.Medium
@@ -808,7 +868,7 @@ fun LessonPathItem(
                 fontSize = 15.sp
             )
             Text(
-                text = "${lesson.vocabulary.size} Vocab • ${lesson.phrases.size} Frases",
+                text = "${lesson.vocabulary.size} Vocabulario • ${lesson.phrases.size} Frases",
                 color = Slate400,
                 fontSize = 12.sp
             )

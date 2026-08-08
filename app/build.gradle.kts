@@ -71,12 +71,7 @@ android {
   testOptions { unitTests { isIncludeAndroidResources = true } }
 }
 
-val androidComponents = extensions.getByType<com.android.build.api.variant.ApplicationAndroidComponentsExtension>()
-androidComponents.onVariants { variant ->
-  variant.outputs.forEach { output ->
-    output.outputFileName.set("Ingles_Operativo_Policial_v1.0.apk")
-  }
-}
+
 
 // Configure the Secrets Gradle Plugin to use .env and .env.example files
 // to match the convention used in Web projects.

@@ -245,7 +245,7 @@ fun ManagerScreen(
                                                         fontSize = 13.sp
                                                     )
                                                     Text(
-                                                        text = "${lesson.vocabulary.size} Vocab • ${lesson.phrases.size} Frases • ${lesson.tips.size} Consejos",
+                                                        text = "${lesson.vocabulary.size} Vocabulario • ${lesson.phrases.size} Frases • ${lesson.tips.size} Consejos",
                                                         color = Slate400,
                                                         fontSize = 11.sp
                                                     )
@@ -484,7 +484,7 @@ fun ManagerScreen(
                         Tab(
                             selected = dialogSubTab == 0,
                             onClick = { dialogSubTab = 0 },
-                            text = { Text("Vocab", fontSize = 11.sp, fontWeight = FontWeight.Bold) },
+                            text = { Text("Vocabulario", fontSize = 11.sp, fontWeight = FontWeight.Bold) },
                             modifier = Modifier.testTag("dialog_tab_vocab")
                         )
                         Tab(

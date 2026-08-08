@@ -42,17 +42,21 @@ jobs:
       - name: Build Debug APK
         run: gradle assembleDebug --stacktrace
 
+      - name: Rename APK File
+        run: |
+          cp app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/Ingles_Operativo_Policial_v1.0.${{ github.run_number }}.apk
+
       - name: Upload Debug APK Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: app-debug-v1.0.${{ github.run_number }}
-          path: app/build/outputs/apk/debug/app-debug.apk
+          name: Ingles_Operativo_Policial_v1.0.${{ github.run_number }}
+          path: app/build/outputs/apk/debug/Ingles_Operativo_Policial_v1.0.${{ github.run_number }}.apk
 
       - name: Publish APK to GitHub Release
         if: github.event_name != 'pull_request'
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "app/build/outputs/apk/debug/app-debug.apk"
+          artifacts: "app/build/outputs/apk/debug/Ingles_Operativo_Policial_v1.0.${{ github.run_number }}.apk"
           tag: ${{ github.ref_type == 'tag' && github.ref_name || format('v1.0.{0}', github.run_number) }}
           name: "Inglés Operativo Policial ${{ github.ref_type == 'tag' && github.ref_name || format('v1.0.{0}', github.run_number) }}"
           body: "APK de la aplicación compilada para Android (Compilación #${{ github.run_number }})."
