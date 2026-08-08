@@ -32,9 +32,12 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         ttsManager = TTSManager(this)
+        viewModel.initSettings(this)
 
         setContent {
-            MyApplicationTheme {
+            val settings by viewModel.settings.collectAsState()
+
+            MyApplicationTheme(appTheme = settings.appTheme) {
                 var showSplash by remember { mutableStateOf(true) }
 
                 LaunchedEffect(Unit) {
@@ -75,6 +78,7 @@ class MainActivity : ComponentActivity() {
                                             viewModel.setCurrentlyPlaying(text)
                                             ttsManager.speak(
                                                 text = text,
+                                                settings = settings,
                                                 onStart = {},
                                                 onDone = { viewModel.setCurrentlyPlaying(null) }
                                             )
@@ -95,6 +99,7 @@ class MainActivity : ComponentActivity() {
                                     searchQuery = searchQuery,
                                     expandedModuleId = expandedModuleId,
                                     currentlyPlayingText = currentlyPlayingPhrase,
+                                    settings = settings,
                                     onSearchQueryChange = { query ->
                                         viewModel.setSearchQuery(query)
                                     },
@@ -112,6 +117,7 @@ class MainActivity : ComponentActivity() {
                                             viewModel.setCurrentlyPlaying(text)
                                             ttsManager.speak(
                                                 text = text,
+                                                settings = settings,
                                                 onStart = {},
                                                 onDone = { viewModel.setCurrentlyPlaying(null) }
                                             )
@@ -119,7 +125,11 @@ class MainActivity : ComponentActivity() {
                                     },
                                     onEnterInfoMode = {
                                         viewModel.setInfoMode(true)
-                                    }
+                                    },
+                                    onVoiceGenderChange = { viewModel.updateVoiceGender(it) },
+                                    onSpeechSpeedChange = { viewModel.updateSpeechSpeed(it) },
+                                    onRepeatModeChange = { viewModel.updateRepeatMode(it) },
+                                    onAppThemeChange = { viewModel.updateAppTheme(it) }
                                 )
                             }
                         }

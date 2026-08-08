@@ -42,9 +42,15 @@ import androidx.compose.foundation.Image
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import com.example.R
+import com.example.data.AppSettings
+import com.example.data.AppTheme
+import com.example.data.RepeatMode
+import com.example.data.SpeechSpeed
+import com.example.data.VoiceGender
 import com.example.data.model.Lesson
 import com.example.data.model.Module
 import com.example.data.model.PhraseItem
+import com.example.ui.components.SettingsDialog
 import com.example.ui.components.TacticalBackground
 import com.example.ui.theme.*
 import kotlin.math.sin
@@ -85,13 +91,19 @@ fun SyllabusScreen(
     searchQuery: String,
     expandedModuleId: Int?,
     currentlyPlayingText: String?,
+    settings: AppSettings = AppSettings(),
     onSearchQueryChange: (String) -> Unit,
     onModuleToggle: (Int) -> Unit,
     onLessonClick: (Lesson) -> Unit,
     onSpeakClick: (String) -> Unit,
-    onEnterInfoMode: () -> Unit = {}
+    onEnterInfoMode: () -> Unit = {},
+    onVoiceGenderChange: (VoiceGender) -> Unit = {},
+    onSpeechSpeedChange: (SpeechSpeed) -> Unit = {},
+    onRepeatModeChange: (RepeatMode) -> Unit = {},
+    onAppThemeChange: (AppTheme) -> Unit = {}
 ) {
     var showEmergencySheet by remember { mutableStateOf(false) }
+    var showSettingsDialog by remember { mutableStateOf(false) }
     val crtGreen = Color(0xFF00FF66)
 
     val listState = androidx.compose.foundation.lazy.rememberLazyListState()
@@ -145,17 +157,42 @@ fun SyllabusScreen(
         }
     }
 
+    if (showSettingsDialog) {
+        SettingsDialog(
+            settings = settings,
+            onDismissRequest = { showSettingsDialog = false },
+            onVoiceGenderChange = onVoiceGenderChange,
+            onSpeechSpeedChange = onSpeechSpeedChange,
+            onRepeatModeChange = onRepeatModeChange,
+            onAppThemeChange = onAppThemeChange
+        )
+    }
+
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
                     Column(modifier = Modifier.fillMaxWidth()) {
+                        val titleAnnotated = remember {
+                            buildAnnotatedString {
+                                append("Soporte táctico multilingüe ")
+                                withStyle(
+                                    SpanStyle(
+                                        fontSize = 10.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        color = Color.White.copy(alpha = 0.75f)
+                                    )
+                                ) {
+                                    append("V${com.example.BuildConfig.VERSION_NAME}")
+                                }
+                            }
+                        }
                         Text(
-                            text = "Soporte táctico multilingüe · V${com.example.BuildConfig.VERSION_NAME}",
+                            text = titleAnnotated,
                             style = MaterialTheme.typography.titleMedium.copy(
                                 fontWeight = FontWeight.Bold,
                                 color = Color.White,
-                                fontSize = 15.sp
+                                fontSize = 14.sp
                             ),
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis
@@ -176,29 +213,51 @@ fun SyllabusScreen(
                         onClick = onEnterInfoMode,
                         modifier = Modifier
                             .testTag("info_button")
+                            .size(36.dp)
                             .clip(CircleShape)
                             .background(NeonTeal.copy(alpha = 0.15f))
                     ) {
                         Icon(
                             imageVector = Icons.Default.Info,
                             contentDescription = "Información y Créditos",
-                            tint = NeonTeal
+                            tint = NeonTeal,
+                            modifier = Modifier.size(20.dp)
                         )
                     }
 
-                    Spacer(modifier = Modifier.width(8.dp))
+                    Spacer(modifier = Modifier.width(5.dp))
+
+                    IconButton(
+                        onClick = { showSettingsDialog = true },
+                        modifier = Modifier
+                            .testTag("settings_button")
+                            .size(36.dp)
+                            .clip(CircleShape)
+                            .background(RadiantBlue.copy(alpha = 0.15f))
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Settings,
+                            contentDescription = "Configuración",
+                            tint = RadiantBlue,
+                            modifier = Modifier.size(20.dp)
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.width(5.dp))
 
                     IconButton(
                         onClick = { showEmergencySheet = true },
                         modifier = Modifier
                             .testTag("emergency_button")
+                            .size(36.dp)
                             .clip(CircleShape)
                             .background(Color(0xFFEF4444).copy(alpha = 0.15f))
                     ) {
                         Icon(
                             imageVector = Icons.Default.FlashOn,
                             contentDescription = "Comandos de Emergencia",
-                            tint = Color(0xFFEF4444)
+                            tint = Color(0xFFEF4444),
+                            modifier = Modifier.size(20.dp)
                         )
                     }
                 },
@@ -470,6 +529,11 @@ private fun getFilteredPhrases(modules: List<Module>, query: String): List<Filte
     return results.distinct()
 }
 
+data class EmergencyCategory(
+    val title: String,
+    val commands: List<PhraseItem>
+)
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EmergencyBottomSheet(
@@ -477,14 +541,109 @@ fun EmergencyBottomSheet(
     onDismiss: () -> Unit,
     onSpeakClick: (String) -> Unit
 ) {
-    val emergencyCommands = listOf(
-        PhraseItem("Muestre sus manos, por favor.", "PLEASE SHOW ME YOUR HANDS.", "plis show mi yur jands"),
-        PhraseItem("Quédese donde está, por favor.", "PLEASE STAY WHERE YOU ARE.", "plis stei wer iu ar"),
-        PhraseItem("Apague el motor, por favor.", "PLEASE TURN OFF THE ENGINE.", "plis tern of di en-djin"),
-        PhraseItem("Salga del vehículo, por favor.", "PLEASE STEP OUT OF THE VEHICLE.", "plis step aut ov de vi-i-kel"),
-        PhraseItem("Mantenga la calma, por favor.", "PLEASE STAY CALM.", "plis stei kam"),
-        PhraseItem("Mantenga una distancia de seguridad.", "PLEASE KEEP A SAFE DISTANCE.", "plis kip e seif dis-tans")
-    )
+    val emergencyCategories = remember {
+        listOf(
+            EmergencyCategory(
+                title = "CONTROL",
+                commands = listOf(
+                    PhraseItem("¡ALTO!", "STOP!", "stop"),
+                    PhraseItem("¡ALTO AHÍ!", "STOP RIGHT THERE!", "stop rait deh"),
+                    PhraseItem("¡QUÉDESE DONDE ESTÁ!", "STAY WHERE YOU ARE!", "stei weh yú ar"),
+                    PhraseItem("¡QUÉDESE QUIETO!", "STAND STILL!", "stand stil"),
+                    PhraseItem("¡SIGA MIS INSTRUCCIONES!", "FOLLOW MY INSTRUCTIONS!", "fólou mai instrákshons"),
+                    PhraseItem("¡ESCUCHE!", "LISTEN TO ME!", "lísen tu mi"),
+                    PhraseItem("¡MANTENGA LA CALMA!", "STAY CALM!", "stei cam"),
+                    PhraseItem("¡MANTÉNGASE QUIETO!", "KEEP STILL!", "kiip stil")
+                )
+            ),
+            EmergencyCategory(
+                title = "MANOS Y POSICIONAMIENTO",
+                commands = listOf(
+                    PhraseItem("¡ENSÉÑEME LAS MANOS!", "SHOW ME YOUR HANDS!", "shou mi yor jands"),
+                    PhraseItem("ENSÉÑEME LAS MANOS, POR FAVOR.", "SHOW ME YOUR HANDS, PLEASE.", "shou mi yor jands pliis"),
+                    PhraseItem("MANTENGA LAS MANOS DONDE PUEDA VERLAS.", "KEEP YOUR HANDS WHERE I CAN SEE THEM.", "kiip yor jands weh ai can sii dem"),
+                    PhraseItem("PONGA LAS MANOS SOBRE LA CABEZA.", "PUT YOUR HANDS ON YOUR HEAD.", "put yor jands on yor jed"),
+                    PhraseItem("ENTRELACE LOS DEDOS.", "INTERLINK YOUR FINGERS.", "interlink yor fingers"),
+                    PhraseItem("MANTENGA LAS MANOS ARRIBA.", "KEEP YOUR HANDS UP.", "kiip yor jands ap"),
+                    PhraseItem("SAQUE LAS MANOS DE LOS BOLSILLOS.", "TAKE YOUR HANDS OUT OF YOUR POCKETS.", "teik yor jands aut ov yor póquets"),
+                    PhraseItem("MANTENGA LAS MANOS FUERA DE LOS BOLSILLOS.", "KEEP YOUR HANDS OUT OF YOUR POCKETS.", "kiip yor jands aut ov yor póquets"),
+                    PhraseItem("PONGA LAS MANOS DETRÁS DE LA ESPALDA.", "PUT YOUR HANDS BEHIND YOUR BACK.", "put yor jands bijáind yor bak"),
+                    PhraseItem("MANTENGA LAS PALMAS HACIA FUERA.", "KEEP YOUR PALMS FACING OUT.", "kiip yor pams féising aut"),
+                    PhraseItem("PALMAS HACIA ARRIBA.", "PALMS UP.", "pams ap"),
+                    PhraseItem("EXTIENDA LOS BRAZOS HACIA LOS LADOS.", "PUT YOUR ARMS OUT TO THE SIDE.", "put yor arms aut tu de said"),
+                    PhraseItem("DESE LA VUELTA.", "TURN AROUND.", "tern araund"),
+                    PhraseItem("DESE LA VUELTA Y MIRE EN DIRECCIÓN CONTRARIA A MÍ.", "TURN AROUND AND FACE AWAY FROM ME.", "tern araund and feis awe from mi"),
+                    PhraseItem("PÓNGASE DE RODILLAS.", "KNEEL DOWN.", "niil daun"),
+                    PhraseItem("¡AL SUELO!", "GET DOWN ON THE GROUND.", "get daun on de graund"),
+                    PhraseItem("TÚMBESE EN EL SUELO.", "LIE DOWN ON THE FLOOR.", "lai daun on de flor"),
+                    PhraseItem("TÚMBESE BOCA ABAJO.", "LIE DOWN ON YOUR FRONT.", "lai daun on yor front"),
+                    PhraseItem("MANTENGA LAS PIERNAS JUNTAS.", "KEEP YOUR LEGS TOGETHER.", "kiip yor legs tugéder"),
+                    PhraseItem("CRUCE LOS PIES POR LOS TOBILLOS.", "CROSS YOUR FEET AT THE ANKLES.", "cross yor fiit at di áncols"),
+                    PhraseItem("MIRE HACIA OTRO LADO.", "LOOK AWAY.", "luk awe"),
+                    PhraseItem("NO SE LEVANTE.", "DO NOT GET UP.", "du not get ap")
+                )
+            ),
+            EmergencyCategory(
+                title = "MOVIMIENTO Y DISTANCIA",
+                commands = listOf(
+                    PhraseItem("RETROCEDA.", "STEP BACK.", "step bak"),
+                    PhraseItem("ÉCHESE ATRÁS.", "MOVE BACK.", "muuv bak"),
+                    PhraseItem("MANTÉNGASE ATRÁS.", "STAY BACK.", "stei bak"),
+                    PhraseItem("MANTENGA LA DISTANCIA.", "KEEP YOUR DISTANCE.", "kiip yor distans"),
+                    PhraseItem("ALÉJESE DE MÍ.", "MOVE AWAY FROM ME.", "muuv awe from mi"),
+                    PhraseItem("DÉME ESPACIO.", "GIVE ME SOME SPACE.", "guiv mi sam speis"),
+                    PhraseItem("ALÉJESE DEL VEHÍCULO.", "MOVE AWAY FROM THE VEHICLE.", "muuv awe from de víicol"),
+                    PhraseItem("MANTENGA A TODOS ATRÁS.", "KEEP EVERYONE BACK.", "kiip évriuan bak")
+                )
+            ),
+            EmergencyCategory(
+                title = "VEHÍCULOS Y OBJETOS",
+                commands = listOf(
+                    PhraseItem("APAGUE EL MOTOR.", "TURN OFF THE ENGINE.", "tern of di ényin"),
+                    PhraseItem("MANTENGA LAS MANOS EN EL VOLANTE.", "KEEP YOUR HANDS ON THE STEERING WHEEL.", "kiip yor jands on de stíring wiil"),
+                    PhraseItem("NO ARRANQUE EL MOTOR.", "DO NOT START THE ENGINE.", "du not start di ényin"),
+                    PhraseItem("SALGA DEL VEHÍCULO.", "STEP OUT OF THE VEHICLE.", "step aut ov de víicol"),
+                    PhraseItem("SALGA DESPACIO.", "STEP OUT SLOWLY.", "step aut slóuli"),
+                    PhraseItem("PERMANEZCA EN EL VEHÍCULO.", "STAY IN THE VEHICLE.", "stei in de víicol"),
+                    PhraseItem("DEJE LA PUERTA ABIERTA.", "LEAVE THE DOOR OPEN.", "liiv de dor óupen"),
+                    PhraseItem("DEJE EL OBJETO EN EL SUELO.", "PUT THE OBJECT DOWN.", "put di óbject daun"),
+                    PhraseItem("SUELTE EL ARMA.", "DROP THE WEAPON.", "drop de wepon"),
+                    PhraseItem("ALÉJESE DEL OBJETO.", "STEP AWAY FROM THE OBJECT.", "step awe from di óbject"),
+                    PhraseItem("ALÉJESE DEL ARMA.", "MOVE AWAY FROM THE WEAPON.", "muuv awe from de wepon"),
+                    PhraseItem("NO META LAS MANOS EN LOS BOLSILLOS.", "DO NOT REACH INTO YOUR POCKETS.", "du not riich intu yor póquets")
+                )
+            ),
+            EmergencyCategory(
+                title = "RESISTENCIA Y CUMPLIMIENTO",
+                commands = listOf(
+                    PhraseItem("DEJE DE OPONER RESISTENCIA.", "STOP RESISTING.", "stop risísting"),
+                    PhraseItem("DEJE DE PELEAR.", "STOP FIGHTING.", "stop fáiting"),
+                    PhraseItem("COLABORE CONMIGO.", "COOPERATE WITH ME.", "couópereit wid mi"),
+                    PhraseItem("NECESITO QUE COLABORE CONMIGO.", "I NEED YOU TO COOPERATE WITH ME.", "ai niid yu tu couópereit wid mi"),
+                    PhraseItem("SIGA MIS INSTRUCCIONES.", "FOLLOW MY INSTRUCTIONS.", "fólou mai instrákshons"),
+                    PhraseItem("MANTÉNGASE QUIETO.", "KEEP STILL.", "kiip stil")
+                )
+            ),
+            EmergencyCategory(
+                title = "DESESCALADA",
+                commands = listOf(
+                    PhraseItem("QUIERO AYUDARLE.", "I WANT TO HELP YOU.", "ai uont tu jelp yu"),
+                    PhraseItem("ESTOY AQUÍ PARA AYUDARLE.", "I AM HERE TO HELP YOU.", "ai am jir tu jelp yu"),
+                    PhraseItem("ESCUCHE LO QUE LE ESTOY DICIENDO.", "LISTEN TO WHAT I AM SAYING.", "lísen tu uot ai am séiin"),
+                    PhraseItem("RESPIRE Y ESCÚCHEME.", "TAKE A BREATH AND LISTEN TO ME.", "teik a breth and lísen tu mi"),
+                    PhraseItem("NECESITO QUE SE CALME.", "I NEED YOU TO CALM DOWN.", "ai niid yu tu cam daun"),
+                    PhraseItem("DÍGAME QUÉ ESTÁ PASANDO.", "TELL ME WHAT IS GOING ON.", "tel mi uot is góuin on"),
+                    PhraseItem("DÍGAME QUÉ HA OCURRIDO.", "TELL ME WHAT HAS HAPPENED.", "tel mi uot jas jápend"),
+                    PhraseItem("LE EXPLICARÉ QUÉ ESTÁ PASANDO.", "I WILL EXPLAIN WHAT IS HAPPENING.", "ai wil eksplein uot is jápening"),
+                    PhraseItem("LE DIRÉ QUÉ VA A PASAR AHORA.", "I WILL TELL YOU WHAT HAPPENS NEXT.", "ai wil tel yu uot jápens nekst"),
+                    PhraseItem("ESCUCHO LO QUE ME ESTÁ DICIENDO.", "I HEAR WHAT YOU ARE SAYING.", "ai jir uot yu ar séiin"),
+                    PhraseItem("LE ENTIENDO, PERO...", "I UNDERSTAND YOU, BUT...", "ai anderstánd yu, bat"),
+                    PhraseItem("ENTIENDO LO QUE ME ESTÁ DICIENDO, PERO...", "I APPRECIATE WHAT YOU ARE SAYING, BUT...", "ai apríshieit uot yu ar séiin, bat"),
+                    PhraseItem("DÉME ESPACIO Y PODEMOS HABLAR.", "GIVE ME SOME SPACE AND WE CAN TALK.", "guiv mi sam speis and wi can tok")
+                )
+            )
+        )
+    }
 
     ModalBottomSheet(
         onDismissRequest = onDismiss,
@@ -526,55 +685,82 @@ fun EmergencyBottomSheet(
 
             LazyColumn(
                 verticalArrangement = Arrangement.spacedBy(10.dp),
-                contentPadding = PaddingValues(bottom = 24.dp)
+                contentPadding = PaddingValues(bottom = 28.dp)
             ) {
-                items(emergencyCommands) { command ->
-                    val isPlaying = currentlyPlayingText == command.en
-                    Surface(
-                        color = Slate900,
-                        shape = RoundedCornerShape(12.dp),
-                        border = BorderStroke(1.2.dp, if (isPlaying) NeonTeal else Color(0xFFEF4444).copy(alpha = 0.3f)),
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .clickable { onSpeakClick(command.en) }
-                    ) {
-                        Row(
+                emergencyCategories.forEach { category ->
+                    item(key = "cat_${category.title}") {
+                        Box(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(14.dp),
-                            horizontalArrangement = Arrangement.SpaceBetween,
-                            verticalAlignment = Alignment.CenterVertically
+                                .padding(top = 8.dp, bottom = 4.dp)
+                                .clip(RoundedCornerShape(6.dp))
+                                .background(Color(0xFFEF4444).copy(alpha = 0.15f))
+                                .border(1.dp, Color(0xFFEF4444).copy(alpha = 0.4f), RoundedCornerShape(6.dp))
+                                .padding(horizontal = 12.dp, vertical = 6.dp)
                         ) {
-                            Column(modifier = Modifier.weight(1f)) {
-                                Text(
-                                    text = command.en,
-                                    color = Color.White,
-                                    fontWeight = FontWeight.Black,
-                                    fontSize = 16.sp
-                                )
-                                Text(
-                                    text = command.phonetic,
-                                    color = Slate400,
-                                    fontSize = 12.sp,
-                                    fontStyle = androidx.compose.ui.text.font.FontStyle.Italic
-                                )
-                                Text(
-                                    text = command.es,
-                                    color = Slate400,
-                                    fontSize = 13.sp
-                                )
-                            }
-                            IconButton(
-                                onClick = { onSpeakClick(command.en) },
+                            Text(
+                                text = "• ${category.title}",
+                                color = Color(0xFFEF4444),
+                                fontWeight = FontWeight.Black,
+                                fontSize = 13.sp,
+                                letterSpacing = 0.8.sp
+                            )
+                        }
+                    }
+
+                    items(
+                        items = category.commands,
+                        key = { cmd -> "cmd_${category.title}_${cmd.en}" }
+                    ) { command ->
+                        val isPlaying = currentlyPlayingText == command.en
+                        Surface(
+                            color = Slate900,
+                            shape = RoundedCornerShape(12.dp),
+                            border = BorderStroke(1.2.dp, if (isPlaying) NeonTeal else Color(0xFFEF4444).copy(alpha = 0.3f)),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clickable { onSpeakClick(command.en) }
+                        ) {
+                            Row(
                                 modifier = Modifier
-                                    .clip(CircleShape)
-                                    .background(if (isPlaying) NeonTeal else Color(0xFFEF4444).copy(alpha = 0.15f))
+                                    .fillMaxWidth()
+                                    .padding(14.dp),
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                verticalAlignment = Alignment.CenterVertically
                             ) {
-                                Icon(
-                                    imageVector = Icons.Default.VolumeUp,
-                                    contentDescription = "Escuchar",
-                                    tint = if (isPlaying) Slate950 else Color(0xFFEF4444)
-                                )
+                                Column(modifier = Modifier.weight(1f)) {
+                                    Text(
+                                        text = command.en,
+                                        color = Color.White,
+                                        fontWeight = FontWeight.Black,
+                                        fontSize = 16.sp
+                                    )
+                                    if (command.phonetic.isNotEmpty()) {
+                                        Text(
+                                            text = command.phonetic,
+                                            color = Slate400,
+                                            fontSize = 12.sp,
+                                            fontStyle = androidx.compose.ui.text.font.FontStyle.Italic
+                                        )
+                                    }
+                                    Text(
+                                        text = command.es,
+                                        color = Slate400,
+                                        fontSize = 13.sp
+                                    )
+                                }
+                                IconButton(
+                                    onClick = { onSpeakClick(command.en) },
+                                    modifier = Modifier
+                                        .clip(CircleShape)
+                                        .background(if (isPlaying) NeonTeal else Color(0xFFEF4444).copy(alpha = 0.15f))
+                                ) {
+                                    Icon(
+                                        imageVector = Icons.Default.VolumeUp,
+                                        contentDescription = "Escuchar",
+                                        tint = if (isPlaying) Slate950 else Color(0xFFEF4444)
+                                    )
+                                }
                             }
                         }
                     }
