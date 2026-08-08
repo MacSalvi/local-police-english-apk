@@ -32,11 +32,15 @@ import androidx.compose.ui.unit.dp
  * - Electric energy pulses flowing continuously along grid pathways (cuadrículas).
  * - Bright glowing spark heads and electric trails traversing top, sides, and bottom areas.
  */
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.ui.graphics.luminance
+
 @Composable
 fun TacticalBackground(
     modifier: Modifier = Modifier,
     content: @Composable () -> Unit = {}
 ) {
+    val isLight = MaterialTheme.colorScheme.background.luminance() > 0.5f
     val infiniteTransition = rememberInfiniteTransition(label = "cyber_grid_energy_transition")
 
     // Breathing opacity for the cyber grid (0.16f to 0.28f for crisp visibility)
@@ -114,14 +118,22 @@ fun TacticalBackground(
             val height = size.height
             val maxDimension = maxOf(width, height)
 
-            // 1. High-Contrast Deep Night Base Fill
+            // 1. Base Fill (Day/Night)
             drawRect(
                 brush = Brush.verticalGradient(
-                    colors = listOf(
-                        Color(0xFF020617), // Deepest night slate
-                        Color(0xFF0B132B), // Tactical Police Navy
-                        Color(0xFF030A1C)  // Deep Midnight Blue
-                    )
+                    colors = if (isLight) {
+                        listOf(
+                            Color(0xFFF8FAFC), // Pure light slate
+                            Color(0xFFE2E8F0), // Cool tactical daylight slate
+                            Color(0xFFEDF2F7)  // High-contrast soft sky
+                        )
+                    } else {
+                        listOf(
+                            Color(0xFF020617), // Deepest night slate
+                            Color(0xFF0B132B), // Tactical Police Navy
+                            Color(0xFF030A1C)  // Deep Midnight Blue
+                        )
+                    }
                 )
             )
 
@@ -129,11 +141,19 @@ fun TacticalBackground(
             val centerOffset = Offset(width * 0.5f, height * 0.35f)
             drawCircle(
                 brush = Brush.radialGradient(
-                    colors = listOf(
-                        Color(0xFF1E3A8A).copy(alpha = 0.28f), // Vivid Cobalt Blue
-                        Color(0xFF0284C7).copy(alpha = 0.10f), // Soft Cyber Cyan
-                        Color.Transparent
-                    ),
+                    colors = if (isLight) {
+                        listOf(
+                            Color(0xFF2563EB).copy(alpha = 0.12f),
+                            Color(0xFF0284C7).copy(alpha = 0.05f),
+                            Color.Transparent
+                        )
+                    } else {
+                        listOf(
+                            Color(0xFF1E3A8A).copy(alpha = 0.28f),
+                            Color(0xFF0284C7).copy(alpha = 0.10f),
+                            Color.Transparent
+                        )
+                    },
                     center = centerOffset,
                     radius = maxDimension * 0.70f
                 ),
@@ -143,8 +163,8 @@ fun TacticalBackground(
 
             // 3. Cyber-Grid (Malla Táctica / Red de Cartografía Policial)
             val gridStep = 44.dp.toPx()
-            val cyanLineColor = Color(0xFF38BDF8).copy(alpha = gridOpacity)
-            val cobaltAccentColor = Color(0xFF00E5FF).copy(alpha = (gridOpacity * 1.3f).coerceAtMost(0.45f))
+            val cyanLineColor = if (isLight) Color(0xFF0284C7).copy(alpha = gridOpacity * 0.6f) else Color(0xFF38BDF8).copy(alpha = gridOpacity)
+            val cobaltAccentColor = if (isLight) Color(0xFF1D4ED8).copy(alpha = gridOpacity * 0.9f) else Color(0xFF00E5FF).copy(alpha = (gridOpacity * 1.3f).coerceAtMost(0.45f))
 
             var colIndex = 0
             var x = 0f

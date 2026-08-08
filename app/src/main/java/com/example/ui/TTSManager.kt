@@ -87,17 +87,33 @@ class TTSManager(private val context: Context) {
         val ttsObj = tts ?: return
         try {
             ttsObj.setSpeechRate(settings.speechSpeed.rate)
-            val targetGender = if (settings.voiceGender == VoiceGender.MALE) "male" else "female"
+
+            val isMale = settings.voiceGender == VoiceGender.MALE
+            if (isMale) {
+                ttsObj.setPitch(0.78f) // Deeper tactical male pitch
+            } else {
+                ttsObj.setPitch(1.08f) // Clear female pitch
+            }
+
             val availableVoices = ttsObj.voices
             if (!availableVoices.isNullOrEmpty()) {
-                val match = availableVoices.firstOrNull { voice ->
-                    voice.locale.language == Locale.ENGLISH.language &&
-                            voice.name.lowercase().contains(targetGender)
-                } ?: availableVoices.firstOrNull { voice ->
+                val englishVoices = availableVoices.filter { voice ->
                     voice.locale.language == Locale.ENGLISH.language
                 }
-                if (match != null) {
-                    ttsObj.voice = match
+
+                if (englishVoices.isNotEmpty()) {
+                    val match = englishVoices.firstOrNull { voice ->
+                        val vName = voice.name.lowercase()
+                        if (isMale) {
+                            vName.contains("male") || vName.contains("man") || vName.contains("-rxb") || vName.contains("-gbg") || vName.contains("-cba") || vName.contains("-m-")
+                        } else {
+                            vName.contains("female") || vName.contains("woman") || vName.contains("-gda") || vName.contains("-fis") || vName.contains("-f-")
+                        }
+                    } ?: englishVoices.firstOrNull()
+
+                    if (match != null) {
+                        ttsObj.voice = match
+                    }
                 }
             }
         } catch (e: Exception) {

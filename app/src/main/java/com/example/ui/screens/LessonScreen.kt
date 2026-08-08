@@ -61,13 +61,13 @@ fun LessonScreen(
                             text = lesson.lessonTitle,
                             style = MaterialTheme.typography.titleMedium.copy(
                                 fontWeight = FontWeight.Bold,
-                                color = Color.White
+                                color = MaterialTheme.colorScheme.onSurface
                             )
                         )
                         Text(
                             text = "Entrenamiento Táctico • 2 Secciones",
                             style = MaterialTheme.typography.bodySmall.copy(
-                                color = Slate400,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
                                 fontWeight = FontWeight.Medium
                             )
                         )
@@ -81,7 +81,7 @@ fun LessonScreen(
                         Icon(
                             imageVector = Icons.Default.ArrowBack,
                             contentDescription = stringResource(R.string.back),
-                            tint = NeonTeal
+                            tint = MaterialTheme.colorScheme.primary
                         )
                     }
                 },
@@ -93,13 +93,13 @@ fun LessonScreen(
                         Icon(
                             imageVector = if (isFlashcardMode) Icons.Default.VisibilityOff else Icons.Default.Visibility,
                             contentDescription = "Modo Flashcards",
-                            tint = if (isFlashcardMode) NeonTeal else Slate400
+                            tint = if (isFlashcardMode) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
                         )
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Slate950.copy(alpha = 0.80f),
-                    titleContentColor = Color.White
+                    containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.90f),
+                    titleContentColor = MaterialTheme.colorScheme.onSurface
                 )
             )
         },
@@ -115,16 +115,16 @@ fun LessonScreen(
             ) {
             TabRow(
                 selectedTabIndex = pagerState.currentPage,
-                containerColor = Color(0xFF0F172A),
-                contentColor = Color(0xFF0D9488),
+                containerColor = MaterialTheme.colorScheme.surface,
+                contentColor = MaterialTheme.colorScheme.primary,
                 indicator = { tabPositions ->
                     TabRowDefaults.SecondaryIndicator(
                         Modifier.tabIndicatorOffset(tabPositions[pagerState.currentPage]),
-                        color = Color(0xFF0D9488)
+                        color = MaterialTheme.colorScheme.primary
                     )
                 },
                 divider = {
-                    HorizontalDivider(color = Slate800, thickness = 0.5.dp)
+                    HorizontalDivider(color = MaterialTheme.colorScheme.outline.copy(alpha = 0.3f), thickness = 0.5.dp)
                 }
             ) {
                 tabs.forEachIndexed { index, title ->
@@ -140,7 +140,7 @@ fun LessonScreen(
                                 text = title,
                                 fontSize = 13.sp,
                                 fontWeight = FontWeight.Bold,
-                                color = if (pagerState.currentPage == index) Color(0xFF0D9488) else Slate400
+                                color = if (pagerState.currentPage == index) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
                             )
                         },
                         modifier = Modifier.testTag("lesson_tab_$index")
@@ -219,8 +219,8 @@ fun VocabularySection(
                                     onSpeakClick(vocab.en)
                                 }
                                 .testTag("vocab_card_$overallIndex"),
-                            colors = CardDefaults.cardColors(containerColor = Slate900),
-                            border = BorderStroke(1.2.dp, if (isPlaying) NeonTeal else Slate800),
+                            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+                            border = BorderStroke(1.2.dp, if (isPlaying) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline.copy(alpha = 0.3f)),
                             shape = RoundedCornerShape(12.dp)
                         ) {
                             Column(
@@ -228,7 +228,7 @@ fun VocabularySection(
                             ) {
                                 Text(
                                     text = vocab.en.uppercase(),
-                                    color = NeonTeal,
+                                    color = MaterialTheme.colorScheme.primary,
                                     fontWeight = FontWeight.Bold,
                                     fontSize = 15.sp,
                                     lineHeight = 18.sp
@@ -238,7 +238,7 @@ fun VocabularySection(
                                     Spacer(modifier = Modifier.height(2.dp))
                                     Text(
                                         text = vocab.phonetic,
-                                        color = Slate400,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
                                         fontSize = 11.sp,
                                         fontStyle = FontStyle.Italic
                                     )
@@ -249,7 +249,7 @@ fun VocabularySection(
                                 val spanishText = if (isFlashcardMode && !isRevealed) "••••••••" else vocab.es
                                 Text(
                                     text = spanishText,
-                                    color = if (isFlashcardMode && !isRevealed) Slate700 else Slate400,
+                                    color = if (isFlashcardMode && !isRevealed) MaterialTheme.colorScheme.outline else MaterialTheme.colorScheme.onSurfaceVariant,
                                     fontSize = 12.sp,
                                     fontStyle = FontStyle.Italic,
                                     lineHeight = 16.sp
@@ -322,11 +322,11 @@ fun PhraseCard(
             .testTag("phrase_card_${index}"),
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(
-            containerColor = Slate900
+            containerColor = MaterialTheme.colorScheme.surface
         ),
         border = BorderStroke(
             width = 1.2.dp,
-            color = if (isPlaying) NeonTeal else Slate800
+            color = if (isPlaying) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline.copy(alpha = 0.3f)
         )
     ) {
         Column(
@@ -341,13 +341,13 @@ fun PhraseCard(
                     Icon(
                         imageVector = Icons.Default.Bookmark,
                         contentDescription = null,
-                        tint = if (isPlaying) NeonTeal else Slate700,
+                        tint = if (isPlaying) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant,
                         modifier = Modifier.size(14.dp)
                     )
                     Spacer(modifier = Modifier.width(6.dp))
                     Text(
                         text = "FRASE TÁCTICA ${index + 1} DE $totalPhrases",
-                        color = if (isPlaying) NeonTeal else Slate400,
+                        color = if (isPlaying) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant,
                         fontWeight = FontWeight.Bold,
                         fontSize = 10.sp,
                         letterSpacing = 1.sp
@@ -357,12 +357,12 @@ fun PhraseCard(
                 if (isPlaying) {
                     Box(
                         modifier = Modifier
-                            .background(NeonTeal.copy(alpha = 0.15f), RoundedCornerShape(4.dp))
+                            .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.15f), RoundedCornerShape(4.dp))
                             .padding(horizontal = 8.dp, vertical = 2.dp)
                     ) {
                         Text(
                             text = "Reproduciendo Audio",
-                            color = NeonTeal,
+                            color = MaterialTheme.colorScheme.primary,
                             fontSize = 10.sp,
                             fontWeight = FontWeight.Bold
                         )
@@ -374,7 +374,7 @@ fun PhraseCard(
 
             Text(
                 text = phrase.en.uppercase(),
-                color = NeonTeal,
+                color = MaterialTheme.colorScheme.primary,
                 fontWeight = FontWeight.Bold,
                 fontSize = 18.sp,
                 lineHeight = 24.sp,
@@ -385,7 +385,7 @@ fun PhraseCard(
                 Spacer(modifier = Modifier.height(2.dp))
                 Text(
                     text = phrase.phonetic,
-                    color = Slate400,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
                     fontSize = 13.sp,
                     fontStyle = FontStyle.Italic,
                     lineHeight = 16.sp,
@@ -398,7 +398,7 @@ fun PhraseCard(
             val spanishText = if (isFlashcardMode && !isRevealed) "•••••••••••• (Toca para revelar)" else phrase.es
             Text(
                 text = spanishText,
-                color = if (isFlashcardMode && !isRevealed) Slate700 else Slate400,
+                color = if (isFlashcardMode && !isRevealed) MaterialTheme.colorScheme.outline else MaterialTheme.colorScheme.onSurfaceVariant,
                 fontSize = 14.sp,
                 fontWeight = FontWeight.Normal,
                 fontStyle = FontStyle.Italic,

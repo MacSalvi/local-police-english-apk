@@ -27,6 +27,7 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.SpanStyle
@@ -173,14 +174,15 @@ fun SyllabusScreen(
             TopAppBar(
                 title = {
                     Column(modifier = Modifier.fillMaxWidth()) {
-                        val titleAnnotated = remember {
+                        val onSurfaceColor = MaterialTheme.colorScheme.onSurface
+                        val titleAnnotated = remember(onSurfaceColor) {
                             buildAnnotatedString {
                                 append("Soporte táctico multilingüe ")
                                 withStyle(
                                     SpanStyle(
                                         fontSize = 10.sp,
                                         fontWeight = FontWeight.Bold,
-                                        color = Color.White.copy(alpha = 0.75f)
+                                        color = onSurfaceColor.copy(alpha = 0.75f)
                                     )
                                 ) {
                                     append("V${com.example.BuildConfig.VERSION_NAME}")
@@ -191,7 +193,7 @@ fun SyllabusScreen(
                             text = titleAnnotated,
                             style = MaterialTheme.typography.titleMedium.copy(
                                 fontWeight = FontWeight.Bold,
-                                color = Color.White,
+                                color = MaterialTheme.colorScheme.onSurface,
                                 fontSize = 14.sp
                             ),
                             maxLines = 1,
@@ -200,7 +202,7 @@ fun SyllabusScreen(
                         Spacer(modifier = Modifier.height(2.dp))
                         Text(
                             text = "CP214 SCR · Policía Local Marbella",
-                            color = crtGreen,
+                            color = MaterialTheme.colorScheme.primary,
                             fontSize = 11.sp,
                             fontWeight = FontWeight.Bold,
                             maxLines = 1,
@@ -215,12 +217,12 @@ fun SyllabusScreen(
                             .testTag("info_button")
                             .size(36.dp)
                             .clip(CircleShape)
-                            .background(NeonTeal.copy(alpha = 0.15f))
+                            .background(MaterialTheme.colorScheme.secondary.copy(alpha = 0.15f))
                     ) {
                         Icon(
                             imageVector = Icons.Default.Info,
                             contentDescription = "Información y Créditos",
-                            tint = NeonTeal,
+                            tint = MaterialTheme.colorScheme.secondary,
                             modifier = Modifier.size(20.dp)
                         )
                     }
@@ -233,12 +235,12 @@ fun SyllabusScreen(
                             .testTag("settings_button")
                             .size(36.dp)
                             .clip(CircleShape)
-                            .background(RadiantBlue.copy(alpha = 0.15f))
+                            .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.15f))
                     ) {
                         Icon(
                             imageVector = Icons.Default.Settings,
                             contentDescription = "Configuración",
-                            tint = RadiantBlue,
+                            tint = MaterialTheme.colorScheme.primary,
                             modifier = Modifier.size(20.dp)
                         )
                     }
@@ -262,8 +264,8 @@ fun SyllabusScreen(
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Slate950.copy(alpha = 0.80f),
-                    titleContentColor = Color.White
+                    containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.90f),
+                    titleContentColor = MaterialTheme.colorScheme.onSurface
                 )
             )
         },
@@ -290,7 +292,7 @@ fun SyllabusScreen(
                     placeholder = { 
                         Text(
                             text = "Buscar módulo, lección, término...", 
-                            color = Slate400,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
                             fontSize = 13.sp,
                             maxLines = 1,
                             softWrap = false,
@@ -301,7 +303,7 @@ fun SyllabusScreen(
                         Icon(
                             imageVector = Icons.Default.Search,
                             contentDescription = "Buscar",
-                            tint = Slate400,
+                            tint = MaterialTheme.colorScheme.onSurfaceVariant,
                             modifier = Modifier.size(20.dp)
                         )
                     },
@@ -314,23 +316,23 @@ fun SyllabusScreen(
                                 Icon(
                                     imageVector = Icons.Default.Clear,
                                     contentDescription = "Limpiar",
-                                    tint = NeonTeal,
+                                    tint = MaterialTheme.colorScheme.primary,
                                     modifier = Modifier.size(16.dp)
                                 )
                             }
                         }
                     },
                     singleLine = true,
-                    textStyle = MaterialTheme.typography.bodyMedium.copy(fontSize = 13.sp, color = Color.White),
+                    textStyle = MaterialTheme.typography.bodyMedium.copy(fontSize = 13.sp, color = MaterialTheme.colorScheme.onSurface),
                     shape = RoundedCornerShape(24.dp),
                     colors = OutlinedTextFieldDefaults.colors(
-                        focusedTextColor = Color.White,
-                        unfocusedTextColor = Color.White,
-                        focusedContainerColor = Slate900,
-                        unfocusedContainerColor = Slate900,
-                        focusedBorderColor = NeonTeal,
-                        unfocusedBorderColor = Slate800,
-                        cursorColor = NeonTeal
+                        focusedTextColor = MaterialTheme.colorScheme.onSurface,
+                        unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
+                        focusedContainerColor = MaterialTheme.colorScheme.surface,
+                        unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+                        focusedBorderColor = MaterialTheme.colorScheme.primary,
+                        unfocusedBorderColor = MaterialTheme.colorScheme.outline,
+                        cursorColor = MaterialTheme.colorScheme.primary
                     )
                 )
 
@@ -647,7 +649,7 @@ fun EmergencyBottomSheet(
 
     ModalBottomSheet(
         onDismissRequest = onDismiss,
-        containerColor = Color(0xFF0F172A),
+        containerColor = MaterialTheme.colorScheme.surface,
         modifier = Modifier.testTag("emergency_sheet")
     ) {
         Column(
@@ -677,7 +679,7 @@ fun EmergencyBottomSheet(
                     )
                 }
                 IconButton(onClick = onDismiss) {
-                    Icon(Icons.Default.Close, contentDescription = "Cerrar", tint = Slate400)
+                    Icon(Icons.Default.Close, contentDescription = "Cerrar", tint = MaterialTheme.colorScheme.onSurfaceVariant)
                 }
             }
 
@@ -714,9 +716,9 @@ fun EmergencyBottomSheet(
                     ) { command ->
                         val isPlaying = currentlyPlayingText == command.en
                         Surface(
-                            color = Slate900,
+                            color = MaterialTheme.colorScheme.surfaceVariant,
                             shape = RoundedCornerShape(12.dp),
-                            border = BorderStroke(1.2.dp, if (isPlaying) NeonTeal else Color(0xFFEF4444).copy(alpha = 0.3f)),
+                            border = BorderStroke(1.2.dp, if (isPlaying) MaterialTheme.colorScheme.primary else Color(0xFFEF4444).copy(alpha = 0.3f)),
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .clickable { onSpeakClick(command.en) }
@@ -731,21 +733,21 @@ fun EmergencyBottomSheet(
                                 Column(modifier = Modifier.weight(1f)) {
                                     Text(
                                         text = command.en,
-                                        color = Color.White,
+                                        color = MaterialTheme.colorScheme.onSurface,
                                         fontWeight = FontWeight.Black,
                                         fontSize = 16.sp
                                     )
                                     if (command.phonetic.isNotEmpty()) {
                                         Text(
                                             text = command.phonetic,
-                                            color = Slate400,
+                                            color = MaterialTheme.colorScheme.onSurfaceVariant,
                                             fontSize = 12.sp,
                                             fontStyle = androidx.compose.ui.text.font.FontStyle.Italic
                                         )
                                     }
                                     Text(
                                         text = command.es,
-                                        color = Slate400,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
                                         fontSize = 13.sp
                                     )
                                 }
@@ -753,12 +755,12 @@ fun EmergencyBottomSheet(
                                     onClick = { onSpeakClick(command.en) },
                                     modifier = Modifier
                                         .clip(CircleShape)
-                                        .background(if (isPlaying) NeonTeal else Color(0xFFEF4444).copy(alpha = 0.15f))
+                                        .background(if (isPlaying) MaterialTheme.colorScheme.primary else Color(0xFFEF4444).copy(alpha = 0.15f))
                                 ) {
                                     Icon(
                                         imageVector = Icons.Default.VolumeUp,
                                         contentDescription = "Escuchar",
-                                        tint = if (isPlaying) Slate950 else Color(0xFFEF4444)
+                                        tint = if (isPlaying) MaterialTheme.colorScheme.onPrimary else Color(0xFFEF4444)
                                     )
                                 }
                             }
@@ -793,14 +795,23 @@ fun ModuleHeaderCard(
     val totalVocab = module.lessons.sumOf { it.vocabulary.size }
     val totalPhrases = module.lessons.sumOf { it.phrases.size }
 
-    // Brightest near-white shade tinted with parent block color (92% White + 8% Block Color)
-    val tintedTitleColor = remember(colorToUse) {
-        Color(
-            red = Color.White.red * 0.92f + colorToUse.red * 0.08f,
-            green = Color.White.green * 0.92f + colorToUse.green * 0.08f,
-            blue = Color.White.blue * 0.92f + colorToUse.blue * 0.08f,
-            alpha = 1f
-        )
+    val isLight = MaterialTheme.colorScheme.background.luminance() > 0.5f
+    val tintedTitleColor = remember(colorToUse, isLight) {
+        if (isLight) {
+            Color(
+                red = colorToUse.red * 0.45f,
+                green = colorToUse.green * 0.45f,
+                blue = colorToUse.blue * 0.45f,
+                alpha = 1f
+            )
+        } else {
+            Color(
+                red = Color.White.red * 0.92f + colorToUse.red * 0.08f,
+                green = Color.White.green * 0.92f + colorToUse.green * 0.08f,
+                blue = Color.White.blue * 0.92f + colorToUse.blue * 0.08f,
+                alpha = 1f
+            )
+        }
     }
 
     Card(
@@ -810,9 +821,9 @@ fun ModuleHeaderCard(
             .testTag("module_card_${module.moduleId}"),
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(
-            containerColor = Slate900
+            containerColor = MaterialTheme.colorScheme.surface
         ),
-        border = BorderStroke(1.2.dp, colorToUse.copy(alpha = 0.28f))
+        border = BorderStroke(1.2.dp, colorToUse.copy(alpha = 0.35f))
     ) {
         Box(
             modifier = Modifier
@@ -861,7 +872,7 @@ fun ModuleHeaderCard(
                         Spacer(modifier = Modifier.height(2.dp))
                         Text(
                             text = "$totalVocab Vocabulario • $totalPhrases Frases",
-                            color = Slate200,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
                             fontSize = 12.sp,
                             fontWeight = FontWeight.Medium
                         )
@@ -908,7 +919,7 @@ fun LessonPathItem(
                     modifier = Modifier
                         .width(2.dp)
                         .height(36.dp)
-                        .background(Slate800)
+                        .background(MaterialTheme.colorScheme.outline.copy(alpha = 0.4f))
                 )
             }
         }
@@ -916,13 +927,13 @@ fun LessonPathItem(
         Column(modifier = Modifier.weight(1f)) {
             Text(
                 text = lesson.lessonTitle,
-                color = Color.White,
+                color = MaterialTheme.colorScheme.onSurface,
                 fontWeight = FontWeight.SemiBold,
                 fontSize = 15.sp
             )
             Text(
                 text = "${lesson.vocabulary.size} Vocabulario • ${lesson.phrases.size} Frases",
-                color = Slate400,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
                 fontSize = 12.sp
             )
         }
@@ -946,10 +957,10 @@ fun SearchResultCard(
     Card(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(containerColor = Slate900),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
         border = BorderStroke(
             width = 1.dp,
-            color = if (isPlaying) NeonTeal else Slate800
+            color = if (isPlaying) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline.copy(alpha = 0.3f)
         )
     ) {
         Column(
@@ -964,12 +975,12 @@ fun SearchResultCard(
                     Box(
                         modifier = Modifier
                             .clip(RoundedCornerShape(4.dp))
-                            .background(if (result.isVocabulary) NeonTeal.copy(alpha = 0.15f) else Slate800)
+                            .background(if (result.isVocabulary) MaterialTheme.colorScheme.primary.copy(alpha = 0.15f) else MaterialTheme.colorScheme.surfaceVariant)
                             .padding(horizontal = 6.dp, vertical = 2.dp)
                     ) {
                         Text(
                             text = if (result.isVocabulary) "VOCABULARIO" else "FRASE TÁCTICA",
-                            color = if (result.isVocabulary) NeonTeal else Slate400,
+                            color = if (result.isVocabulary) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant,
                             fontSize = 9.sp,
                             fontWeight = FontWeight.Bold
                         )
@@ -977,7 +988,7 @@ fun SearchResultCard(
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
                         text = "${result.moduleName.uppercase()} • ${result.lessonTitle.uppercase()}",
-                        color = Slate400,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
                         fontSize = 11.sp,
                         fontWeight = FontWeight.Bold,
                         letterSpacing = 0.5.sp
@@ -987,12 +998,12 @@ fun SearchResultCard(
                     Box(
                         modifier = Modifier
                             .clip(RoundedCornerShape(4.dp))
-                            .background(NeonTeal.copy(alpha = 0.2f))
+                            .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.2f))
                             .padding(horizontal = 6.dp, vertical = 2.dp)
                     ) {
                         Text(
                             text = "Reproduciendo...",
-                            color = NeonTeal,
+                            color = MaterialTheme.colorScheme.primary,
                             fontSize = 10.sp,
                             fontWeight = FontWeight.Bold
                         )
@@ -1004,7 +1015,7 @@ fun SearchResultCard(
 
             Text(
                 text = result.phrase.en.uppercase(),
-                color = NeonTeal,
+                color = MaterialTheme.colorScheme.primary,
                 fontWeight = FontWeight.Bold,
                 fontSize = 18.sp,
                 lineHeight = 24.sp
@@ -1014,7 +1025,7 @@ fun SearchResultCard(
                 Spacer(modifier = Modifier.height(2.dp))
                 Text(
                     text = result.phrase.phonetic,
-                    color = Slate400,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
                     fontSize = 13.sp,
                     fontStyle = androidx.compose.ui.text.font.FontStyle.Italic
                 )
@@ -1024,7 +1035,7 @@ fun SearchResultCard(
 
             Text(
                 text = result.phrase.es,
-                color = Slate400,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
                 fontSize = 14.sp,
                 fontStyle = androidx.compose.ui.text.font.FontStyle.Italic,
                 fontWeight = FontWeight.Normal,
@@ -1036,10 +1047,10 @@ fun SearchResultCard(
             Button(
                 onClick = { onSpeakClick(result.phrase.en) },
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = if (isPlaying) NeonTeal else NeonTeal.copy(alpha = 0.1f),
-                    contentColor = if (isPlaying) Slate950 else NeonTeal
+                    containerColor = if (isPlaying) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.primary.copy(alpha = 0.1f),
+                    contentColor = if (isPlaying) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.primary
                 ),
-                border = BorderStroke(1.2.dp, if (isPlaying) NeonTeal else NeonTeal.copy(alpha = 0.3f)),
+                border = BorderStroke(1.2.dp, if (isPlaying) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.primary.copy(alpha = 0.3f)),
                 contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
                 shape = RoundedCornerShape(24.dp),
                 modifier = Modifier
@@ -1054,7 +1065,7 @@ fun SearchResultCard(
                     Icon(
                         imageVector = Icons.Default.VolumeUp,
                         contentDescription = null,
-                        tint = if (isPlaying) Slate950 else NeonTeal,
+                        tint = if (isPlaying) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.primary,
                         modifier = Modifier.size(18.dp)
                     )
                     Spacer(modifier = Modifier.width(6.dp))
@@ -1072,9 +1083,9 @@ fun SearchResultCard(
 @Composable
 private fun MainHeaderLogoBanner(modifier: Modifier = Modifier) {
     Surface(
-        color = Slate900.copy(alpha = 0.85f),
+        color = MaterialTheme.colorScheme.surface.copy(alpha = 0.90f),
         shape = RoundedCornerShape(16.dp),
-        border = BorderStroke(1.dp, Brush.horizontalGradient(listOf(NeonTeal.copy(alpha = 0.5f), Color(0xFFFACC15).copy(alpha = 0.5f)))),
+        border = BorderStroke(1.dp, Brush.horizontalGradient(listOf(MaterialTheme.colorScheme.primary.copy(alpha = 0.5f), Color(0xFFFACC15).copy(alpha = 0.5f)))),
         modifier = modifier
             .fillMaxWidth()
             .padding(top = 4.dp, bottom = 4.dp)
@@ -1089,7 +1100,7 @@ private fun MainHeaderLogoBanner(modifier: Modifier = Modifier) {
                 modifier = Modifier
                     .size(54.dp)
                     .clip(CircleShape)
-                    .background(Slate950)
+                    .background(MaterialTheme.colorScheme.surfaceVariant)
                     .border(1.5.dp, Color(0xFFFACC15), CircleShape),
                 contentAlignment = Alignment.Center
             ) {
@@ -1106,7 +1117,7 @@ private fun MainHeaderLogoBanner(modifier: Modifier = Modifier) {
             Column(modifier = Modifier.weight(1f)) {
                 Text(
                     text = "INGLÉS OPERATIVO POLICIAL",
-                    color = Color(0xFFFACC15),
+                    color = MaterialTheme.colorScheme.primary,
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Bold,
                     letterSpacing = 0.5.sp
@@ -1114,14 +1125,14 @@ private fun MainHeaderLogoBanner(modifier: Modifier = Modifier) {
                 Spacer(modifier = Modifier.height(2.dp))
                 Text(
                     text = "Formación práctica para la función policial",
-                    color = Color.White,
+                    color = MaterialTheme.colorScheme.onSurface,
                     fontSize = 13.5.sp,
                     fontWeight = FontWeight.ExtraBold
                 )
                 Spacer(modifier = Modifier.height(2.dp))
                 Text(
                     text = "6 Bloques Operativos · 30 Módulos",
-                    color = NeonTeal,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
                     fontSize = 11.sp,
                     fontWeight = FontWeight.Medium
                 )
@@ -1148,7 +1159,7 @@ private fun OperationalSectionCard(
     }
 
     Surface(
-        color = Slate900,
+        color = MaterialTheme.colorScheme.surface,
         shape = RoundedCornerShape(14.dp),
         border = BorderStroke(
             width = if (isSectionExpanded) 1.6.dp else 1.2.dp,
@@ -1191,7 +1202,7 @@ private fun OperationalSectionCard(
                     Spacer(modifier = Modifier.height(3.dp))
                     Text(
                         text = "$sectionModulesCount módulos operativos",
-                        color = Slate400,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
                         fontSize = 11.sp,
                         fontWeight = FontWeight.Medium
                     )

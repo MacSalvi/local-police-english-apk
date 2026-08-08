@@ -74,8 +74,9 @@ fun AppInfoScreen(
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Slate950.copy(alpha = 0.80f),
-                    titleContentColor = Color.White
+                    containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.90f),
+                    titleContentColor = MaterialTheme.colorScheme.onSurface,
+                    navigationIconContentColor = MaterialTheme.colorScheme.onSurface
                 )
             )
         },
