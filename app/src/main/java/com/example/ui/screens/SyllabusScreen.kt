@@ -150,42 +150,22 @@ fun SyllabusScreen(
             TopAppBar(
                 title = {
                     Column(modifier = Modifier.fillMaxWidth()) {
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Text(
-                                text = "Inglés Operativo Policial",
-                                style = MaterialTheme.typography.titleMedium.copy(
-                                    fontWeight = FontWeight.Bold,
-                                    color = Color.White,
-                                    fontSize = 17.sp
-                                ),
-                                maxLines = 1,
-                                overflow = TextOverflow.Ellipsis
-                            )
-                            Spacer(modifier = Modifier.width(6.dp))
-                            Box(
-                                modifier = Modifier
-                                    .background(Slate800, RoundedCornerShape(4.dp))
-                                    .padding(horizontal = 5.dp, vertical = 2.dp)
-                            ) {
-                                Text(
-                                    text = "V1.0",
-                                    color = Slate400,
-                                    fontSize = 9.sp,
-                                    fontWeight = FontWeight.Bold,
-                                    maxLines = 1,
-                                    softWrap = false
-                                )
-                            }
-                        }
+                        Text(
+                            text = "Soporte táctico multilingüe · V${com.example.BuildConfig.VERSION_NAME}",
+                            style = MaterialTheme.typography.titleMedium.copy(
+                                fontWeight = FontWeight.Bold,
+                                color = Color.White,
+                                fontSize = 15.sp
+                            ),
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis
+                        )
                         Spacer(modifier = Modifier.height(2.dp))
                         Text(
-                            text = buildAnnotatedString {
-                                append("Inglés Operativo • ")
-                                withStyle(style = SpanStyle(color = crtGreen, fontWeight = FontWeight.Bold)) {
-                                    append("CP214 SCR · PL Marbella")
-                                }
-                            },
+                            text = "CP214 SCR · Policía Local Marbella",
+                            color = crtGreen,
                             fontSize = 11.sp,
+                            fontWeight = FontWeight.Bold,
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis
                         )
@@ -342,204 +322,91 @@ fun SyllabusScreen(
                         }
                     }
                 } else {
-                    LazyColumn(
-                        state = listState,
-                        verticalArrangement = Arrangement.spacedBy(14.dp),
-                        contentPadding = PaddingValues(bottom = 32.dp),
+                    BoxWithConstraints(
                         modifier = Modifier
                             .fillMaxWidth()
                             .weight(1f)
                     ) {
-                        item(key = "main_header_logo_banner") {
-                            Surface(
-                                color = Slate900.copy(alpha = 0.85f),
-                                shape = RoundedCornerShape(16.dp),
-                                border = BorderStroke(1.dp, Brush.horizontalGradient(listOf(NeonTeal.copy(alpha = 0.5f), Color(0xFFFACC15).copy(alpha = 0.5f)))),
+                        val availableHeight = maxHeight
+                        if (expandedSectionTitle == null && availableHeight >= 550.dp) {
+                            Column(
                                 modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(top = 4.dp, bottom = 4.dp)
+                                    .fillMaxSize()
+                                    .padding(bottom = 12.dp)
                             ) {
-                                Row(
+                                MainHeaderLogoBanner(modifier = Modifier.padding(bottom = 4.dp))
+                                Column(
                                     modifier = Modifier
                                         .fillMaxWidth()
-                                        .padding(horizontal = 14.dp, vertical = 10.dp),
-                                    verticalAlignment = Alignment.CenterVertically
+                                        .weight(1f),
+                                    verticalArrangement = Arrangement.SpaceEvenly
                                 ) {
-                                    Box(
-                                        modifier = Modifier
-                                            .size(54.dp)
-                                            .clip(CircleShape)
-                                            .background(Slate950)
-                                            .border(1.5.dp, Color(0xFFFACC15), CircleShape),
-                                        contentAlignment = Alignment.Center
-                                    ) {
-                                        Image(
-                                            painter = painterResource(id = R.drawable.img_app_icon_1785855600158),
-                                            contentDescription = "Escudo Policía Local Marbella",
-                                            contentScale = ContentScale.Crop,
+                                    operationalSections.forEach { section ->
+                                        val sectionModulesCount = section.moduleIds.mapNotNull { moduleMap[it] }.size
+                                        Box(
                                             modifier = Modifier
-                                                .size(48.dp)
-                                                .clip(CircleShape)
-                                        )
-                                    }
-                                    Spacer(modifier = Modifier.width(12.dp))
-                                    Column(modifier = Modifier.weight(1f)) {
-                                        Text(
-                                            text = "POLICÍA LOCAL DE MARBELLA",
-                                            color = Color(0xFFFACC15),
-                                            fontSize = 11.sp,
-                                            fontWeight = FontWeight.Bold,
-                                            letterSpacing = 0.5.sp
-                                        )
-                                        Spacer(modifier = Modifier.height(1.dp))
-                                        Text(
-                                            text = "Inglés Operativo Policial",
-                                            color = Color.White,
-                                            fontSize = 16.sp,
-                                            fontWeight = FontWeight.ExtraBold
-                                        )
-                                        Spacer(modifier = Modifier.height(1.dp))
-                                        Text(
-                                            text = "6 Bloques Operativos · 30 Módulos",
-                                            color = Slate400,
-                                            fontSize = 11.sp
-                                        )
-                                    }
-                                }
-                            }
-                        }
-
-                        operationalSections.forEach { section ->
-                            val isSectionExpanded = (expandedSectionTitle == section.title)
-                            val sectionModules = section.moduleIds.mapNotNull { moduleMap[it] }
-
-                            item(key = "section_${section.title}") {
-                                val rotationAngle by animateFloatAsState(
-                                    targetValue = if (isSectionExpanded) 180f else 0f,
-                                    label = "section_chevron"
-                                )
-
-                                val gradientBrush = remember(section.gradientColors) {
-                                    Brush.horizontalGradient(section.gradientColors)
-                                }
-
-                                Surface(
-                                    color = Slate900,
-                                    shape = RoundedCornerShape(14.dp),
-                                    border = BorderStroke(
-                                        width = if (isSectionExpanded) 1.6.dp else 1.2.dp,
-                                        brush = if (isSectionExpanded) gradientBrush else Brush.horizontalGradient(
-                                            section.gradientColors.map { it.copy(alpha = 0.55f) }
-                                        )
-                                    ),
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .clickable {
-                                            val willExpand = !isSectionExpanded
-                                            if (willExpand) {
-                                                expandedSectionTitle = section.title
-                                            } else {
-                                                expandedSectionTitle = null
-                                            }
-                                        }
-                                ) {
-                                    Box(
-                                        modifier = Modifier
-                                            .fillMaxWidth()
-                                            .background(
-                                                Brush.horizontalGradient(
-                                                    listOf(
-                                                        section.gradientColors[0].copy(alpha = 0.12f),
-                                                        section.gradientColors[1].copy(alpha = 0.03f)
-                                                    )
-                                                )
-                                            )
-                                            .padding(horizontal = 16.dp, vertical = 14.dp)
-                                    ) {
-                                        Row(
-                                            modifier = Modifier.fillMaxWidth(),
-                                            verticalAlignment = Alignment.CenterVertically,
-                                            horizontalArrangement = Arrangement.SpaceBetween
+                                                .fillMaxWidth()
+                                                .weight(1f),
+                                            contentAlignment = Alignment.Center
                                         ) {
-                                            Column(modifier = Modifier.weight(1f)) {
-                                                Text(
-                                                    text = section.title,
-                                                    style = TextStyle(
-                                                        brush = gradientBrush,
-                                                        fontWeight = FontWeight.Bold,
-                                                        fontSize = 13.5.sp,
-                                                        letterSpacing = 0.6.sp
-                                                    )
-                                                )
-                                                Spacer(modifier = Modifier.height(3.dp))
-                                                Text(
-                                                    text = "${sectionModules.size} módulos operativos",
-                                                    color = Slate400,
-                                                    fontSize = 11.sp,
-                                                    fontWeight = FontWeight.Medium
-                                                )
-                                            }
-                                            Icon(
-                                                imageVector = Icons.Default.KeyboardArrowDown,
-                                                contentDescription = null,
-                                                modifier = Modifier.rotate(rotationAngle),
-                                                tint = section.gradientColors[0]
+                                            OperationalSectionCard(
+                                                section = section,
+                                                isSectionExpanded = false,
+                                                sectionModulesCount = sectionModulesCount,
+                                                onToggleExpand = { expandedSectionTitle = section.title }
                                             )
                                         }
                                     }
                                 }
                             }
+                        } else {
+                            LazyColumn(
+                                state = listState,
+                                verticalArrangement = Arrangement.spacedBy(10.dp),
+                                contentPadding = PaddingValues(bottom = 16.dp),
+                                modifier = Modifier.fillMaxSize()
+                            ) {
+                                item(key = "main_header_logo_banner") {
+                                    MainHeaderLogoBanner()
+                                }
 
-                            if (isSectionExpanded) {
-                                items(
-                                    items = sectionModules,
-                                    key = { module -> "module_${module.moduleId}" }
-                                ) { module ->
-                                    Box(
-                                        modifier = Modifier
-                                            .fillMaxWidth()
-                                            .padding(start = 6.dp, top = 3.dp, bottom = 3.dp)
-                                    ) {
-                                        ModuleHeaderCard(
-                                            module = module,
-                                            accentColor = section.color,
-                                            onClick = {
-                                                module.lessons.firstOrNull()?.let { lesson ->
-                                                    onLessonClick(lesson)
-                                                }
+                                operationalSections.forEach { section ->
+                                    val isSectionExpanded = (expandedSectionTitle == section.title)
+                                    val sectionModules = section.moduleIds.mapNotNull { moduleMap[it] }
+
+                                    item(key = "section_${section.title}") {
+                                        OperationalSectionCard(
+                                            section = section,
+                                            isSectionExpanded = isSectionExpanded,
+                                            sectionModulesCount = sectionModules.size,
+                                            onToggleExpand = {
+                                                expandedSectionTitle = if (isSectionExpanded) null else section.title
                                             }
                                         )
                                     }
-                                }
-                            }
-                        }
 
-                        item(key = "app_shield_footer") {
-                            BoxWithConstraints(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(top = 12.dp, bottom = 48.dp),
-                                contentAlignment = Alignment.Center
-                            ) {
-                                val outerShieldSize = (maxWidth * 0.30f).coerceIn(80.dp, 120.dp)
-                                val innerShieldSize = outerShieldSize - 10.dp
-
-                                Box(
-                                    modifier = Modifier
-                                        .size(outerShieldSize)
-                                        .clip(CircleShape)
-                                        .background(Slate900)
-                                        .border(2.dp, Color(0xFFFACC15).copy(alpha = 0.5f), CircleShape),
-                                    contentAlignment = Alignment.Center
-                                ) {
-                                    Image(
-                                        painter = painterResource(id = R.drawable.img_app_icon_1785855600158),
-                                        contentDescription = "Escudo Marbella Police Local English",
-                                        contentScale = ContentScale.Crop,
-                                        modifier = Modifier
-                                            .size(innerShieldSize)
-                                            .clip(CircleShape)
-                                    )
+                                    if (isSectionExpanded) {
+                                        items(
+                                            items = sectionModules,
+                                            key = { module -> "module_${module.moduleId}" }
+                                        ) { module ->
+                                            Box(
+                                                modifier = Modifier
+                                                    .fillMaxWidth()
+                                                    .padding(start = 6.dp, top = 3.dp, bottom = 3.dp)
+                                            ) {
+                                                ModuleHeaderCard(
+                                                    module = module,
+                                                    accentColor = section.color,
+                                                    onClick = {
+                                                        module.lessons.firstOrNull()?.let { lesson ->
+                                                            onLessonClick(lesson)
+                                                        }
+                                                    }
+                                                )
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -1011,6 +878,144 @@ fun SearchResultCard(
                         fontWeight = FontWeight.Bold
                     )
                 }
+            }
+        }
+    }
+}
+
+@Composable
+private fun MainHeaderLogoBanner(modifier: Modifier = Modifier) {
+    Surface(
+        color = Slate900.copy(alpha = 0.85f),
+        shape = RoundedCornerShape(16.dp),
+        border = BorderStroke(1.dp, Brush.horizontalGradient(listOf(NeonTeal.copy(alpha = 0.5f), Color(0xFFFACC15).copy(alpha = 0.5f)))),
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(top = 4.dp, bottom = 4.dp)
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 14.dp, vertical = 10.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Box(
+                modifier = Modifier
+                    .size(54.dp)
+                    .clip(CircleShape)
+                    .background(Slate950)
+                    .border(1.5.dp, Color(0xFFFACC15), CircleShape),
+                contentAlignment = Alignment.Center
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.img_app_icon_1785855600158),
+                    contentDescription = "Escudo Policía Local Marbella",
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .size(48.dp)
+                        .clip(CircleShape)
+                )
+            }
+            Spacer(modifier = Modifier.width(12.dp))
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = "INGLÉS OPERATIVO POLICIAL",
+                    color = Color(0xFFFACC15),
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = 0.5.sp
+                )
+                Spacer(modifier = Modifier.height(2.dp))
+                Text(
+                    text = "Formación práctica para la función policial",
+                    color = Color.White,
+                    fontSize = 13.5.sp,
+                    fontWeight = FontWeight.ExtraBold
+                )
+                Spacer(modifier = Modifier.height(2.dp))
+                Text(
+                    text = "6 Bloques Operativos · 30 Módulos",
+                    color = NeonTeal,
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Medium
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun OperationalSectionCard(
+    section: SyllabusSection,
+    isSectionExpanded: Boolean,
+    sectionModulesCount: Int,
+    onToggleExpand: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    val rotationAngle by animateFloatAsState(
+        targetValue = if (isSectionExpanded) 180f else 0f,
+        label = "section_chevron"
+    )
+
+    val gradientBrush = remember(section.gradientColors) {
+        Brush.horizontalGradient(section.gradientColors)
+    }
+
+    Surface(
+        color = Slate900,
+        shape = RoundedCornerShape(14.dp),
+        border = BorderStroke(
+            width = if (isSectionExpanded) 1.6.dp else 1.2.dp,
+            brush = if (isSectionExpanded) gradientBrush else Brush.horizontalGradient(
+                section.gradientColors.map { it.copy(alpha = 0.55f) }
+            )
+        ),
+        modifier = modifier
+            .fillMaxWidth()
+            .clickable { onToggleExpand() }
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(
+                    Brush.horizontalGradient(
+                        listOf(
+                            section.gradientColors[0].copy(alpha = 0.12f),
+                            section.gradientColors[1].copy(alpha = 0.03f)
+                        )
+                    )
+                )
+                .padding(horizontal = 16.dp, vertical = 14.dp)
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        text = section.title,
+                        style = TextStyle(
+                            brush = gradientBrush,
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 13.5.sp,
+                            letterSpacing = 0.6.sp
+                        )
+                    )
+                    Spacer(modifier = Modifier.height(3.dp))
+                    Text(
+                        text = "$sectionModulesCount módulos operativos",
+                        color = Slate400,
+                        fontSize = 11.sp,
+                        fontWeight = FontWeight.Medium
+                    )
+                }
+                Icon(
+                    imageVector = Icons.Default.KeyboardArrowDown,
+                    contentDescription = null,
+                    modifier = Modifier.rotate(rotationAngle),
+                    tint = section.gradientColors[0]
+                )
             }
         }
     }
